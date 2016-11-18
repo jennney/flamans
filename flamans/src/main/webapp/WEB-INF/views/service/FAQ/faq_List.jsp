@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자주하는질문</title>
 </head>
 <body>
-ssss
+
 </body>
 </html>
