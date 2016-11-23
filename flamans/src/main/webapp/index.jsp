@@ -8,5 +8,6 @@
 </head>
 <body>
 <h2>flamans final시작</h2>
+<h2><a href="company_join.do">업체 회원가입</a></h2>
 </body>
 </html>

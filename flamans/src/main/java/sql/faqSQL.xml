@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="flamans.faq">
+
+	<insert id="faq_Write" parameterType="flamans.faq.model.FaqDTO">
+		insert 
+			into
+		fm_faq
+			values(#{faq_subject},
+		#{faq_checked},
+			#{faq_content},
+		#{faq_item})	
+	</insert>
+	
+	<select id="faq_List" resultType="flamans.faq.model.FaqDTO"> 
+		select * 
+			from
+		fm_faq
+	</select>
+	
+	<select id="faq_memList" resultType="flamans.faq.model.FaqDTO" >
+	
+	</select>
+
+</mapper>

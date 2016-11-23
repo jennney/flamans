@@ -20,6 +20,16 @@
    </bean>
 
    <!-- service -->
+   <bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
+   	   	<constructor-arg>
+	   		<ref bean="sqlSessionTemplate" />
+	   	</constructor-arg>  
+   </bean>
+   <bean id="eventDao" class="flamans.user.event.model.EventDAOImple">
+	   	<constructor-arg>
+	   		<ref bean="sqlSessionTemplate" />
+	   	</constructor-arg>   
+   </bean>
 
    <!-- controller -->
    
@@ -48,11 +58,11 @@
    </bean>
    
  <!-- 3. 마이바티스 설정 -->
-  <!-- <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+ <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
       <property name="dataSource" ref="dataSource"/>
       <property name="configLocation" value="classpath:/mybatis-config.xml"/>
    </bean>
    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
-   </bean> -->
+   </bean>
  </beans>
