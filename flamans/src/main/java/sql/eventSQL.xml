@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="totalCnt" resultType="int">
-	select count(*) from fm_evnet
+		select count(*) from fm_evnet
 	</select>
 	
 	<select id="event_user_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">

@@ -23,7 +23,7 @@ public class EventController {
 			int totalCnt=eventDao.getTotalCnt();
 			int listSize=5;
 			int pageSize=5;
-			String pageStr=flamans.page.PageModule.makePage("event_user_startlist.do",totalCnt,listSize,pageSize,cp);
+			String pageStr=flamans.paging.PageModule.makePage("event_user_startlist.do",totalCnt,listSize,pageSize,cp);
 			List<EventDTO> list=eventDao.event_user_startlist(cp,listSize);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list",list);

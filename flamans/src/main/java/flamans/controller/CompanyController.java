@@ -44,7 +44,7 @@ public class CompanyController {
 		String url="company_join.do";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg",msg);
-		mav.addObject("url","company_join.do");
+		mav.addObject("url",url);
 		mav.setViewName("company/company_msg");
 		return mav;
 		

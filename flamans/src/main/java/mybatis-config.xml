@@ -5,5 +5,7 @@
 		<mapper resource="sql/noticeSQL.xml"/>
 		<mapper resource="sql/pageSQL.xml"/>
 		<mapper resource="sql/faqSQL.xml"/>
+		<mapper resource="sql/companySQL.xml"/>
+		<mapper resource="sql/eventSQL.xml"/>
 	</mappers>
 </configuration>
