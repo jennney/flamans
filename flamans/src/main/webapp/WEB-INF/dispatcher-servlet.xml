@@ -46,6 +46,18 @@
             <ref bean="sqlSessionTemplate" />
          </constructor-arg>   
    </bean>
+   
+	<bean class="flamans.hotel_find.model.HotelDAOImple" id="HotelDAO">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
+
+	<bean class="flamans.hot_comment_grade.model.HotCommentGradeDAOImple" id="HotCommentGradeDAO">
+		<constructor-arg>		
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
 
    <!-- controller -->
    <bean id="down" class="flamans.view.DownloadView"/>

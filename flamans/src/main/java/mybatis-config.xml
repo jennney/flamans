@@ -7,5 +7,7 @@
 		<mapper resource="sql/faqSQL.xml"/>
 		<mapper resource="sql/companySQL.xml"/>
 		<mapper resource="sql/eventSQL.xml"/>
+		<mapper resource="sql/hotelfindSQL.xml"/>
+		<mapper resource="sql/hot_comment_gradeSQL.xml"/>
 	</mappers>
 </configuration>

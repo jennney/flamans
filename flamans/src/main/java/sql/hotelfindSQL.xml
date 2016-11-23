@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="flamans.hotel_find">
+    
+    	<select id="hotel_list" resultType="flamans.hotel_find.model.HotelDTO">
+    		select * from fm_hotel
+    	</select>
+    	
+    	<select id="hotel_get_info" resultType="flamans.hotel_find.model.HotelDTO">
+    		select * from fm_hotel where hot_num = #{num}
+    	</select>
+    	
+    	<!-- <select id="hotel_search_name" parameterType="String" resultType="flamans.hotel_find.model.HotelDTO">
+    		select * from fm_hotel
+    		where hot_name = #{name}
+    	</select>
+    	-->
+    	
+    	<select id="hotel_search_name" parameterType="java.util.HashMap" resultType="flamans.hotel_find.model.HotelDTO">
+	    <bind name="find" value="'%'+find+'%'"/>   
+	      select * from
+	         fm_hotel
+	      where 
+	         hot_name like #{find}
+		</select>
+    	
+    </mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="flamans.hot_comment_grade">
+        
+    	<select id="hotel_get_opnion" parameterType="String" resultType="flamans.hot_comment_grade.model.HotCommentGradeDTO">
+    		select * from fm_comment
+    		where c_number = #{num}
+    	</select>
+  
+    	<insert id="hotel_input_comment_grade" parameterType="flamans.hot_comment_grade.model.HotCommentGradeDTO">
+    		insert into
+    			fm_comment
+    		values(
+    			#{c_number},
+    			#{c_grade},
+    			#{c_comment},
+    			#{c_writer},
+    			SYSDATE)
+    	</insert>
+    </mapper>
