@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="flamans.company">
+	<insert id="company_join" parameterType="flamans.company.model.CompanyDTO">
+		insert into fm_company values (
+		#{cm_name},
+		#{cm_number},
+		#{cm_id},
+		#{cm_pwd},
+		#{cm_email},
+		#{cm_tel},
+		0)
+	</insert>
+	
+    <select id="company_id_check" resultType="String" parameterType="String">
+    	select cm_id from fm_company where cm_id=#{cm_id}
+    </select>
+		
+</mapper>

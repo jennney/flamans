@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="flamans.event">
+
+	<select id="event_user_startlist"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
+	  select * from
+	(select rownum as rnum,a.*from
+	(select * from fm_event order by e_idx desc)a)b
+	where rnum<![CDATA[>=]]>#{startNum} and rnum<![CDATA[<=]]>#{endNum}
+	</select>
+	
+	<select id="totalCnt" resultType="int">
+	select count(*) from fm_evnet
+	</select>
+	
+	<select id="event_user_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
+		select * from fm_event where e_idx=#{e_idx}
+	</select>
+	
+	<select id="event_user_endlist" resultType="flamans.user.event.model.EventDTO">
+		select * from fm_event
+	</select>
+</mapper>
