@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import flamans.paging.PageModule;
 import flamans.user.event.model.EventDAO;
 import flamans.user.event.model.EventDTO;
 
 
 @Controller 
 public class EventController {
+	
+	@Autowired
+	private PageModule paging;
+	
 	@Autowired
 	private EventDAO eventDao;
 	
@@ -23,7 +28,7 @@ public class EventController {
 			int totalCnt=eventDao.getTotalCnt();
 			int listSize=5;
 			int pageSize=5;
-			String pageStr=flamans.paging.PageModule.makePage("event_user_startlist.do",totalCnt,listSize,pageSize,cp);
+			String pageStr=paging.makePage("event_user_startlist.do",totalCnt,listSize,pageSize,cp);
 			List<EventDTO> list=eventDao.event_user_startlist(cp,listSize);
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list",list);

@@ -4,14 +4,19 @@
 <mapper namespace="flamans.event">
 
 	<select id="event_user_startlist"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
-	  select * from
-	(select rownum as rnum,a.*from
-	(select * from fm_event order by e_idx desc)a)b
-	where rnum<![CDATA[>=]]>#{startNum} and rnum<![CDATA[<=]]>#{endNum}
+	<![CDATA[
+        select * 
+        	from 
+        (select rownum as rnum,a.* from 
+        	(select * from fm_event order by e_idx desc)a)b 
+        where rnum>=#{start} 
+        	and 
+        rnum<=#{end}
+  	 ]]> 
 	</select>
 	
 	<select id="totalCnt" resultType="int">
-		select count(*) from fm_evnet
+		select count(*) from fm_event
 	</select>
 	
 	<select id="event_user_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
