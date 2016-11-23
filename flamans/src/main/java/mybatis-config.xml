@@ -3,7 +3,7 @@
 <configuration>
 	<mappers>
 		<mapper resource="sql/noticeSQL.xml"/>
+		<mapper resource="sql/pageSQL.xml"/>
 		<mapper resource="sql/faqSQL.xml"/>
-		<mapper resource="sql/qnaSQL.xml"/>
 	</mappers>
 </configuration>

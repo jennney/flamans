@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="flamans.notice">
-	<select id="noList" resultType="flamans.notice.NoticeDTO">
-		select
-			*
-		from fm_notice
+	<select id="no_List" resultType="flamans.notice.model.NoticeDTO" parameterType="Map">
+	<![CDATA[
+        select * 
+        	from 
+        (select rownum as rnum,a.* from 
+        	(select * from fm_notice order by no_idx desc)a)b 
+        where rnum>=#{start} 
+        	and 
+        rnum<=#{end}
+  	 ]]> 
+	</select>
+	
+	<insert id="no_Write" parameterType="flamans.notice.model.NoticeDTO">
+		insert 
+			into
+		fm_notice
+			values(#{no_subject},
+		#{no_content},
+			sysdate,
+		#{no_file1},
+			#{no_file2},
+		fm_notice_idx.nextval,
+			0)
+	</insert>
+	
+	<select id="no_Content" parameterType="int" resultType="flamans.notice.model.NoticeDTO">
+		select * from 
+			fm_notice
+		where no_idx =
+			#{no_idx} 
+	</select>
+	
+	<update id="no_Readnum" parameterType="int">
+		update 
+			fm_notice
+		set 
+			no_readnum=no_readnum+1 
+		where no_idx = 
+			#{no_idx}
+	</update>
+	
+	<delete id="no_Delete" parameterType="int">
+		delete from
+			fm_notice
+		where no_idx = 
+			#{no_idx}	 
+	</delete>
+	
+	<update id="no_Update" parameterType="flamans.notice.model.NoticeDTO">
+		update
+			fm_notice
+		set
+			no_subject = #{no_subject},
+		no_content = #{no_content},
+			no_file1 = #{no_file1},
+		no_file2 = #{no_file1}
+			where no_idx = 
+		#{no_idx}		
+	</update>
+	
+	<select id="no_Total" resultType="int">
+		select 
+			count(*) 
+		from 
+			fm_notice
+	</select>
+	
+	<select id="no_DownName" resultType="String" parameterType="int">
+		select 
+			no_file1 
+		from 
+			fm_notice 
+		where no_idx = 
+			#{no_idx}
 	</select>
 </mapper>
