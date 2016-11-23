@@ -20,18 +20,35 @@
    </bean>
 
    <!-- service -->
-   <bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
-   	   	<constructor-arg>
-	   		<ref bean="sqlSessionTemplate" />
-	   	</constructor-arg>  
+	<bean class="flamans.notice.model.NoticeDAOImple" id="noticeDao">
+  		<constructor-arg>
+  			<ref bean = "sqlSessionTemplate"/>
+  		</constructor-arg>
+	</bean>	
+	<bean class="flamans.page.model.PageDAOImple" id="pageDao">
+		<constructor-arg>
+			<ref bean = "sqlSessionTemplate"/>
+		</constructor-arg>		
+	</bean>
+	<bean class="flamans.faq.model.FaqDAOImple" id="faqDao">
+		<constructor-arg>
+			<ref bean = "sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
+	<bean class="flamans.paging.PageModule" id="paging"/>
+	   <bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
+            <constructor-arg>
+            <ref bean="sqlSessionTemplate" />
+         </constructor-arg>  
    </bean>
    <bean id="eventDao" class="flamans.user.event.model.EventDAOImple">
-	   	<constructor-arg>
-	   		<ref bean="sqlSessionTemplate" />
-	   	</constructor-arg>   
+         <constructor-arg>
+            <ref bean="sqlSessionTemplate" />
+         </constructor-arg>   
    </bean>
 
    <!-- controller -->
+   <bean id="down" class="flamans.view.DownloadView"/>
    
    <bean id="flamansJson" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
    
