@@ -39,11 +39,11 @@
 	</bean>
 	
 	<bean class="flamans.paging.PageModule" id="paging"/>
-	   <bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
-            <constructor-arg>
+	<bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
+    	<constructor-arg>
             <ref bean="sqlSessionTemplate" />
          </constructor-arg>  
-   </bean>
+   	</bean>
    
    	<bean id="eventDao" class="flamans.user.event.model.EventDAOImple">
          <constructor-arg>

@@ -10,5 +10,6 @@
 		<mapper resource="sql/hotelfindSQL.xml"/>
 		<mapper resource="sql/hot_comment_gradeSQL.xml"/>
 		<mapper resource="sql/memberSQL.xml"/>
+		<mapper resource="sql/qnaSQL.xml"/>
 	</mappers>
 </configuration>
