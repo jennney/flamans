@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="flamans.event">
+<mapper namespace="flamans.user.event">
 
 	<select id="event_user_startlist"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
 	<![CDATA[
@@ -23,7 +23,38 @@
 		select * from fm_event where e_idx=#{e_idx}
 	</select>
 	
-	<select id="event_user_endlist" resultType="flamans.user.event.model.EventDTO">
-		select * from fm_event
+	<select id="event_user_endlist"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
+	<![CDATA[
+        select * 
+        	from 
+        (select rownum as rnum,a.* from 
+        	(select * from fm_event order by e_idx desc)a)b 
+        where rnum>=#{start} 
+        	and 
+        rnum<=#{end}
+  	 ]]> 
 	</select>
+	
+	   <update id="e_readnum" parameterType="int">
+      update
+         fm_event
+         set
+         	e_readnum=e_readnum+1
+         where
+         e_idx=#{e_idx}
+   </update>
+   
+	<insert id="event_add" parameterType="flamans.user.event.model.EventDTO">
+	insert into 
+		fm_event
+	  values(
+	  	#{e_img},
+	    null,
+		SYSDATE,
+	  	#{e_start},
+	  	#{e_end},
+	  	#{e_subject},
+	  	fm_event_idx.nextval
+	  	)
+	</insert>
 </mapper>
