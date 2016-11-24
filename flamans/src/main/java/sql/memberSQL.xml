@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fla.member">
+	<insert id="member_join" parameterType="fla.member.model.MemberDTO">
+		insert into
+			fm_member
+		values(
+			#{m_name},
+			#{m_sex},
+			#{m_birthday},
+			#{m_nationality},
+			#{m_id},
+			#{m_pwd},
+			#{m_email},
+			#{m_tel},
+			null,
+			null			
+		)
+	</insert>
+	<select id="member_check_id" parameterType="String" resultType="int">
+		select count(m_id) 
+		from fm_member
+		where m_id=#{m_id}
+	</select>
+
+</mapper>

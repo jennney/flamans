@@ -58,6 +58,12 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
+	
+	<bean id="memberDao" class="flamans.member.model.MemberDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
 
    <!-- controller -->
    <bean id="down" class="flamans.view.DownloadView"/>
