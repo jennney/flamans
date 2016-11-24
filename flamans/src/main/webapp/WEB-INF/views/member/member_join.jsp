@@ -214,14 +214,14 @@ function yearmonth(){
 		<td>ID</td>
 		<td><input type="text" name="m_id" onkeyup="idCheck()" onkeydown="fn_press_han(this);">
 		<span id="idMsg"></span>
-		<input type="text" name="m_id_check">
+		<input type="hidden" name="m_id_check">
 		</td>
 	</tr>
 	<tr>
 		<td>Password</td>
 		<td><input type="password" name="m_pwd" onkeyup="pwdCheck()">
 		<span id="pwdMsg"></span>
-		<input type="text" name="m_pwd_check">
+		<input type="hidden" name="m_pwd_check">
 		</td>
 	</tr>
 	<tr>
@@ -323,7 +323,7 @@ function yearmonth(){
 	<tr>
 		<td></td>
 		<td><input id="emailCheck" type="text" name="numberCheck" placeholder="인증번호 7자리입력">
-		<input type="text" name="email_check">
+		<input type="hidden" name="email_check">
 		<input type="button" value="인증확인" onclick="emailCheckOk()">
 		</td>
 	</tr>
