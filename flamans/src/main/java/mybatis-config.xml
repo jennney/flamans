@@ -9,5 +9,6 @@
 		<mapper resource="sql/eventSQL.xml"/>
 		<mapper resource="sql/hotelfindSQL.xml"/>
 		<mapper resource="sql/hot_comment_gradeSQL.xml"/>
+		<mapper resource="sql/memberSQL.xml"/>
 	</mappers>
 </configuration>

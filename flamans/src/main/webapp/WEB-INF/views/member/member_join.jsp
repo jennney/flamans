@@ -6,15 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/myweb/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/myweb/js/httpRequest.js"></script>
+<script type="text/javascript" src="/flamans/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/flamans/js/httpRequest.js"></script>
 <script>
 
 function pwdCheck(){
 	var m_pwd = document.member_join.m_pwd.value;
 	if(m_pwd.length <6 ){
 		var spanTag2=document.getElementById('pwdMsg');
-		spanTag2.innerHTML='비밀번호는 6자 이상이어야 합니다';
+		spanTag2.innerHTML='비밀번호는 6자 이상이어야 합니다.';
 		document.member_join.m_pwd_check.value='';
 	}
 	if(m_pwd.length >5){
@@ -94,7 +94,7 @@ function emailCheckOk() {
 		return;
 	}
 	else if(number.value!=verification){
-		window.alert('틀린번호입니다. 인증번호를 다시 입력하세요');
+		window.alert('틀린번호입니다. 인증번호를 다시 입력하세요.');
 		number.value='';
 	}
 	else if(number.value==verification){
@@ -214,14 +214,14 @@ function yearmonth(){
 		<td>ID</td>
 		<td><input type="text" name="m_id" onkeyup="idCheck()" onkeydown="fn_press_han(this);">
 		<span id="idMsg"></span>
-		<input type="hidden" name="m_id_check">
+		<input type="text" name="m_id_check">
 		</td>
 	</tr>
 	<tr>
 		<td>Password</td>
 		<td><input type="password" name="m_pwd" onkeyup="pwdCheck()">
 		<span id="pwdMsg"></span>
-		<input type="hidden" name="m_pwd_check">
+		<input type="text" name="m_pwd_check">
 		</td>
 	</tr>
 	<tr>
@@ -323,7 +323,7 @@ function yearmonth(){
 	<tr>
 		<td></td>
 		<td><input id="emailCheck" type="text" name="numberCheck" placeholder="인증번호 7자리입력">
-		<input type="hidden" name="email_check">
+		<input type="text" name="email_check">
 		<input type="button" value="인증확인" onclick="emailCheckOk()">
 		</td>
 	</tr>

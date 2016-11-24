@@ -43,7 +43,7 @@ public class MemberController {
 		
 		ModelAndView mav = new ModelAndView();	
 	
-		String msg=result>0?"이미 사용중인 ID입니다.":"사용 가능한 ID입니다..";
+		String msg=result>0?"이미 사용중인 ID입니다.":"사용 가능한 ID입니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("member/CheckMsg");
 		
