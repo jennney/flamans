@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="flamans.qna">
+	<select id="qna_List" resultType="flamans.qna.model.QnaDTO" parameterType="String">
+		select *
+			from
+		fm_qna
+			where qna_kind = 
+		#{qna_kind}
+	</select>
+	
+	<insert id="qna_Write" parameterType="flamans.qna.model.QnaDTO">
+		insert
+			into
+		fm_qna
+			values(#{qna_writer},
+		#{qna_subject},
+			#{qna_content},
+		sysdate,
+			#{qna_item},
+		#{qna_file1},
+			#{qna_file2},
+		#{qna_pwd},
+			#{qna_secret},
+		#{qna_findname},
+			0,0,0,0,
+		fm_qna_idx.nextval,
+			#{qna_kind})
+	</insert>
+</mapper>

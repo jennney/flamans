@@ -25,28 +25,31 @@
   			<ref bean = "sqlSessionTemplate"/>
   		</constructor-arg>
 	</bean>	
+	
 	<bean class="flamans.page.model.PageDAOImple" id="pageDao">
 		<constructor-arg>
 			<ref bean = "sqlSessionTemplate"/>
 		</constructor-arg>		
 	</bean>
+	
 	<bean class="flamans.faq.model.FaqDAOImple" id="faqDao">
 		<constructor-arg>
 			<ref bean = "sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
+	
 	<bean class="flamans.paging.PageModule" id="paging"/>
 	   <bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
             <constructor-arg>
             <ref bean="sqlSessionTemplate" />
          </constructor-arg>  
    </bean>
-   <bean id="eventDao" class="flamans.user.event.model.EventDAOImple">
+   
+   	<bean id="eventDao" class="flamans.user.event.model.EventDAOImple">
          <constructor-arg>
             <ref bean="sqlSessionTemplate" />
          </constructor-arg>   
-   </bean>
-   
+   	</bean>
 	<bean class="flamans.hotel_find.model.HotelDAOImple" id="HotelDAO">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
@@ -60,6 +63,12 @@
 	</bean>
 	
 	<bean id="memberDao" class="flamans.member.model.MemberDAOImple">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="flamans.qna.model.QnaDAOImple" id="qnaDao">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>

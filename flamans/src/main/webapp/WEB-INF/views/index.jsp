@@ -18,6 +18,14 @@ body{
 	<a href="company_join.do">업체 회원가입</a>
 	<br>
 	<a href="member_join.do">회원가입</a>
+	<br>
+	<a href="qna_List?qna_kind=site.do">Q&A사이트</a>
+	<br>
+	<a href="qna_List?qna_kind=hospital.do">Q&A병원</a>
+	<br>
+	<a href="qna_List?qna_kind=hotel.do">Q&A호텔</a>
+	<br>
+	<a href="no_List.do">공지사항</a>
 
 <%@ include file="footer.jsp" %>
 </body>
