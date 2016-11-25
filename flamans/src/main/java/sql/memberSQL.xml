@@ -17,10 +17,28 @@
 			null			
 		)
 	</insert>
+	
 	<select id="member_check_id" parameterType="String" resultType="int">
 		select count(m_id) 
 		from fm_member
 		where m_id=#{m_id}
 	</select>
+	
+	<select id="member_find_id" parameterType="Map" resultType="flamans.member.model.MemberDTO">
+	 select m_id, m_name
+	 from 
+	 	fm_member
+	 where 
+	 	m_name=#{m_name} and m_email=#{m_email}
+	</select>
+	
+	<update id="member_update_pwd" parameterType="Map" >
+	 update fm_member
+	 set 
+	 	 m_pwd=#{m_pwd} 
+	 where 
+	 	m_id=#{m_id} and m_email=#{m_email}
+	</update>
+
 
 </mapper>

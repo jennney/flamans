@@ -1,6 +1,11 @@
 package flamans.member.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
+
+import flamans.member.model.MemberDTO;
 
 public class MemberDAOImple implements MemberDAO {
 	
@@ -34,6 +39,36 @@ public class MemberDAOImple implements MemberDAO {
 	public String getUserInfo(String userid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public MemberDTO memberFindId(String m_name, String m_email) {
+
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("m_name",	m_name);
+		map.put("m_email", m_email);
+
+		MemberDTO dto=new MemberDTO();
+		try{
+			dto=sqlMap.selectOne("member_find_id", map);
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		return dto;
+	}
+
+	public int memberUpdatePwd(String m_id, String m_email, String m_pwd) {
+		
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("m_pwd", m_pwd);
+		map.put("m_id",	m_id);
+		map.put("m_email", m_email);
+		
+		int count=sqlMap.update("member_update_pwd", map);
+				
+		return count;
 	}
 	
 }

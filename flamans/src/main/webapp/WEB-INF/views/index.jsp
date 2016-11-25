@@ -26,7 +26,9 @@ body{
 	<a href="qna_List.do?qna_kind=hotel">Q&A호텔</a>
 	<br>
 	<a href="no_List.do">공지사항</a>
-
+	<br>
+	<a href="member_login.do">로그인</a>로그인은 아직 안됩니다.
+	<br>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

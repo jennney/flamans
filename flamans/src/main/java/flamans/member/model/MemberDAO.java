@@ -1,5 +1,7 @@
 package flamans.member.model;
 
+import flamans.member.model.*;
+
 public interface MemberDAO {
 
 	public static int NOT_ID=1;
@@ -14,4 +16,9 @@ public interface MemberDAO {
 	public int logInCheck(String id, String pwd);
 	
 	public String getUserInfo(String userid);
+
+	public MemberDTO memberFindId(String m_name, String m_email);
+	
+	public int memberUpdatePwd(String m_id, String m_email, String m_pwd);
+
 }

@@ -106,6 +106,91 @@ public class MemberController {
 		return sbuf.toString() ;
 	}
 	
+	/**id 찾기 폼*/
+	@RequestMapping(value="/member_find_id.do", method=RequestMethod.GET)
+	public String memberFindIdForm(){
+		return "member/m_find_id_form";
+	}
+	
+	/**id 찾기*/
+	@RequestMapping(value="/member_find_id.do", method=RequestMethod.POST)
+	public ModelAndView memberFindId(@RequestParam("m_name")String m_name,@RequestParam("m_email")String m_email){
+		
+		MemberDTO dto=memberDao.memberFindId(m_name, m_email);
+		
+		ModelAndView mav = new ModelAndView();
+			
+		if(dto==null){
+			mav.addObject("msg", "ID가 없습니다.");
+			mav.addObject("url", "m_find_id.do");
+			mav.setViewName("member/memberMsg");
+		}else{
+			mav.addObject("dto", dto);
+			mav.setViewName("member/member_find_id");
+		}
+
+		return mav;
+		
+	}
+	
+	/**pwd 찾기 폼*/
+	@RequestMapping(value="/member_find_pwd.do", method=RequestMethod.GET)
+	public String memberFindPwForm(){
+		return "member/m_find_pwd_form";
+	}
+	
+	/**pwd 찾기*/
+	@RequestMapping(value="/member_find_pwd.do", method=RequestMethod.POST)
+	public ModelAndView memberFindPwd(@RequestParam("m_id")String m_id, @RequestParam("m_email")String m_email, 
+			@RequestParam("email_check")String email_check){
+		
+		ModelAndView mav = new ModelAndView();
+		if(email_check.equals("인증완료")){
+			mav.addObject("m_id", m_id);
+			mav.addObject("m_email", m_email);
+			mav.setViewName("member/member_update_pw");
+		}else{
+			mav.addObject("msg", "메일인증을 해주세요.");
+			mav.addObject("url", "member_find_pwd.do");
+			mav.setViewName("member/memberMsg");
+		}
+		return mav;
+	}
+	
+	/**pwd 변경 폼*/
+	@RequestMapping(value="/member_update_pw.do", method=RequestMethod.GET)
+	public String memberPwUpdateForm(){
+		return "member/member_update_pw";
+	}
+	
+	
+	/**비밀번호 변경*/
+	@RequestMapping(value="/member_update_pw.do", method=RequestMethod.POST)
+	public ModelAndView memberPwUpdate(@RequestParam("m_id")String m_id, @RequestParam("m_email")String m_email,
+			@RequestParam("m_pwd")String m_pwd, @RequestParam("m_pwd_check")String m_pwd_check){
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(!m_pwd_check.equals("인증완료")){
+			mav.addObject("msg", "비밀번호가 틀립니다.");
+			mav.addObject("url", "member_find_pwd.do");
+			mav.setViewName("member/memberMsg");
+			
+		}else{
+			int result=memberDao.memberUpdatePwd(m_id, m_email, m_pwd);	
+			String msg=result>0?"비밀번호가 변경되었습니다.":"비밀번호 변경 실패하였습니다.";
+			mav.addObject("msg", msg);
+			mav.addObject("url", "index.do");
+			mav.setViewName("member/memberMsg");
+		}
+
+		return mav;
+	}
+	
+	
+	
+	
+	
 	@RequestMapping(value="/member_login.do", method=RequestMethod.GET)
 	public String memberLogin(){
 		return "member/member_login";
