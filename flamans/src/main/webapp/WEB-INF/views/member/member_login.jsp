@@ -73,7 +73,7 @@ label{
 	<div class="container" id="d">
 	  <p>로그인을 해주세요</p><br>
 	  <c:set var="saveid" value="${cookie.saveid.value}"></c:set>
-	  <form class="form-inline">
+	  <form class="form-inline" action="member_login.do" method="post">
 	      <label for="id">id:</label>
 	      <input type="text" class="form-control" name="m_id" placeholder="Enter ID" value="${saveid }"><br>
 	      <label for="pwd">Password:</label>

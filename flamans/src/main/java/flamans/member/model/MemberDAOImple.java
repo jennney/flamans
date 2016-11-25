@@ -70,5 +70,20 @@ public class MemberDAOImple implements MemberDAO {
 				
 		return count;
 	}
+
+	public MemberDTO memberLogin(String m_id) {
+		
+		MemberDTO dto=null;
+		
+		try{
+			dto=sqlMap.selectOne("logInCheck", m_id);
+			return dto;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}		
+		
+	}
+	
 	
 }

@@ -13,9 +13,7 @@ public interface MemberDAO {
 
 	public int idCheck(String m_id);
 	
-	public int logInCheck(String id, String pwd);
-	
-	public String getUserInfo(String userid);
+	public MemberDTO memberLogin(String m_id);
 
 	public MemberDTO memberFindId(String m_name, String m_email);
 	

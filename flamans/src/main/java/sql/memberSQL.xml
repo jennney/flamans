@@ -40,5 +40,13 @@
 	 	m_id=#{m_id} and m_email=#{m_email}
 	</update>
 
+	<select id="logInCheck" parameterType="String" resultType="flamans.member.model.MemberDTO">
+		select 
+			*
+		from 
+			fm_member
+		where
+			m_id=#{m_id}
+	</select>
 
 </mapper>

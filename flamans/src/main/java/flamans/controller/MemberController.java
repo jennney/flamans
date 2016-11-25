@@ -190,59 +190,59 @@ public class MemberController {
 	
 	
 	
-	
+	/**로그인 폼*/
 	@RequestMapping(value="/member_login.do", method=RequestMethod.GET)
 	public String memberLogin(){
 		return "member/member_login";
 	}
-
-	@RequestMapping(value="/memberLogin.do", method=RequestMethod.POST)
-	public ModelAndView loginCheck(@RequestParam("id")String userid, @RequestParam("pwd")String userpwd,
+	
+	/**로그인*/
+	@RequestMapping(value="/member_login.do", method=RequestMethod.POST)
+	public ModelAndView loginCheck(@RequestParam("m_id")String userid, @RequestParam("m_pwd")String userpwd,
 			HttpSession session, @RequestParam(value="saveid", required=false)String saveid,
 			HttpServletResponse resp
-			){
+			){	
 		
 		ModelAndView mav= new ModelAndView();
 		
-		int result=memberDao.logInCheck(userid, userpwd);
+		MemberDTO dto=memberDao.memberLogin(userid);
 		
-		if(result==memberDao.LOGIN_OK){
+		if(dto==null){		
+			mav.addObject("msg", "등록된 ID가 아닙니다.");
+			mav.addObject("url", "member_login.do");
+			mav.setViewName("member/memberMsg");
+			
+		}else if(userpwd.equals(dto.getM_pwd())){
 			
 			Cookie ck= new Cookie("saveid", userid);
 			ck.setMaxAge(saveid==null?0:(60*60*24*30));
 			resp.addCookie(ck);
 			
-			String username=memberDao.getUserInfo(userid);
+			String username=dto.getM_name();
 			session.setAttribute("username", username);
 			session.setAttribute("userid", userid);
-			mav.setViewName("member/loginOk");//클로즈를 시켜야 하기 때문에 닫는 기능을 실행시키기 위해 새로운 페이지를 만들어 넘김
+			mav.setViewName("redirect://index.do");
 			
-		}else if(result==memberDao.NOT_ID){
-			
-			mav.addObject("msg", "등록된 ID가 아닙니다. ");
-			mav.addObject("url", "memberLogin.do");
-			mav.setViewName("member/memberMsg");
-			
-		}else if(result==memberDao.NOT_PWD){
-			
+		}else if(!userpwd.equals(dto.getM_pwd())){		
 			mav.addObject("msg", "잘못된 비밀번호입니다. ");
-			mav.addObject("url", "memberLogin.do");
+			mav.addObject("url", "member_login.do");
 			mav.setViewName("member/memberMsg");
+			
 		}
 		
 		return mav;
+		
 	}
 	
+	/**로그아웃*/
 	@RequestMapping("/logout.do")
-	public ModelAndView logout(HttpServletRequest req){
+	public ModelAndView memberLogout(HttpServletRequest req){
 		
 		HttpSession session=req.getSession();
 		session.invalidate();
 		
 		ModelAndView mav= new ModelAndView();
-	/*	mav.addObject("msg", "로그아웃 되었습니다!");
-		mav.addObject("url", "index.do");
-		mav.setViewName("member/memberMsg");*/
+
 		mav.setViewName("redirect://index.do"); 
 		
 		/*redirect://index.do : 명령어를 쓴거고

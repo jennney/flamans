@@ -57,7 +57,7 @@ label{
 	      <label for="password">password:</label>
 	      <input type="password" class="form-control" name="m_pwd" placeholder="Enter Password"  onkeyup="pwdCheck()">
 	      <br><br>
-	      <input type="text" name="m_pwd_check">
+	      <input type="text" name="m_pwd_check" readonly>
 	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
 	  </form>
 </div>

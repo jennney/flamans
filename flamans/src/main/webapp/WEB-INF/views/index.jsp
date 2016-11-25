@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +28,13 @@ body{
 	<br>
 	<a href="no_List.do">공지사항</a>
 	<br>
-	<a href="member_login.do">로그인</a>로그인은 아직 안됩니다.
-	<br>
+	<c:if test="${empty sessionScope.username }">
+		<p><a href="member_login.do">로그인</a></p>
+	</c:if>
+	<c:if test="${!empty sessionScope.username }">
+		<p>${sessionScope.username }님 환영합니다 |<a href="logout.do">로그아웃</a></p>
+	</c:if>
+
 <%@ include file="footer.jsp" %>
 </body>
 </html>
