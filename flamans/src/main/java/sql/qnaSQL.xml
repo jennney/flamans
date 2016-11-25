@@ -32,7 +32,7 @@
 		select *
 			from
 		fm_qna
-			where qna_idx = 
+			where qna_idx=
 		#{qna_idx}	
 	</select>
 

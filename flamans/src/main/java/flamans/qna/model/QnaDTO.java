@@ -18,7 +18,7 @@ public class QnaDTO {
 	private int ref;
 	private int lev;
 	private int sunbun;
-	private int qna_idx;
+	private int qna_idx; 
 	private String qna_kind;
 	
 	public QnaDTO() {

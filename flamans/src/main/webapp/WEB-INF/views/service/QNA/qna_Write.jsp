@@ -12,7 +12,7 @@
 	margin: 0px auto;
 	border-spacing: 0px;
 }
-
+ 
 #qna_wrth1,#qna_wrtd1{
 	border-top: 3px solid #BDBDBD;
 	border-bottom: 3px solid #BDBDBD;

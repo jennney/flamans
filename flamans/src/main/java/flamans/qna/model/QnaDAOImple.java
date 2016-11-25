@@ -26,6 +26,5 @@ public class QnaDAOImple implements QnaDAO {
 	public QnaDTO qnaContent(int qna_idx) {
 		QnaDTO qdto = sqlMap.selectOne("qna_Content",qna_idx); 
 		return qdto;
-	}
-
+	} 
 }

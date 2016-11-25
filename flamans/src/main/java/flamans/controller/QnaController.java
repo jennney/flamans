@@ -28,6 +28,9 @@ public class QnaController {
 	
 	@RequestMapping("/qna_List.do")
 	public ModelAndView qnaList(@RequestParam("qna_kind")String qna_kind){
+		if(qna_kind.equals("")){
+			qna_kind = "hospital";
+		}
 		List<QnaDTO> qnaList = qnaDao.qnaList(qna_kind);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("qnaList", qnaList);
@@ -61,7 +64,7 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/qna_Content.do")
-	public ModelAndView qnaContent(@RequestParam(value="qna_idx",defaultValue="0")int qna_idx ){
+	public ModelAndView qnaContent(@RequestParam(value="idx",defaultValue="0")int qna_idx ){
 		QnaDTO qdto = qnaDao.qnaContent(qna_idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("qdto", qdto);
