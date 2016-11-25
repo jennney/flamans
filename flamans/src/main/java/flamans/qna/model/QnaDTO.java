@@ -19,6 +19,7 @@ public class QnaDTO {
 	private int lev;
 	private int sunbun;
 	private int qna_idx;
+	private String qna_kind;
 	
 	public QnaDTO() {
 		super();
@@ -26,7 +27,7 @@ public class QnaDTO {
 
 	public QnaDTO(String qna_writer, String qna_subject, String qna_content, Date qna_writedate, String qna_item,
 			String qna_file1, String qna_file2, String qna_pwd, String qna_secret, String qna_findname, int readnum,
-			int ref, int lev, int sunbun, int qna_idx) {
+			int ref, int lev, int sunbun, int qna_idx, String qna_kind) {
 		super();
 		this.qna_writer = qna_writer;
 		this.qna_subject = qna_subject;
@@ -43,6 +44,7 @@ public class QnaDTO {
 		this.lev = lev;
 		this.sunbun = sunbun;
 		this.qna_idx = qna_idx;
+		this.qna_kind = qna_kind;
 	}
 
 	public String getQna_writer() {
@@ -164,4 +166,14 @@ public class QnaDTO {
 	public void setQna_idx(int qna_idx) {
 		this.qna_idx = qna_idx;
 	}
+
+	public String getQna_kind() {
+		return qna_kind;
+	}
+
+	public void setQna_kind(String qna_kind) {
+		this.qna_kind = qna_kind;
+	}
+	
+	
 }

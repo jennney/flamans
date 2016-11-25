@@ -19,11 +19,11 @@ body{
 	<br>
 	<a href="member_join.do">회원가입</a>
 	<br>
-	<a href="qna_List.do?qna_kind=site.do">Q&A사이트</a>
+	<a href="qna_List.do?qna_kind=site">Q&A사이트</a>
 	<br>
-	<a href="qna_List.do?qna_kind=hospital.do">Q&A병원</a>
+	<a href="qna_List.do?qna_kind=hospital">Q&A병원</a>
 	<br>
-	<a href="qna_List.do?qna_kind=hotel.do">Q&A호텔</a>
+	<a href="qna_List.do?qna_kind=hotel">Q&A호텔</a>
 	<br>
 	<a href="no_List.do">공지사항</a>
 

@@ -27,4 +27,21 @@
 		fm_qna_idx.nextval,
 			#{qna_kind})
 	</insert>
+	
+	<select id="qna_Content" parameterType="int" resultType="flamans.qna.model.QnaDTO">
+		select *
+			from
+		fm_qna
+			where qna_idx = 
+		#{qna_idx}	
+	</select>
+
+	<update id="qna_Readnum" parameterType="int">
+		update 
+			fm_qna
+		set 
+			readnum=readnum+1 
+		where qna_idx = 
+			#{qna_idx}
+	</update>
 </mapper>

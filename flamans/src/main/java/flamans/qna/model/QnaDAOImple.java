@@ -19,8 +19,13 @@ public class QnaDAOImple implements QnaDAO {
 	}
 	
 	public int qnaWrite(QnaDTO qdto) {
-		int count = sqlMap.insert("qan_Write",qdto);
+		int count = sqlMap.insert("qna_Write",qdto);
 		return count;
+	}
+	
+	public QnaDTO qnaContent(int qna_idx) {
+		QnaDTO qdto = sqlMap.selectOne("qna_Content",qna_idx); 
+		return qdto;
 	}
 
 }
