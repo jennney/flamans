@@ -1,5 +1,9 @@
 package flamans.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,4 +65,102 @@ public class CompanyController {
 		return mav;
 		
 	}
+	
+///////////////////////////////////////////////////////////////////////////////////////////////
+	/**로그인 폼*/
+	@RequestMapping(value="/company_login.do", method=RequestMethod.GET)
+	public String companyLogin(){
+		return "company/company_login";
+	}
+
+
+	/**병원관계자 로그인*/
+	@RequestMapping(value="/company_Blogin.do", method=RequestMethod.POST)
+	public ModelAndView CompanyBloginCheck(@RequestParam("B_id")String userBid, @RequestParam("B_pwd")String userBpwd,
+	HttpSession session, @RequestParam(value="saveBid", required=false)String saveBid,
+	@RequestParam("b_number1")String b_number1, @RequestParam("b_number2")String b_number2, 
+	@RequestParam("b_number3")String b_number3, HttpServletResponse resp
+	){
+	
+		ModelAndView mav= new ModelAndView();
+		
+		String cm_number="B"+b_number1+"-"+b_number2+"-"+b_number3;
+		
+		CompanyDTO dto=companyDao.companyLogin(userBid);
+		
+		if(dto==null){		
+		mav.addObject("msg", "등록된 ID가 아닙니다.");
+		mav.addObject("url", "company_login.do");
+		mav.setViewName("company/company_msg");
+		
+		}else if(userBid.equals(dto.getCm_id())){
+			if(!userBpwd.equals(dto.getCm_pwd())){		
+				mav.addObject("msg", "잘못된 비밀번호입니다. ");
+				mav.addObject("url", "company_login.do");
+				mav.setViewName("company/company_msg");
+			}else if(!cm_number.equals(dto.getCm_number())){
+				mav.addObject("msg", "사업자 번호를 확인해주세요. ");
+				mav.addObject("url", "company_login.do");
+				mav.setViewName("company/company_msg");
+			}else{
+				Cookie ck= new Cookie("saveBid", userBid);
+				ck.setMaxAge(saveBid==null?0:(60*60*24*30));
+				resp.addCookie(ck);
+				
+				String cm_name=dto.getCm_name();
+				session.setAttribute("cm_name", cm_name);
+				session.setAttribute("userBid", userBid);
+				mav.setViewName("redirect:/index.do");
+			}
+
+		}
+	
+	return mav;
+	}
+
+	/**호텔관계자 로그인*/
+	@RequestMapping(value="/company_Hlogin.do", method=RequestMethod.POST)
+	public ModelAndView CompanyHloginCheck(@RequestParam("H_id")String userHid, @RequestParam("H_pwd")String userHpwd,
+	HttpSession session, @RequestParam(value="saveHid", required=false)String saveHid,
+	@RequestParam("h_number1")String h_number1, @RequestParam("h_number2")String h_number2, 
+	@RequestParam("h_number3")String h_number3, HttpServletResponse resp
+	){
+	
+		ModelAndView mav= new ModelAndView();
+		
+		String cm_number="H"+h_number1+"-"+h_number2+"-"+h_number3;
+		
+		CompanyDTO dto=companyDao.companyLogin(userHid);
+		
+		if(dto==null){		
+		mav.addObject("msg", "등록된 ID가 아닙니다.");
+		mav.addObject("url", "company_login.do");
+		mav.setViewName("company/company_msg");
+		
+		}else if(userHid.equals(dto.getCm_id())){
+			if(!userHpwd.equals(dto.getCm_pwd())){		
+				mav.addObject("msg", "잘못된 비밀번호입니다. ");
+				mav.addObject("url", "company_login.do");
+				mav.setViewName("company/company_msg");
+			}else if(!cm_number.equals(dto.getCm_number())){
+				mav.addObject("msg", "사업자 번호를 확인해주세요. ");
+				mav.addObject("url", "company_login.do");
+				mav.setViewName("company/company_msg");
+			}else{
+				Cookie ck= new Cookie("saveHid", userHid);
+				ck.setMaxAge(saveHid==null?0:(60*60*24*30));
+				resp.addCookie(ck);
+				
+				String cm_name=dto.getCm_name();
+				session.setAttribute("cm_name", cm_name);
+				session.setAttribute("userBid", userHid);
+				mav.setViewName("redirect:/index.do");
+			}
+
+		}
+	
+	return mav;
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 }

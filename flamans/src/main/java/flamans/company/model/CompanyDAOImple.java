@@ -2,6 +2,8 @@ package flamans.company.model;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import flamans.member.model.MemberDTO;
+
 public class CompanyDAOImple implements CompanyDAO {
 
 	private SqlSessionTemplate sqlMap;
@@ -22,4 +24,18 @@ public class CompanyDAOImple implements CompanyDAO {
 		String id=sqlMap.selectOne("company_id_check",cm_id);
 		return id;
 	}
+
+	public CompanyDTO companyLogin(String cm_id) {
+	
+		CompanyDTO dto=null;
+		
+		try{
+			dto=sqlMap.selectOne("cm_logInCheck", cm_id);
+			return dto;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}	
+	}
+
 }

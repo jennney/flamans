@@ -17,4 +17,13 @@
     	select cm_id from fm_company where cm_id=#{cm_id}
     </select>
 		
+	<select id="cm_logInCheck" parameterType="String" resultType="flamans.company.model.CompanyDTO">
+		select 
+			*
+		from 
+			fm_company
+		where
+			cm_id=#{cm_id}
+	</select>	
+		
 </mapper>

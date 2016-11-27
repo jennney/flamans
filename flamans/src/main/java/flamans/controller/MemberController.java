@@ -221,7 +221,7 @@ public class MemberController {
 			String username=dto.getM_name();
 			session.setAttribute("username", username);
 			session.setAttribute("userid", userid);
-			mav.setViewName("redirect://index.do");
+			mav.setViewName("redirect:/index.do");
 			
 		}else if(!userpwd.equals(dto.getM_pwd())){		
 			mav.addObject("msg", "잘못된 비밀번호입니다. ");
@@ -243,7 +243,7 @@ public class MemberController {
 		
 		ModelAndView mav= new ModelAndView();
 
-		mav.setViewName("redirect://index.do"); 
+		mav.setViewName("redirect:/index.do"); 
 		
 		/*redirect://index.do : 명령어를 쓴거고
 		 * 기존에 사용하던 member/memberMsg은 jsp페이지 경로임

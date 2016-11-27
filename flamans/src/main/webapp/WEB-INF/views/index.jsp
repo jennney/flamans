@@ -28,12 +28,6 @@ body{
 	<br>
 	<a href="no_List.do">공지사항</a>
 	<br>
-	<c:if test="${empty sessionScope.username }">
-		<p><a href="member_login.do">로그인</a></p>
-	</c:if>
-	<c:if test="${!empty sessionScope.username }">
-		<p>${sessionScope.username }님 환영합니다 |<a href="logout.do">로그아웃</a></p>
-	</c:if>
 
 <%@ include file="footer.jsp" %>
 </body>
