@@ -85,5 +85,14 @@ public class MemberDAOImple implements MemberDAO {
 		
 	}
 	
+	public int memberUpdateWishlist(String wishlist, String m_id) {
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("m_id",	m_id);
+		map.put("m_wishlist", wishlist);
+		
+		int count=sqlMap.update("member_update_wishlist", map);
+				
+		return count;
+	}
 	
 }

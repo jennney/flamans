@@ -39,8 +39,9 @@
 	</bean>
 	
 	<bean class="flamans.paging.PageModule" id="paging"/>
+	
 	<bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
-    	<constructor-arg>
+    	 <constructor-arg>
             <ref bean="sqlSessionTemplate" />
          </constructor-arg>  
    	</bean>
@@ -53,6 +54,12 @@
 	<bean class="flamans.hotel_find.model.HotelDAOImple" id="HotelDAO">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="flamans.hos_find.model.HospitalDAOImple" id="HospitalDAO">
+		<constructor-arg>
+			<ref bean="sqlSessionTemplate" />
 		</constructor-arg>
 	</bean>
 
