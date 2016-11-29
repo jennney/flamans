@@ -90,7 +90,7 @@
 		    </c:if>
 		    
 		    <c:if test="${!empty sessionScope.username }">
-				<a href="#">프로필</a>
+				<a href="member_page.do">프로필</a>
 				<a href="logout.do">로그아웃</a>
 			</c:if>
 			

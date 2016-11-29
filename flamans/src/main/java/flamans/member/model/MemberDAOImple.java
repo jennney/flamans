@@ -62,12 +62,15 @@ public class MemberDAOImple implements MemberDAO {
 	public int memberUpdatePwd(String m_id, String m_email, String m_pwd) {
 		
 		Map<String, String> map=new HashMap<String, String>();
+		System.out.println(m_pwd);
+		System.out.println(m_id);
+		System.out.println(m_email);
 		map.put("m_pwd", m_pwd);
 		map.put("m_id",	m_id);
 		map.put("m_email", m_email);
 		
 		int count=sqlMap.update("member_update_pwd", map);
-				
+				System.out.println("ss");
 		return count;
 	}
 
@@ -82,6 +85,22 @@ public class MemberDAOImple implements MemberDAO {
 			e.printStackTrace();
 			return null;
 		}		
+		
+	}
+
+	public int memberOut(String m_id, String m_pwd) {
+		
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("m_pwd", m_pwd);
+		map.put("m_id",	m_id);
+
+		int result = sqlMap.delete("member_out", map);
+		return result;
+	}
+
+	public int memberUpdate(MemberDTO dto) {		
+		int result=sqlMap.update("member_update", dto);
+		return result;	
 		
 	}
 	

@@ -27,8 +27,6 @@ public class MemberController {
 	public String index(){
 		return "index";
 	}
-		
-	
 	
 	@RequestMapping(value="/member_join.do", method=RequestMethod.GET)
 	public String memberJoin(){
@@ -50,6 +48,7 @@ public class MemberController {
 		return mav;
 	}
 	
+	/**회원가입*/
 	@RequestMapping(value="/member_join.do", method=RequestMethod.POST)
 	public ModelAndView memberJoin(MemberDTO dto, @RequestParam("number1")String number1,
 			@RequestParam("number2")String number2, @RequestParam("kind")String kind,
@@ -60,7 +59,7 @@ public class MemberController {
 		String en_pwd= getEncMD5(dto.getM_pwd());
 		dto.setM_pwd(en_pwd);
 		
-		String m_tel = kind+number1+number2;
+		String m_tel = kind+"-"+number1+"-"+number2;
 		dto.setM_tel(m_tel);
 		
 		ModelAndView mav = new ModelAndView();
@@ -79,7 +78,7 @@ public class MemberController {
 
 			String msg=result>0?"회원가입 성공!":"회원가입 실패!";
 			mav.addObject("msg", msg);
-			mav.addObject("url", "member_join.do");
+			mav.addObject("url", "index.do");
 		}
 		
 		mav.setViewName("member/memberMsg");
@@ -167,7 +166,7 @@ public class MemberController {
 	/**비밀번호 변경*/
 	@RequestMapping(value="/member_update_pw.do", method=RequestMethod.POST)
 	public ModelAndView memberPwUpdate(@RequestParam("m_id")String m_id, @RequestParam("m_email")String m_email,
-			@RequestParam("m_pwd")String m_pwd, @RequestParam("m_pwd_check")String m_pwd_check){
+			@RequestParam("m_pwd")String m_pwd, @RequestParam("m_pwd_check")String m_pwd_check)throws Exception{
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -177,7 +176,12 @@ public class MemberController {
 			mav.setViewName("member/memberMsg");
 			
 		}else{
-			int result=memberDao.memberUpdatePwd(m_id, m_email, m_pwd);	
+			m_pwd= getEncMD5(m_pwd);
+					
+			int result=memberDao.memberUpdatePwd(m_id, m_email, m_pwd);
+			System.out.println("컨트롤");
+			System.out.println(m_email);
+			System.out.println(m_id);
 			String msg=result>0?"비밀번호가 변경되었습니다.":"비밀번호 변경 실패하였습니다.";
 			mav.addObject("msg", msg);
 			mav.addObject("url", "index.do");
@@ -201,33 +205,42 @@ public class MemberController {
 	public ModelAndView loginCheck(@RequestParam("m_id")String userid, @RequestParam("m_pwd")String userpwd,
 			HttpSession session, @RequestParam(value="saveid", required=false)String saveid,
 			HttpServletResponse resp
-			){	
+			)throws Exception{	
 		
 		ModelAndView mav= new ModelAndView();
 		
-		MemberDTO dto=memberDao.memberLogin(userid);
-		
-		if(dto==null){		
-			mav.addObject("msg", "등록된 ID가 아닙니다.");
-			mav.addObject("url", "member_login.do");
-			mav.setViewName("member/memberMsg");
+		userpwd= getEncMD5(userpwd);
+				
+		if(session.getAttribute("userHid") != null || session.getAttribute("userBid") != null ){
+			mav.addObject("msg", "로그아웃 후 이용해주세요.");
+			mav.addObject("url", "company_login.do");
+			mav.setViewName("company/company_msg");
+		}else if(session.getAttribute("userHid") == null && session.getAttribute("userBid") == null){
+			MemberDTO dto=memberDao.memberLogin(userid);
 			
-		}else if(userpwd.equals(dto.getM_pwd())){
-			
-			Cookie ck= new Cookie("saveid", userid);
-			ck.setMaxAge(saveid==null?0:(60*60*24*30));
-			resp.addCookie(ck);
-			
-			String username=dto.getM_name();
-			session.setAttribute("username", username);
-			session.setAttribute("userid", userid);
-			mav.setViewName("redirect:/index.do");
-			
-		}else if(!userpwd.equals(dto.getM_pwd())){		
-			mav.addObject("msg", "잘못된 비밀번호입니다. ");
-			mav.addObject("url", "member_login.do");
-			mav.setViewName("member/memberMsg");
-			
+			if(dto==null){		
+				mav.addObject("msg", "등록된 ID가 아닙니다.");
+				mav.addObject("url", "member_login.do");
+				mav.setViewName("member/memberMsg");
+				
+			}else if(userpwd.equals(dto.getM_pwd())){
+				
+				Cookie ck= new Cookie("saveid", userid);
+				ck.setMaxAge(saveid==null?0:(60*60*24*30));
+				resp.addCookie(ck);
+				
+				String username=dto.getM_name();
+				session.setAttribute("username", username);
+				session.setAttribute("userid", userid);
+				mav.setViewName("redirect:/index.do");
+				
+			}else if(!userpwd.equals(dto.getM_pwd())){		
+				
+				mav.addObject("msg", "잘못된 비밀번호입니다. ");
+				mav.addObject("url", "member_login.do");
+				mav.setViewName("member/memberMsg");
+				
+			}
 		}
 		
 		return mav;
@@ -251,6 +264,96 @@ public class MemberController {
 		
 		return mav;
 		
+	}
+	
+	/**회원계정*/
+	@RequestMapping("/member_page.do")
+	public ModelAndView memberPage(HttpSession session){
+		
+		ModelAndView mav= new ModelAndView();
+		
+		String userid=(String)session.getAttribute("userid");
+		
+		if(userid != null){
+			MemberDTO dto=memberDao.memberLogin(userid);
+			
+			if(dto==null||dto.equals("")){
+				mav.addObject("msg", "잘못된 접근입니다.");
+				mav.addObject("url", "index.do");
+				mav.setViewName("member/memberMsg");
+				
+			}else{
+				mav.addObject("dto", dto);
+				mav.setViewName("member/member_mypage");
+			}
+		}else{
+			mav.addObject("msg", "로그인 후 이용해주세요.");
+			mav.addObject("url", "member_login.do");
+			mav.setViewName("member/memberMsg");
+		}
+		
+		return mav;
+	}
+
+	
+	/**회원탈퇴*/
+	@RequestMapping("/member_out.do")
+	public ModelAndView memberOut(@RequestParam("m_pwd")String m_pwd, @RequestParam("m_id")String m_id,
+			HttpServletRequest req)throws Exception{
+
+		
+		ModelAndView mav= new ModelAndView();
+		
+		
+		m_pwd= getEncMD5(m_pwd);
+	
+		int result=memberDao.memberOut(m_id, m_pwd);
+		
+		String msg=result>0?"회원탈퇴 성공!":"비밀번호를 확인해주세요!";
+		mav.addObject("msg", msg);
+		mav.addObject("url", "index.do");
+		
+		mav.setViewName("member/memberMsg");
+		
+		HttpSession session=req.getSession();
+		session.invalidate();
+		
+		return mav;
+	}
+		
+	
+	/**회원정보 수정*/
+	@RequestMapping(value="/member_update.do", method=RequestMethod.POST)
+	public ModelAndView memberUpdateForm(MemberDTO dto, @RequestParam("number1")String number1,
+			@RequestParam("number2")String number2, @RequestParam("kind")String kind,
+			@RequestParam("email_check")String email_check, @RequestParam("m_email")String m_email,
+			HttpSession session){
+		
+		String m_id=(String)session.getAttribute("userid");
+		dto.setM_id(m_id);
+		String m_tel = kind+"-"+number1+"-"+number2;
+		dto.setM_tel(m_tel);	
+	
+		ModelAndView mav= new ModelAndView();
+		
+		if(email_check.equals("인증완료")){
+			int result=memberDao.memberUpdate(dto);
+			
+			String msg=result>0?"회원정보 수정 성공!":"회원정보 수정 실패!";
+			mav.addObject("msg", msg);
+			mav.addObject("url", "index.do");
+		
+			mav.setViewName("member/memberMsg");
+		}else{
+			mav.addObject("msg", "이메일 인증을 해주세요.");
+			mav.addObject("url", "member_page.do");
+		
+			mav.setViewName("member/memberMsg");
+		}
+			
+		
+		
+		return mav;
 	}
 	
 }
