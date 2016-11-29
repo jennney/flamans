@@ -85,7 +85,7 @@ public class CompanyController {
 	
 		ModelAndView mav= new ModelAndView();
 		
-		String cm_number="B"+b_number1+"-"+b_number2+"-"+b_number3;
+		String cm_number="B"+b_number1+b_number2+b_number3;
 		if(session.getAttribute("userid") != null || session.getAttribute("userHid") != null ){
 			mav.addObject("msg", "로그아웃 후 이용해주세요.");
 			mav.addObject("url", "company_login.do");
@@ -133,7 +133,7 @@ public class CompanyController {
 			
 		ModelAndView mav= new ModelAndView();
 		
-		String cm_number="H"+h_number1+"-"+h_number2+"-"+h_number3;
+		String cm_number="H"+h_number1+h_number2+h_number3;
 		
 		if(session.getAttribute("userid") != null || session.getAttribute("userBid") != null ){
 			mav.addObject("msg", "로그아웃 후 이용해주세요.");

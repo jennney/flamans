@@ -42,24 +42,33 @@ function pwdCheck(){
   	height:300px;
   	margin-top: 30px;
 }
+#aa{
+	width:500px;
+}
 </style>
 </head>
 <body>
 <div class="container" >
 	  <h3>비밀번호 변경</h3><br><br>
-	  <form class="form-inline" name="updatePwd" action="member_update_pw.do" method="post">
-	  		<input type="hidden" name="m_id" value="${dto.m_id}">
-	  		<input type="hidden" name="m_email" value="${dto.m_email}">
+	   <form class="form-inline" name="updatePwd" action="member_update_pw.do" method="post" >
+	  		<c:if test="${!empty sessionScope.username && empty m_id }">
+				<input type="hidden" name="m_id" value="${dto.m_id}">
+	  			<input type="hidden" name="m_email" value="${dto.m_email}">
+			</c:if>
+			<c:if test="${!empty m_id && empty sessionScope.username}">
+				<input type="hidden" name="m_id" value="${m_id}">
+	  			<input type="hidden" name="m_email" value="${m_email}">
+			</c:if>
 	      <label id="#label_pwd" for="password">Password:</label>
-	      <input type="password" class="form-control" name="pwd" placeholder="Enter Password" onkeyup="pwdCheck()">
-	      <br>
-	      <span id="pwdMsg"></span>
+	      <input type="password" class="form-control" name="pwd" placeholder="Enter Password" onkeyup="pwdCheck()"><br>
+	      <div aa="pwdMsg"><span id="pwdMsg"></span></div>
 	      <label id="#label_pwd" for="password">password:</label>
 	      <input type="password" class="form-control" name="m_pwd" placeholder="Enter Password"  onkeyup="pwdCheck()">
 	      <br><br>
 	      <input type="text" name="m_pwd_check" readonly class="form-control" style="background-color: white;">
 	    <button type="submit" class="btn btn-default" style="float: right; ba">Submit</button><br><br>
-	  </form>
+		</form>
+	  
 </div>
 </body>
 </html>
