@@ -242,7 +242,6 @@ public class MemberController {
 		return mav;
 
 	}
-<<<<<<< HEAD
 		
 	
 	/**회원정보 수정*/
@@ -278,7 +277,4 @@ public class MemberController {
 	public void a(){
 		System.out.println();
 	}
-=======
-
->>>>>>> branch 'master' of https://github.com/jennney/flamans.git
 }
