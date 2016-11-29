@@ -29,6 +29,9 @@ public class MemberController {
 
 	@RequestMapping(value = "/member_join.do", method = RequestMethod.GET)
 	public String memberJoin() {
+	
+	@RequestMapping(value="/member_join.do", method=RequestMethod.GET)
+	public String memberJoin(){
 		return "member/member_join";
 	}
 

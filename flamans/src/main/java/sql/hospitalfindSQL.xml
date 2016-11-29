@@ -19,5 +19,9 @@
      where 
         hos_name like #{find}
 	</select>
+	
+	<select id="hospital_doclist" resultType="flamans.hos_find.model.DoctorDTO">
+	    select * from fm_doctor where hos_num = #{num}
+	</select>
   	
 	</mapper>

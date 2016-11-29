@@ -15,7 +15,6 @@ public class HotelDAOImple implements HotelDAO {
 	
 	public List<HotelDTO> hotel_list() {
 		List<HotelDTO> list = sqlMap.selectList("hotel_list");
-		System.out.println("호텔정보:"+list);
 		return list;
 	}
 	

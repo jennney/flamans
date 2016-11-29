@@ -128,7 +128,7 @@ public class EmailController {
 		@Override
 		protected PasswordAuthentication getPasswordAuthentication() {
 			 
-	        return new PasswordAuthentication("dnjsdldidi@naver.com", "43036633dQ"); 
+	        return new PasswordAuthentication("dnjsdldidi@naver.com", "123qwe!@#"); 
 	        
 		}
 	}

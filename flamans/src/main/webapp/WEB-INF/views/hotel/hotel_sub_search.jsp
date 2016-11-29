@@ -5,11 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-	.hotel_sub_search { border: 2px solid black;}
-
-</style>
 </head>
 <body>
 

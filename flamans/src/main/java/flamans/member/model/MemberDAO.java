@@ -20,5 +20,9 @@ public interface MemberDAO {
 	public int memberUpdatePwd(String m_id, String m_email, String m_pwd);
 	
 	public int memberUpdateWishlist(String wishlist, String m_id);
+	
+	public int memberOut(String m_id, String m_pwd);
+	
+	public int memberUpdate(MemberDTO dto);
 
 }

@@ -75,11 +75,12 @@
 				<c:set var="hotel_info" value="${hotel_info}"/>
 				<form name="comment_write" action="hotel_input_comment_grade.do">
 					
-					<table>
-					
+					<table class="table table-hover">
 						<tr>
-							<td><textarea rows="4" cols="100" name="c_comment" placeholder="로그인 후 체크아웃시 작성 가능합니다."></textarea></td>
+							<td><textarea rows="4" cols="90" name="c_comment" placeholder="로그인 후 체크아웃시 작성 가능합니다."></textarea></td>
 						</tr>
+					</table>
+					<table class="table table-hover">
 						<tr>
 							<td>평점테스트:<input type="text" name="c_grade"></td>
 						</tr>
@@ -88,35 +89,40 @@
 							<input type="submit" value="작성"></td>
 						</tr>
 					</table>
+					
+					<hr>
 					<input type="hidden" name="c_number" value="1">
 					<br>
 				</form>
 				
+				<h2>평점/후기</h2>
 				<c:if test="${empty hotel_comment }">
 					<li> ---- 덧글이 없습니다. 남겨주세요! ---- </li>
 				</c:if>
 				
 				<c:forEach var="hotel_comment" items="${hotel_comment }">
-
-						<table border="1" style="float: left;">
-							<tr>
-								<th>[ 작성자 ] </th>
-								<td>${hotel_comment.c_writer }</td>
-								<th>[평점] </th> 
-								<td>${hotel_comment.c_grade } </td>
-							</tr>
+					<div class="container" style="width: 700px;">
+						<table class="table table-hover"  style="float: left;">
+							<thead>
+								<tr>
+									<th width="100">[작성자]</th>
+									<th width="100">[평점]</th>
+									<th width="400">[내용]</th>
+									<th width="100">[작성일]</th>
+								</tr>
+							</thead>
 							
-							<tr>
-								<th>[ 내용 ] </th>
-								<td>${hotel_comment.c_comment }</td>
-							</tr>
-							
-							<tr>
-								<th>[ 작성일 ] </th>
-								<td>${hotel_comment.c_date }</td>
-							</tr>
+							<tbody>
+								<tr>
+									<td>${hotel_comment.c_writer }</td>
+									<td>${hotel_comment.c_grade } </td>
+									<td>${hotel_comment.c_comment }</td>
+									<td>${hotel_comment.c_date }</td>
+								</tr>
+							</tbody>
 						</table>
-						
+					</div>
+					<br/>
 				</c:forEach>
 					
 			</div>

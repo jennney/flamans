@@ -15,6 +15,7 @@
 					<input type="submit" value="검색"></td>
 				</tr>
 		</table>
+		<br/>
 	</form>
 </body>
 </html>

@@ -4,20 +4,20 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-	<meta charset=UTF-8">
-	<title>Insert title here</title>
-	
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		  
-	</head>
+<head>
+<meta charset=UTF-8">
+<title>Insert title here</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  
+</head>
 	
 <body>
 
-	<div align="center" style="border: 7px solid maroon; height: 2400px;">
+	<div align="center">
 
 		<%@ include file="../header.jsp" %>
 		<table style="margin: 0px auto;">
@@ -34,11 +34,11 @@
 		
 		<div style="width: 1000px;">
 			
-			<div style="border: 5px solid pink; width: 270px; float: left; white-space:nowrap; margin:0px center;">
+			<div style="border: 5px solid teal; width: 270px; float: left; white-space:nowrap; margin:0px center;">
 				<%@ include file="hospital_sub_search.jsp" %>
 			</div>
 			
-			<div style="border: 5px solid pink;  width: 700px; float: right; margin-left: 0px auto;">
+			<div style="border: 5px solid teal;  width: 700px; float: right; margin-left: 0px auto;">
 			
 				<c:if test="${empty hospital_info }">
 					<li> ---- 병원이 없습니다. 오류오류 ---- </li>
@@ -51,22 +51,23 @@
  								<c:param name="hospital_link">hospital_get_info.do</c:param>
 					</c:url>
 					
-					<table>
+					<table border="0" width="700" class="table table-hover">
 					
 						<tr>
-							<td colspan="4"><h1>[ ${hospital_info.hos_name } ] 정보</h1></td>
+							<td width="600" style="padding-top: 30px;"><h1>【  ${hospital_info.hos_name } 】</h1><br></td>
+							<td width="100" style="vertical-align: middle;"> <a href="${wishlistUrl}"><input type="button" value=" ♥ "></a>
+							<input type="button" value="예약"></td>
+						</tr>
+					</table>
+					
+					<table border="0"  width="700" class="table table-hover">
+						<tr>
+							<td width="150"> <img alt="병원사진영역" src="${hospital_info.hos_img }" width="150" height="150"></td>
+							<td width="550" valign="top" rowspan="2">■병원 상세정보 입력란■ ${hospital_info.hos_content }</td>
 						</tr>
 						
 						<tr>
-							<td> <img alt="병원사진영역" src="${hospital_info.hos_img }" width="150" height="150"></td>
-							<td  width="500">■병원 상세정보 입력란(1)■ ${hospital_info.hos_content }</td>
-							<td> <a href="${wishlistUrl}"><input type="button" value=" ♥ "></a>	</td>
-							<td> <input type="button" value="예약"></td>
-						</tr>
-						
-						<tr>
-							<td> <img alt="지도영역" src="img/map.jpg" width="150" height="150"></td>
-							<td> ■병원 상세정보 입력란(2)■ ${hospital_info.hos_content }</td>
+							<td width="150"> <img alt="지도영역" src="img/map.jpg" width="150" height="150"></td>
 						</tr>
 						
 					</table>
@@ -75,13 +76,19 @@
 					
 					 	<br/>
 					 	<hr>
+					 	<h3>의료진 정보</h3>
 					 	<c:forEach var="hospital_doclist" items="${hospital_doclist }">
 							
 							<table border="1" class="table table-hover">
 								
 								<tr>
-									<td><img alt="의사사진" src="img/${hospital_doclist.doc_img }" width="200" height="200"></td>
-									<td width="400"></td>
+									<td width="100"><img alt="의사사진" src="img/${hospital_doclist.doc_img }" width="100" height="100"></td>
+									<td width="500">
+									이름: ${hospital_doclist.doc_name }<br/>
+									학력: ${hospital_doclist.doc_level }<br/>
+									경력: ${hospital_doclist.doc_career }<br/>
+									기타: ${hospital_doclist.doc_etc }<br/>
+									</td>
 									<td><input type="radio" name="doctor_num"+${hospital_doclist.doc_name}></td>
 								</tr>
 								

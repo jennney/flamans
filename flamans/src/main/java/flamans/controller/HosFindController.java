@@ -11,10 +11,12 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import flamans.hos_find.model.DoctorDTO;
 import flamans.hos_find.model.HospitalDAO;
 import flamans.hos_find.model.HospitalDTO;
 import flamans.hot_comment_grade.model.HotCommentGradeDAO;
@@ -64,12 +66,16 @@ public class HosFindController {
 		
 		List<HospitalDTO> list = null;
 		List<HotCommentGradeDTO> c_list = null;
+		List<DoctorDTO> doc_list = null;
 		
 		list = hospital_info.hospital_get_info(num);	
 		mav.addObject("hospital_info",list);
 		
 		c_list = hospital_comment.hotel_get_opnion(num);
 		mav.addObject("hospital_comment",c_list);
+		
+		doc_list = hospital_info.hospital_doclist(num);
+		mav.addObject("hospital_doclist" , doc_list);
 		
 		mav.setViewName("hospital/hospital_info");
 		return mav;
@@ -106,10 +112,10 @@ public class HosFindController {
 	}
 	
 	@RequestMapping("/hos_wishlist.do")
-	public ModelAndView wishlist(
+	public ModelAndView add_wishlist(
 			@RequestParam("hos_num")String num, 
 			@RequestParam("hospital_link")String link,
-			MemberDTO member, 
+			MemberDTO memberdto, 
 			HttpSession session){
 		
 		ModelAndView mav = new ModelAndView();
@@ -129,7 +135,7 @@ public class HosFindController {
 			mav.setViewName("hospital/hospital_msg");
 			return mav;
 		}
-		MemberDTO memberdto = memberdao.memberLogin(id);
+		memberdto = memberdao.memberLogin(id);
 		String user_wishlist = memberdto.getM_wishlist();
 		
 		//1
@@ -185,4 +191,47 @@ public class HosFindController {
 		
 		return mav;
 	}
+	
+	@RequestMapping("/wishlist_view.do")
+	public ModelAndView view_wishlist(
+			MemberDTO memberdto, 
+			HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		String id = (String)session.getAttribute("userid");
+		if(id==null || id.equals("")){
+			mav.addObject("msg","<h4>【 위시리스트 】</h4><hr><h4> 로그인 후 <br/> 확인 가능합니다.</h4>");
+			mav.setViewName("hospital/wishlistMsg");
+			return mav;
+		}
+		
+		memberdto = memberdao.memberLogin(id);
+		String user_wishlist = memberdto.getM_wishlist();
+		
+		if(user_wishlist == null || user_wishlist.equals("")){
+			mav.addObject("msg","<h4>【 위시리스트 】</h4><hr><h4> 위시리스트가 없습니다. 추가해보세요 </h4>");
+			mav.setViewName("hospital/wishlistMsg");
+			return mav;
+		}
+		
+		mav.addObject("msg",user_wishlist);
+		mav.setViewName("hospital/wishlistMsg");
+		return mav;
+	}
+	
+	@RequestMapping("/hos_dto_wishlist.do")
+	public ModelAndView hoswish_dto(@RequestParam(value="hos_num", defaultValue="")String num){
+		ModelAndView mav = new ModelAndView();
+		List<HospitalDTO> list = hospital_info.hospital_get_info(num);
+		if(list==null || list.equals("")){
+			mav.addObject("msg", "해당 병원이 없습니다.");
+			mav.addObject("url", "hospital/hospital_list");
+			mav.setViewName("hospital_msg");
+			return mav;
+		}
+		
+		mav.addObject("msg",list);
+		mav.setViewName("hospital/wishlistMsg");
+		return mav;
+	}
 }
+	

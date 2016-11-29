@@ -6,19 +6,19 @@
 <head>
 
 	<style>
-				.hospital_main_search ul li { list-style-type: none; text-align: center;}
-				
-	            .hospital_list {width: 700px; border:2px solid black; margin: 0px auto;}
-	            .hospital_list ul {clear: left; margin: 0px; padding: 0px; list-style-type: none;}
-	            .hospital_list li {list-style-type: none;}
-	            /* list-style-type 블릿표시 padding: 0; 들여쓰기*/
-	            
-	            .hospital_list .subject {font-weight: bold; text-align: center;}
-	            .hospital_list ul li {text-align: center; float: left; margin: 0px; padding: 2px, 1px; list-style-type: none;}
-	            .hospital_info1{ width: 500px; }
-	            .wishlist{ width: 50px; }
-	            
-	            .hospital_list ul .col {width: 99px;} /* 표 라인 맞추기기 위해*/
+		.hospital_main_search ul li { list-style-type: none; text-align: center;}
+		
+        .hospital_list {width: 700px; border:2px solid black; margin: 0px auto;}
+        .hospital_list ul {clear: left; margin: 0px; padding: 0px; list-style-type: none;}
+        .hospital_list li {list-style-type: none;}
+        /* list-style-type 블릿표시 padding: 0; 들여쓰기*/
+        
+        .hospital_list .subject {font-weight: bold; text-align: center;}
+        .hospital_list ul li {text-align: center; float: left; margin: 0px; padding: 2px, 1px; list-style-type: none;}
+        .hospital_info1{ width: 500px; }
+        .wishlist{ width: 50px; }
+        
+        .hospital_list ul .col {width: 99px;} /* 표 라인 맞추기기 위해*/
 	</style>
 
 
@@ -26,7 +26,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center" style="border: 7px solid maroon; height: 2100px;">
+<div align="center" style="height: 2100px;">
 
 		<%@ include file="../header.jsp" %>
 		
@@ -42,11 +42,11 @@
 		
 		<div style="width: 1000px;">
 		
-			<div style="border: 5px solid pink; width: 270px; float: left; white-space:nowrap; margin:0px center;">
+			<div style="border: 5px solid teal; width: 270px; float: left; white-space:nowrap; margin:0px center;">
 				<%@ include file="hospital_sub_search.jsp" %>
 			</div>
 			
-			<div style="border: 5px solid pink;  width: 700px; float: right; margin-left: 0px auto;">
+			<div style="border: 5px solid teal;  width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">
 			
 				<c:if test="${empty hospital_info }">
 					<li> ---- 검색된 병원이 없습니다 ---- </li>
@@ -63,21 +63,20 @@
  								<c:param name="hospital_link">hospital_list.do</c:param>
 					</c:url>
 					
-						<div class="hospital_list">
-						
-							<h2><a href="${hospitalinfoUrl}">${hospital_info.hos_name}</a></h2>
-							
-							<ul>
-								<li><img alt="병원사진영역" src="${hospital_info.hos_img}" width="200" height="200"></li>
-								<li class="hospital_info1">${hospital_info.hos_content}</li>
-								<li><a href="${ wishlistUrl}"><input type="button" value="♥"></a></li>
-								<li><input type="button" value="예약" onclick=""></li>
-							</ul>
-							
-							<ul></ul>
-						
-						</div>
-						<br/>
+				
+					<h2 align="left"><a href="${hospitalinfoUrl}">〔 ${hospital_info.hos_name} 〕</a></h2>
+					
+					<table>
+						<tr>
+							<td width="200"><img alt="병원사진영역" src="${hospital_info.hos_img}" width="200" height="200"></td>
+							<td width="400" valign="top" style="padding-left: 5px;">${hospital_info.hos_content}</td>
+							<td width="100" valign="top"><a href="${ wishlistUrl}"><input type="button" value="♥"></a>
+							<input type="button" value="예약" onclick=""></td>
+						</tr>
+					</table>
+				
+					<hr>
+					
 						
 					
 				</c:forEach>

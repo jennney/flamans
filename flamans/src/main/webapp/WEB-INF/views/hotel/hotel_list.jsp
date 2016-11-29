@@ -64,20 +64,17 @@
 					</c:url>
 		
 					
-						<div class="hotel_list">
-						
-							<div><h2><a href=" ${hotelinfoUrl} ">${hotel_info.hot_name}</a></h2></div>
+						<h2 align="left"><a href=" ${hotelinfoUrl} ">${hotel_info.hot_name}</a></h2>
 							
-							<ul>
-								<li><img alt="호텔사진영역" src="${hotel_info.hot_img}" width="200" height="200"></li>
-								<li class="hotel_info1">${hotel_info.hot_content}</li>
-								<li><a href="${wishlistUrl }"><input type="button" value="♥"></a></li>
-								<li><input type="button" value="예약" onclick=""></li>
-							</ul>
+							<table>
+								<tr>
+									<td width="200"><img alt="호텔사진영역" src="${hotel_info.hot_img}" width="200" height="200"></td>
+									<td width="400">${hotel_info.hot_content}</td>
+									<td width="100"><a href="${ wishlistUrl}"><input type="button" value="♥"></a>
+									<input type="button" value="예약" onclick=""></td>
+								</tr>		
+							</table>
 							
-							<ul></ul>
-						
-						</div>
 						<br/>
 						
 				</c:forEach>

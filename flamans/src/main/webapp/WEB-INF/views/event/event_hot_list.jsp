@@ -6,8 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <body>
-<h2>종료된 이벤트</h2>
+<h2>호텔 이벤트 관리 리스트</h2>
 <table>
 	<c:if test="${empty list}">
 		<tr>
@@ -17,8 +18,8 @@
 		</tr>
 	</c:if>
 	<c:forEach var="dto" items="${list}">
-	<c:url var="contentURL" value="event_user_Content.do">
-	<c:param name="idx">${dto.e_idx}</c:param>
+	<c:url var="contentURL" value="event_hot_Content.do">
+	<c:param name="e_idx">${dto.e_idx}</c:param>
 	</c:url>
 		<tr>   		
 			<td colspan="4">${dto.e_subject}</td>
@@ -29,14 +30,15 @@
 			<td>${dto.e_date}</td>
 		</tr>
 		<tr>
-			<td colspan="4"><img src="#/${dto.e_img}"></td>
+			<td colspan="4"><a href="event_hot_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}"></a></td>
 		</tr>
 	</c:forEach>
 	<tr>
 		<td colspan="4" align="center">
-		페이징		   		
+		${pageStr }	   		
 		</td>
 	</tr>
+	
 </table>	
 </body>
 </html>

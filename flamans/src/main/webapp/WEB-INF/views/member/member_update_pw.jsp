@@ -30,10 +30,10 @@ function pwdCheck(){
 		}
 		
 	}
-}
+} 
 </script>
 <style>
-label{
+#label_pwd{
 	float: left;
 	width: 80px;
 }
@@ -48,17 +48,17 @@ label{
 <div class="container" >
 	  <h3>비밀번호 변경</h3><br><br>
 	  <form class="form-inline" name="updatePwd" action="member_update_pw.do" method="post">
-	  		<input type="hidden" name="m_id" value="${m_id}">
-	  		<input type="hidden" name="m_email" value="${m_email}">
-	      <label for="password">Password:</label>
+	  		<input type="hidden" name="m_id" value="${dto.m_id}">
+	  		<input type="hidden" name="m_email" value="${dto.m_email}">
+	      <label id="#label_pwd" for="password">Password:</label>
 	      <input type="password" class="form-control" name="pwd" placeholder="Enter Password" onkeyup="pwdCheck()">
 	      <br>
 	      <span id="pwdMsg"></span>
-	      <label for="password">password:</label>
+	      <label id="#label_pwd" for="password">password:</label>
 	      <input type="password" class="form-control" name="m_pwd" placeholder="Enter Password"  onkeyup="pwdCheck()">
 	      <br><br>
-	      <input type="text" name="m_pwd_check" readonly>
-	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
+	      <input type="text" name="m_pwd_check" readonly class="form-control" style="background-color: white;">
+	    <button type="submit" class="btn btn-default" style="float: right; ba">Submit</button><br><br>
 	  </form>
 </div>
 </body>

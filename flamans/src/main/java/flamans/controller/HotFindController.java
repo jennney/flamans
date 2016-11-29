@@ -107,7 +107,7 @@ public class HotFindController{
 	}
 	
 	@RequestMapping("/hot_wishlist.do")
-	public ModelAndView wishlist(
+	public ModelAndView add_wishlist(
 				@RequestParam("hot_num")String num,
 				@RequestParam("hotel_link")String link,
 				MemberDTO member, 
