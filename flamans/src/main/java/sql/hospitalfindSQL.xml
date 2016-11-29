@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+  	<mapper namespace="flamans.hos_find">
+  
+  	<select id="hospital_list" resultType="flamans.hos_find.model.HospitalDTO">
+  		select * from fm_hospital
+  	</select>
+  	
+  	<select id="hospital_get_info" resultType="flamans.hos_find.model.HospitalDTO">
+  		select * from fm_hospital where hos_num = #{num}
+  	</select>
+  	
+  	<select id="hospital_search_name" parameterType="java.util.HashMap" resultType="flamans.hos_find.model.HospitalDTO">
+  	<bind name="find" value="'%'+find+'%'"/>   
+     select * from
+        fm_hospital
+     where 
+        hos_name like #{find}
+	</select>
+	
+	<select id="hospital_doclist" resultType="flamans.hos_find.model.DoctorDTO">
+	    select * from fm_doctor where hos_num = #{num}
+	</select>
+  	
+	</mapper>

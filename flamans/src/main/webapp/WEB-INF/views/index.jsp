@@ -28,6 +28,9 @@ body{
 	<br>
 	<a href="no_List.do">공지사항</a>
 	<br>
+	<a href="event_user_list.do?e_item=1">진행중인 이벤트</a>
+	<br>
+	<a href="event_user_list.do?e_item=2">종료된 이벤트</a>
 
 <%@ include file="footer.jsp" %>
 </body>

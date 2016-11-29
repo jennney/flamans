@@ -28,7 +28,7 @@
 
 	<div align="center" style="border: 7px solid maroon; height: 2100px;">
 
-		<%@ include file="headertest.jsp" %>
+		<%@ include file="../header.jsp" %>
 		
 		<table style="margin: 0px auto;">
 			<tr>
@@ -57,27 +57,26 @@
 					<c:url var="hotelinfoUrl" value="hotel_get_info.do">
  								<c:param name="hot_num">${hotel_info.hot_num }</c:param>
 					</c:url>
-		
-					<a href="${hotelinfoUrl}">
 					
-						<div class="hotel_list">
-						
-							<div><h2>${hotel_info.hot_name}</h2></div>
+					<c:url var="wishlistUrl" value="hot_wishlist.do">
+ 								<c:param name="hot_num">${hotel_info.hot_num }</c:param>
+ 								<c:param name="hotel_link">hotel_list.do</c:param>
+					</c:url>
+		
+					
+						<h2 align="left"><a href=" ${hotelinfoUrl} ">${hotel_info.hot_name}</a></h2>
 							
-							<ul>
-								<li><img alt="호텔사진영역" src="${hotel_info.hot_img}" width="200" height="200"></li>
-								<li class="hotel_info1">${hotel_info.hot_content}</li>
-								<li class="wishlist"><input type="button" value="♥" onclick=""></li>
-								<li><input type="button" value="예약" onclick=""></li>
-							</ul>
+							<table>
+								<tr>
+									<td width="200"><img alt="호텔사진영역" src="${hotel_info.hot_img}" width="200" height="200"></td>
+									<td width="400">${hotel_info.hot_content}</td>
+									<td width="100"><a href="${ wishlistUrl}"><input type="button" value="♥"></a>
+									<input type="button" value="예약" onclick=""></td>
+								</tr>		
+							</table>
 							
-							<ul></ul>
-						
-						</div>
 						<br/>
 						
-					</a>
-					
 				</c:forEach>
 			</div>
 		</div>

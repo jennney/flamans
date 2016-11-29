@@ -39,9 +39,16 @@
 			${dto.e_subject}
 			</td>
 		</tr>
+		<tr>
+			<th>이벤트 기간</th>
+			<td colspan="3" align="left">
+			${dto.e_start} ~ ${dto.e_end}
+			</td>
+		</tr>
 		<div id="imgPrint">
 		<tr>
-			<td colspan="4">${dto.e_img }</td>
+			<td colspan="4">
+			<img src="img/${dto.e_img }"></td>
 		</tr>
 		</div>
 		<tr>

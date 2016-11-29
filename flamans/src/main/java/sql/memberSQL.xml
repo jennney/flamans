@@ -49,6 +49,14 @@
 			m_id=#{m_id}
 	</select>
 	
+	<update id="member_update_wishlist" parameterType="Map" >
+	 update fm_member
+	 set 
+	 	 m_wishlist=#{m_wishlist} 
+	 where 
+	 	m_id=#{m_id}
+	</update>
+	
 	<delete id="member_out" parameterType="Map">
 		delete from fm_member
 		where m_id=#{m_id} and m_pwd=#{m_pwd}

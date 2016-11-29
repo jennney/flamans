@@ -3,13 +3,21 @@
 
 <mapper namespace="flamans.user.event">
 
-	<select id="event_user_startlist"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
-	<![CDATA[
+	<select id="event_user_list"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
         select * 
         	from 
         (select rownum as rnum,a.* from 
-        	(select * from fm_event order by e_idx desc)a)b 
-        where rnum>=#{start} 
+        	(select * from fm_event
+        	<if test="e_item!=null and e_item != ''">
+	        	<if test="e_item==1">
+	        	where e_item=1
+	        	</if>
+	        	<if test="e_item==2">
+	        	where e_item=2
+	        	</if>
+        	</if>
+        	order by e_idx desc)a)b 
+      	<![CDATA[  where rnum>=#{start} 
         	and 
         rnum<=#{end}
   	 ]]> 
@@ -22,19 +30,7 @@
 	<select id="event_user_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
 		select * from fm_event where e_idx=#{e_idx}
 	</select>
-	
-	<select id="event_user_endlist"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
-	<![CDATA[
-        select * 
-        	from 
-        (select rownum as rnum,a.* from 
-        	(select * from fm_event order by e_idx desc)a)b 
-        where rnum>=#{start} 
-        	and 
-        rnum<=#{end}
-  	 ]]> 
-	</select>
-	
+			
 	   <update id="e_readnum" parameterType="int">
       update
          fm_event
@@ -45,16 +41,65 @@
    </update>
    
 	<insert id="event_add" parameterType="flamans.user.event.model.EventDTO">
-	insert into 
+		insert
+			into
 		fm_event
-	  values(
-	  	#{e_img},
-	    null,
-		SYSDATE,
-	  	#{e_start},
-	  	#{e_end},
-	  	#{e_subject},
-	  	fm_event_idx.nextval
-	  	)
+			values(
+		#{e_img},
+			#{e_name},
+		sysdate,
+			#{e_start},
+		#{e_end},
+			#{e_subject},
+		fm_event_idx.nextval,
+			0,
+			#{e_item})
 	</insert>
+	<select id="event_list"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
+	<![CDATA[
+        select * 
+        	from 
+        (select rownum as rnum,a.* from 
+        	(select * from fm_event order by e_idx desc)a)b 
+        where rnum>=#{start} 
+        	and 
+        rnum<=#{end}
+  	 ]]> 
+	</select>
+	<select id="event_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
+		SELECT E_IMG
+     , E_NAME
+     , TO_CHAR(E_DATE,'YYYY-MM-DD') E_DATE
+     , TO_CHAR(E_START,'YYYY-MM-DD') E_START
+     , TO_CHAR(E_END,'YYYY-MM-DD') E_END
+     , E_SUBJECT
+     , E_IDX
+     , E_READNUM
+     , E_ITEM
+     from fm_event where e_idx=#{e_idx}
+	</select>
+	<update id="event_update" parameterType="Map">
+		update
+			fm_event
+		set
+		   e_date=sysdate,
+			e_subject=#{e_subject},
+		e_start = #{e_start},
+			e_end=#{e_end},
+		e_img = #{e_img}
+		where e_idx = #{e_idx}
+	</update>
+	
+	<update id="event_Date" parameterType="int">
+		update
+			fm_event
+		set
+			e_item = 2
+		where e_idx = #{e_idx}
+	</update>
+	
+	<delete id="event_delete" parameterType="int">
+	delete from fm_event where e_idx=#{e_idx}
+	</delete>
+	
 </mapper>

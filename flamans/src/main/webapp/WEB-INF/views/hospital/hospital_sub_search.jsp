@@ -3,14 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 
-	<table border="0" class="hotel_sub_search" cellspacing="0" width="150">
+	<table border="0" class="hospital_sub_search" cellspacing="0" width="150">
 		<tr>
-			<th colspan="5">호텔등급</th>
+			<th colspan="5">병원등급</th>
 		</tr>
 		
 		<tr>
@@ -26,7 +27,7 @@
 		</tr>
 		
 		<tr>
-			<th colspan="5">호텔평점</th>
+			<th colspan="5">병원평점</th>
 		</tr>
 		
 		<tr>
@@ -54,7 +55,7 @@
 		</tr>
 		
 		<tr>
-			<td colspan="5" align="center"><input type="range" name="fee_hotel" min="50000" max="400000"></td>
+			<td colspan="5" align="center"><input type="range" name="fee_hospital" min="50000" max="400000"></td>
 		</tr>
 		
 		<tr>
@@ -62,11 +63,11 @@
 		</tr>
 		
 		<tr>
-			<td colspan="5" align="center"><input type="checkbox" name="available_hotel">예약가능 호텔만</td>
+			<td colspan="5" align="center"><input type="checkbox" name="available_hospital">예약가능 병원만</td>
 		</tr>
 		
 		<tr>
-			<td colspan="5" align="center"><input type="checkbox" name="event_hotel">특가상품보기</td>
+			<td colspan="5" align="center"><input type="checkbox" name="event_hospital">특가상품보기</td>
 		</tr>
 		
 		<tr>
@@ -86,7 +87,7 @@
 		</tr>
 		
 		<tr>
-			<td colspan="5" align="center"><input type="range" name="distance_hotel" min="1" max="50"></td>
+			<td colspan="5" align="center"><input type="range" name="distance_hospital" min="1" max="50"></td>
 		</tr>
 		
 		<tr>
@@ -114,5 +115,6 @@
 		</tr>
 		
 	</table>
+
 </body>
 </html>
