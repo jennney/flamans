@@ -367,5 +367,6 @@ public class MemberController {
 		return mav;
 	}
 	public void a(){
+		System.out.println();
 	}
 }
