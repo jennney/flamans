@@ -366,5 +366,6 @@ public class MemberController {
 		
 		return mav;
 	}
-	
+	public void a(){
+	}
 }
