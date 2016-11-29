@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +8,12 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/flamans/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/flamans/js/httpRequest.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){ //문서가 불러지고 난 후 
 	
@@ -26,9 +29,13 @@ $(document).ready(function(){ //문서가 불러지고 난 후
 	   
 	 $("#pwd_update").on("click",function(){ // main을 클릭하면 
 	      $("#pwd_update1").toggle(); //서브를 토글시킴 
-   	
 	   })   
-		   
+	 	      
+	      
+	 $("#member_myqna").on("click",function(){ // main을 클릭하면 
+		    $("#member_myqna1").toggle(); //서브를 토글시킴      
+   	
+	  })	   
 })
 /* 숫자만 입력받기 */
 function fn_press(event, type) {
@@ -227,54 +234,64 @@ function updateResult(){
  */
 </script>
 <style>
-#del1, #update1, #pwd_update1{ 
-    display : none;
-   	width:700px;
+#del1, #update1, #pwd_update1, #member_myqna1 {
+	display: none;
+	width: 700px;
 	height: 350px;
-} 
-#del, #update, #pwd_update{
-	width:700px;
-	padding:5px;
-	border-right : 1px solid grey;
-   	border-top: 1px solid grey;
-   	border-bottom : 1px solid grey;
-  	border-left: 1px solid grey;
 }
-#color{
+
+#del, #update, #pwd_update, #member_myqna{
+	width: 700px;
+	padding: 5px;
+	border-right: 1px solid grey;
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+	border-left: 1px solid grey;
+}
+
+#color {
 	/* font:12px/1.2 맑은 고딕; */
-	color:green;
+	color: green;
 }
-#color1{
-	color:red;
+
+#color1 {
+	color: red;
 }
-#pwd{
+
+#pwd {
 	float: left;
 	width: 80px;
 }
 </style>
 </head>
 <body onload="updateSet('${dto}')">
+	<div id="member_myqna">내 문의 리스트</div>
+	<div id="member_myqna1" class="well well-lg">
+		<%@include file="member_myqna.jsp"%>
+	</div>
 	<div id="update">계정 관리</div>
-    	<div id="update1" class="well well-lg" >
-	   		<%@include file="member_update.jsp" %>
-    	</div>	
-    <div id="pwd_update">비밀번호 변경</div>
-    	<div id="pwd_update1" class="well well-lg" >
-			<%@include file="member_update_pw.jsp" %>
-    	</div>	
-	<div id="del">회원탈퇴</div>    
-    	<div id="del1" class="well well-lg" >
-    	<form name="del" action="member_out.do" class="form-inline">
-	    	탈퇴 후에는 아이디 &nbsp; &nbsp; <input type="text" class="form-control" id="focusedInput" name="m_id" value="${sessionScope.userid }" readonly style="width:150px; background-color: white;">
-	    	의 데이터는 복구할 수 없습니다.<br><br>
-	    	또한, 해당 아이디를 사용해 flamans의 서비스를 이용 할 수 없게 됩니다.<br><br>
-			게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.<br><br>			
-	    	본인 확인을 위해 비밀번호를 입력한 후, &nbsp; “탈퇴확인” 버튼을 눌러주세요.<br><br>
-	    	<label id="pwd">Password:</label>
-	      	<input type="password" class="form-control" name="m_pwd" placeholder="Enter password" style="width:300px;">
-			<br><span id="color1">(회원 탈퇴시 나의계정의 모든 정보와 DB가 자동 삭제됩니다.)</span><br>
-	    	<button type="submit" class="btn btn-default" style="float: right;">탈퇴확인</button>
-    	</form>
-    	</div>   
+	<div id="update1" class="well well-lg">
+		<%@include file="member_update.jsp"%>
+	</div>
+	<div id="pwd_update">비밀번호 변경</div>
+	<div id="pwd_update1" class="well well-lg">
+		<%@include file="member_update_pw.jsp"%>
+	</div>
+	<div id="del">회원탈퇴</div>
+	<div id="del1" class="well well-lg">
+		<form name="del" action="member_out.do" class="form-inline">
+			탈퇴 후에는 아이디 &nbsp; &nbsp; <input type="text" class="form-control"
+				id="focusedInput" name="m_id" value="${sessionScope.userid }"
+				readonly style="width: 150px; background-color: white;"> 의
+			데이터는 복구할 수 없습니다.<br> <br> 또한, 해당 아이디를 사용해 flamans의 서비스를 이용
+			할 수 없게 됩니다.<br> <br> 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.<br>
+			<br> 본인 확인을 위해 비밀번호를 입력한 후, &nbsp; “탈퇴확인” 버튼을 눌러주세요.<br> <br>
+			<label id="pwd">Password:</label> <input type="password"
+				class="form-control" name="m_pwd" placeholder="Enter password"
+				style="width: 300px;"> <br> <span id="color1">(회원
+				탈퇴시 나의계정의 모든 정보와 DB가 자동 삭제됩니다.)</span><br>
+			<button type="submit" class="btn btn-default" style="float: right;">탈퇴확인</button>
+		</form>
+	</div>
 </body>
 </html>

@@ -35,10 +35,10 @@ public class CompanyController {
 										@RequestParam("email2")String email2){
 		String kind1="";
 		if(kind.equals("병원")){
-			kind1 = "A";
+			kind1 = "B";
 		}else if(kind.equals("호텔"))
 		{
-			kind1 = "B";
+			kind1 = "H";
 		}
 		String number = kind1+number1+number2+number3;
 		String email = email1+"@"+email2;

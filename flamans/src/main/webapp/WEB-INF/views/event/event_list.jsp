@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <body>
-<h2>진행중인 이벤트</h2>
+<h2>관리자 이벤트 리스트</h2>
 <table>
 	<c:if test="${empty list}">
 		<tr>
@@ -29,9 +29,13 @@
 			<td>${dto.e_date}</td>
 		</tr>
 		<tr>
-			<td colspan="4"><a href="event_user_content.do?e_idx=${dto.e_idx}"><img src="#/${dto.e_img}"></a></td>
+			<td colspan="4"><a href="event_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}"></a></td>
 		</tr>
+	   
 	</c:forEach>
+	 <tr>
+	    	<td colspan="4" align="right"><input type="submit" value="글쓰기" onclick="location.href='event_add.do'">
+	    </tr>
 	<tr>
 		<td colspan="4" align="center">
 		${pageStr }	   		

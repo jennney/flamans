@@ -265,6 +265,17 @@ public class MemberController {
 		return mav;
 		
 	}
+	/**내 문의 리스트 */
+	@RequestMapping("/member_myqna.do")
+	public ModelAndView member_myqna(HttpSession session){
+		
+		ModelAndView mav= new ModelAndView();
+		
+		String userid= (String)session.getAttribute("userid");
+		
+		
+		return mav;
+	}
 	
 	/**회원계정*/
 	@RequestMapping("/member_page.do")
