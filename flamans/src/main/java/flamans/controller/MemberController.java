@@ -21,8 +21,7 @@ public class MemberController {
 	
 	@Autowired
 	private MemberDAO memberDao;
-	
-	
+
 	@RequestMapping("/index.do")
 	public String index(){
 		return "index";
@@ -361,9 +360,6 @@ public class MemberController {
 		
 			mav.setViewName("member/memberMsg");
 		}
-			
-		
-		
 		return mav;
 	}
 	public void a(){
