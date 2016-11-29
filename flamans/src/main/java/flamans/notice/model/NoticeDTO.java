@@ -4,7 +4,6 @@ package flamans.notice.model;
 
 import java.sql.Date;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class NoticeDTO {
 	

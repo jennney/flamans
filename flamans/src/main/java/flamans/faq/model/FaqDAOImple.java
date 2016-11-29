@@ -23,4 +23,9 @@ public class FaqDAOImple implements FaqDAO {
 		return count;
 	}
 	
+	public List<FaqDTO> faqSeList() {
+		List<FaqDTO> list = sqlMap.selectList("faq_selList");
+		return list;
+	}
+	
 }

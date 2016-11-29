@@ -14,12 +14,15 @@ public class NoticeDAOImple implements NoticeDAO {
 		this.sqlMap = sqlMap;
 	}
 	
-	public List<NoticeDTO> noList(int cp, int ls) {
+	public List<NoticeDTO> noList(int cp, int ls,String findKey, String findValue) {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
-		Map<String, Integer> map = new HashedMap();
+		
+		Map<String, Object> map = new HashedMap();
 		map.put("start",start);
 		map.put("end", end);
+		map.put("findKey", findKey);
+		map.put("findValue", findValue);
 		List<NoticeDTO> noList = sqlMap.selectList("no_List",map);
 		return noList;
 	}
@@ -44,9 +47,12 @@ public class NoticeDAOImple implements NoticeDAO {
 		return count;
 	}
 	
-	public int noTotal() {
-		int count = sqlMap.selectOne("no_Total");
-		return count;
+	public int noTotal(String findKey,String findValue) {
+		Map<String, Object> map = new HashedMap();
+		map.put("findKey", findKey);
+		map.put("findValue", findValue);
+		int count = sqlMap.selectOne("no_Total",map);
+		return count==0?1:count; 
 	}
 	
 	public int noReadnum(int no_idx) {

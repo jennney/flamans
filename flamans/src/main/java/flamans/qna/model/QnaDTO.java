@@ -9,8 +9,6 @@ public class QnaDTO {
 	private String qna_content;
 	private Date qna_writedate;
 	private String qna_item;
-	private String qna_file1;
-	private String qna_file2;
 	private String qna_pwd;
 	private String qna_secret;
 	private String qna_findname;
@@ -26,16 +24,14 @@ public class QnaDTO {
 	}
 
 	public QnaDTO(String qna_writer, String qna_subject, String qna_content, Date qna_writedate, String qna_item,
-			String qna_file1, String qna_file2, String qna_pwd, String qna_secret, String qna_findname, int readnum,
-			int ref, int lev, int sunbun, int qna_idx, String qna_kind) {
+			String qna_pwd, String qna_secret, String qna_findname, int readnum, int ref, int lev, int sunbun,
+			int qna_idx, String qna_kind) {
 		super();
 		this.qna_writer = qna_writer;
 		this.qna_subject = qna_subject;
 		this.qna_content = qna_content;
 		this.qna_writedate = qna_writedate;
 		this.qna_item = qna_item;
-		this.qna_file1 = qna_file1;
-		this.qna_file2 = qna_file2;
 		this.qna_pwd = qna_pwd;
 		this.qna_secret = qna_secret;
 		this.qna_findname = qna_findname;
@@ -85,22 +81,6 @@ public class QnaDTO {
 
 	public void setQna_item(String qna_item) {
 		this.qna_item = qna_item;
-	}
-
-	public String getQna_file1() {
-		return qna_file1;
-	}
-
-	public void setQna_file1(String qna_file1) {
-		this.qna_file1 = qna_file1;
-	}
-
-	public String getQna_file2() {
-		return qna_file2;
-	}
-
-	public void setQna_file2(String qna_file2) {
-		this.qna_file2 = qna_file2;
 	}
 
 	public String getQna_pwd() {
@@ -174,6 +154,5 @@ public class QnaDTO {
 	public void setQna_kind(String qna_kind) {
 		this.qna_kind = qna_kind;
 	}
-	
 	
 }

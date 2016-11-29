@@ -2,12 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="flamans.notice">
 	<select id="no_List" resultType="flamans.notice.model.NoticeDTO" parameterType="Map">
-	<![CDATA[
         select * 
         	from 
         (select rownum as rnum,a.* from 
-        	(select * from fm_notice order by no_idx desc)a)b 
-        where rnum>=#{start} 
+        	(select * from fm_notice where 1=1
+        	<if test="findKey!='' and findKey !=null"> 
+        		<if test="findKey=='all'">
+       				and no_content like '%' ||#{findValue}|| '%' or
+        			no_subject like '%' ||#{findValue}|| '%'
+        		</if>
+        		<if test="findKey!='all'">
+        			and ${findKey} like '%' ||#{findValue}|| '%'
+        		</if>
+        	</if>
+        	order by no_idx desc)a)b<![CDATA[ 
+		where rnum>=#{start} 
         	and 
         rnum<=#{end}
   	 ]]> 
@@ -61,11 +70,20 @@
 		#{no_idx}		
 	</update>
 	
-	<select id="no_Total" resultType="int">
+	<select id="no_Total" resultType="int" parameterType="Map">
 		select 
 			count(*) 
 		from 
-			fm_notice
+			fm_notice where 1=1
+       	<if test="findKey != '' and findKey != null">
+   			<if test="findKey=='all'">
+        		and no_content like '%' ||#{findValue}|| '%' or
+        		no_subject like '%' ||#{findValue}|| '%'
+			</if>
+       		<if test="findKey!='all'">
+   				and ${findKey} like '%' ||#{findValue}|| '%'
+       		</if>
+        </if>
 	</select>
 	
 	<select id="no_DownName" resultType="String" parameterType="int">

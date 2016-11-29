@@ -140,7 +140,7 @@ $(document).ready(function() {
       $("ul.tabs li").removeClass("active"); //Remove any "active" class
       $(this).addClass("active"); //Add "active" class to selected tab
       $(".tab_content").hide(); //Hide all tab content
-      var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+      var activeTab = $(this).find("a").attr("id"); //Find the rel attribute value to identify the active tab + content
       $(activeTab).fadeIn(); //Fade in the active content
       return false;
    });
@@ -174,11 +174,11 @@ $(document).ready(function() {
 </form>
 <div class="container">
     <ul class="tabs">
-        <li><a href="#tab1">전체</a></li>
-        <li><a href="#tab2">병원</a></li>
-        <li><a href="#tab3">호텔</a></li>
-        <li><a href="#tab4">회원서비스</a></li>
-         <li><a href="#tab5">기타</a></li>
+        <li><a id="#tab1">전체</a></li>
+        <li><a href="faq_List.do?item=hospital" id="#tab2">병원</a></li>
+        <li><a href="faq_List.do?item=hotel" id="#tab3">호텔</a></li>
+        <li><a href="faq_List.do?item=member" id="#tab4">회원서비스</a></li>
+        <li><a href="faq_List.do?item=etc" id="#tab5">기타</a></li>
     </ul>
     <div class="tab_container">
         <div id="tab1" class="tab_content">
@@ -197,7 +197,10 @@ $(document).ready(function() {
         
         <div id="tab2" class="tab_content">
 			<ul class="accordion">
-				
+				<li>
+					<a>회원가입은 어떻게 하나요?</a>
+					<p>잘하시면됩니다.ㅇ</p>
+				</li>
 			</ul>
         </div>
         

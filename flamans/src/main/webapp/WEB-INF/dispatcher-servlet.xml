@@ -39,6 +39,7 @@
 	</bean>
 	
 	<bean class="flamans.paging.PageModule" id="paging"/>
+	<bean class="flamans.paging.PageModule1" id="paging1"/>
 	
 	<bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
     	 <constructor-arg>
