@@ -1,6 +1,7 @@
 package flamans.controller;
 
 import java.security.MessageDigest;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import flamans.member.model.*;
+import flamans.qna.model.*;
 
 @Controller
 public class MemberController {
@@ -273,7 +275,7 @@ public class MemberController {
 		ModelAndView mav= new ModelAndView();
 		
 		String userid=(String)session.getAttribute("userid");
-		
+		List<QnaDTO> myqna = memberDao.myqna(userid);
 		if(userid != null){
 			MemberDTO dto=memberDao.memberLogin(userid);
 			
@@ -284,6 +286,7 @@ public class MemberController {
 				
 			}else{
 				mav.addObject("dto", dto);
+				mav.addObject("myqna",myqna);
 				mav.setViewName("member/member_mypage");
 			}
 		}else{
@@ -350,10 +353,8 @@ public class MemberController {
 		
 			mav.setViewName("member/memberMsg");
 		}
-			
-		
-		
+				
 		return mav;
 	}
-	
+		
 }
