@@ -131,4 +131,66 @@
 		select * from fm_qna where qna_findname=#{qna_findname} 
 	</select>
 	
+	<select id="hotelBbsContent" parameterType="Integer" resultType="flamans.qna.model.QnaDTO">
+		select * from fm_qna where qna_idx=#{qna_idx}
+	</select>
+	
+	<delete id="hotelBbsDelete" parameterType="Integer">
+		delete from fm_qna where qna_idx=#{qna_idx}
+	</delete>
+	
+	<insert id="hotelBbsReWrite" parameterType="flamans.qna.model.QnaDTO">
+		insert into
+			fm_qna
+		values(
+			#{qna_writer},
+			#{qna_subject},
+			#{qna_content},
+			sysdate,
+			#{qna_item},
+			#{qna_pwd},
+			#{qna_secret},
+			#{qna_findname},
+			0,
+			#{ref},
+			0,
+			0,
+			fm_qna_idx.nextval,
+			#{qna_kind}
+		)
+	</insert>
+	
+	<select parameterType="String" resultType="flamans.qna.model.QnaDTO" id="hospitalBbsList"> 
+		select * from fm_qna where qna_findname=#{cm_number} 
+	</select>
+
+	<select parameterType="Integer" resultType="flamans.qna.model.QnaDTO" id="hospitalBbsContent"> 
+		select * from fm_qna where qna_idx=#{qna_idx} 
+	</select>
+	
+	<delete parameterType="Integer" id="hospitalBbsDelete"> 
+		delete from fm_qna where qna_idx=#{qna_idx} 
+	</delete>
+	
+	<insert parameterType="flamans.qna.model.QnaDTO" id="hospitalBbsReWrite"> 
+		insert into 
+			fm_qna 
+		values( 
+			#{qna_writer}, 
+			#{qna_subject}, 
+			#{qna_content}, 
+			sysdate, 
+			null, 
+			null, 
+			null, 
+			#{qna_findname}, 
+			0, 
+			0, 
+			0, 
+			0, 
+			#{qna_idx}, 
+			#{qna_kind} 
+			) 
+	</insert>
+	
 </mapper>

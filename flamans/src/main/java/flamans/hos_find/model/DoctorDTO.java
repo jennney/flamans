@@ -8,13 +8,14 @@ public class DoctorDTO {
 	private String doc_level;
 	private String doc_career;
 	private String doc_etc;
+	private String doc_kind;
 	
 	public DoctorDTO() {
 		super();
 	}
 
 	public DoctorDTO(String hos_num, String doc_name, String doc_img, String doc_level, String doc_career,
-			String doc_etc) {
+			String doc_etc, String doc_kind) {
 		super();
 		this.hos_num = hos_num;
 		this.doc_name = doc_name;
@@ -22,6 +23,7 @@ public class DoctorDTO {
 		this.doc_level = doc_level;
 		this.doc_career = doc_career;
 		this.doc_etc = doc_etc;
+		this.doc_kind = doc_kind;
 	}
 
 	public String getHos_num() {
@@ -70,6 +72,14 @@ public class DoctorDTO {
 
 	public void setDoc_etc(String doc_etc) {
 		this.doc_etc = doc_etc;
+	}
+
+	public String getDoc_kind() {
+		return doc_kind;
+	}
+
+	public void setDoc_kind(String doc_kind) {
+		this.doc_kind = doc_kind;
 	}
 	
 	

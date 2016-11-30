@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="flamans.hospital">
+	<select resultType="flamans.hos_find.model.HospitalDTO" parameterType="String" id="hospitalContent"> 
+		select * from fm_hospital where hos_num=#{cm_number} 
+	</select>
+	
+	<insert parameterType="flamans.hos_find.model.HospitalDTO" id="hospitalAdd">
+		insert into 
+			fm_hospital 
+		values( 
+			#{hos_num}, 
+			#{hos_name}, 
+			#{hos_addr}, 
+			#{hos_img}, 
+			#{hos_content}, 
+			0, 
+			0, 
+			#{hos_mapinfo} 
+			) 
+	</insert>
+	
+	<delete parameterType="String" id="hospitalDelete"> 
+		delete from fm_hospital where hos_num=#{hos_num} 
+	</delete>
+	
+	<select resultType="flamans.hos_find.model.DoctorDTO" parameterType="String" id="doctorList"> 
+		select * from fm_doctor where hos_num=#{hos_num} 
+	</select>
+	
+	<insert parameterType="flamans.hos_find.model.DoctorDTO" id="doctorAdd"> 
+		insert into 
+			fm_doctor 
+		values( 
+			#{hos_num}, 
+			#{doc_name}, 
+			#{doc_img}, 
+			#{doc_level}, 
+			#{doc_career}, 
+			#{doc_etc}, 
+			#{doc_kind} 
+		) 
+	</insert>
+</mapper>

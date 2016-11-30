@@ -12,5 +12,7 @@
 		<mapper resource="sql/hot_comment_gradeSQL.xml"/>
 		<mapper resource="sql/memberSQL.xml"/>
 		<mapper resource="sql/qnaSQL.xml"/>
+		<mapper resource="sql/hotelSQL.xml"/>
+		<mapper resource="sql/hospitalSQL.xml"/>
 	</mappers>
 </configuration>

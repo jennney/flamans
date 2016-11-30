@@ -8,40 +8,38 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>고객 센터 리스트 보기</h2>
+<h2>병원 의사 리스트</h2>
 <table border="1" cellspacing="0" width="600">
 	<thead>
 		<tr>
-			<th>구분</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>조회수</th>
+			<th>이름</th>
+			<th>이미지</th>
+			<th>진료과목</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<td colspan="4"> 페이징 부분 </td>
+			<td colspan="3">
+				<a href="doctorAdd.do">의사 등록 하기</a>
+			</td>
 		</tr>
 	</tfoot>
 	<tbody>
 		<c:if test="${empty list }">
-		<tr>
-			<td colspan="4" align="center">
-				검색된 게시 글이 없습니다.
-			</td>
-		</tr>
+			<tr>
+				<td colspan="3"> 등록된 의사가 없습니다.</td>
+			</tr>
 		</c:if>
 		<c:if test="${!empty list }">
 			<c:forEach var="dto" items="${list }">
 				<tr>
-					<td>${dto.qna_item }</td>
-					<c:url var="hotelBbsContentUrl" value="hotelBbsContent.do">
-						<c:param name="qna_idx">${dto.qna_idx }</c:param>
+					<c:url var="doctorContentUrl" value="doctorContent.do">
+						<c:param name="doc_name">${dto.doc_name }</c:param>
 					</c:url>
-					<td><a href="${hotelBbsContentUrl }">${dto.qna_subject }</a></td>
-					<td>${dto.qna_writer }</td>
-					<td>${dto.readnum }</td>
-				</tr>
+					<td><a href="${doctorContentUrl }">${dto.doc_name }</a></td>
+					<td>${dto.doc_img }</td>
+					<td>${dto.doc_kind }</td>
+				</tr> 
 			</c:forEach>
 		</c:if>
 	</tbody>

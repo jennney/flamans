@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="flamans.hotel">
+	
+	<select parameterType="String" resultType="flamans.hotel_find.model.HotelDTO" id="hotelContent"> 
+		select * from fm_hotel where hot_num=#{cm_number} 
+	</select>
+	
+	<insert parameterType="flamans.hotel_find.model.HotelDTO" id="hotelAdd"> 
+		insert into 
+			fm_hotel 
+		values( 
+			#{hot_num}, 
+			#{hot_name}, 
+			#{hot_addr}, 
+			#{hot_img}, 
+			#{hot_content}, 
+			null, 
+			null, 
+			#{hot_mapinfo}, 
+			#{hot_grade}, 
+			#{hot_roominfo}, 
+			#{hot_option}, 
+			#{hot_etc} 
+			) 
+	</insert>
+	
+	<update parameterType="flamans.hotel_find.model.HotelDTO" id="hotelUpdate"> 
+		update fm_hotel 
+			set 
+			hot_name=#{hot_name}, 
+			hot_addr=#{hot_addr}, 
+			hot_img=#{hot_img}, 
+			hot_content=#{hot_content}, 
+			hot_mapinfo=#{hot_mapinfo}, 
+			hot_grade=#{hot_grade}, 
+			hot_roominfo=#{hot_roominfo}, 
+			hot_option=#{hot_option}, 
+			hot_etc=#{hot_etc} 
+		where 
+			hot_num=#{hot_num} 
+	</update>
+	
+	<select parameterType="Integer" resultType="flamans.qna.model.QnaDTO" id="hotelBbsContent"> 
+		select * from fm_qna where qna_idx=#{qna_idx} 
+	</select>
+	
+	
+	<update parameterType="Map" id="updateSun">
+		update fm_qna set sunbun=sunbun+1 whree ref=${ref} and sunbun
+		-<![CDATA[>=]]>#{sunbun} 
+	</update>
+	
+	<update parameterType="Integer" id="readnum"> 
+		update fm_qna set readnum=readnum+1 where qna_idx=#{qna_idx} 
+	</update>
+	
+	<delete parameterType="Integer" id="hotelBbsDelete"> 
+		delete from fm_qna where qna_idx=#{qnd_idx} 
+	</delete>
+	
+	<delete parameterType="String" id="hotelDelete"> 
+		delete from fm_hotel where hot_num=#{hot_num} 
+	</delete>
+
+</mapper>
