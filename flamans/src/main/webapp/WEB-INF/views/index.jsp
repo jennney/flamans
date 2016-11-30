@@ -31,7 +31,14 @@ body{
 	<a href="event_user_list.do?e_item=1">진행중인 이벤트</a>
 	<br>
 	<a href="event_user_list.do?e_item=2">종료된 이벤트</a>
-
+	<br>
+	<a href="page_List.do?pm_item=page1">의료사고대처요령</a>
+	<br>
+	<a href="page_List.do?pm_item=page2">출입국절차</a>
+	<br>
+	<a href="page_Write.do">의료사고대처요령/출입국절차 수정</a>
+	<br>
+	<a href="faq_List.do">FAQ</a>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

@@ -11,5 +11,8 @@ public interface QnaDAO {
 	public int qnaUpdate(QnaDTO qdto);
 	public int qnaReadnum(int qna_idx);
 	public String qnaPwd(int qna_idx);
- 
+	public int qnaMaxref();
+	public int qnaSunbun(int ref,int sunbun);
+	public int qnaReWrite(QnaDTO qdto);
+	public int qnaDelete(int qna_idx);
 }

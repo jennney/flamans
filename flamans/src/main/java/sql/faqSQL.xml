@@ -3,23 +3,50 @@
 <mapper namespace="flamans.faq">
 
 	<insert id="faq_Write" parameterType="flamans.faq.model.FaqDTO">
-		insert 
+		insert
 			into
 		fm_faq
 			values(#{faq_subject},
 		#{faq_checked},
 			#{faq_content},
-		#{faq_item})	
+		#{faq_item})
 	</insert>
-	
-	<select id="faq_List" resultType="flamans.faq.model.FaqDTO"> 
-		select * 
+
+	<select id="faq_List" resultType="flamans.faq.model.FaqDTO">
+		select *
 			from
 		fm_faq
 	</select>
-	
-	<select id="faq_memList" resultType="flamans.faq.model.FaqDTO" >
-	
+
+	<select id="faq_memList" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq 
+			where faq_item = 
+		'member'
 	</select>
 
+	<select id="faq_hosList" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq 
+			where faq_item = 
+		'hospital'
+	</select>
+
+	<select id="faq_hotList" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq 
+			where faq_item = 
+		'hotel'
+	</select>
+	
+	<select id="faq_etc" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq 
+			where faq_item = 
+		'etc'
+	</select>
 </mapper>

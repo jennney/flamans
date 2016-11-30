@@ -2,7 +2,6 @@ package flamans.notice.model;
 
 import java.util.*;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class NoticeDAOImple implements NoticeDAO {
@@ -18,7 +17,7 @@ public class NoticeDAOImple implements NoticeDAO {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		
-		Map<String, Object> map = new HashedMap();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("start",start);
 		map.put("end", end);
 		map.put("findKey", findKey);
@@ -48,7 +47,7 @@ public class NoticeDAOImple implements NoticeDAO {
 	}
 	
 	public int noTotal(String findKey,String findValue) {
-		Map<String, Object> map = new HashedMap();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("findKey", findKey);
 		map.put("findValue", findValue);
 		int count = sqlMap.selectOne("no_Total",map);

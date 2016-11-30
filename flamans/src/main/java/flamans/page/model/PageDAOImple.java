@@ -15,5 +15,10 @@ public class PageDAOImple implements PageDAO {
 		int count = sqlMap.update("page_Write",pdto);
 		return count;
 	}
+	
+	public PageDTO pageList(String pm_item) {
+		PageDTO pdto = sqlMap.selectOne("page_List",pm_item);
+		return pdto;
+	}
 
 }

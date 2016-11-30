@@ -9,7 +9,7 @@
         	<if test="qna_item != '' and qna_item != null">
         		and qna_item = #{qna_item}
         	</if>
-        	order by qna_idx desc)a)b<![CDATA[ 
+        	order by ref desc,sunbun asc)a)b<![CDATA[ 
 		where rnum>=#{start} 
         	and 
         rnum<=#{end}
@@ -28,7 +28,9 @@
 		#{qna_pwd},
 			#{qna_secret},
 		#{qna_findname},
-			0,0,0,0,
+			0,
+		#{ref},
+			0,0,
 		fm_qna_idx.nextval,
 			#{qna_kind})
 	</insert>
@@ -84,4 +86,45 @@
 			where qna_idx =
 		#{qna_idx}		
 	</select>
+	
+	<select id="qna_Maxref" resultType="int">
+		select nvl(max(ref),0) from fm_qna
+	</select>
+	
+	<update id="qna_Sunbun" parameterType="Map">
+		<![CDATA[update 
+			fm_qna 
+		set sunbun=sunbun+1 
+			where ref=#{ref}
+		and sunbun>=#{sunbun}]]>
+	</update>
+	
+	<insert id="qna_ReWrite" parameterType="flamans.qna.model.QnaDTO">
+		insert
+			into
+		fm_qna
+			values(#{qna_writer},
+		#{qna_subject},
+			#{qna_content},
+		sysdate,
+			#{qna_item},
+		#{qna_pwd},
+			#{qna_secret},
+		#{qna_findname},
+			0,
+		#{ref},
+			#{lev},
+		#{sunbun},
+		fm_qna_idx.nextval,
+			#{qna_kind})
+	</insert>
+	
+	<delete id="qna_Delete" parameterType="int">
+		delete
+			from
+		fm_qna
+			where qna_idx=
+		#{qna_idx}
+	</delete>
+	
 </mapper>

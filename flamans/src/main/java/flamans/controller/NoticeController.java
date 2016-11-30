@@ -55,20 +55,6 @@ public class NoticeController {
 		return "service/Notice/no_Write";
 	}
 
-	private void copyInto(MultipartFile upload) {
-		try {
-			byte bytes[] = upload.getBytes();
-			File newFile = new File(
-					"C:/Users/socls/git/flamans/flamans/src/main/webapp/WEB-INF/views/service/Notice/upload/"
-							+ upload.getOriginalFilename());
-			FileOutputStream fos = new FileOutputStream(newFile);
-			fos.write(bytes);
-			fos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	@RequestMapping("/notice_Uplaod.do")
 	public void notice_Uplaod(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam MultipartFile upload) throws Exception {
@@ -79,7 +65,6 @@ public class NoticeController {
 		String fileName = upload.getOriginalFilename();
 		String filePath = request.getRealPath("service_upload/notice_upload");
 		String uploadPath = filePath + "/" + fileName;
-		System.out.println(filePath);
 		try {
 			byte bytes[] = upload.getBytes();
 			out = new FileOutputStream(new File(uploadPath));
@@ -113,6 +98,9 @@ public class NoticeController {
 				}
 				ndto.setNo_file1(upload.get(0).getOriginalFilename());
 				ndto.setNo_file2(upload.get(1).getOriginalFilename());
+			}else{
+				ndto.setNo_file1("");
+				ndto.setNo_file2("");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -165,7 +153,31 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "/no_Update.do", method = RequestMethod.POST)
-	public ModelAndView noUpdate(NoticeDTO ndto) {
+	public ModelAndView noUpdate(NoticeDTO ndto, @RequestParam("upload") List<MultipartFile> upload,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset-utf-8");
+		String filePath = request.getRealPath("service_upload/notice_upload");
+		try {
+			if (!upload.isEmpty()) {
+				for (int i = 0; i < upload.size(); i++) {
+					byte bytes[] = upload.get(i).getBytes();
+					File newFile = new File(filePath + "/" + upload.get(i).getOriginalFilename());
+					FileOutputStream fos = new FileOutputStream(newFile);
+					fos.write(bytes);
+					fos.close();
+				}
+				ndto.setNo_file1(upload.get(0).getOriginalFilename());
+				ndto.setNo_file2(upload.get(1).getOriginalFilename());
+			}else{
+				ndto.setNo_file1(upload.get(0).getOriginalFilename());
+				ndto.setNo_file2(upload.get(1).getOriginalFilename());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		int result = noticeDao.noUpdate(ndto);
 		String msg = result > 0 ? "수정이 완료되었습니다." : "수정이 실패되었습니다.";
 		ModelAndView mav = new ModelAndView();

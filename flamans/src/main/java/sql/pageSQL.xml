@@ -9,4 +9,12 @@
 		where
 			pm_item = #{pm_item}
 	</update>
+	
+	<select id="page_List" resultType="flamans.page.model.PageDTO" parameterType="String">
+		select *
+			from
+		fm_pagemanager
+			where pm_item = 
+		#{pm_item}
+	</select>
 </mapper>

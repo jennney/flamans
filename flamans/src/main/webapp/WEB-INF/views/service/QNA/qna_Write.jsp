@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>QNA글쓰기</title>
-<style>
+<style> 
 #qna_wr {
 	width: 700px;
 	margin: 0px auto;
@@ -204,7 +204,7 @@ h2 {
 			</tr>
 			<tr>
 				<th id="qna_wrth5">WRITER</th>
-				<td id="qna_wrtd5"><input type="text" name="qna_writer"></td>
+				<td id="qna_wrtd5">${sessionScope.username}<input type="hidden" name="qna_writer" value="${sessionScope.userid}"></td>
 			</tr>
 			<tr>
 				<th id="qna_wrth6">ITEM</th>

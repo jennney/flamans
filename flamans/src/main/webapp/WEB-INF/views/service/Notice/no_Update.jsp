@@ -95,7 +95,7 @@ h2{
 			<td id="no_uptd1"><input type="text" name="no_subject" value="${ndto.no_subject}"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><textarea name="no_content" class="ckeditor">${ndto.no_content}</textarea></td>
+			<td colspan="2"><textarea name="no_content" id="no_content">${ndto.no_content}</textarea></td>
 		</tr>
 		<tr>	
 			<td id="no_uptd2">첨부파일1</td>

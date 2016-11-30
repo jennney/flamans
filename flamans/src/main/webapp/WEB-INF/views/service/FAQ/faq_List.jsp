@@ -175,10 +175,10 @@ $(document).ready(function() {
 <div class="container">
     <ul class="tabs">
         <li><a id="#tab1">전체</a></li>
-        <li><a href="faq_List.do?item=hospital" id="#tab2">병원</a></li>
-        <li><a href="faq_List.do?item=hotel" id="#tab3">호텔</a></li>
-        <li><a href="faq_List.do?item=member" id="#tab4">회원서비스</a></li>
-        <li><a href="faq_List.do?item=etc" id="#tab5">기타</a></li>
+        <li><a id="#tab2">병원</a></li>
+        <li><a id="#tab3">호텔</a></li>
+        <li><a id="#tab4">회원서비스</a></li>
+        <li><a id="#tab5">기타</a></li>
     </ul>
     <div class="tab_container">
         <div id="tab1" class="tab_content">
@@ -197,40 +197,57 @@ $(document).ready(function() {
         
         <div id="tab2" class="tab_content">
 			<ul class="accordion">
-				<li>
-					<a>회원가입은 어떻게 하나요?</a>
-					<p>잘하시면됩니다.ㅇ</p>
-				</li>
+            <c:if test="${empty list}">
+            	<li>등록된 글이 없습니다.</li>
+            </c:if>
+            <c:forEach var="list" items="${hoslist}">
+            	<li>
+            		<a>${list.faq_subject}</a>
+            		<p>${list.faq_content}</p>
+            	</li>
+            </c:forEach>
 			</ul>
         </div>
         
         <div id="tab3" class="tab_content">
         	<ul class="accordion">
-				<li>
-					<a>회원가입은 어떻게 하나요?</a>
-					<p>잘하시면됩니다.ㅇ</p>
-				</li>
+            <c:if test="${empty list}">
+            	<li>등록된 글이 없습니다.</li>
+            </c:if>
+            <c:forEach var="list" items="${hotlist}">
+            	<li>
+            		<a>${list.faq_subject}</a>
+            		<p>${list.faq_content}</p>
+            	</li>
+            </c:forEach>
 			</ul>
         </div>
         
         <div id="tab4" class="tab_content">
         	<ul class="accordion">
-				<li>
-					<a>회원가입은 어떻게 하나요?</a>
-					<p>잘하시면됩니다.ㅇ</p>
-				</li>
-				<li>
-					<a>잟ㅇㅇㅁㄹㅇㅁㅇㄴㄹ</a>
-					<p></p>
-				<li>
-					<a>ss</a>
-					<p></p>
-				</li>
+            <c:if test="${empty list}">
+            	<li>등록된 글이 없습니다.</li>
+            </c:if>
+            <c:forEach var="list" items="${memlist}">
+            	<li>
+            		<a>${list.faq_subject}</a>
+            		<p>${list.faq_content}</p>
+            	</li>
+            </c:forEach>
 			</ul>
         </div>
         
         <div id="tab5" class="tab_content">
         	<ul class="accordion">
+        	            <c:if test="${empty list}">
+            	<li>등록된 글이 없습니다.</li>
+            </c:if>
+            <c:forEach var="list" items="${etclist}">
+            	<li>
+            		<a>${list.faq_subject}</a>
+            		<p>${list.faq_content}</p>
+            	</li>
+            </c:forEach>
 			</ul>
         </div>
     </div>

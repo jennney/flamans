@@ -12,13 +12,13 @@
    margin: 0px auto;
    border-spacing: 0px;
 }
-#qna_listth1,#qna_listth2,#qna_listth3,#qna_listth4{
+#qna_listth1,#qna_listth2,#qna_listth3,#qna_listth4,#qna_listth5{
    border-top: 3px solid #BDBDBD;
    border-bottom: 3px solid #BDBDBD;
    height: 50px;
 }
 #qna_listth1{
-   width: 450px;
+   width: 350px;
 }
 #qna_listth2{
    width: 100px;
@@ -29,10 +29,18 @@
 #qna_listth4{
    width: 50px;
 }
+#qna_listth5{
+	width: 100px;
+}
 #qna_listtd{
    border-bottom: 1px solid #BDBDBD;
    height: 40px;
    text-align: center;
+}
+#qna_listtd1{
+   border-bottom: 1px solid #BDBDBD;
+   height: 40px;
+   text-align: left;
 }
 h2{
    text-align: center;
@@ -79,6 +87,7 @@ a:LINK {
 		   		</td>
 			</tr>
 		   	<tr>
+		   		<th id="qna_listth5">ITME</th>
 		    	<th id="qna_listth1">SUBJECT</th>
 		      	<th id="qna_listth2">WRITER</th>
 		      	<th id="qna_listth3">DATE</th>
@@ -99,14 +108,20 @@ a:LINK {
 		</c:if>
 		<c:forEach var="qnaList" items="${qnaList}">
 			<tr>
-			<c:choose>
-				<c:when test="${qnaList.qna_secret eq 'open'}">
-				<td id="qna_listtd"><a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a></td>
-				</c:when>
-				<c:when test="${qnaList.qna_secret eq 'secret'}">
-				<td id="qna_listtd"><img src="img/neo_lock.gif" alt="자물쇠">  <a href="qna_PwdContent.do?qna_idx=${qnaList.qna_idx}&qna_kind=${qnaList.qna_kind}">${qnaList.qna_subject}</a></td>
-				</c:when>
-			</c:choose>
+				<td id="qna_listtd">${qnaList.qna_item}</td>
+				<td id="qna_listtd1">
+				<c:forEach begin="1" end="${qnaList.lev}" step="1">
+					&nbsp;&nbsp;<img src="img/ico_re.gif" alt="답변">
+				</c:forEach>
+				<c:choose>
+					<c:when test="${qnaList.qna_secret eq 'open'}">
+					<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
+					</c:when>
+					<c:when test="${qnaList.qna_secret eq 'secret'}">
+					<img src="img/neo_lock.gif" alt="자물쇠">  <a href="qna_PwdContent.do?qna_idx=${qnaList.qna_idx}&qna_kind=${qnaList.qna_kind}">${qnaList.qna_subject}</a>
+					</c:when>
+				</c:choose>
+				</td>
 				<td id="qna_listtd">${qnaList.qna_writer}</td>
 				<td id="qna_listtd">${qnaList.qna_writedate}</td>
 				<td id="qna_listtd">${qnaList.readnum}</td>

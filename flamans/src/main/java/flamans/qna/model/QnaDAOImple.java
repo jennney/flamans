@@ -1,5 +1,6 @@
 package flamans.qna.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class QnaDAOImple implements QnaDAO {
 	public List<QnaDTO> qnaList(String qna_kind,int cp,int ls,String qna_item) {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
-		Map<String, Object> map = new HashedMap();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("qna_kind", qna_kind);
 		map.put("start",start);
 		map.put("end", end);
@@ -38,7 +39,7 @@ public class QnaDAOImple implements QnaDAO {
 	}
 	
 	public int qnaTotal(String qna_kind,String qna_item) {
-		Map<String, Object> map = new HashedMap();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("qna_kind", qna_kind);
 		map.put("qna_item", qna_item);
 		int count = sqlMap.selectOne("qna_Total",map);
@@ -57,6 +58,29 @@ public class QnaDAOImple implements QnaDAO {
 	
 	public String qnaPwd(int qna_idx) {
 		String count = sqlMap.selectOne("qna_Pwd",qna_idx);
+		return count;
+	}
+	
+	public int qnaMaxref() {
+		int count = sqlMap.selectOne("qna_Maxref");
+		return count;
+	}
+	
+	public int qnaSunbun(int ref, int sunbun) {
+		Map<String,Integer> map = new HashMap<String, Integer>();
+		map.put("ref", ref);
+		map.put("sunbun", sunbun);
+		int count = sqlMap.update("qna_Sunbun",map);
+		return count;
+	}
+	
+	public int qnaReWrite(QnaDTO qdto) {
+		int count = sqlMap.insert("qna_ReWrite",qdto);
+		return count;
+	}
+	
+	public int qnaDelete(int qna_idx) {
+		int count = sqlMap.delete("qna_Delete",qna_idx);
 		return count;
 	}
 }
