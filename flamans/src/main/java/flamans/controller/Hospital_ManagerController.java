@@ -163,4 +163,54 @@ public class Hospital_ManagerController {
 		mav.setViewName("manager/Msg");
 		return mav;
 	}
+	
+	@RequestMapping("/doctorContent.do")
+	public ModelAndView doctorContent(@RequestParam("doc_name") String doc_name,@RequestParam("hos_num") String hos_num){
+		List<DoctorDTO> list=hosmDao.doctorContent(doc_name, hos_num);
+		ModelAndView mav=new ModelAndView();
+		if(list==null||list.size()==0){
+			mav.addObject("msg", "삭제된 의사 정보 이거나 잘못된 접근입니다.");
+			mav.addObject("url", "doctorList.do");
+			mav.setViewName("manager/Msg");
+		}else{
+			mav.addObject("list", list);
+			mav.setViewName("manager/hospital/doctorContent");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/doctorUpdate.do",method=RequestMethod.GET)
+	public ModelAndView doctorUpdateForm(@RequestParam("doc_name") String doc_name,@RequestParam("hos_num") String hos_num){
+		DoctorDTO dto=hosmDao.doctorUpdateForm(doc_name, hos_num);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto", dto);
+		mav.setViewName("manager/hospital/doctorUpdate");
+		return mav;
+	}
+	
+	@RequestMapping(value="/doctorUpdate.do",method=RequestMethod.POST)
+	public ModelAndView doctorUpdate(DoctorDTO dto,@RequestParam("upload") MultipartFile upload){
+		if(upload.getOriginalFilename()!=null){
+			copyinto(dto.getHos_num(), upload);
+			dto.setDoc_img(upload.getOriginalFilename());
+		}
+		int result=hosmDao.doctorUpdate(dto);
+		String msg=result>0?"수정 성공":"수정 실패 ㅠ";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "doctorList.do");
+		mav.setViewName("manager/Msg");
+		return mav;
+	}
+	
+	@RequestMapping("/doctorDelete.do")
+	public ModelAndView doctorDelete(@RequestParam("doc_name") String doc_name,@RequestParam("hos_num") String hos_num){
+		int result=hosmDao.doctorDelete(doc_name, hos_num);
+		String msg=result>0?"삭제 성공":"삭제 실패 ㅠ";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "doctorList.do");
+		mav.setViewName("manager/Msg");
+		return mav;
+	}
 }

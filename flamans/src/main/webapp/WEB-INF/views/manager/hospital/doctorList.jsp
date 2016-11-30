@@ -35,6 +35,7 @@
 				<tr>
 					<c:url var="doctorContentUrl" value="doctorContent.do">
 						<c:param name="doc_name">${dto.doc_name }</c:param>
+						<c:param name="hos_num">${dto.hos_num }</c:param>
 					</c:url>
 					<td><a href="${doctorContentUrl }">${dto.doc_name }</a></td>
 					<td>${dto.doc_img }</td>

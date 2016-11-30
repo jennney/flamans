@@ -27,4 +27,12 @@ public interface Hospital_ManagerDAO {
 	public List<DoctorDTO> doctorList(String hos_num);
 	
 	public int doctorAdd(DoctorDTO dto);
+	
+	public List<DoctorDTO> doctorContent(String doc_name, String hos_num);
+	
+	public DoctorDTO doctorUpdateForm(String doc_name,String hos_num);
+	
+	public int doctorUpdate(DoctorDTO dto);
+	
+	public int doctorDelete(String doc_name,String hos_num);
 }

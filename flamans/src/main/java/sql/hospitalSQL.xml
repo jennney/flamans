@@ -43,4 +43,25 @@
 			#{doc_kind} 
 		) 
 	</insert>
+	
+	<select id="doctorContent" parameterType="Map" resultType="flamans.hos_find.model.DoctorDTO">
+		select * from fm_doctor where doc_name=#{doc_name} and hos_num=#{hos_num}
+	</select>
+	
+	<update id="doctorUpdate" parameterType="flamans.hos_find.model.DoctorDTO">
+		update fm_doctor
+			set
+				doc_img=#{doc_img},
+				doc_level=#{doc_level},
+				doc_career=#{doc_career},
+				doc_etc=#{doc_etc},
+				doc_kind=#{doc_kind}
+			where
+				hos_num=#{hos_num} and
+				doc_name=#{doc_name} 
+	</update>
+	
+	<delete id="doctorDelete" parameterType="Map">
+		delete from fm_doctor where hos_num=#{hos_num} and doc_name=#{doc_name}
+	</delete>
 </mapper>
