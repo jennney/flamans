@@ -4,8 +4,6 @@ import java.util.List;
 
 public interface FaqDAO {
 	
-	public List<FaqDTO> faqList();
+	public List<FaqDTO> faqList(String item);
 	public int faqWrite(FaqDTO fdto);
-	public List<FaqDTO> faqSeList();
-
 }

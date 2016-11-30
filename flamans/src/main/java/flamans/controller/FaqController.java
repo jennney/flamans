@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import flamans.faq.model.FaqDAO;
@@ -18,11 +19,12 @@ public class FaqController {
 	private FaqDAO faqDao;
 	
 	@RequestMapping("/faq_List.do")
-	public ModelAndView faqList(){
-		
-		List<FaqDTO> list = faqDao.faqList();
+	public ModelAndView faqList(@RequestParam(value="faq_item",required=false)String faq_item){
+		System.out.println(faq_item);
+		List<FaqDTO> list = faqDao.faqList(faq_item);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);
+		mav.addObject("faq_item",faq_item);
 		mav.setViewName("service/FAQ/faq_List");
 		return mav;		
 	}

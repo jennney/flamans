@@ -12,10 +12,13 @@
 		#{faq_item})
 	</insert>
 
-	<select id="faq_List" resultType="flamans.faq.model.FaqDTO">
+	<select id="faq_List" resultType="flamans.faq.model.FaqDTO" parameterType="Map">
 		select *
 			from
 		fm_faq
+			<if test="faq_item != null">
+			where faq_item = #{faq_item}
+			</if>
 	</select>
 
 	<select id="faq_memList" resultType="flamans.faq.model.FaqDTO">

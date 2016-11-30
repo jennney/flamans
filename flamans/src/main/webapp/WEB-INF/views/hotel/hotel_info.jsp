@@ -12,7 +12,20 @@
 
 <meta charset="UTF-8">
 <title>[name] 호텔 상세페이지</title>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=OUGW3V7HgY7vOawcMKdm"></script>
+<script>
+window.onload = function(){
+	var map = new naver.maps.Map('map', {
+	    center: new naver.maps.LatLng(37.50269,127.0864276),
+	    zoom: 10
+	});
 
+	var marker = new naver.maps.Marker({
+	    position: new naver.maps.LatLng(37.50269,127.0864276),
+	    map: map
+	});	
+}
+</script>
 </head>
 <body>
 	
@@ -61,7 +74,7 @@
 						</tr>
 						
 						<tr>
-							<td><img alt="지도영역" src="img/map.jpg" width="150" height="150"></td>
+							<td><div id="map" style="width:450px;height:300px;"></div></td>
 							<td>■호텔 상세정보 입력란(2)■ ${hotel_info.hot_content }</td>
 						</tr>
 					</table>
