@@ -313,13 +313,17 @@ public class MemberController {
 		int result=memberDao.memberOut(m_id, m_pwd);
 		
 		String msg=result>0?"회원탈퇴 성공!":"비밀번호를 확인해주세요!";
+		
+	
 		mav.addObject("msg", msg);
 		mav.addObject("url", "index.do");
 		
 		mav.setViewName("member/memberMsg");
-		
-		HttpSession session=req.getSession();
-		session.invalidate();
+
+		if(result>0){
+			HttpSession session=req.getSession();
+			session.invalidate();
+		}
 		
 		return mav;
 	}
