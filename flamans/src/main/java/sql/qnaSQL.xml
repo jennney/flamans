@@ -127,4 +127,8 @@
 		#{qna_idx}
 	</delete>
 	
+	<select id="hotelBbsList" parameterType="String" resultType="flamans.qna.model.QnaDTO">
+		select * from fm_qna where qna_findname=#{qna_findname} 
+	</select>
+	
 </mapper>

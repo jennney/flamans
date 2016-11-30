@@ -73,7 +73,7 @@
 <div class="row">
   <div class="col-sm-5"></div>
   <div class="col-sm-3">
-  	<img alt="logo" src="/flamanz/img/flawoong.gif" width="50%" height="30px">
+  	<img alt="logo" src="/flamans/img/flawoong.gif" width="50%" height="30px">
   </div> 
   <div class="col-sm-2"></div>
   <div class="col-sm-2" >
@@ -95,7 +95,7 @@
 			</c:if>
 			
 			<c:if test="${!empty sessionScope.cm_name }">
-				<a href="#">관리자계정</a>
+				<a href="manager.do">관리자계정</a>
 				<a href="logout.do">로그아웃</a>
 			</c:if>
 		  </div>	  

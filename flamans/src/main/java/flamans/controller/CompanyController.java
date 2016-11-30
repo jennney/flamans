@@ -115,6 +115,7 @@ public class CompanyController {
 					String cm_name=dto.getCm_name();
 					session.setAttribute("cm_name", cm_name);
 					session.setAttribute("userBid", userBid);
+					session.setAttribute("cm_number", cm_number);
 					mav.setViewName("redirect:/index.do");
 				}
 			}
@@ -165,7 +166,8 @@ public class CompanyController {
 					
 					String cm_name=dto.getCm_name();
 					session.setAttribute("cm_name", cm_name);
-					session.setAttribute("userBid", userHid);
+					session.setAttribute("userHid", userHid);
+					session.setAttribute("cm_number", cm_number);
 					mav.setViewName("redirect:/index.do");
 				}
 
