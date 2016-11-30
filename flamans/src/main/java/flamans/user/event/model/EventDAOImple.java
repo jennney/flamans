@@ -103,6 +103,18 @@ public class EventDAOImple implements EventDAO {
 		int count = sqlMap.update("event_Date",e_idx);
 		return count;
 	}
+
+	public List<EventDTO> event_hos_list(int cp, int listSize) {
+		int startnum=(cp-1)*listSize+1;
+		int endnum=cp*listSize;
+		
+		Map<String, Integer> map=
+				new HashMap<String, Integer>();
+		map.put("start", startnum);
+		map.put("end", endnum);
+		List<EventDTO> list=sqlMap.selectList("event_hos_list",map);
+		return list;
+	}
 	
 }
 

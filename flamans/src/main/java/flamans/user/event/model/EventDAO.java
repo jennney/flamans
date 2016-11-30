@@ -26,6 +26,8 @@ public interface EventDAO {
 	
 	public int event_Date(int e_idx);
 	
+	public List<EventDTO> event_hos_list(int cp, int listSize);
+	
 	
 	
 }

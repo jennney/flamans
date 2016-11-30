@@ -68,7 +68,18 @@ label{
 <body>
 <div id="b" >
 	<div id="c">
-	ccccc
+	<p>로그인을 해주세요</p><br>
+	  <c:set var="saveid" value="${cookie.saveid.value}"></c:set>
+	  <form class="form-inline" action="member_login1.do" method="post">
+	      <label for="id">id:</label>
+	      <input type="text" class="form-control" name="cm_id" placeholder="Enter ID" value="${saveid }"><br>
+	      <label for="pwd">Password:</label>
+	      <input type="password" class="form-control" name="cm_pwd" placeholder="Enter password"><br><br>
+	      <input type="checkbox" name="saveid" value="on" ${empty saveid?'':'checked'}> Remember me
+	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
+	    &nbsp;&nbsp;▶<a href="member_find_id.do" id="pp">&nbsp;아이디를 잊으셨나요?</a><br>
+	    &nbsp;&nbsp;▶<a href="member_find_pwd.do" id="pp">&nbsp;비밀번호를 잊으셨나요?</a>
+	  </form>
 	</div>
 	<div class="container" id="d">
 	  <p>로그인을 해주세요</p><br>

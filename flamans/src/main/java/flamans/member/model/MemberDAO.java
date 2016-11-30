@@ -1,6 +1,9 @@
 package flamans.member.model;
 
+import java.util.List;
+
 import flamans.member.model.*;
+import flamans.qna.model.*;
 
 public interface MemberDAO {
 
@@ -24,5 +27,7 @@ public interface MemberDAO {
 	public int memberOut(String m_id, String m_pwd);
 	
 	public int memberUpdate(MemberDTO dto);
+	
+	public List<QnaDTO> myqna(String qna_writer);
 
 }

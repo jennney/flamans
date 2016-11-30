@@ -188,10 +188,10 @@ public class EventController {
 	return mav;
 	}
 	
-	//업체 이벤트 관리 리스트
-	@RequestMapping("/event_co_list.do")
-	public ModelAndView event_co_list(
-		@RequestParam(value="cp",defaultValue="1")int cp){
+	//호텔 이벤트 관리 리스트
+	@RequestMapping("/event_hot_list.do")
+	public ModelAndView event_hot_list(
+		@RequestParam(value="cp",defaultValue="1")int cp,@RequestParam(value="hot_num",required=false)int hot_num){
 			int totalCnt=eventDao.getTotalCnt();
 			int listSize=5;
 			int pageSize=5;
@@ -200,9 +200,25 @@ public class EventController {
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list",list);
 			mav.addObject("pageStr",pageStr);
-			mav.setViewName("event/event_co_list");
+			mav.setViewName("event/event_hot_list");
 			return mav;
 		}
 	
+	//병원 이벤트 관리 리스트
+	@RequestMapping("/event_hos_list.do")
+	public ModelAndView event_hos_list(
+		@RequestParam(value="cp",defaultValue="1")int cp){
+			int totalCnt=eventDao.getTotalCnt();
+			int listSize=5;
+			int pageSize=5 ;
+			String pageStr=paging.makePage("event_hos_list.do", totalCnt, listSize, pageSize, cp);
+			List<EventDTO> list=eventDao.event_hos_list(cp, listSize);
+			ModelAndView mav=new ModelAndView();
+			mav.addObject("list",list);
+			mav.addObject("pageStr", pageStr);
+			mav.setViewName("event/event_hos_list");
+			return mav;
+		}
+		
    }
 

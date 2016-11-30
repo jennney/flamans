@@ -240,7 +240,7 @@ function updateResult(){
 	height: 350px;
 }
 
-#del, #update, #pwd_update, #member_myqna{
+#del, #update, #pwd_update, #member_myqna {
 	width: 700px;
 	padding: 5px;
 	border-right: 1px solid grey;
@@ -267,7 +267,33 @@ function updateResult(){
 <body onload="updateSet('${dto}')">
 	<div id="member_myqna">내 문의 리스트</div>
 	<div id="member_myqna1" class="well well-lg">
-		<%@include file="member_myqna.jsp"%>
+		<table>
+			<c:if test="${empty myqna}">
+				<tr>
+					<td colspan="2" align="center">등록된 게시글이 없습니다.</td>
+				</tr>
+			</c:if>
+			<tr>
+				<th>제목</th>
+				<th>답변여부</th>
+			</tr>
+			<c:forEach var="dto" items="${myqna}">
+				<c:url var="contentURL" value="qna_Content.do">
+					<c:param name="qna_idx">${dto.qna_idx}</c:param>
+				</c:url>
+				<tr>
+					<td><a href="${contentURL}">${dto.qna_subject}</a></td>
+					<td><c:choose>
+							<c:when test="${dto.lev >0}">
+								<h4 style="color: red;">답변 완료</h4>
+							</c:when>
+							<c:otherwise>
+								<h4 style="color: blue;">답변 중</h4>
+							</c:otherwise>
+						</c:choose></td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 	<div id="update">계정 관리</div>
 	<div id="update1" class="well well-lg">

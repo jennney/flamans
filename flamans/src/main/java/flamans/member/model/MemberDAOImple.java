@@ -1,11 +1,13 @@
 package flamans.member.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
 import flamans.member.model.MemberDTO;
+import flamans.qna.model.QnaDTO;
 
 public class MemberDAOImple implements MemberDAO {
 	
@@ -112,6 +114,11 @@ public class MemberDAOImple implements MemberDAO {
 		int count=sqlMap.update("member_update_wishlist", map);
 				
 		return count;
+	}
+	
+	public List<QnaDTO> myqna(String qna_writer) {
+		List<QnaDTO> myqna = sqlMap.selectList("member_myqna",qna_writer);
+		return myqna;
 	}
 	
 }
