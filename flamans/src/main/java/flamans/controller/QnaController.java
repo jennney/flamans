@@ -42,7 +42,6 @@ public class QnaController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("qnaList", qnaList);
 		mav.addObject("qna_kind", qna_kind);
-		mav.addObject("qna_kind", qna_kind);
 		mav.addObject("qna_page", qna_page);
 		mav.setViewName("service/QNA/qna_List");
 		return mav;
@@ -175,7 +174,7 @@ public class QnaController {
 	@RequestMapping("/qna_Delete.do")
 	public ModelAndView qna_Delete(@RequestParam("qna_idx") int qna_idx, @RequestParam("qna_kind") String qna_kind) {
 		int result = qnaDao.qnaDelete(qna_idx);
-		String msg = result>0?"질문이 삭제되었습니다.":"질문삭제가 실패하였습니다";
+		String msg = result > 0 ? "질문이 삭제되었습니다." : "질문삭제가 실패하였습니다";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "qna_List.do?qna_kind=" + qna_kind);

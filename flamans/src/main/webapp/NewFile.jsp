@@ -22,6 +22,10 @@ window.onload = function(){
 </script>
 </head>
 <body>
-<div id="map" style="width:450px;height:300px;"></div>
+<ul class="tab" id="tab">
+	<li>A</li>
+	<li>B</li>
+	<li>c</li>
+</ul>
 </body>
 </html>

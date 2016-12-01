@@ -29,7 +29,7 @@
 	<bean class="flamans.page.model.PageDAOImple" id="pageDao">
 		<constructor-arg>
 			<ref bean = "sqlSessionTemplate"/>
-		</constructor-arg>		
+		</constructor-arg>
 	</bean>
 	
 	<bean class="flamans.faq.model.FaqDAOImple" id="faqDao">

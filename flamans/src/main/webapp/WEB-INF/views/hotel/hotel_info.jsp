@@ -12,25 +12,104 @@
 
 <meta charset="UTF-8">
 <title>[name] 호텔 상세페이지</title>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=OUGW3V7HgY7vOawcMKdm"></script>
-<script>
-window.onload = function(){
-	var map = new naver.maps.Map('map', {
-	    center: new naver.maps.LatLng(37.50269,127.0864276),
-	    zoom: 10
-	});
 
-	var marker = new naver.maps.Marker({
-	    position: new naver.maps.LatLng(37.50269,127.0864276),
-	    map: map
-	});	
+
+<style>
+#container {
+	overflow: hidden;
+	height: 300px;
+	position: relative;
+}
+
+#btnRoadview, #btnMap {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	padding: 7px 12px;
+	font-size: 14px;
+	border: 1px solid #dbdbdb;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+	z-index: 1;
+	cursor: pointer;
+}
+
+#btnRoadview:hover, #btnMap:hover {
+	background-color: #fcfcfc;
+	border: 1px solid #c1c1c1;
+}
+
+#container.view_map #mapWrapper {
+	z-index: 10;
+}
+
+#container.view_map #btnMap {
+	display: none;
+}
+
+#container.view_roadview #mapWrapper {
+	z-index: 0;
+}
+
+#container.view_roadview #btnRoadview {
+	display: none;
+}
+</style>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=ebe809a3005bdc67543fbb052162f94d&libraries=services"></script>
+<script>
+window.onload=function(){	
+	var hot_addr = document.getElementById('hot_addr').value;
+	var geocoder = new daum.maps.services.Geocoder();
+	geocoder.addr2coord(hot_addr, function(status, result) {
+	     if (status === daum.maps.services.Status.OK) {
+    		var container = document.getElementById('container'),
+    	    	mapWrapper = document.getElementById('mapWrapper'),
+    	   		btnRoadview = document.getElementById('btnRoadview'),
+    	    	btnMap = document.getElementById('btnMap'),
+    	    	rvContainer = document.getElementById('roadview'), 
+    	    	mapContainer = document.getElementById('map')
+	        var placePosition = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+	    	var mapOption = {
+	    			center: placePosition,
+	    		    level: 3
+	    	};
+	    	var map = new daum.maps.Map(mapContainer, mapOption);
+	    	var roadview = new daum.maps.Roadview(rvContainer);
+	    	var mapMarker = new daum.maps.Marker({
+	    	    position: placePosition,
+	    	    map: map
+	    	});
+	    	daum.maps.event.addListener(roadview, 'init', function() {
+	    	    var rvMarker = new daum.maps.Marker({
+	    	        position: placePosition,
+	    	        map: roadview
+	    	    });
+	    	});
+			roadview.setViewpoint({
+	    	    pan: 321,
+	    	    tilt: 0,
+	    	    zoom: 0
+	    	});
+			var roadviewClient = new daum.maps.RoadviewClient(); 
+			roadviewClient.getNearestPanoId(placePosition,50, function(panoId) {
+			    roadview.setPanoId(panoId,placePosition); 
+			});
+       		map.setCenter(placePosition);
+	    } 
+	}); 
+}
+function toggleMap(active) {
+    if (active) {
+        container.className = "view_map";
+    } else {
+        container.className = "view_roadview";
+    }
 }
 </script>
 </head>
 <body>
-	
 	<div align="center" style="border: 7px solid maroon; height: 2100px;">
-
 		<%@ include file="../header.jsp" %>
 		
 		<table style="margin: 0px auto;">
@@ -74,7 +153,18 @@ window.onload = function(){
 						</tr>
 						
 						<tr>
-							<td><div id="map" style="width:450px;height:300px;"></div></td>
+							<td><input type="hidden" name="hot_addr" value="${hotel_info.hot_addr}" id="hot_addr">
+								<div id="container" class="view_map">
+								    <div id="mapWrapper" style="width:400px;height:300px;position:relative;">
+								        <div id="map" style="width:400px;height:100%"></div>
+								        <input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰">
+								    </div>
+								    <div id="rvWrapper" style="width:400px;height:300px;position:absolute;top:0;left:0;">
+								        <div id="roadview" style="height:100%"></div>
+								        <input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도">
+								    </div>
+								</div>
+							</td>
 							<td>■호텔 상세정보 입력란(2)■ ${hotel_info.hot_content }</td>
 						</tr>
 					</table>
