@@ -136,6 +136,7 @@ public class CompanyController {
 					session.setAttribute("cm_name", cm_name);
 					session.setAttribute("userBid", userBid);
 					session.setAttribute("cm_number", cm_number);
+					session.setAttribute("permit", dto.getCm_permit());
 					mav.setViewName("redirect:/index.do");
 				}
 			}
@@ -188,6 +189,7 @@ public class CompanyController {
 					session.setAttribute("cm_name", cm_name);
 					session.setAttribute("userHid", userHid);
 					session.setAttribute("cm_number", cm_number);
+					session.setAttribute("permit", dto.getCm_permit());
 					mav.setViewName("redirect:/index.do");
 				}
 
