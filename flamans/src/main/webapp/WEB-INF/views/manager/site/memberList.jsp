@@ -16,15 +16,34 @@
 			<th>이름</th>
 			<th>성별</th>
 			<th>...</th>
+			<th>기타</th>
 		</tr>
 	</thead>
 	<tfoot>
 		<tr>
-			<td colspan="4">${memberPage }</td>
+			<td colspan="5" align="center">${memberPage }</td>
 		</tr>
 	</tfoot>
 	<tbody>
-	<c:if test="${empty list }"></c:if>
+	<c:if test="${empty list }">
+		<tr>
+			<td colspan="5" align="center">등록된 회원이 없습니다.</td>
+		</tr>
+	</c:if>
+	<c:if test="${!empty list }">
+		<c:forEach var="dto" items="${list }">
+		<tr>
+			<td>${dto.m_nationality }</td>
+			<td>${dto.m_name }</td>
+			<td>${dto.m_sex }</td>
+			<td>${dto.m_birthday }</td>
+			<c:url var="memberKickUrl" value="memberKick.do">
+				<c:param name="m_id">${dto.m_id }</c:param>
+			</c:url>
+			<td><a href="${memberKickUrl }">추방</a></td>
+		</tr>
+		</c:forEach>
+	</c:if>
 	</tbody>
 </table>
 </body>

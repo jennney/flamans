@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import flamans.hotel_find.model.HotelDTO;
 import flamans.member.model.MemberDTO;
 
 public class Site_ManagerDAOImple implements Site_ManagerDAO {
@@ -29,6 +30,16 @@ public class Site_ManagerDAOImple implements Site_ManagerDAO {
 	public int totalMemberCnt() {
 		int count=sqlMap.selectOne("totalMemberCnt");
 		return count;
+	}
+	
+	public int memberKick(String m_id) {
+		int count=sqlMap.delete("memberKick", m_id);
+		return count;
+	}
+	
+	public List<HotelDTO> premittedHotel() {
+		List<HotelDTO> list=sqlMap.selectList("permittedHotel");
+		return list;
 	}
 
 }

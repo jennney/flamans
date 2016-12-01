@@ -67,4 +67,7 @@
 		delete from fm_hotel where hot_num=#{hot_num} 
 	</delete>
 
+	<select id="premittedHotel" resultType="flamans.hotel_find.model.HotelDTO">
+		select * from fm_company where cm_permit = 1 and cm_number like 'H%' 
+	</select>
 </mapper>

@@ -81,11 +81,15 @@
 	<select id="memberList" resultType="flamans.member.model.MemberDTO" parameterType="Map">
 		 select * from
 		(select rownum as rnum,a.* from
-		(select * from fm_member order by ref desc,sunbun asc) a) b
+		(select * from fm_member order by m_id desc) a) b
 		where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
 	<select id="totalMemberCnt" resultType="Integer">
 		select count(*) from fm_member
 	</select>
+	
+	<delete id="memberKick" parameterType="String">
+		delete from fm_member where m_id=#{m_id}
+	</delete>
 </mapper>

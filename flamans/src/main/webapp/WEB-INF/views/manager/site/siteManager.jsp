@@ -11,7 +11,7 @@
 <ul>
 	<li><a href="memberList.do">회원 정보</a></li>
 	<li><a href="#">이벤트 정보</a></li>
-	<li><a href="#">호텔 정보</a></li>
+	<li><a href="hotelInfo.do">호텔 정보</a></li>
 	<li><a href="#">병원 정보</a></li>
 	<li><a href="#">고객 센터</a></li>
 	<li><a href="#">1대1 상담</a></li>
