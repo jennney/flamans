@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import flamans.company.model.CompanyDAO;
+import flamans.company.model.CompanyDTO;
 import flamans.member.model.*;
 import flamans.qna.model.*;
 
@@ -23,7 +25,6 @@ public class MemberController {
 	
 	@Autowired
 	private MemberDAO memberDao;
-	
 	
 	@RequestMapping("/index.do")
 	public String index(){
@@ -360,5 +361,5 @@ public class MemberController {
 				
 		return mav;
 	}
-		
+
 }

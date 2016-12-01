@@ -77,5 +77,4 @@
 	<select id="member_myqna" parameterType="String" resultType="flamans.qna.model.QnaDTO">
 		select * from fm_qna where qna_writer = #{qna_writer}
 	</select>
-	
 </mapper>

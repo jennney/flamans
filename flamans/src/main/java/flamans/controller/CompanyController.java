@@ -1,5 +1,7 @@
 package flamans.controller;
 
+import java.security.MessageDigest;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -65,6 +67,24 @@ public class CompanyController {
 		mav.setViewName("company/idCheckOk");
 		return mav;
 		
+	}
+	
+	/**비밀번호 암호화*/
+	public String getEncMD5(String txt) throws Exception {
+
+		StringBuffer sbuf = new StringBuffer();
+
+		MessageDigest mDigest = MessageDigest.getInstance("MD5");
+		mDigest.update(txt.getBytes());
+	
+		byte[] msgStr = mDigest.digest() ;
+		
+		for(int i=0; i < msgStr.length; i++){
+			String tmpEncTxt = Integer.toHexString((int)msgStr[i] & 0x00ff) ;
+			sbuf.append(tmpEncTxt) ;
+		}
+		
+		return sbuf.toString() ;
 	}
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////

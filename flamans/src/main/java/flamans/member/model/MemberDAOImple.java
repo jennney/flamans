@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import flamans.company.model.CompanyDTO;
 import flamans.member.model.MemberDTO;
 import flamans.qna.model.QnaDTO;
 

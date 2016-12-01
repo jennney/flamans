@@ -36,9 +36,15 @@ public class EventDAOImple implements EventDAO {
 		return list;
 	}
 	
-	public int getTotalCnt() {
-		int count=sqlMap.selectOne("totalCnt");
+	public int getTotalCnt(String e_name,int e_item) {
+		Map<String,Object> map=
+				new HashMap<String,Object>();
+		map.put("e_name", e_name);
+		map.put("e_item", e_item);
+		int count=sqlMap.selectOne("totalCnt",map);
 		return count==0?1:count;  //최소한의 페이징 영역이 나 올 수 있도록 하기 위함.
+		
+		
 	}	
 	
 	public int e_readnum(int idx) {
@@ -85,17 +91,6 @@ public class EventDAOImple implements EventDAO {
 		return list;
 	}
 
-	public List<EventDTO> event_hot_list(int cp, int listSize) {
-		int startnum=(cp-1)*listSize+1;
-		int endnum=cp*listSize;
-		
-		Map<String, Integer> map=
-				new HashMap<String, Integer>();
-		map.put("start", startnum);
-		map.put("end", endnum);
-		List<EventDTO> list=sqlMap.selectList("event_co_list",map);
-		return list;
-	}
 	
 	public int event_Date(int e_idx) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -104,17 +99,41 @@ public class EventDAOImple implements EventDAO {
 		return count;
 	}
 
-	public List<EventDTO> event_hos_list(int cp, int listSize) {
+	public List<EventDTO> event_co_list(int cp, int listSize,String e_name) {
 		int startnum=(cp-1)*listSize+1;
 		int endnum=cp*listSize;
 		
-		Map<String, Integer> map=
-				new HashMap<String, Integer>();
+		Map<String, Object> map=
+				new HashMap<String, Object>();
 		map.put("start", startnum);
 		map.put("end", endnum);
-		List<EventDTO> list=sqlMap.selectList("event_hos_list",map);
+		map.put("e_name", e_name);
+		List<EventDTO> list=sqlMap.selectList("event_co_list",map);
 		return list;
 	}
 	
+	public EventDTO event_co_content(int e_idx) {
+		EventDTO list = sqlMap.selectOne("event_content", e_idx);
+		return list;
+	}
+	
+	public int event_co_update(int e_idx, String e_subject, String e_start, String e_end, String e_img) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("e_idx", e_idx);
+		map.put("e_subject", e_subject);
+		map.put("e_start",e_start);
+		map.put("e_end", e_end);
+		map.put("e_img", e_img);
+		int count=sqlMap.update("event_update",map);
+		return count;
+	}
+	
+	public int event_co_delete(int e_idx) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("e_idx", e_idx);
+		int count = sqlMap.delete("event_co_delete",e_idx);
+		return count;
+	}
+
 }
 

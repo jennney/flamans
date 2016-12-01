@@ -6,9 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <body>
-<h2>병원 이벤트 관리 리스트</h2>
 <table>
 	<c:if test="${empty list}">
 		<tr>
@@ -18,7 +16,7 @@
 		</tr>
 	</c:if>
 	<c:forEach var="dto" items="${list}">
-	<c:url var="contentURL" value="event_hos_Content.do">
+	<c:url var="contentURL" value="event_hot_Content.do">
 	<c:param name="e_idx">${dto.e_idx}</c:param>
 	</c:url>
 		<tr>   		
@@ -30,9 +28,12 @@
 			<td>${dto.e_date}</td>
 		</tr>
 		<tr>
-			<td colspan="4"><a href="event_hos_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}"></a></td>
+			<td colspan="4"><a href="event_co_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}"></a></td>
 		</tr>
 	</c:forEach>
+	<tr>
+		<td><input type="button" value="등록" onclick="location.href='event_add.do'"></td>
+	</tr>
 	<tr>
 		<td colspan="4" align="center">
 		${pageStr }	   		

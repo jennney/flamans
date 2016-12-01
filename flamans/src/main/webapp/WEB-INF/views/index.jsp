@@ -39,6 +39,7 @@ body{
 	<a href="page_Write.do">의료사고대처요령/출입국절차 수정</a>
 	<br>
 	<a href="faq_List.do">FAQ</a>
+
 <%@ include file="footer.jsp" %>
 </body>
 </html>

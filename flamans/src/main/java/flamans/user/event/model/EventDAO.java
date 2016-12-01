@@ -6,7 +6,7 @@ public interface EventDAO {
 	
 	public Object event_user_content(int idx);
 		
-	public int getTotalCnt();
+	public int getTotalCnt(String e_name,int e_itme);
 
 	public List<EventDTO> event_user_list(int cp, int listSize, int e_item);
 	
@@ -22,12 +22,22 @@ public interface EventDAO {
 
 	public int event_delete(int idx);
 	
-	public List<EventDTO> event_hot_list(int cp, int listSize);
-	
 	public int event_Date(int e_idx);
+
+	public List<EventDTO> event_co_list(int cp, int listSize, String e_name);
 	
-	public List<EventDTO> event_hos_list(int cp, int listSize);
+	public EventDTO event_co_content(int e_idx);
 	
+	public int event_co_update(int e_idx, String e_subject, String e_start, String e_end, String e_img);
+
+	public int event_co_delete(int e_idx);
+
 	
+
+
+
+	
+
+		
 	
 }

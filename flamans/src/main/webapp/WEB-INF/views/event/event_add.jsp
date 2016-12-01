@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -145,9 +146,16 @@
 					<td><input type="file" name="uploadimg"></td>
 				</tr>
 				<tr>
-					<input type="hidden" name="e_name" value="ddd">
-					<td colspan="3"><input type="submit" value="등록"
-						onclick="location.href='event_list.do?e_item=${e_item}'">
+					<td><c:choose>
+							<c:when test="${empty userBid}">
+								<input type="hidden" name="e_name" value="${sessionScope.userHid}">
+							</c:when>
+							<c:otherwise>
+								<input type="hidden" name="e_name" value="${sessionScope.userBid}">
+							</c:otherwise>
+						</c:choose></td>
+
+					<td colspan="3"><input type="submit" value="등록">
 						<input type="reset" value="다시작성"></td>
 					<td><a href="event_list.do"><input type="button"
 							value="목록"></a></td>
