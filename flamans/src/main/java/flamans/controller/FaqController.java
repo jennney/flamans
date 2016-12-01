@@ -20,7 +20,6 @@ public class FaqController {
 	
 	@RequestMapping("/faq_List.do")
 	public ModelAndView faqList(@RequestParam(value="faq_item",required=false)String faq_item){
-		System.out.println(faq_item);
 		List<FaqDTO> list = faqDao.faqList(faq_item);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);
