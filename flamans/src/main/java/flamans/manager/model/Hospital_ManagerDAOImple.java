@@ -71,9 +71,9 @@ public class Hospital_ManagerDAOImple implements Hospital_ManagerDAO {
 		return count;
 	}
 	
-	public List<DoctorDTO> doctorContent(String doc_name,String hos_num) {
+	public List<DoctorDTO> doctorContent(int doc_num,String hos_num) {
 		HashMap<String, Object> map=new HashMap<String, Object>();
-		map.put("doc_name", doc_name);
+		map.put("doc_num", doc_num);
 		map.put("hos_num", hos_num);
 		List<DoctorDTO> list=sqlMap.selectList("doctorContent", map);
 		return list;

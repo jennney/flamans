@@ -40,12 +40,13 @@
 			#{doc_level}, 
 			#{doc_career}, 
 			#{doc_etc}, 
-			#{doc_kind} 
+			#{doc_kind}.
+			fm_doctor_doc_num.nextval
 		) 
 	</insert>
 	
 	<select id="doctorContent" parameterType="Map" resultType="flamans.hos_find.model.DoctorDTO">
-		select * from fm_doctor where doc_name=#{doc_name} and hos_num=#{hos_num}
+		select * from fm_doctor where doc_num=#{doc_num} and hos_num=#{hos_num}
 	</select>
 	
 	<update id="doctorUpdate" parameterType="flamans.hos_find.model.DoctorDTO">

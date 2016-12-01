@@ -104,7 +104,7 @@ public class Hospital_ManagerController {
 	public void copyinto(String writer,MultipartFile upload){
 		try {
 			byte bytes[]=upload.getBytes();
-			File newFile=new File("/flamans/img/"+upload.getOriginalFilename());
+			File newFile=new File("C:/Users/YunJunHo/git/flamans/flamans/src/main/webapp/img/"+upload.getOriginalFilename());
 			FileOutputStream fos=new FileOutputStream(newFile);
 			fos.write(bytes);
 			fos.close();
@@ -165,8 +165,8 @@ public class Hospital_ManagerController {
 	}
 	
 	@RequestMapping("/doctorContent.do")
-	public ModelAndView doctorContent(@RequestParam("doc_name") String doc_name,@RequestParam("hos_num") String hos_num){
-		List<DoctorDTO> list=hosmDao.doctorContent(doc_name, hos_num);
+	public ModelAndView doctorContent(@RequestParam("doc_num") int doc_num,@RequestParam("hos_num") String hos_num){
+		List<DoctorDTO> list=hosmDao.doctorContent(doc_num, hos_num);
 		ModelAndView mav=new ModelAndView();
 		if(list==null||list.size()==0){
 			mav.addObject("msg", "삭제된 의사 정보 이거나 잘못된 접근입니다.");

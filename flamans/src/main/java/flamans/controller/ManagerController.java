@@ -12,7 +12,9 @@ public class ManagerController {
 	@RequestMapping("/manager.do")
 	public ModelAndView managerPage(HttpSession session){
 		ModelAndView mav=new ModelAndView();
-		if(session.getAttribute("userHid")!=null){
+		if(session.getAttribute("userBid").equals("admin")){
+			mav.setViewName("manager/site/siteManager");
+		}else if(session.getAttribute("userHid")!=null){
 			mav.setViewName("manager/hotel/hotelManager");
 		}else if(session.getAttribute("userBid")!=null){
 			mav.setViewName("manager/hospital/hospitalManager");

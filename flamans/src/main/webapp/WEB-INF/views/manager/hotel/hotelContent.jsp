@@ -17,7 +17,7 @@
 <c:if test="${!empty list }">
 <c:forEach var="dto" items="${list }">
 
-	<img src="/flamans/img/${dto.hot_img }"><br>
+	<img src="img/${dto.hot_img }"><br>
 	이름 : ${dto.hot_name } <br>
 	주소 : ${dto.hot_addr } <br>
 	등급 : ${dto.hot_grade } <br>

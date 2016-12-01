@@ -15,7 +15,7 @@
 </c:if>
 <c:if test="${!empty list }">
 	<c:forEach var="dto" items="${list }">
-		<img src="/flamans/img/${dto.hos_img }"><br>
+		<img src="img/${dto.hos_img }"><br>
 		이름 : ${dto.hos_name } <br>
 		주소 : ${dto.hos_addr } <br>
 		상세내용 : ${dto.hos_content } <br>

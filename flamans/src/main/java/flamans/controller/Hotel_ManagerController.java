@@ -96,7 +96,7 @@ public class Hotel_ManagerController {
 	public void copyinto(String writer,MultipartFile upload){
 		try {
 			byte bytes[]=upload.getBytes();
-			File newFile=new File("/flamans/img/"+upload.getOriginalFilename());
+			File newFile=new File("C:/Users/YunJunHo/git/flamans/flamans/src/main/webapp/img/"+upload.getOriginalFilename());
 			FileOutputStream fos=new FileOutputStream(newFile);
 			fos.write(bytes);
 			fos.close();
