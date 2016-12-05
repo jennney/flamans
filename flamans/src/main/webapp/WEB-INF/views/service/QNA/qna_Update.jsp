@@ -167,11 +167,11 @@ h2{
 				<c:choose>
 					<c:when test="${qdto.qna_kind eq 'site'}">
 						<select name="qna_item" onchange="qna_select()" id="qna_item">
-							<option value="all" ${qdto.qna_item eq 'all'?"":"selected"}> - 전체 - </option>
-							<option value="meminfo" ${qdto.qna_item eq 'meminfo'?"":"selected"}>회원정보문의</option>
-							<option value="memgroup" ${qdto.qna_item eq 'memgroup'?"":"selected"}>단체회원이용</option>
-							<option value="tieup" ${qdto.qna_item eq 'tieup'?"":"selected"}>제휴문의</option>
-							<option value="etc" ${qdto.qna_item eq 'etc'?"":"selected"}>기타문의</option>
+							<option value="all" ${qdto.qna_item eq 'all'?selected":""}> - 전체 - </option>
+							<option value="meminfo" ${qdto.qna_item eq 'meminfo'?"selected":""}>회원정보문의</option>
+							<option value="memgroup" ${qdto.qna_item eq 'memgroup'?"selected":""}>단체회원이용</option>
+							<option value="tieup" ${qdto.qna_item eq 'tieup'?"selected":""}>제휴문의</option>
+							<option value="etc" ${qdto.qna_item eq 'etc'?"selected":""}>기타문의</option>
 						</select>
 						<input type="hidden" name="qna_findname" value="site">
 					</c:when>

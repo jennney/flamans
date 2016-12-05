@@ -187,14 +187,14 @@ function fn_press_han(obj)
 /* 숫자만 입력받기 */
 function fn_press(event, type) {
     if(type == "numbers") {
-        if(event.keyCode < 48 || event.keyCode > 57) return false;
+	    if(event.keyCode < 48 || 57 < event.keyCode) return false;
         //onKeyDown일 경우 좌, 우, tab, backspace, delete키 허용 정의 필요
     }
 }
 function yearmonth(){
 	
 	  Month = document.getElementById("Month");
-	  Year = document.getElementById("Year");
+	  Year = document.getElementById("Year");s
 	  Day = document.getElementById("Day");
 	  
 	  var m_birthday=Year.value+Month.value+Day.value;

@@ -2,7 +2,7 @@ package flamans.paging;
 
 public class PageModule1 {
 	
-	public static String makePage(String pagename, int totalCnt, int listSize, int pageSize, int cp,String findKey,String findValue){
+	public static String makePage(String pagename, int totalCnt, int listSize, int pageSize, int cp,String findKey,String findValue,String kind){
 		
 		int totalPage = (totalCnt/listSize)+1;
 		if(totalCnt%listSize == 0) totalPage--;
@@ -19,11 +19,15 @@ public class PageModule1 {
 			int temp = (userGroup-1)*pageSize+pageSize;
 			sb.append(temp);
 			
-			if(!findKey.equals("") && !findValue.equals("")){
-				sb.append("&findKey=");
-				sb.append(findKey);
-				sb.append("&findValue=");
-				sb.append(findValue);
+			if(!kind.equals("") && kind != null){
+				sb.append("&qna_kind=");
+				sb.append(kind);
+				if(!findKey.equals("") && !findValue.equals("")){
+					sb.append("&findKey=");
+					sb.append(findKey);
+					sb.append("&findValue=");
+					sb.append(findValue);
+				}
 			}
 			
 			sb.append("'>[◀◀]</a>");
@@ -35,11 +39,15 @@ public class PageModule1 {
 			sb.append("?cp=");
 			sb.append(i);
 			
-			if(!findKey.equals("") && !findValue.equals("")){
-				sb.append("&findKey=");
-				sb.append(findKey);
-				sb.append("&findValue=");
-				sb.append(findValue);
+			if(!kind.equals("") && kind != null){
+				sb.append("&qna_kind=");
+				sb.append(kind);
+				if(!findKey.equals("") && !findValue.equals("")){
+					sb.append("&findKey=");
+					sb.append(findKey);
+					sb.append("&findValue=");
+					sb.append(findValue);
+				}
 			}
 			
 			sb.append("'>");
@@ -55,11 +63,15 @@ public class PageModule1 {
 			int temp = (userGroup+1)*pageSize+1;
 			sb.append(temp);
 			
-			if(!findKey.equals("") && !findValue.equals("")){
-				sb.append("&findKey=");
-				sb.append(findKey);
-				sb.append("&findValue=");
-				sb.append(findValue);
+			if(!kind.equals("") && kind != null){
+				sb.append("&qna_kind=");
+				sb.append(kind);
+				if(!findKey.equals("") && !findValue.equals("")){
+					sb.append("&findKey=");
+					sb.append(findKey);
+					sb.append("&findValue=");
+					sb.append(findValue);
+				}
 			}
 			
 			sb.append("'>[▶▶]</a>");

@@ -39,7 +39,7 @@ public class NoticeController {
 		int totalCnt = noticeDao.noTotal(findKey, findValue);
 		int listSize = 5;
 		int pageSize = 5;
-		String no_page = paging1.makePage("no_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue);
+		String no_page = paging1.makePage("no_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,"");
 		List<NoticeDTO> noList = noticeDao.noList(cp, listSize, findKey, findValue);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("noList", noList);

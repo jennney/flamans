@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.commons.collections.map.HashedMap;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 public class QnaDAOImple implements QnaDAO {
 	
@@ -16,7 +17,7 @@ public class QnaDAOImple implements QnaDAO {
 		this.sqlMap = sqlMap;
 	}
 
-	public List<QnaDTO> qnaList(String qna_kind,int cp,int ls,String qna_item) {
+	public List<QnaDTO> qnaList(String qna_kind,int cp,int ls,String qna_item,String findKey,String findValue) {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -24,6 +25,8 @@ public class QnaDAOImple implements QnaDAO {
 		map.put("start",start);
 		map.put("end", end);
 		map.put("qna_item", qna_item);
+		map.put("findKey", findKey);
+		map.put("findValue", findValue);
 		List<QnaDTO> qnaList = sqlMap.selectList("qna_List",map);
 		return qnaList;
 	}
@@ -38,10 +41,12 @@ public class QnaDAOImple implements QnaDAO {
 		return qdto;
 	}
 	
-	public int qnaTotal(String qna_kind,String qna_item) {
+	public int qnaTotal(String qna_kind,String qna_item, String findKey,String findValue) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("qna_kind", qna_kind);
 		map.put("qna_item", qna_item);
+		map.put("findKey", findKey);
+		map.put("findValue", findValue);
 		int count = sqlMap.selectOne("qna_Total",map);
 		return count==0?1:count;
 	}

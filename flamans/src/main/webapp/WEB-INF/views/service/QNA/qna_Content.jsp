@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -118,6 +119,7 @@ function submit(form,url){
 	</table>
 </form>
 
+<c:if test="${sessionScope.permit eq 1}">
 <form name="qna_ReWrite" action="qna_ReWrite.do">	
 	<table id="qna_re">
 		<tr>
@@ -141,5 +143,6 @@ function submit(form,url){
 		</tr>
 	</table>
 </form>
+</c:if>
 </body>
 </html>

@@ -18,31 +18,38 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import flamans.paging.PageModule;
+import flamans.paging.PageModule1;
 import flamans.qna.model.QnaDAO;
 import flamans.qna.model.QnaDTO;
 
 @Controller
 public class QnaController {
 
+
 	@Autowired
-	private PageModule paging;
+	private PageModule1 paging1;
 
 	@Autowired
 	private QnaDAO qnaDao;
 
 	@RequestMapping("/qna_List.do")
-	public ModelAndView qnaList(@RequestParam(value = "qna_kind", defaultValue = "hospital") String qna_kind,
+	public ModelAndView qnaList(@RequestParam("qna_kind") String qna_kind,
 			@RequestParam(value = "cp", defaultValue = "1") int cp,
-			@RequestParam(value = "qna_item", required = false, defaultValue = "") String qna_item) {
-		int totalCnt = qnaDao.qnaTotal(qna_kind, qna_item);
+			@RequestParam(value = "qna_item", required = false, defaultValue = "") String qna_item,
+			@RequestParam(value = "findKey", required = false, defaultValue = "") String findKey,
+			@RequestParam(value = "findValue", required = false, defaultValue = "") String findValue) {
+		int totalCnt = qnaDao.qnaTotal(qna_kind, qna_item,findKey,findValue);
 		int listSize = 5;
 		int pageSize = 5;
-		String qna_page = paging.makePage("qna_List.do", totalCnt, listSize, pageSize, cp);
-		List<QnaDTO> qnaList = qnaDao.qnaList(qna_kind, cp, listSize, qna_item);
+		String qna_page = paging1.makePage("qna_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,qna_kind);
+		List<QnaDTO> qnaList = qnaDao.qnaList(qna_kind, cp, listSize, qna_item,findKey, findValue);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("qnaList", qnaList);
 		mav.addObject("qna_kind", qna_kind);
 		mav.addObject("qna_page", qna_page);
+		mav.addObject("qna_item",qna_item);
+		mav.addObject("findKey", findKey);
+		mav.addObject("findValue", findValue);
 		mav.setViewName("service/QNA/qna_List");
 		return mav;
 	}

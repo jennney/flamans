@@ -9,6 +9,15 @@
         	<if test="qna_item != '' and qna_item != null">
         		and qna_item = #{qna_item}
         	</if>
+        	<if test="findKey!='' and findKey !=null"> 
+        		<if test="findKey=='all'">
+       				and (qna_content like '%' ||#{findValue}|| '%' or
+        				qna_subject like '%' ||#{findValue}|| '%')
+        		</if>
+        		<if test="findKey!='all'">
+        			and ${findKey} like '%' ||#{findValue}|| '%'
+        		</if>
+       		</if>
         	order by ref desc,sunbun asc)a)b<![CDATA[ 
 		where rnum>=#{start} 
         	and 
@@ -62,6 +71,15 @@
        	<if test="qna_item != '' and qna_item != null">
       		and qna_item = #{qna_item}
       	</if>
+       	<if test="findKey!='' and findKey !=null"> 
+	   		<if test="findKey=='all'">
+	  				and qna_content like '%' ||#{findValue}|| '%' or
+	   				qna_subject like '%' ||#{findValue}|| '%'
+	   		</if>
+	   		<if test="findKey!='all'">
+	   			and ${findKey} like '%' ||#{findValue}|| '%'
+	   		</if>
+  		</if>
 	</select>
 	
 	<update id="qna_Update" parameterType="flamans.qna.model.QnaDTO">
@@ -128,15 +146,27 @@
 	</delete>
 	
 	<select id="hotelBbsList" parameterType="String" resultType="flamans.qna.model.QnaDTO">
-		select * from fm_qna where qna_findname=#{qna_findname} 
+		select * 
+			from 
+		fm_qna 
+			where qna_findname = 
+		#{qna_findname} 
 	</select>
 	
 	<select id="hotelBbsContent" parameterType="Integer" resultType="flamans.qna.model.QnaDTO">
-		select * from fm_qna where qna_idx=#{qna_idx}
+		select * 
+			from 
+		fm_qna 
+			where qna_idx = 
+		#{qna_idx}
 	</select>
 	
 	<delete id="hotelBbsDelete" parameterType="Integer">
-		delete from fm_qna where qna_idx=#{qna_idx}
+		delete 
+			from 
+		fm_qna 
+			where qna_idx = 
+		#{qna_idx}
 	</delete>
 	
 	<insert id="hotelBbsReWrite" parameterType="flamans.qna.model.QnaDTO">
@@ -144,32 +174,42 @@
 			fm_qna
 		values(
 			#{qna_writer},
-			#{qna_subject},
+		#{qna_subject},
 			#{qna_content},
-			sysdate,
+		sysdate,
 			#{qna_item},
-			#{qna_pwd},
+		#{qna_pwd},
 			#{qna_secret},
-			#{qna_findname},
+		#{qna_findname},
 			0,
-			#{ref},
-			0,
-			0,
-			fm_qna_idx.nextval,
-			#{qna_kind}
-		)
+		#{ref},
+			0,0,
+		fm_qna_idx.nextval,
+			#{qna_kind})
 	</insert>
 	
 	<select parameterType="String" resultType="flamans.qna.model.QnaDTO" id="hospitalBbsList"> 
-		select * from fm_qna where qna_findname=#{cm_number} 
+		select * 
+			from 
+		fm_qna 
+			where qna_findname = 
+		#{cm_number} 
 	</select>
 
 	<select parameterType="Integer" resultType="flamans.qna.model.QnaDTO" id="hospitalBbsContent"> 
-		select * from fm_qna where qna_idx=#{qna_idx} 
+		select * 
+			from 
+		fm_qna 
+			where qna_idx = 
+		#{qna_idx} 
 	</select>
 	
 	<delete parameterType="Integer" id="hospitalBbsDelete"> 
-		delete from fm_qna where qna_idx=#{qna_idx} 
+		delete 
+			from 
+		fm_qna 
+			where qna_idx = 
+		#{qna_idx} 
 	</delete>
 	
 	<insert parameterType="flamans.qna.model.QnaDTO" id="hospitalBbsReWrite"> 
@@ -177,20 +217,19 @@
 			fm_qna 
 		values( 
 			#{qna_writer}, 
-			#{qna_subject}, 
+		#{qna_subject}, 
 			#{qna_content}, 
-			sysdate, 
+		sysdate, 
 			null, 
+		null, 
 			null, 
-			null, 
-			#{qna_findname}, 
+		#{qna_findname}, 
 			0, 
+				0, 
 			0, 
-			0, 
-			0, 
+		0, 
 			#{qna_idx}, 
-			#{qna_kind} 
-			) 
+		#{qna_kind} ) 
 	</insert>
 	
 </mapper>

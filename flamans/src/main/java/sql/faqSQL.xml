@@ -9,18 +9,24 @@
 			values(#{faq_subject},
 		#{faq_checked},
 			#{faq_content},
-		#{faq_item})
+		#{faq_item},
+			fm_faq_idx.nextval)
 	</insert>
 
-	<select id="faq_List" resultType="flamans.faq.model.FaqDTO" parameterType="Map">
+	<select id="faq_List" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq order by faq_idx desc
+	</select>
+	
+	<select id="faq_BestList" resultType="flamans.faq.model.FaqDTO" >
 		select *
 			from
 		fm_faq
-			<if test="faq_item != null">
-			where faq_item = #{faq_item}
-			</if>
+			where faq_checked = 
+		'on' order by faq_idx desc
 	</select>
-
+	
 	<select id="faq_memList" resultType="flamans.faq.model.FaqDTO">
 		select *
 			from
@@ -34,7 +40,7 @@
 			from
 		fm_faq 
 			where faq_item = 
-		'hospital'
+		'hospital' order by faq_idx desc
 	</select>
 
 	<select id="faq_hotList" resultType="flamans.faq.model.FaqDTO">
@@ -42,7 +48,7 @@
 			from
 		fm_faq 
 			where faq_item = 
-		'hotel'
+		'hotel' order by faq_idx desc
 	</select>
 	
 	<select id="faq_etc" resultType="flamans.faq.model.FaqDTO">
@@ -50,6 +56,52 @@
 			from
 		fm_faq 
 			where faq_item = 
-		'etc'
+		'etc' order by faq_idx desc
+	</select>
+	
+	<delete id="faq_Delete" parameterType="int">
+		delete
+			from
+		fm_faq
+			where faq_idx = 
+		#{faq_idx}
+	</delete>
+	
+	<update id="faq_Update" parameterType="flamans.faq.model.FaqDTO">
+		update
+			fm_faq
+		set
+			faq_subject = #{faq_subject},
+		faq_checked = #{faq_checked},
+			faq_content = #{faq_content},
+		faq_item = #{faq_item}
+			where faq_idx = 
+		#{faq_idx}
+	</update>
+	
+	<select id="faq_Content" parameterType="int" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq
+			where faq_idx = 
+		#{faq_idx}
+	</select>
+	
+	<select id="faq_Find" parameterType="Map" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq
+			where faq_content like '%' ||#{findValue}|| '%' or
+			faq_subject like '%' ||#{findValue}|| '%'
+	</select>
+	<select id="faq_Total" parameterType="Map" resultType="int">
+		select 
+			count(*) 
+		from 
+			fm_faq 
+       	<if test="findValue!='' and findValue !=null"> 
+			where faq_content like '%' ||#{findValue}|| '%' or
+			faq_subject like '%' ||#{findValue}|| '%'
+  		</if>
 	</select>
 </mapper>

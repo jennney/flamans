@@ -160,7 +160,7 @@ h2 {
 		var qna_writer = $(':input[name=qna_writer]').val();
 		var qna_findname = $(':input[name=qna_findname]').val();
 		
-		if(qna_pwd="" || qna_pwd==null){
+		if(qna_pwd=="" || qna_pwd==null){
 			window.alert('비밀번호를 입력해주세요');
 			return false;
 		}else if(qna_item=="all"){

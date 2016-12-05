@@ -74,14 +74,16 @@ a:LINK {
 		<thead>
 			<tr>
 		   		<td colspan="4" align="right">
-		   		<form name="qna_find" action="qna_find.do">
+		   		<form name="qna_FindList" action="qna_List.do">
 		      		<select name="findKey">
-		         		<option value="all"> - 전체 - </option>
-		         		<option value="qna_content">  내용     </option>
-		         		<option value="qna_subject">  제목    </option>
-		         		<option value="qna_writer">  작성자   </option>
+		         		<option value="all"${findKey eq 'all'?"selected":""}> - 전체 - </option>
+		         		<option value="qna_content" ${findKey eq 'qna_content'?"selected":""}>  내용     </option>
+		         		<option value="qna_subject" ${findKey eq 'qna_subject'?"selected":""}>  제목    </option>
+		         		<option value="qna_writer" ${findKey eq 'qna_writer'?"selected":""}>  작성자   </option>
 		      		</select>
-		      		<input type="text" name="findValue">
+		      		<input type="text" name="findValue" value="${findValue}">
+		      		<input type="hidden" name="qna_item" value="${qna_item}">
+		      		<input type="hidden" name="qna_kind" value="${qna_kind}">
 		      		<input type="submit" value="검색">
 		   		</form>
 		   		</td>
@@ -96,7 +98,7 @@ a:LINK {
 		</thead>
 		<tfoot>
 			<tr>
-		      	<td colspan="3" align="center">${qna_page}</td>
+		      	<td colspan="4" align="center">${qna_page}</td>
 				<td align="right"><input type="button" value="글쓰기" onclick="location.href='qna_Write.do?qna_kind=${qna_kind}'"></td>
 		   	</tr>
 		</tfoot>

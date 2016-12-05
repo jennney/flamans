@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -71,10 +72,12 @@ h2{
 	<tr>
 		<tr>
 			<td id="no_contd5"><input type="button" value="목록으로" onclick="location.href='no_List.do'"></td>
+			<c:if test="${sessionScope.permit eq 1}">
 			<td align="right" id="no_contd5">
 				<input type="button" value="수정하기" onclick="location.href='no_Update.do?idx=${ndto.no_idx}'">     
 				<input type="button" value="삭제하기" onclick="location.href='no_Delete.do?idx=${ndto.no_idx}'">
 			</td>
+			</c:if>
 		<tr>
 	</tr>
 </table>
