@@ -12,13 +12,14 @@ public class ManagerController {
 	@RequestMapping("/manager.do")
 	public ModelAndView managerPage(HttpSession session){
 		ModelAndView mav=new ModelAndView();
-		if(session.getAttribute("userBid").equals("admin")&&session.getAttribute("userHid")==null){
-			mav.setViewName("manager/site/siteManager");
-		}else 
-			if(session.getAttribute("userHid")!=null){
+		if(session.getAttribute("userHid")!=null){
 			mav.setViewName("manager/hotel/hotelManager");
 		}else if(session.getAttribute("userBid")!=null){
-			mav.setViewName("manager/hospital/hospitalManager");
+			if(session.getAttribute("userBid").equals("admin")){
+				mav.setViewName("manager/site/siteManager");
+			}else{
+				mav.setViewName("manager/hospital/hospitalManager");
+			}
 		}else{
 			mav.addObject("msg", "관리자로그인이 필요한 메뉴입니다.");
 			mav.addObject("url", "index.do");
