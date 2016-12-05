@@ -67,7 +67,19 @@
 		delete from fm_hotel where hot_num=#{hot_num} 
 	</delete>
 
-	<select id="premittedHotel" resultType="flamans.hotel_find.model.HotelDTO">
+	<select id="permittedHotel" resultType="flamans.company.model.CompanyDTO">
 		select * from fm_company where cm_permit = 1 and cm_number like 'H%' 
 	</select>
+	
+	<select id="unpermitHotel" resultType="flamans.company.model.CompanyDTO">
+		select * from fm_company where cm_permit = 0 and cm_number like 'H%'
+	</select>
+	
+	<update id="permitOk" parameterType="String">
+		update fm_company set cm_permit=1 where cm_number=#{cm_number}
+	</update>
+	
+	<delete id="hotelOut" parameterType="String">
+		delete from fm_company where cm_number=#{cm_number}
+	</delete>
 </mapper>

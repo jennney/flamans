@@ -2,7 +2,7 @@ package flamans.manager.model;
 
 import java.util.List;
 
-import flamans.hotel_find.model.HotelDTO;
+import flamans.company.model.CompanyDTO;
 import flamans.member.model.MemberDTO;
 
 public interface Site_ManagerDAO {
@@ -13,5 +13,11 @@ public interface Site_ManagerDAO {
 	
 	public int memberKick(String m_id);
 	
-	public List<HotelDTO> premittedHotel();
+	public List<CompanyDTO> permittedComany();
+	
+	public List<CompanyDTO> unpermitComany();
+	
+	public int permit(String cm_number);
+	
+	public int comanyOut(String cm_number);
 }

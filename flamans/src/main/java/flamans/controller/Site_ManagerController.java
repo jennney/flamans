@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import flamans.hotel_find.model.HotelDTO;
+import flamans.company.model.CompanyDTO;
 import flamans.manager.model.Site_ManagerDAO;
 import flamans.member.model.MemberDTO;
 
@@ -45,10 +45,70 @@ public class Site_ManagerController {
 	
 	@RequestMapping("/hotelInfo.do")
 	public ModelAndView hotelInfo(){
-		List<HotelDTO> list=siteDao.premittedHotel();
+		List<CompanyDTO> list=siteDao.permittedComany();
+		List<CompanyDTO> unlist=siteDao.unpermitComany();
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
+		mav.addObject("unlist", unlist);
 		mav.setViewName("manager/site/hotelInfo");
+		return mav;
+	}
+					
+	@RequestMapping("/permittedHotel.do")
+	public ModelAndView permittedHotel(){
+		List<CompanyDTO> list=siteDao.permittedComany();
+		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
+		return mav;
+	}
+	
+	@RequestMapping("/unpermitHotel.do")
+	public ModelAndView unpermitHotel(){
+		List<CompanyDTO> list=siteDao.unpermitComany();
+		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
+		return mav;
+	}
+	
+	@RequestMapping("/permitOk.do")
+	public ModelAndView permitOk(@RequestParam("cm_number") String cm_number){
+		int result=siteDao.permit(cm_number);
+		String msg=result>0?"승인 성공 ! ":"알수없는 이유로 인해 승인이 되지 않았습니다.";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "hotelInfo.do");
+		mav.setViewName("manager/Msg");
+		return mav;
+	}
+	
+	@RequestMapping("/hotelOut.do")
+	public ModelAndView hotelOut(@RequestParam("cm_number") String cm_number){
+		int result=siteDao.comanyOut(cm_number);
+		String msg=result>0?"해당 호텔과의 제휴가 종료 되었습니다.":"알수없는 이유로 인해 제휴 종료가 되지 않았습니다.";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "hotelInfo.do");
+		mav.setViewName("manager/Msg");
+		return mav;
+	}
+	
+	@RequestMapping("/hospitalInfo.do")
+	public ModelAndView hospitalInfo(){
+		List<CompanyDTO> list=siteDao.permittedComany();
+		List<CompanyDTO> unlist=siteDao.unpermitComany();
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("unlist", unlist);
+		mav.setViewName("manager/site/hospitalInfo");
+		return mav;
+	}
+	
+	@RequestMapping("/hospitalOut.do")
+	public ModelAndView hospitalOut(@RequestParam("cm_number") String cm_number){
+		int result=siteDao.comanyOut(cm_number);
+		String msg=result>0?"해당 병원과의 제휴가 종료 되었습니다.":"알수없는 이유로 인해 제휴 종료가 되지 않았습니다.";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "hospitalInfo.do");
+		mav.setViewName("manager/Msg");
 		return mav;
 	}
 }

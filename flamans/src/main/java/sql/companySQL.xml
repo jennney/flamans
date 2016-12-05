@@ -25,5 +25,20 @@
 		where
 			cm_id=#{cm_id}
 	</select>	
-		
+	
+	<select id="permittedCompany" resultType="flamans.company.model.CompanyDTO">
+		select * from fm_company where cm_permit = 1 and cm_number like 'H%' 
+	</select>
+	
+	<select id="unpermitCompany" resultType="flamans.company.model.CompanyDTO">
+		select * from fm_company where cm_permit = 0 and cm_number like 'H%'
+	</select>
+	
+	<update id="companyPermitOk" parameterType="String">
+		update fm_company set cm_permit=1 where cm_number=#{cm_number}
+	</update>
+	
+	<delete id="companyOut" parameterType="String">
+		delete from fm_company where cm_number=#{cm_number}
+	</delete>
 </mapper>

@@ -65,4 +65,16 @@
 	<delete id="doctorDelete" parameterType="Map">
 		delete from fm_doctor where hos_num=#{hos_num} and doc_name=#{doc_name}
 	</delete>
+	
+	<select id="permittedHospital" resultType="flamans.company.model.CompanyDTO">
+		select * from fm_company where cm_permit = 1 and cm_number like 'B%' 
+	</select>
+	
+	<select id="unpermitHospital" resultType="flamans.company.model.CompanyDTO">
+		select * from fm_company where cm_permit = 0 and cm_number like 'B%'
+	</select>
+	
+	<delete id="hospitalOut" parameterType="String">
+		delete from fm_company where cm_number=#{cm_number}
+	</delete>
 </mapper>

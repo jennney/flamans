@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import flamans.hotel_find.model.HotelDTO;
+import flamans.company.model.CompanyDTO;
 import flamans.member.model.MemberDTO;
 
 public class Site_ManagerDAOImple implements Site_ManagerDAO {
@@ -37,9 +37,23 @@ public class Site_ManagerDAOImple implements Site_ManagerDAO {
 		return count;
 	}
 	
-	public List<HotelDTO> premittedHotel() {
-		List<HotelDTO> list=sqlMap.selectList("permittedHotel");
+	public List<CompanyDTO> permittedComany() {
+		List<CompanyDTO> list=sqlMap.selectList("permittedCompany");
 		return list;
 	}
-
+	
+	public List<CompanyDTO> unpermitComany() {
+		List<CompanyDTO> unlist=sqlMap.selectList("unpermitCompany");
+		return unlist;
+	}
+	
+	public int permit(String cm_number) {
+		int count=sqlMap.update("companyPermitOk", cm_number);
+		return count;
+	}
+	
+	public int comanyOut(String cm_number) {
+		int count=sqlMap.delete("companyOut", cm_number);
+		return count;
+	}
 }
