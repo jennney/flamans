@@ -26,12 +26,12 @@
 			cm_id=#{cm_id}
 	</select>	
 	
-	<select id="permittedCompany" resultType="flamans.company.model.CompanyDTO">
-		select * from fm_company where cm_permit = 1 and cm_number like 'H%' 
+	<select id="permittedCompany" resultType="flamans.company.model.CompanyDTO" parameterType="String">
+		select * from fm_company where cm_permit = 1 and cm_number like ''||#{str}||'%' 
 	</select>
 	
-	<select id="unpermitCompany" resultType="flamans.company.model.CompanyDTO">
-		select * from fm_company where cm_permit = 0 and cm_number like 'H%'
+	<select id="unpermitCompany" resultType="flamans.company.model.CompanyDTO" parameterType="String">
+		select * from fm_company where cm_permit = 0 and cm_number like ''||#{str}||'%'
 	</select>
 	
 	<update id="companyPermitOk" parameterType="String">

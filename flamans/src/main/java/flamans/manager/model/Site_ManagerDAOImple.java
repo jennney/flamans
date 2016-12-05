@@ -37,13 +37,13 @@ public class Site_ManagerDAOImple implements Site_ManagerDAO {
 		return count;
 	}
 	
-	public List<CompanyDTO> permittedComany() {
-		List<CompanyDTO> list=sqlMap.selectList("permittedCompany");
+	public List<CompanyDTO> permittedComany(String str) {
+		List<CompanyDTO> list=sqlMap.selectList("permittedCompany",str);
 		return list;
 	}
 	
-	public List<CompanyDTO> unpermitComany() {
-		List<CompanyDTO> unlist=sqlMap.selectList("unpermitCompany");
+	public List<CompanyDTO> unpermitComany(String str) {
+		List<CompanyDTO> unlist=sqlMap.selectList("unpermitCompany",str);
 		return unlist;
 	}
 	

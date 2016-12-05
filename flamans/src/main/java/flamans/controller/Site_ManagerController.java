@@ -45,25 +45,22 @@ public class Site_ManagerController {
 	
 	@RequestMapping("/hotelInfo.do")
 	public ModelAndView hotelInfo(){
-		List<CompanyDTO> list=siteDao.permittedComany();
-		List<CompanyDTO> unlist=siteDao.unpermitComany();
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("list", list);
-		mav.addObject("unlist", unlist);
 		mav.setViewName("manager/site/hotelInfo");
 		return mav;
 	}
 					
 	@RequestMapping("/permittedHotel.do")
-	public ModelAndView permittedHotel(){
-		List<CompanyDTO> list=siteDao.permittedComany();
+	public ModelAndView permittedHotel(@RequestParam("str") String str){
+		System.out.println(str);
+		List<CompanyDTO> list=siteDao.permittedComany(str);
 		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
 		return mav;
 	}
 	
 	@RequestMapping("/unpermitHotel.do")
-	public ModelAndView unpermitHotel(){
-		List<CompanyDTO> list=siteDao.unpermitComany();
+	public ModelAndView unpermitHotel(@RequestParam("str") String str){
+		List<CompanyDTO> list=siteDao.unpermitComany(str);
 		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
 		return mav;
 	}
@@ -72,43 +69,45 @@ public class Site_ManagerController {
 	public ModelAndView permitOk(@RequestParam("cm_number") String cm_number){
 		int result=siteDao.permit(cm_number);
 		String msg=result>0?"승인 성공 ! ":"알수없는 이유로 인해 승인이 되지 않았습니다.";
+		String url=cm_number.substring(0, 1).equals("B")?"hospitalInfo.do":"hotelInfo.do";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url", "hotelInfo.do");
+		mav.addObject("url", url);
 		mav.setViewName("manager/Msg");
 		return mav;
 	}
 	
-	@RequestMapping("/hotelOut.do")
-	public ModelAndView hotelOut(@RequestParam("cm_number") String cm_number){
+	@RequestMapping("/companyOut.do")
+	public ModelAndView companyOut(@RequestParam("cm_number") String cm_number){
 		int result=siteDao.comanyOut(cm_number);
-		String msg=result>0?"해당 호텔과의 제휴가 종료 되었습니다.":"알수없는 이유로 인해 제휴 종료가 되지 않았습니다.";
+		String msg=result>0?"해당 업체와의 제휴가 종료 되었습니다.":"알수없는 이유로 인해 제휴 종료가 되지 않았습니다.";
+		String url=cm_number.substring(0, 1).equals("B")?"hospitalInfo.do":"hotelInfo.do";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url", "hotelInfo.do");
+		mav.addObject("url", url);
 		mav.setViewName("manager/Msg");
 		return mav;
 	}
 	
 	@RequestMapping("/hospitalInfo.do")
 	public ModelAndView hospitalInfo(){
-		List<CompanyDTO> list=siteDao.permittedComany();
-		List<CompanyDTO> unlist=siteDao.unpermitComany();
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("list", list);
-		mav.addObject("unlist", unlist);
 		mav.setViewName("manager/site/hospitalInfo");
 		return mav;
 	}
 	
-	@RequestMapping("/hospitalOut.do")
-	public ModelAndView hospitalOut(@RequestParam("cm_number") String cm_number){
-		int result=siteDao.comanyOut(cm_number);
-		String msg=result>0?"해당 병원과의 제휴가 종료 되었습니다.":"알수없는 이유로 인해 제휴 종료가 되지 않았습니다.";
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("msg", msg);
-		mav.addObject("url", "hospitalInfo.do");
-		mav.setViewName("manager/Msg");
+	@RequestMapping("/permittedHospital.do")
+	public ModelAndView permittedHospital(@RequestParam("str") String str){
+		List<CompanyDTO> list=siteDao.permittedComany(str);
+		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
 		return mav;
 	}
+	
+	@RequestMapping("/unpermitHospital.do")
+	public ModelAndView unpermitHospital(@RequestParam("str") String str){
+		List<CompanyDTO> list=siteDao.unpermitComany(str);
+		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
+		return mav;
+	}
+	
 }

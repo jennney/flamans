@@ -10,9 +10,9 @@
 <script>
 function show(i){
 	if(i==1){
-		sendRequest("permittedHotel.do", null, showResult, "GET");
+		sendRequest("permittedHotel.do", "str=H", showResult, "POST");
 	}else if(i==2){
-		sendRequest("unpermitHotel.do", null, showResult, "GET");
+		sendRequest("unpermitHotel.do", "str=H", showResult, "POST");
 	}
 }
 function showResult(){
@@ -34,7 +34,7 @@ function showResult(){
 					if(hotel.cm_permit=='0'){
 						msg+='<tr><td>'+hotel.cm_name+'</td><td>'+hotel.cm_number+'</td><td>'+hotel.cm_email+'</td><td>'+hotel.cm_tel+'</td><td><a href="permitOk.do?cm_number='+hotel.cm_number+'">승인</a></td></tr>';	
 					}else{
-						msg+='<tr><td>'+hotel.cm_name+'</td><td>'+hotel.cm_number+'</td><td>'+hotel.cm_email+'</td><td>'+hotel.cm_tel+'</td><td><a href="hotelOut.do?cm_number='+hotel.cm_number+'">삭제</a></td></tr>';
+						msg+='<tr><td>'+hotel.cm_name+'</td><td>'+hotel.cm_number+'</td><td>'+hotel.cm_email+'</td><td>'+hotel.cm_tel+'</td><td><a href="companyOut.do?cm_number='+hotel.cm_number+'">삭제</a></td></tr>';
 					}
 				}
 				msg+='</table>';

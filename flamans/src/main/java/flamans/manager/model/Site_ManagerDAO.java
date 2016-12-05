@@ -13,9 +13,9 @@ public interface Site_ManagerDAO {
 	
 	public int memberKick(String m_id);
 	
-	public List<CompanyDTO> permittedComany();
+	public List<CompanyDTO> permittedComany(String str);
 	
-	public List<CompanyDTO> unpermitComany();
+	public List<CompanyDTO> unpermitComany(String str);
 	
 	public int permit(String cm_number);
 	
