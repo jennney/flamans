@@ -58,7 +58,7 @@ public class CompanyController {
 	}
 	
 	@RequestMapping("/company_id_check.do")
-	public ModelAndView companyIdCheck(@RequestParam(value="cm_id",required=false)String cm_id){
+	public ModelAndView company_id_check(@RequestParam(value="cm_id",required=false)String cm_id){
 		String id = companyDao.company_id_check(cm_id);
 		ModelAndView mav = new ModelAndView();
 		System.out.println(cm_id);
@@ -200,5 +200,129 @@ public class CompanyController {
 	return mav;
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/**id 찾기 폼*/
+	@RequestMapping(value="/company_find_id.do", method=RequestMethod.GET)
+	public String company_find_id_form(){
+		return "company/company_find_id_form";
+	}
+	
+	/**id 찾기*/
+	@RequestMapping(value="/company_find_id.do", method=RequestMethod.POST)
+	public ModelAndView company_find_id(@RequestParam("cm_name")String cm_name,@RequestParam("cm_email")String cm_email){
+		
+		CompanyDTO dto=companyDao.company_find_id(cm_name, cm_email);
+		
+		ModelAndView mav = new ModelAndView();
+			
+		if(dto==null){
+			mav.addObject("msg", "ID가 없습니다.");
+			mav.addObject("url", "company_find_id.do");
+			mav.setViewName("company/company_msg");
+		}else{
+			mav.addObject("dto", dto);
+			mav.setViewName("company/company_find_id");
+		}
+
+		return mav;
+		
+	}
+	
+	/**pwd 찾기 폼*/
+	@RequestMapping(value="/company_find_pwd.do", method=RequestMethod.GET)
+	public String company_find_pwd_form(){
+		return "company/company_find_pwd_form";
+	}
+	
+	/**pwd 찾기*/
+	@RequestMapping(value="/company_find_pwd.do", method=RequestMethod.POST)
+	public ModelAndView company_find_pwd(@RequestParam("cm_id")String cm_id, @RequestParam("cm_email")String cm_email, 
+			@RequestParam("email_check")String email_check){
+		
+		ModelAndView mav = new ModelAndView();
+		if(email_check.equals("인증완료")){
+			mav.addObject("cm_id", cm_id);
+			mav.addObject("cm_email", cm_email);
+			mav.setViewName("company/company_update_pw");
+		}else{
+			mav.addObject("msg", "메일인증을 해주세요.");
+			mav.addObject("url", "company_find_pwd.do");
+			mav.setViewName("company/company_msg");
+		}
+		return mav;
+	}
+	
+	/**pwd 변경 폼*/
+	@RequestMapping(value="/company_update_pw.do", method=RequestMethod.GET)
+	public String company_update_pw(){
+		return "company/company_update_pw";
+	}
+	
+	
+	/**비밀번호 변경*/
+	@RequestMapping(value="/company_update_pw.do", method=RequestMethod.POST)
+	public ModelAndView company_update_pw(@RequestParam("cm_id")String cm_id, @RequestParam("cm_email")String cm_email,
+			@RequestParam("cm_pwd")String cm_pwd, @RequestParam("cm_pwd_check")String cm_pwd_check)throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(!cm_pwd_check.equals("인증완료")){
+			mav.addObject("msg", "비밀번호가 틀립니다.");
+			mav.addObject("url", "company_find_pwd.do");
+			mav.setViewName("company/company_msg");
+			
+		}else{
+			cm_pwd= getEncMD5(cm_pwd);
+					
+			int result=companyDao.company_update_pw(cm_id, cm_email, cm_pwd);
+			System.out.println("컨트롤");
+			System.out.println(cm_email);
+			System.out.println(cm_id);
+			String msg=result>0?"비밀번호가 변경되었습니다.":"비밀번호 변경 실패하였습니다.";
+			mav.addObject("msg", msg);
+			mav.addObject("url", "index.do");
+			mav.setViewName("company/company_msg");
+		}
+
+		return mav;
+	}
+	
+	// 회원정보 수정 폼
+	@RequestMapping(value = "/company_update.do", method = RequestMethod.GET)
+	public String company_updateForm() {
+		return "company/company_update";
+	}
+	
+	/**회원정보 수정*/
+	@RequestMapping(value="/company_update.do", method=RequestMethod.POST)
+	public ModelAndView company_update(CompanyDTO dto, @RequestParam("number1")String number1,
+			@RequestParam("number2")String number2, @RequestParam("kind")String kind,
+			@RequestParam("email_check")String email_check, @RequestParam("cm_email")String cm_email,
+			HttpSession session){
+		
+		String cm_id=(String)session.getAttribute("userid");
+		dto.setCm_id(cm_id);
+		String cm_tel = kind+"-"+number1+"-"+number2;
+		dto.setCm_tel(cm_tel);	
+	
+		ModelAndView mav= new ModelAndView();
+		
+		if(email_check.equals("인증완료")){
+			int result=companyDao.company_update(dto);
+			
+			String msg=result>0?"회원정보 수정 성공!":"회원정보 수정 실패!";
+			mav.addObject("msg", msg);
+			mav.addObject("url", "index.do");
+		
+			mav.setViewName("company/company_msg");
+		}else{
+			mav.addObject("msg", "이메일 인증을 해주세요.");
+			mav.addObject("url", "member_page.do");
+		
+			mav.setViewName("company/company_msg");
+		}
+				
+		return mav;
+	}
+	
 	
 }
