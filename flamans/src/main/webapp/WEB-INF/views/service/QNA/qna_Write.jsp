@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/WEB-INF/views/not_Login.jsp"%>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -158,24 +160,33 @@ h2 {
 		var qna_pwd = $(':input[name=qna_pwd]').val();
 		var qna_subject = $(':input[name=qna_subject]').val();
 		var qna_writer = $(':input[name=qna_writer]').val();
-		var qna_findname = $(':input[name=qna_findname]').val();
+		var qna_search = $(':input[name=qna_search]').val();
 		
 		if(qna_pwd=="" || qna_pwd==null){
 			window.alert('비밀번호를 입력해주세요');
 			return false;
-		}else if(qna_item=="all"){
+		}
+		if(qna_item=="all"){
 			window.alert('카테고리분류를 선택해주세요');
 			return false;
-		}else if(agree=="n"){
+		}
+		
+		if(agree=="n"){
 			window.alert('정보수집에 동의 하셔야 이용할 수 있습니다.');
 			return false;
-		}else if(qna_subject=""){
+		}
+		
+		if(qna_subject=""){
 			window.alert('제목을 입력하세요');
 			return false;
-		}else if(qna_writer=""){
+		}
+		
+		if(qna_writer=""){
 			window.alert('작성자를  입력하세요');
 			return false;
-		}else if(qna_findname=""){
+		}
+		
+		if(qna_search=""){
 			window.alert('해당 병원 또는 호텔을 검색해주세요');
 			return false;
 		}
@@ -195,7 +206,7 @@ h2 {
 <body>
 	<form name="qna_Write" action="qna_Write.do" method="post"
 		enctype="multipart/form-data" onsubmit="return check()">
-		<h2>Q&A</h2>
+		<h2>QNA</h2>
 		<table id="qna_wr">
 			<tr>
 				<th id="qna_wrth1">SUBJECT</th>

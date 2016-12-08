@@ -11,28 +11,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 import flamans.faq.model.FaqDAO;
 import flamans.faq.model.FaqDTO;
+import flamans.paging.PageModule1;
 
 @Controller
 public class FaqController {
 	
 	@Autowired
+	private PageModule1 paging1;
+	
+	@Autowired
 	private FaqDAO faqDao;
 	
 	@RequestMapping("/faq_List.do")
-	public ModelAndView faqList(){
-		List<FaqDTO> list = faqDao.faqList();
+	public ModelAndView faqList(@RequestParam(value="faq_item",required=false)String faq_item){
+		List<FaqDTO> list = faqDao.faqList(faq_item);
 		List<FaqDTO> bestList = faqDao.faqBestList();
-		List<FaqDTO> memList = faqDao.faqmemList();
-		List<FaqDTO> hosList = faqDao.faqhosList();
-		List<FaqDTO> hotList = faqDao.faqhotList();
-		List<FaqDTO> etcList = faqDao.faqetc();
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("bestList", bestList);
-		mav.addObject("memList", memList);
-		mav.addObject("hosList", hosList);
-		mav.addObject("hotList", hotList);
-		mav.addObject("etcList", etcList);
 		mav.setViewName("service/FAQ/faq_List");
 		return mav;		
 	}
@@ -91,14 +88,17 @@ public class FaqController {
 	}
 	
 	@RequestMapping(value="/faq_Find.do")
-	public ModelAndView faqFind(@RequestParam("findValue")String findValue){
-		System.out.println(findValue);
+	public ModelAndView faqFind(@RequestParam("findValue")String findValue,@RequestParam(value = "cp", defaultValue = "1") int cp){
 		List<FaqDTO> list = faqDao.faqFind(findValue);
-		int count = faqDao.faqTotal(findValue);
+		int totalCnt = faqDao.faqTotal(findValue);
+		int listSize = 5;
+		int pageSize = 5;
+		String faq_page = paging1.makePage("faq_Find.do", totalCnt, listSize, pageSize, cp,"all", findValue,"");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
-		mav.addObject("count",count);
+		mav.addObject("count",totalCnt);
 		mav.addObject("findValue",findValue);
+		mav.addObject("page",faq_page);
 		mav.setViewName("service/FAQ/faq_Find");
 		return mav;
 	}

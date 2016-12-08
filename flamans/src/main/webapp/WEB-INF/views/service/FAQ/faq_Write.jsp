@@ -41,13 +41,14 @@
 <script>
 	function check(){
 		
-		var no_subject = $(':input[name=faq_subject]').val();
-		var no_content = $(':input[name=faq_content]').val();
+		var faq_subject = $(':input[name=faq_subject]').val();
+		var faq_content = $(':input[name=faq_content]').val();
 		
 		if(faq_subject==""){
 			window.alert('제목을 입력하세요');
 			return false;
-		}else if(faq_content=""){
+		}
+		if(faq_content==""){
 			window.alert('내용을 입력하세요');
 			return false;
 		}

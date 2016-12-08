@@ -47,6 +47,7 @@
 		</div>
 		<div class="accordion_sub">${list.faq_content}</div>
 	</c:forEach>
+	${page}
 	</div>
 </body>
 </html>

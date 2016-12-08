@@ -37,7 +37,7 @@ public class QnaController {
 		int totalCnt = qnaDao.qnaTotal(qna_kind, qna_item,findKey,findValue);
 		int listSize = 5;
 		int pageSize = 5;
-		String qna_page = PageModule1.makePage("qna_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,qna_kind);
+		String qna_page = paging1.makePage("qna_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,qna_kind);
 		List<QnaDTO> qnaList = qnaDao.qnaList(qna_kind, cp, listSize, qna_item,findKey, findValue);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("qnaList", qnaList);

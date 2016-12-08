@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -44,6 +45,10 @@
 h2 {
 	text-align: center;
 }
+
+#no_listtdd{
+	height: 50px;
+}
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script>
@@ -58,6 +63,7 @@ h2 {
 </script>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 	<h2>공지사항</h2>
 	<table id="no_list">
 		<thead>
@@ -85,12 +91,14 @@ h2 {
 		</thead>
 		<tfoot>
 			<tr>
-				<td colspan="4" align="center">${no_page}</td>
-			</tr>
-			<tr>
 				<c:if test="${sessionScope.permit eq 1}">
-					<td align="right" colspan="4"><input type="button" value="글쓰기"
-						onclick="location.href='no_Write.do'"></td>
+					<td colspan="3" align="center" id="no_listtdd">${no_page}</td>
+					<td align="right" colspan="1" id="no_listtdd">
+						<button type="button" class="btn btn-default" onclick="location.href='no_Write.do'">글쓰기</button>
+					</td>
+				</c:if>
+				<c:if test="${empty sessionScope.permit}">
+					<td colspan="4" align="center" id="no_listtdd">${no_page}</td>
 				</c:if>
 			</tr>
 		</tfoot>
@@ -113,5 +121,6 @@ h2 {
 			</c:forEach>
 		</tbody>
 	</table>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

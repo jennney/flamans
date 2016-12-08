@@ -151,7 +151,7 @@ h2{
 </head>
 <body>
 <form name="qna_Update" action="qna_Update.do" method="post" onsubmit="return check()">
-<h2>Q&A</h2>
+<h2>QNA</h2>
 	<table id="qna_wr">
 		<tr>
 			<th id="qna_wrth1">SUBJECT</th>
@@ -167,7 +167,7 @@ h2{
 				<c:choose>
 					<c:when test="${qdto.qna_kind eq 'site'}">
 						<select name="qna_item" onchange="qna_select()" id="qna_item">
-							<option value="all" ${qdto.qna_item eq 'all'?selected":""}> - 전체 - </option>
+							<option value="all"${qdto.qna_item eq 'all'?"selected":""}> - 전체 - </option>
 							<option value="meminfo" ${qdto.qna_item eq 'meminfo'?"selected":""}>회원정보문의</option>
 							<option value="memgroup" ${qdto.qna_item eq 'memgroup'?"selected":""}>단체회원이용</option>
 							<option value="tieup" ${qdto.qna_item eq 'tieup'?"selected":""}>제휴문의</option>
@@ -177,20 +177,19 @@ h2{
 					</c:when>
 					<c:when test="${qdto.qna_kind eq 'hospital'}">
 						<select name="qna_item" onchange="qna_select()" id="qna_item">
-							<option value="all" ${qdto.qna_item eq 'all'?"":"selected"}> - 전체 - </option>
-							<option value="cosmetic"> ${qdto.qna_item eq 'cosmetic'?"":"selected"}성형문의</option>
-							<option value="hosbooking" ${qdto.qna_item eq 'hosbooking'?"":"selected"}>예약문의</option>
-							<option value="etc" ${qdto.qna_item eq 'etc'?"":"selected"}>기타문의</option>
+							<option value="all" ${qdto.qna_item eq 'all'?"selected":""}> - 전체 - </option>
+							<option value="cosmetic" ${qdto.qna_item eq 'cosmetic'?"selected":""}>성형문의</option>
+							<option value="hosbooking" ${qdto.qna_item eq 'hosbooking'?"selected":""}>예약문의</option>
+							<option value="etc" ${qdto.qna_item eq 'etc'?"selected":""}>기타문의</option>
 						</select>
-						&nbsp;&nbsp;&nbsp; 병원 검색 <input type="text" name="qna_findname" >
-						<input type="button" value="검색하기" onclick="qna_Search()">
+						&nbsp;&nbsp;&nbsp; 병원 검색 <input type="text" name="qna_findname" ><input type="button" value="검색하기" onclick="qna_Search()">
 					</c:when>
 					<c:when test="${qdto.qna_kind eq 'hotel'}">
 						<select name="qna_item" onchange="qna_select()" id="qna_item">
-							<option value="all" ${qdto.qna_item eq 'all'?"":"selected"}> - 전체 - </option>
-							<option value="hotbooking" ${qdto.qna_item eq 'hotbooking'?"":"selected"}>예약문의</option>
-							<option value="room" ${qdto.qna_item eq 'room'?"":"selected"}>방문의</option>
-							<option value="etc" ${qdto.qna_item eq 'etc'?"":"selected"}>기타문의</option>
+							<option value="all" ${qdto.qna_item eq 'all'?"selected":""}> - 전체 - </option>
+							<option value="hotbooking" ${qdto.qna_item eq 'hotbooking'?"selected":""}>예약문의</option>
+							<option value="room" ${qdto.qna_item eq 'room'?"selected":""}>방문의</option>
+							<option value="etc" ${qdto.qna_item eq 'etc'?"selected":""}>기타문의</option>
 						</select>
 						&nbsp;&nbsp;&nbsp; 호텔 검색 <input type="text" name="qna_findname"><input type="button" value="검색하기" >
 					</c:when>

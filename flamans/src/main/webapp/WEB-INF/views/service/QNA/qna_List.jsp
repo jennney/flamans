@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>QNA</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 #qn_list{
    width: 700px;
@@ -42,6 +43,9 @@
    height: 40px;
    text-align: left;
 }
+#qna_listtd7{
+	height: 50px;
+}
 h2{
    text-align: center;
 }
@@ -55,7 +59,8 @@ a:LINK {
 </style>
 </head>
 <body>
-<h2>Q&A</h2>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<h2>QNA</h2>
 <c:if test="${qna_kind eq 'site'}">
 <p id="p"><a href="qna_List.do?qna_kind=site">전체 보기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=meminfo">회원정보문의</a>&nbsp;&nbsp;
 |&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=memgroup">단체회원문의</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=tieup">제휴문의</a>
@@ -81,7 +86,7 @@ a:LINK {
 		         		<option value="qna_subject" ${findKey eq 'qna_subject'?"selected":""}>  제목    </option>
 		         		<option value="qna_writer" ${findKey eq 'qna_writer'?"selected":""}>  작성자   </option>
 		      		</select>
-		      		<input type="text" name="findValue" value="${findValue}">
+		      		<input type="text" name="findValue"  value="${findValue}">
 		      		<input type="hidden" name="qna_item" value="${qna_item}">
 		      		<input type="hidden" name="qna_kind" value="${qna_kind}">
 		      		<input type="submit" value="검색">
@@ -98,14 +103,16 @@ a:LINK {
 		</thead>
 		<tfoot>
 			<tr>
-		      	<td colspan="4" align="center">${qna_page}</td>
-				<td align="right"><input type="button" value="글쓰기" onclick="location.href='qna_Write.do?qna_kind=${qna_kind}'"></td>
+				<td colspan="4" align="center" id="qna_listtd7">${qna_page}</td>
+				<td align="right" id="qna_listtd7">
+					<button class="btn btn-default" onclick="location.href='qna_Write.do?qna_kind=${qna_kind}'">글쓰기</button>				
+				</td>
 		   	</tr>
 		</tfoot>
 		<tbody>
 		<c:if test="${empty qnaList}">
 			<tr>
-		   		<td colspan="4" id="qna_listtd">등록된 질문이 없습니다.</td>
+		   		<td colspan="5" id="qna_listtd">등록된 질문이 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:forEach var="qnaList" items="${qnaList}">
@@ -117,10 +124,14 @@ a:LINK {
 				</c:forEach>
 				<c:choose>
 					<c:when test="${qnaList.qna_secret eq 'open'}">
-					<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
+						<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
 					</c:when>
 					<c:when test="${qnaList.qna_secret eq 'secret'}">
-					<img src="img/neo_lock.gif" alt="자물쇠">  <a href="qna_PwdContent.do?qna_idx=${qnaList.qna_idx}&qna_kind=${qnaList.qna_kind}">${qnaList.qna_subject}</a>
+						<img src="img/neo_lock.gif" alt="자물쇠"> 
+						<a href="qna_PwdContent.do?qna_idx=${qnaList.qna_idx}&qna_kind=${qnaList.qna_kind}">${qnaList.qna_subject}</a>
+					</c:when>
+					<c:when test="${sessionScope.permit eq 1}">
+						<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
 					</c:when>
 				</c:choose>
 				</td>
@@ -131,5 +142,6 @@ a:LINK {
 		</c:forEach>
 		</tbody>
 	</table>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

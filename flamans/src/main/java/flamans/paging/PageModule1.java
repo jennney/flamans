@@ -3,10 +3,8 @@ package flamans.paging;
 public class PageModule1 {
 	
 	public static String makePage(String pagename, int totalCnt, int listSize, int pageSize, int cp,String findKey,String findValue,String kind){
-		
 		int totalPage = (totalCnt/listSize)+1;
 		if(totalCnt%listSize == 0) totalPage--;
-		
 		int userGroup = cp/pageSize;
 		if(cp%pageSize == 0) userGroup--;
 		
@@ -22,6 +20,13 @@ public class PageModule1 {
 			if(!kind.equals("") && kind != null){
 				sb.append("&qna_kind=");
 				sb.append(kind);
+				if(!findKey.equals("") && !findValue.equals("")){
+					sb.append("&findKey=");
+					sb.append(findKey);
+					sb.append("&findValue=");
+					sb.append(findValue);
+				}
+			}else{
 				if(!findKey.equals("") && !findValue.equals("")){
 					sb.append("&findKey=");
 					sb.append(findKey);
@@ -48,7 +53,15 @@ public class PageModule1 {
 					sb.append("&findValue=");
 					sb.append(findValue);
 				}
+			}else{
+				if(!findKey.equals("") && !findValue.equals("")){
+					sb.append("&findKey=");
+					sb.append(findKey);
+					sb.append("&findValue=");
+					sb.append(findValue);
+				}
 			}
+			
 			
 			sb.append("'>");
 			sb.append(i);
@@ -72,8 +85,14 @@ public class PageModule1 {
 					sb.append("&findValue=");
 					sb.append(findValue);
 				}
+			}else{
+				if(!findKey.equals("") && !findValue.equals("")){
+					sb.append("&findKey=");
+					sb.append(findKey);
+					sb.append("&findValue=");
+					sb.append(findValue);
+				}
 			}
-			
 			sb.append("'>[▶▶]</a>");
 		}
 		return sb.toString();

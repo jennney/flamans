@@ -38,7 +38,7 @@ public class NoticeController {
 		int totalCnt = noticeDao.noTotal(findKey, findValue);
 		int listSize = 5;
 		int pageSize = 5;
-		String no_page = PageModule1.makePage("no_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,"");
+		String no_page = paging1.makePage("no_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,"");
 		List<NoticeDTO> noList = noticeDao.noList(cp, listSize, findKey, findValue);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("noList", noList);
@@ -97,9 +97,6 @@ public class NoticeController {
 				}
 				ndto.setNo_file1(upload.get(0).getOriginalFilename());
 				ndto.setNo_file2(upload.get(1).getOriginalFilename());
-			}else{
-				ndto.setNo_file1("");
-				ndto.setNo_file2("");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

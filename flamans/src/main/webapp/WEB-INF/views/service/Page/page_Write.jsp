@@ -158,7 +158,7 @@ function fileUpload2(fileValue){
         		<input type="file" name="upload" id="page1" onchange="fileUpload1(this)">
         		<input type="submit" value="파일올리기">
         	</form>
-        	<img src="" id="page1Img" width="100" height="100">
+        	<img src="service_upload/page_upload/${pdto1.pm_img}" id="page1Img" width="100" height="100">
         </div>
         
         <div id="tab2" class="tab_content">
@@ -167,7 +167,7 @@ function fileUpload2(fileValue){
         		<input type="file" name="upload" id="page2" onchange="fileUpload2(this)">
         		<input type="submit" value="파일올리기">
         	</form>
-			<img src="" id="page2Img" width="100" height="100">
+			<img src="service_upload/page_upload/${pdto2.pm_img}" id="page2Img" width="100" height="100">
         </div>
     </div>
 </div>

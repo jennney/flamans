@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,7 +25,11 @@ public class PageController {
 	private PageDAO pageDao;
 
 	@RequestMapping("/page_Write.do")
-	public String page_WriteForm() {
+	public String page_WriteForm(Model model){
+		PageDTO pdto1 = pageDao.pageList("page1");
+		PageDTO pdto2 = pageDao.pageList("page2");
+		model.addAttribute("pdto1", pdto1);
+		model.addAttribute("pdto2", pdto2);
 		return "service/Page/page_Write";
 	}
 
