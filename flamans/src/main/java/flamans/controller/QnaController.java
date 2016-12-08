@@ -7,17 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import flamans.paging.PageModule;
 import flamans.paging.PageModule1;
 import flamans.qna.model.QnaDAO;
 import flamans.qna.model.QnaDTO;
@@ -41,7 +37,7 @@ public class QnaController {
 		int totalCnt = qnaDao.qnaTotal(qna_kind, qna_item,findKey,findValue);
 		int listSize = 5;
 		int pageSize = 5;
-		String qna_page = paging1.makePage("qna_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,qna_kind);
+		String qna_page = PageModule1.makePage("qna_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,qna_kind);
 		List<QnaDTO> qnaList = qnaDao.qnaList(qna_kind, cp, listSize, qna_item,findKey, findValue);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("qnaList", qnaList);

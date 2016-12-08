@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,10 +28,16 @@ public class Hotel_ManagerController {
 	private Hotel_ManagerDAO hotmDao;
 	
 	@RequestMapping("/hotelBbsList.do")
-	public ModelAndView hotelBbsList(HttpSession session){
-		List<QnaDTO> list=hotmDao.hotelBbsList((String)session.getAttribute("cm_number"));
+	public ModelAndView hotelBbsList(HttpSession session,@RequestParam(value="cp",defaultValue="1") int cp){
+		String cm_number=(String)session.getAttribute("cm_number");
+		int totalCnt=hotmDao.hotelBbsCnt(cm_number);
+		int listSize=10;
+		int pageSize=5;
+		List<QnaDTO> list=hotmDao.hotelBbsList(cm_number, cp, listSize);
+		String hotBbsPage=flamans.paging.PageModule.makePage("hotelBbsList.do", totalCnt, listSize, pageSize, cp);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
+		mav.addObject("hotBbsPage", hotBbsPage);
 		mav.setViewName("manager/hotel/hotelBbsList");
 		return mav;
 	}
@@ -107,13 +115,14 @@ public class Hotel_ManagerController {
 	
 	@RequestMapping(value="/hotelAdd.do",method=RequestMethod.POST)
 	public ModelAndView hotelAdd(@RequestParam("upload") MultipartFile upload,HotelDTO dto,HttpSession session){
+		
 		copyinto(dto.getHot_num(),upload);
 		String img=upload.getOriginalFilename();
 		dto.setHot_img(img);
 		int result=hotmDao.hotelAdd(dto);
 		String msg=result>0?"등록 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("msg", msg	);
+		mav.addObject("msg", msg);
 		mav.addObject("url", "hotelContent.do");
 		mav.setViewName("manager/Msg");
 		return mav;
@@ -137,17 +146,38 @@ public class Hotel_ManagerController {
 			sb.append("성 </option>");
 		}
 		sb.append("</select>");
+		
+		String option[]={"wifi","parking","1","2","3","4","5"};
+		String result[]=dto.getHot_option().split(",");
+		StringBuffer sb1=new StringBuffer();
+		for(int k=0;k<option.length;k++){
+			
+			sb1.append("<input type='checkbox' name='hot_option' value='");
+			sb1.append(option[k]);
+			sb1.append("'");
+			for(int j=0;j<result.length;j++){
+				if(option[k].equals(result[j])){
+					sb1.append(" checked='checked'");
+				}
+			}
+			sb1.append(">");
+			sb1.append(option[k]);
+		}
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("dto", dto);
-		mav.addObject("option", sb.toString());
+		mav.addObject("grade", sb.toString());
+		mav.addObject("options", sb1.toString());
 		mav.setViewName("manager/hotel/hotelUpdate");
 		return mav;
 	}
 	
 	@RequestMapping(value="/hotelUpdate.do", method=RequestMethod.POST)
 	public ModelAndView hotelUpdate(HotelDTO dto,@RequestParam("upload") MultipartFile upload,HttpSession session){
-		copyinto(dto.getHot_num(), upload);
-		dto.setHot_img(upload.getOriginalFilename());
+		
+		if(!upload.getOriginalFilename().equals("")){
+			copyinto(dto.getHot_num(), upload);
+			dto.setHot_img(upload.getOriginalFilename());
+		}
 		int result=hotmDao.hotelUpdate(dto);
 		String msg=result>0?"수정 성공ㅋ":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
 		ModelAndView mav=new ModelAndView();
@@ -166,6 +196,11 @@ public class Hotel_ManagerController {
 		mav.addObject("url", "hotelContent.do?cm_number="+session.getAttribute("cm_number"));
 		mav.setViewName("manager/Msg");
 		return mav;
+	}
+	
+	@RequestMapping("/hotAddrFind.do")
+	public String hotelAddrFind(){
+		return "manager/hotel/hotelAddrFind";
 	}
 	
 }

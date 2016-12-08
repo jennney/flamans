@@ -8,13 +8,15 @@ import flamans.qna.model.QnaDTO;
 
 public interface Hospital_ManagerDAO {
 
-	public List<QnaDTO> hospitalBbsList(String cm_number);
+	public int hospitalBbsCnt(String cm_number);
+	
+	public List<QnaDTO> hospitalBbsList(String cm_number,int cp, int listSize);
 	
 	public List<QnaDTO> hospitalBbsContent(int qna_idx);
 	
 	public int hospitalBbsDelete(int qna_idx);
 	
-	public QnaDTO hospitalBbsReWriteForm(String cm_number,int qna_idx);
+	public QnaDTO hospitalBbsReWriteForm(int qna_idx);
 	
 	public int hospitalBbsReWrite(QnaDTO dto);
 	
@@ -22,17 +24,21 @@ public interface Hospital_ManagerDAO {
 	
 	public int hospitalAdd(HospitalDTO dto);
 	
+	public HospitalDTO hospitalUpdateForm(String cm_number);
+	
+	public int hospitalUpdate(HospitalDTO dto);
+	
 	public int hospitalDelete(String hos_num);
 	
 	public List<DoctorDTO> doctorList(String hos_num);
 	
 	public int doctorAdd(DoctorDTO dto);
 	
-	public List<DoctorDTO> doctorContent(int doc_num, String hos_num);
+	public List<DoctorDTO> doctorContent(int doc_num);
 	
-	public DoctorDTO doctorUpdateForm(String doc_name,String hos_num);
+	public DoctorDTO doctorUpdateForm(int doc_num);
 	
 	public int doctorUpdate(DoctorDTO dto);
 	
-	public int doctorDelete(String doc_name,String hos_num);
+	public int doctorDelete(int doc_num);
 }

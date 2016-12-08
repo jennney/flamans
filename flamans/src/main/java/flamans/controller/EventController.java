@@ -4,23 +4,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
-import java.util.StringTokenizer;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.ModelAndView;
 
 import flamans.paging.PageModule;
@@ -59,7 +50,7 @@ public class EventController {
 		int listSize = 5;
 		int pageSize = 5;
 		ModelAndView mav = new ModelAndView();
-		String pageStr = paging.makePage("event_user_list.do", totalCnt, listSize, pageSize, cp);
+		String pageStr = PageModule.makePage("event_user_list.do", totalCnt, listSize, pageSize, cp);
 		List<EventDTO> list = eventDao.event_user_list(cp, listSize, e_item);
 		for (int i = 0; i < list.size(); i++) {
 			String endDate_s = list.get(i).getE_end();
@@ -132,7 +123,7 @@ public class EventController {
 		int totalCnt = eventDao.getTotalCnt("", 0);
 		int listSize = 5;
 		int pageSize = 5;
-		String pageStr = paging.makePage("event_list.do", totalCnt, listSize, pageSize, cp);
+		String pageStr = PageModule.makePage("event_list.do", totalCnt, listSize, pageSize, cp);
 		List<EventDTO> list = eventDao.event_list(cp, listSize);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
@@ -200,7 +191,7 @@ public class EventController {
 		int totalCnt = eventDao.getTotalCnt(e_name, 0);
 		int listSize = 5;
 		int pageSize = 5;
-		String pageStr = paging.makePage("event_co_list.do", totalCnt, listSize, pageSize, cp);
+		String pageStr = PageModule.makePage("event_co_list.do", totalCnt, listSize, pageSize, cp);
 		List<EventDTO> list = eventDao.event_co_list(cp, listSize, e_name);
 		ModelAndView mav = new ModelAndView();
 

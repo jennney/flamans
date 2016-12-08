@@ -52,7 +52,6 @@ public class Site_ManagerController {
 					
 	@RequestMapping("/permittedHotel.do")
 	public ModelAndView permittedHotel(@RequestParam("str") String str){
-		System.out.println(str);
 		List<CompanyDTO> list=siteDao.permittedComany(str);
 		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
 		return mav;

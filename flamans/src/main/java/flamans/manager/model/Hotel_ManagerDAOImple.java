@@ -1,5 +1,6 @@
 package flamans.manager.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,9 +16,20 @@ public class Hotel_ManagerDAOImple implements Hotel_ManagerDAO {
 		super();
 		this.sqlMap = sqlMap;
 	}
+	
+	public int hotelBbsCnt(String cm_number) {
+		int count=sqlMap.selectOne("companyBbsCnt", cm_number);
+		return count;
+	}
 
-	public List<QnaDTO> hotelBbsList(String qna_findname) {
-		List<QnaDTO> list=sqlMap.selectList("hotelBbsList", qna_findname);
+	public List<QnaDTO> hotelBbsList(String qna_findname,int cp,int listSize) {
+		int start=(cp-1)*listSize+1 ;
+		int end=cp*listSize;
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("qna_findname", qna_findname);
+		map.put("start", start);
+		map.put("end", end);
+		List<QnaDTO> list=sqlMap.selectList("companyBbsList", map);
 		return list;
 	}
 

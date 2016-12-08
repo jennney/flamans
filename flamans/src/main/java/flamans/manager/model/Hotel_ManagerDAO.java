@@ -7,7 +7,9 @@ import flamans.qna.model.QnaDTO;
 
 public interface Hotel_ManagerDAO {
 	
-	public List<QnaDTO> hotelBbsList(String qna_findname);
+	public int hotelBbsCnt(String cm_number);
+	
+	public List<QnaDTO> hotelBbsList(String qna_findname,int cp,int listSize);
 	
 	public List<QnaDTO> hotelBbsContent(int qna_idx);
 	

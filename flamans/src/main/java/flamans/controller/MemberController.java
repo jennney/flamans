@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import flamans.company.model.CompanyDAO;
-import flamans.company.model.CompanyDTO;
 import flamans.member.model.*;
 import flamans.qna.model.*;
 
@@ -101,7 +99,7 @@ public class MemberController {
 		byte[] msgStr = mDigest.digest() ;
 		
 		for(int i=0; i < msgStr.length; i++){
-			String tmpEncTxt = Integer.toHexString((int)msgStr[i] & 0x00ff) ;
+			String tmpEncTxt = Integer.toHexString(msgStr[i] & 0x00ff) ;
 			sbuf.append(tmpEncTxt) ;
 		}
 		

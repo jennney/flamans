@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import flamans.notice.model.NoticeDAO;
 import flamans.notice.model.NoticeDTO;
-import flamans.paging.PageModule;
 import flamans.paging.PageModule1;
 
 @Controller
@@ -39,7 +38,7 @@ public class NoticeController {
 		int totalCnt = noticeDao.noTotal(findKey, findValue);
 		int listSize = 5;
 		int pageSize = 5;
-		String no_page = paging1.makePage("no_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,"");
+		String no_page = PageModule1.makePage("no_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,"");
 		List<NoticeDTO> noList = noticeDao.noList(cp, listSize, findKey, findValue);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("noList", noList);
