@@ -39,7 +39,15 @@ body{
 	<a href="page_Write.do">의료사고대처요령/출입국절차 수정</a>
 	<br>
 	<a href="faq_List.do">FAQ</a>
-
+	<br>
+	<a href="bBbook_list.do">관리자-예약요청리스트</a>
+	<br>
+		<c:url var="BbookUrl" value="bBook.do">
+		<c:param name="hos_num" value="B5042377484"/>
+		<c:param name="doc_num" value="1"/>
+	</c:url>
+	<a href="${BbookUrl}">병원 예약</a>
+	<br>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

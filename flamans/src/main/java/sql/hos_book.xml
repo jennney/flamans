@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="flamans.Bbook">
+	<select id="findDoc" parameterType="Map" resultType="flamans.Bbook.model.DoctorDTO">
+	select 
+		c.cm_name, h.*, m.*
+	from 
+		fm_company c, fm_doctor h, fm_member m
+	where 
+		c.cm_number=#{hos_num} and m_id=#{m_id} and h.doc_num=#{doc_num}
+	</select> 
+	
+	<select id="docAll" parameterType="String" resultType="flamans.Bbook.model.DoctorDTO">
+	select *
+	from 
+		fm_doctor
+	where 
+		hos_num=#{hos_num}
+	</select>
+	
+	<select id="docInfo" parameterType="Map" resultType="flamans.Bbook.model.DoctorDTO">
+	select *
+	from 
+		fm_doctor
+	where 
+		hos_num=#{hos_num} and doc_num=#{doc_num}
+	</select>
+	
+	<insert id="hos_book" parameterType="flamans.Bbook.model.BbookDTO">
+	insert into
+		fm_hos_book
+	values(
+		#{hos_num},
+		#{name},
+		#{sex},
+		#{age},
+		#{nationality},
+		#{surgery},
+		#{etc},
+		fm_hos_book_bookingnum.nextval,
+		#{bookingdate},
+		sysdate,
+		0,
+		#{doc_num},
+		#{hos_Bid}
+		)	
+	</insert>
+	
+	<select id="bBbook_list" parameterType="Map" resultType="flamans.Bbook.model.BbookDTO">
+		select * 
+		from
+			 fm_hos_book
+		where hos_num=#{hos_num} and bookingdate like ''||#{bookingdate}||'%'
+		order by 
+			bookingdate
+	</select>
+
+	<update id="bBook_request" parameterType="Map">
+		update 
+			fm_hos_book
+		set
+			permit=1
+		where 	
+			bookingnum=#{bookingnum} and hos_num=#{hos_num}
+	</update>
+	
+	<delete id="bBook_del" parameterType="Map">
+		delete from fm_hos_book
+		where hos_num=#{hos_num} and bookingnum=#{bookingnum}
+	</delete>
+	
+	<select id="bBook_content" parameterType="int" resultType="flamans.Bbook.model.BbookDTO">
+		select 
+			b.* , c.cm_name, d.doc_img, d.doc_career, d.doc_name
+		from 
+			fm_hos_book b, fm_doctor d, fm_company c
+		where 
+			b.hos_num=c.cm_number and d.doc_num=b.doc_num and bookingnum=#{bookingnum}
+	</select>
+	
+	<update id="bBook_reWirte" parameterType="Map">
+	update
+		fm_hos_book
+	set
+		name=#{dto.name},
+		sex=#{dto.sex},
+		age=#{dto.age},
+		nationality=#{dto.nationality},
+		surgery=#{dto.surgery},
+		etc=#{dto.etc},
+		bookingdate=#{dto.bookingdate},
+		bwdate=sysdate,
+		doc_num=#{dto.doc_num}
+	where
+		bookingnum=#{dto.bookingnum} and hos_num=#{hos_num}
+	</update>
+	
+	<select id="calendar"  parameterType="Map" resultType="flamans.Bbook.model.BbookDTO">
+		select bookingdate
+		from
+			fm_hos_book
+		where 
+			hos_num=#{hos_num} and bookingdate like ''||#{date}||'%'
+	</select>
+</mapper>
