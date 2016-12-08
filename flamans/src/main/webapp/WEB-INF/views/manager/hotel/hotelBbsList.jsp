@@ -20,7 +20,7 @@
 	</thead>
 	<tfoot>
 		<tr>
-			<td colspan="4"> 페이징 부분 </td>
+			<td colspan="4" align="center"> ${hotBbsPage } </td>
 		</tr>
 	</tfoot>
 	<tbody>

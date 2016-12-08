@@ -21,13 +21,11 @@
 		<label>진료 과목 : </label> ${dto.doc_kind }<br>
 	</fieldset>
 	<c:url var="doctorUpdateUrl" value="doctorUpdate.do">
-		<c:param name="hos_num">${dto.hos_num }</c:param>
-		<c:param name="doc_name">${dto.doc_name }</c:param>
+		<c:param name="doc_num">${dto.doc_num }</c:param>
 	</c:url>
 	<a href="${doctorUpdateUrl }">수정하기</a>
 	<c:url var="doctorDeleteUrl" value="doctorDelete.do">
-		<c:param name="hos_num">${dto.hos_num }</c:param>
-		<c:param name="doc_name">${dto.doc_name }</c:param>
+		<c:param name="doc_num">${dto.doc_num }</c:param>
 	</c:url>
 	<a href="${doctorDeleteUrl }">삭제하기</a>
 </c:forEach>

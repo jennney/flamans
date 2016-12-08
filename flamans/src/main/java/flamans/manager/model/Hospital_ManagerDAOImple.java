@@ -17,14 +17,26 @@ public class Hospital_ManagerDAOImple implements Hospital_ManagerDAO {
 		super();
 		this.sqlMap = sqlMap;
 	}
+	
+	public int hospitalBbsCnt(String cm_number) {
+		int count=sqlMap.selectOne("companyBbsCnt", cm_number);
+		return count;
+	}
 
-	public List<QnaDTO> hospitalBbsList(String cm_number) {
-		List<QnaDTO> list=sqlMap.selectList("hospitalBbsList", cm_number);
+	public List<QnaDTO> hospitalBbsList(String cm_number, int cp, int listSize) {
+		int start=(cp-1)*listSize+1;
+		int end=cp*listSize;
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("qna_findname", cm_number);
+		map.put("start", start);
+		map.put("end", end);
+		List<QnaDTO> list=sqlMap.selectList("companyBbsList", map);
 		return list;
 	}
 	
 	public List<QnaDTO> hospitalBbsContent(int qna_idx) {
-		List<QnaDTO> list=sqlMap.selectList("hospitalBbsContent",qna_idx);
+		List<QnaDTO> list=sqlMap.selectList("hospitalBbsContent", qna_idx);
+		sqlMap.update("qna_Readnum",qna_idx);
 		return list;
 	}
 	
@@ -33,11 +45,8 @@ public class Hospital_ManagerDAOImple implements Hospital_ManagerDAO {
 		return count;
 	}
 
-	public QnaDTO hospitalBbsReWriteForm(String cm_number, int qna_idx) {
-		HashMap<String, Object> map=new HashMap<String, Object>();
-		map.put("cm_number", cm_number);
-		map.put("qna_idx", qna_idx);
-		QnaDTO dto=sqlMap.selectOne("hospitalBbsContent", map);
+	public QnaDTO hospitalBbsReWriteForm(int qna_idx) {
+		QnaDTO dto=sqlMap.selectOne("hospitalBbsContent", qna_idx);
 		return dto;
 	}
 	
@@ -56,6 +65,16 @@ public class Hospital_ManagerDAOImple implements Hospital_ManagerDAO {
 		return count;
 	}
 	
+	public HospitalDTO hospitalUpdateForm(String cm_number) {
+		HospitalDTO dto=sqlMap.selectOne("hospitalContent", cm_number);
+		return dto;
+	}
+	
+	public int hospitalUpdate(HospitalDTO dto) {
+		int count=sqlMap.update("hospitalUpdate", dto);
+		return count;
+	}
+	
 	public int hospitalDelete(String hos_num) {
 		int count=sqlMap.delete("hospitalDelete", hos_num);
 		return count;
@@ -71,19 +90,13 @@ public class Hospital_ManagerDAOImple implements Hospital_ManagerDAO {
 		return count;
 	}
 	
-	public List<DoctorDTO> doctorContent(int doc_num,String hos_num) {
-		HashMap<String, Object> map=new HashMap<String, Object>();
-		map.put("doc_num", doc_num);
-		map.put("hos_num", hos_num);
-		List<DoctorDTO> list=sqlMap.selectList("doctorContent", map);
+	public List<DoctorDTO> doctorContent(int doc_num) {
+		List<DoctorDTO> list=sqlMap.selectList("doctorContent", doc_num);
 		return list;
 	}
 	
-	public DoctorDTO doctorUpdateForm(String doc_name, String hos_num) {
-		HashMap<String, Object> map=new HashMap<String, Object>();
-		map.put("doc_name", doc_name);
-		map.put("hos_num", hos_num);
-		DoctorDTO dto=sqlMap.selectOne("doctorContent", map);
+	public DoctorDTO doctorUpdateForm(int doc_num){
+		DoctorDTO dto=sqlMap.selectOne("doctorContent", doc_num);
 		return dto;
 	}
 	
@@ -92,11 +105,8 @@ public class Hospital_ManagerDAOImple implements Hospital_ManagerDAO {
 		return count;
 	}
 
-	public int doctorDelete(String doc_name, String hos_num) {
-		HashMap<String, Object> map=new HashMap<String, Object>();
-		map.put("doc_name", doc_name);
-		map.put("hos_num", hos_num);
-		int count=sqlMap.delete("doctorDelete", map);
+	public int doctorDelete(int doc_num){
+		int count=sqlMap.delete("doctorDelete", doc_num);
 		return count;
 	}
 }

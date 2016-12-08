@@ -196,12 +196,12 @@
 		#{cm_number} 
 	</select>
 
-	<select parameterType="Integer" resultType="flamans.qna.model.QnaDTO" id="hospitalBbsContent"> 
+	<select id="hospitalBbsContent" parameterType="Integer" resultType="flamans.qna.model.QnaDTO">
 		select * 
 			from 
 		fm_qna 
 			where qna_idx = 
-		#{qna_idx} 
+		#{qna_idx}
 	</select>
 	
 	<delete parameterType="Integer" id="hospitalBbsDelete"> 
@@ -213,23 +213,33 @@
 	</delete>
 	
 	<insert parameterType="flamans.qna.model.QnaDTO" id="hospitalBbsReWrite"> 
-		insert into 
-			fm_qna 
-		values( 
-			#{qna_writer}, 
-		#{qna_subject}, 
-			#{qna_content}, 
-		sysdate, 
-			null, 
-		null, 
-			null, 
-		#{qna_findname}, 
-			0, 
-				0, 
-			0, 
-		0, 
-			#{qna_idx}, 
-		#{qna_kind} ) 
+		insert into
+			fm_qna
+		values(
+			#{qna_writer},
+		#{qna_subject},
+			#{qna_content},
+		sysdate,
+			#{qna_item},
+		#{qna_pwd},
+			#{qna_secret},
+		#{qna_findname},
+			0,
+		#{ref},
+			0,0,
+		fm_qna_idx.nextval,
+			#{qna_kind})
 	</insert>
+	
+	<select id="companyBbsCnt" parameterType="String" resultType="Integer">
+		select count(*) from fm_qna where qna_findname=#{qna_findname}
+	</select>
+	
+	<select id="companyBbsList" parameterType="Map" resultType="flamans.qna.model.QnaDTO">
+		select * from
+		(select rownum as rnum,a.* from
+		(select * from fm_qna where qna_findname = #{qna_findname} order by ref desc, sunbun asc) a) b
+		where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+	</select>
 	
 </mapper>

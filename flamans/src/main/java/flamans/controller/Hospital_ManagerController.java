@@ -30,29 +30,34 @@ public class Hospital_ManagerController {
 	private Hospital_ManagerDAO hosmDao;
 	
 	@RequestMapping("/hospitalBbsList.do")
-	public ModelAndView hospitalBbsList(HttpSession session){
-		
-		List<QnaDTO> list=hosmDao.hospitalBbsList((String)session.getAttribute("cm_number"));
+	public ModelAndView hospitalBbsList(HttpSession session,@RequestParam(value = "cp", defaultValue = "1") int cp){
+		String cm_number=(String)session.getAttribute("cm_number");
+		int totalCnt=hosmDao.hospitalBbsCnt(cm_number);
+		int listSize=10;
+		int pageSize=5;
+		String hosBbsPage=flamans.paging.PageModule.makePage("hospitalBbsList.do", totalCnt, listSize, pageSize, cp);
+		List<QnaDTO> list=hosmDao.hospitalBbsList(cm_number, cp, listSize);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
+		mav.addObject("hosBbsPage", hosBbsPage);
 		mav.setViewName("manager/hospital/hospitalBbsList");
 		return mav;
 	}
+	
 	
 	@RequestMapping("/hospitalBbsContent.do")
 	public ModelAndView hospitalBbsContent(@RequestParam("qna_idx") int qna_idx){
 		List<QnaDTO> list=hosmDao.hospitalBbsContent(qna_idx);
 		ModelAndView mav=new ModelAndView();
 		if(list==null||list.size()==0){
-			mav.addObject("msg","삭제된 게시글이거나 잘못된 접근입니다.");
-			mav.addObject("url", "hosptalBbsList.do");
+			mav.addObject("msg", "삭제된 게시글이거나 잘못된 접근입니다.");
+			mav.addObject("url","hospitalBbsList.do");
 			mav.setViewName("manager/Msg");
-			return mav;
 		}else{
 			mav.addObject("list", list);
 			mav.setViewName("manager/hospital/hospitalBbsContent");
-			return mav;
 		}
+		return mav;
 	}
 	
 	@RequestMapping("/hospitalBbsDelete")
@@ -60,15 +65,15 @@ public class Hospital_ManagerController {
 		int result=hosmDao.hospitalBbsDelete(qna_idx);
 		String msg=result>0?"삭제 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("msg", msg	);
+		mav.addObject("msg", msg);
 		mav.addObject("url", "hospitalBbsList.do");
 		mav.setViewName("manager/Msg");
 		return mav;
 	}
 	
 	@RequestMapping(value="/hospitalBbsReWrite.do", method=RequestMethod.GET)
-	public ModelAndView hospitalBbsReWriteForm(@RequestParam("cm_number") String cm_number,@RequestParam("qna_idx") int qna_idx){
-		QnaDTO dto=hosmDao.hospitalBbsReWriteForm(cm_number, qna_idx);
+	public ModelAndView hospitalBbsReWriteForm(@RequestParam("qna_idx") int qna_idx){
+		QnaDTO dto=hosmDao.hospitalBbsReWriteForm(qna_idx);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.setViewName("manager/hospital/hospitalBbsReWrite");
@@ -81,7 +86,7 @@ public class Hospital_ManagerController {
 		String msg=result>0?"일단 등록 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url", "hospitalBbsLIst.do");
+		mav.addObject("url", "hospitalBbsList.do");
 		mav.setViewName("manager/Msg");
 		return mav;
 		
@@ -119,6 +124,31 @@ public class Hospital_ManagerController {
 		dto.setHos_img(upload.getOriginalFilename());
 		int result=hosmDao.hospitalAdd(dto);
 		String msg=result>0?"등록 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "hospitalContent.do");
+		mav.setViewName("manager/Msg");
+		return mav;
+	}
+	
+	@RequestMapping(value="/hospitalUpdate.do",method=RequestMethod.GET)
+	public ModelAndView hospitalUpdateForm(HttpSession session){
+		String cm_number=(String)session.getAttribute("cm_number");
+		HospitalDTO dto=hosmDao.hospitalUpdateForm(cm_number);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto", dto);
+		mav.setViewName("manager/hospital/hospitalUpdate");
+		return mav;
+	}
+	
+	@RequestMapping(value="/hospitalUpdate.do",method=RequestMethod.POST)
+	public ModelAndView hospitalUpdate(@RequestParam("upload") MultipartFile upload,HospitalDTO dto){
+		if(!upload.getOriginalFilename().equals("")){
+			copyinto(dto.getHos_num(), upload);
+			dto.setHos_img(upload.getOriginalFilename());
+		}
+		int result=hosmDao.hospitalUpdate(dto);
+		String msg=result>0?"수정 성공":"수정 실패 ㅠ";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "hospitalContent.do");
@@ -165,8 +195,8 @@ public class Hospital_ManagerController {
 	}
 	
 	@RequestMapping("/doctorContent.do")
-	public ModelAndView doctorContent(@RequestParam("doc_num") int doc_num,@RequestParam("hos_num") String hos_num){
-		List<DoctorDTO> list=hosmDao.doctorContent(doc_num, hos_num);
+	public ModelAndView doctorContent(@RequestParam("doc_num") int doc_num){
+		List<DoctorDTO> list=hosmDao.doctorContent(doc_num);
 		ModelAndView mav=new ModelAndView();
 		if(list==null||list.size()==0){
 			mav.addObject("msg", "삭제된 의사 정보 이거나 잘못된 접근입니다.");
@@ -180,8 +210,8 @@ public class Hospital_ManagerController {
 	}
 	
 	@RequestMapping(value="/doctorUpdate.do",method=RequestMethod.GET)
-	public ModelAndView doctorUpdateForm(@RequestParam("doc_name") String doc_name,@RequestParam("hos_num") String hos_num){
-		DoctorDTO dto=hosmDao.doctorUpdateForm(doc_name, hos_num);
+	public ModelAndView doctorUpdateForm(@RequestParam("doc_num") int doc_num){
+		DoctorDTO dto=hosmDao.doctorUpdateForm(doc_num);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.setViewName("manager/hospital/doctorUpdate");
@@ -204,13 +234,18 @@ public class Hospital_ManagerController {
 	}
 	
 	@RequestMapping("/doctorDelete.do")
-	public ModelAndView doctorDelete(@RequestParam("doc_name") String doc_name,@RequestParam("hos_num") String hos_num){
-		int result=hosmDao.doctorDelete(doc_name, hos_num);
+	public ModelAndView doctorDelete(@RequestParam("doc_num") int doc_num){
+		int result=hosmDao.doctorDelete(doc_num);
 		String msg=result>0?"삭제 성공":"삭제 실패 ㅠ";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "doctorList.do");
 		mav.setViewName("manager/Msg");
 		return mav;
+	}
+	
+	@RequestMapping("/addrFind.do")
+	public String addrFindForm(){
+		return "manager/hospital/addrFind";
 	}
 }

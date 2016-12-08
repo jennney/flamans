@@ -92,4 +92,5 @@
 	<delete id="memberKick" parameterType="String">
 		delete from fm_member where m_id=#{m_id}
 	</delete>
+	
 </mapper>

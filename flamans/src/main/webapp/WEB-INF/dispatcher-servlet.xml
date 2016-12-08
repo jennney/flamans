@@ -99,8 +99,12 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
-	
 	<bean id="BbookDao" class="flamans.Bbook.model.BbookDAOImple">
+		<constructor-arg>
+				<ref bean="sqlSessionTemplate"/>
+			</constructor-arg>
+		</bean>
+	<bean id="Hot_bookDao" class="flamans.hot.book.model.Hot_bookDAOImple">
 		<constructor-arg>
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>

@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 public class QnaDAOImple implements QnaDAO {
 	

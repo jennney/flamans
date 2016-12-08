@@ -22,6 +22,18 @@
 			) 
 	</insert>
 	
+	<update id="hospitalUpdate" parameterType="flamans.hos_find.model.HospitalDTO">
+		update fm_hospital
+			set
+				hos_name=#{hos_name},
+				hos_addr=#{hos_addr},
+				hos_img=#{hos_img},
+				hos_content=#{hos_content},
+				hos_mapinfo=#{hos_mapinfo}
+			where
+				hos_num=#{hos_num}
+	</update>
+	
 	<delete parameterType="String" id="hospitalDelete"> 
 		delete from fm_hospital where hos_num=#{hos_num} 
 	</delete>
@@ -40,13 +52,13 @@
 			#{doc_level}, 
 			#{doc_career}, 
 			#{doc_etc}, 
-			#{doc_kind}.
+			#{doc_kind},
 			fm_doctor_doc_num.nextval
 		) 
 	</insert>
 	
-	<select id="doctorContent" parameterType="Map" resultType="flamans.hos_find.model.DoctorDTO">
-		select * from fm_doctor where doc_num=#{doc_num} and hos_num=#{hos_num}
+	<select id="doctorContent" parameterType="Integer" resultType="flamans.hos_find.model.DoctorDTO">
+		select * from fm_doctor where doc_num=#{doc_num}
 	</select>
 	
 	<update id="doctorUpdate" parameterType="flamans.hos_find.model.DoctorDTO">
@@ -62,19 +74,8 @@
 				doc_name=#{doc_name} 
 	</update>
 	
-	<delete id="doctorDelete" parameterType="Map">
-		delete from fm_doctor where hos_num=#{hos_num} and doc_name=#{doc_name}
+	<delete id="doctorDelete" parameterType="Integer">
+		delete from fm_doctor where doc_num=#{doc_num}
 	</delete>
 	
-	<select id="permittedHospital" resultType="flamans.company.model.CompanyDTO">
-		select * from fm_company where cm_permit = 1 and cm_number like 'B%' 
-	</select>
-	
-	<select id="unpermitHospital" resultType="flamans.company.model.CompanyDTO">
-		select * from fm_company where cm_permit = 0 and cm_number like 'B%'
-	</select>
-	
-	<delete id="hospitalOut" parameterType="String">
-		delete from fm_company where cm_number=#{cm_number}
-	</delete>
 </mapper>

@@ -2,7 +2,6 @@ package flamans.member.model;
 
 import java.util.List;
 
-import flamans.member.model.*;
 import flamans.qna.model.*;
 
 public interface MemberDAO {

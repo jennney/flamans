@@ -45,10 +45,6 @@
 			hot_num=#{hot_num} 
 	</update>
 	
-	<select parameterType="Integer" resultType="flamans.qna.model.QnaDTO" id="hotelBbsContent"> 
-		select * from fm_qna where qna_idx=#{qna_idx} 
-	</select>
-	
 	
 	<update parameterType="Map" id="updateSun">
 		update fm_qna set sunbun=sunbun+1 whree ref=${ref} and sunbun
@@ -58,10 +54,6 @@
 	<update parameterType="Integer" id="readnum"> 
 		update fm_qna set readnum=readnum+1 where qna_idx=#{qna_idx} 
 	</update>
-	
-	<delete parameterType="Integer" id="hotelBbsDelete"> 
-		delete from fm_qna where qna_idx=#{qnd_idx} 
-	</delete>
 	
 	<delete parameterType="String" id="hotelDelete"> 
 		delete from fm_hotel where hot_num=#{hot_num} 

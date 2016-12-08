@@ -12,7 +12,7 @@
 <h3>호텔 이름  : ${sessionScope.cm_name }</h3>
 <ul>
 	<li><a href="hotelBbsList.do">고객 센터 내역 보기</a></li>
-	<li><a href="#">호텔 정보 등록 하기</a></li>
+	<li><a href="hotelContent.do">호텔 정보 등록 하기</a></li>
 	<li><a href="event_co_list.do?e_name=${sessionScope.userHid}">호텔 이벤트 리스트</a></li>
 </ul>
 </body>

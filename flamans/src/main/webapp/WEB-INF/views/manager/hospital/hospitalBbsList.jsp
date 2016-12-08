@@ -22,7 +22,7 @@
 	</thead>
 	<tfoot>
 		<tr>
-			<td colspan="6"> 페이징 ? </td>
+			<td colspan="6" align="center"> ${hosBbsPage } </td>
 		</tr>
 	</tfoot>
 	<tbody>
