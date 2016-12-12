@@ -35,7 +35,7 @@ public class QnaController {
 			@RequestParam(value = "findKey", required = false, defaultValue = "") String findKey,
 			@RequestParam(value = "findValue", required = false, defaultValue = "") String findValue) {
 		int totalCnt = qnaDao.qnaTotal(qna_kind, qna_item,findKey,findValue);
-		int listSize = 5;
+		int listSize = 10;
 		int pageSize = 5;
 		String qna_page = paging1.makePage("qna_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,qna_kind);
 		List<QnaDTO> qnaList = qnaDao.qnaList(qna_kind, cp, listSize, qna_item,findKey, findValue);

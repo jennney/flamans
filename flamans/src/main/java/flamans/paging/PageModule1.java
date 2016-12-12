@@ -35,7 +35,7 @@ public class PageModule1 {
 				}
 			}
 			
-			sb.append("'>[◀◀]</a>");
+			sb.append("'> << Previous Page </a>");
 		}
 		
 		for(int i=(userGroup*pageSize+1);i<=(userGroup*pageSize+pageSize);i++){
@@ -93,7 +93,7 @@ public class PageModule1 {
 					sb.append(findValue);
 				}
 			}
-			sb.append("'>[▶▶]</a>");
+			sb.append("'> Next Page >> </a>");
 		}
 		return sb.toString();
 	}

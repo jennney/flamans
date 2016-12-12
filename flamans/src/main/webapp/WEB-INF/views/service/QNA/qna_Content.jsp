@@ -16,6 +16,7 @@
 	border-top: 3px solid #BDBDBD;
 	border-bottom: 3px solid #BDBDBD;
 	height: 30px;
+	
 }
 #qna_conth2,#qna_contd2{
 	border-bottom: 3px solid #BDBDBD;
@@ -82,7 +83,11 @@ function submit(form,url){
 </script>
 </head>
 <body>
-<h2>QNA</h2>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
+	<div class="center">
+	   <h2>Q&amp;A</h2>
+	</div>
 <form name="qna_Update" action="qna_Update.do" onsubmit="return check()">
 	<table id="qna_con">
 		<tr>
@@ -144,5 +149,7 @@ function submit(form,url){
 	</table>
 </form>
 </c:if>
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

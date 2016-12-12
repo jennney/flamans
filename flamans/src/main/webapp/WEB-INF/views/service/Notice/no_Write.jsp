@@ -87,8 +87,12 @@ h2{
 </script>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
+<div class="center">
+   <h2>공지사항</h2>
+</div>
 <form name="no_Write" action="no_Write.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
-<h2> 공지사항 </h2>
 	<table id="no_wr">
 		<tr>
 			<th id="no_wrth1">SUBJECT</th>
@@ -111,5 +115,7 @@ h2{
 		</tr>
 	</table>
 </form>
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

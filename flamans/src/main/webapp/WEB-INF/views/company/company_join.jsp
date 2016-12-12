@@ -105,7 +105,13 @@
 </script>
 </head>
 <body>
-	<h2>업체 회원가입</h2>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
+<div class="container">
+	<div class="center">
+	   <h2>회원가입</h2>
+	</div>
+</div>
 	<form name="company_join" action="company_join.do" method="post">
 		<table>
 			<tr>
@@ -168,5 +174,7 @@
 				value="가입">
 		</p>
 	</form>
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

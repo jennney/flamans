@@ -25,10 +25,10 @@
 <title>[name] 호텔 리스트</title>
 </head>
 <body>
-
+<%@ include file="../header.jsp" %>
 	<div align="center" style="border: 7px solid maroon; height: 2100px;">
 
-		<%@ include file="../header.jsp" %>
+		
 		
 		<table style="margin: 0px auto;">
 			<tr>
@@ -81,5 +81,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

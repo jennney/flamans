@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항수정</title>
 <style>
 #no_up{
 	width: 700px;
@@ -87,7 +87,11 @@ h2{
 </script>
 </head>
 <body>
-<h2>공지사항</h2>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
+<div class="center">
+   <h2>공지사항</h2>
+</div>
 <form name="no_Update" action="no_Update.do" method="post">
 	<table id="no_up">
 		<tr>
@@ -113,5 +117,7 @@ h2{
 		</tr>
 	</table>
 </form>
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

@@ -1,31 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=OUGW3V7HgY7vOawcMKdm"></script>
-<script>
-window.onload = function(){
-	var map = new naver.maps.Map('map', {
-	    center: new naver.maps.LatLng(37.50269,127.0864276),
-	    zoom: 10
-	});
-
-	var marker = new naver.maps.Marker({
-	    position: new naver.maps.LatLng(37.50269,127.0864276),
-	    map: map
-	});	
-}
-	
-</script>
+<title>MyPage</title>
+<link href="css/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/css/sb-admin.css" rel="stylesheet">
+<!-- Morris Charts CSS -->
+<link href="css/css/plugins/morris.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
 </head>
 <body>
-<ul class="tab" id="tab">
-	<li>A</li>
-	<li>B</li>
-	<li>c</li>
-</ul>
+
+	<div id="wrapper">
+		 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
+		<div id="page-wrapper">
+			<div>
+				<table border="1" cellspacing="1" height="800px">
+					<tr>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+	<!-- /#wrapper -->
+	<!-- jQuery -->
+	<script src="js/js/jquery.js"></script>
+	<script src="js/js/bootstrap.min.js"></script>
+
 </body>
 </html>

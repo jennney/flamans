@@ -195,18 +195,18 @@ h2 {
 	function cbcheck(){
 		window.alert('정부수집에 동의하지 않으면 서비스 이용에 제한이 있습니다.');
 	}
-	
-	function qna_Search(){
-		var qna_findname = $(':input[name=qna_findname]').val();
-		var url = 'qna_Search.do?searchKey='+qna_findname;
-		window.open(url,'qna_Search','width=450 ,height=500,top=300,left=300');
-	}
 </script>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
+
+	<div class="center">
+	   <h2>Q&amp;A</h2>
+	</div>
+
 	<form name="qna_Write" action="qna_Write.do" method="post"
 		enctype="multipart/form-data" onsubmit="return check()">
-		<h2>QNA</h2>
 		<table id="qna_wr">
 			<tr>
 				<th id="qna_wrth1">SUBJECT</th>
@@ -250,7 +250,7 @@ h2 {
 								<option value="etc">기타문의</option>
 							</select>
 						&nbsp;&nbsp;&nbsp; 호텔 검색 <input type="text" name="qna_findname">
-							<input type="button" value="검색하기" onclick="qna_Search()">
+							<input type="button" value="검색하기" onclick="javascript:window.open('search.do','search','width=450 ,height=150,top=300,left=300')">
 						</c:when>
 					</c:choose></td>
 			</tr>
@@ -294,5 +294,7 @@ h2 {
 			</tr>
 		</table>
 	</form>
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>Notice</title>
 <style>
 #no_list {
 	width: 700px;
@@ -18,6 +18,7 @@
 	border-top: 3px solid #BDBDBD;
 	border-bottom: 3px solid #BDBDBD;
 	height: 50px;
+	text-align: center;
 }
 
 #no_listth1 {
@@ -49,6 +50,7 @@ h2 {
 #no_listtdd{
 	height: 50px;
 }
+
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script>
@@ -64,7 +66,12 @@ h2 {
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-	<h2>공지사항</h2>
+<section>
+
+<div class="center">
+   <h2>공지사항</h2>
+</div>
+
 	<table id="no_list">
 		<thead>
 			<tr>
@@ -91,14 +98,22 @@ h2 {
 		</thead>
 		<tfoot>
 			<tr>
-				<c:if test="${sessionScope.permit eq 1}">
-					<td colspan="3" align="center" id="no_listtdd">${no_page}</td>
+				<c:if test="${sessionScope.permit eq 3}">
+					<td colspan="3" align="center" id="no_listtdd">
+						<ul  class="pagination pagination-lg">
+							<li>${no_page}</li>
+						</ul>
+					</td>
 					<td align="right" colspan="1" id="no_listtdd">
 						<button type="button" class="btn btn-default" onclick="location.href='no_Write.do'">글쓰기</button>
 					</td>
 				</c:if>
 				<c:if test="${empty sessionScope.permit}">
-					<td colspan="4" align="center" id="no_listtdd">${no_page}</td>
+					<td colspan="4" align="center" id="no_listtdd">
+					<ul  class="pagination pagination-lg">
+						<li>${no_page}</li>
+					</ul>
+					</td>
 				</c:if>
 			</tr>
 		</tfoot>
@@ -121,6 +136,7 @@ h2 {
 			</c:forEach>
 		</tbody>
 	</table>
+</section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

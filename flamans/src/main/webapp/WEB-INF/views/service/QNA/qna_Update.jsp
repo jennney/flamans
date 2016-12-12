@@ -150,8 +150,12 @@ h2{
 </script>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
+	<div class="center">
+	   <h2>Q&amp;A</h2>
+	</div>
 <form name="qna_Update" action="qna_Update.do" method="post" onsubmit="return check()">
-<h2>QNA</h2>
 	<table id="qna_wr">
 		<tr>
 			<th id="qna_wrth1">SUBJECT</th>
@@ -217,5 +221,7 @@ h2{
 		</tr>
 	</table>
 </form>
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

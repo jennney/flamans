@@ -1,5 +1,7 @@
 package flamans.controller;
 
+import static org.junit.Assert.fail;
+
 import java.security.MessageDigest;
 
 import javax.servlet.http.Cookie;
@@ -93,7 +95,42 @@ public class CompanyController {
 	public String companyLogin(){
 		return "company/company_login";
 	}
-
+	
+	@RequestMapping(value="/company_login.do",method=RequestMethod.POST)
+	public ModelAndView companyLoginCheck(CompanyDTO pdto,@RequestParam(value="savecoId",required=false)String savecoId,HttpSession session,
+			HttpServletResponse resp, HttpServletRequest req){
+		ModelAndView mav = new ModelAndView();
+		if(session.getAttribute("userid") != null){
+			mav.addObject("msg", "로그아웃 후 이용해주세요.");
+			mav.addObject("url", "company_login.do");
+			mav.setViewName("company/company_msg");
+		}else if(session.getAttribute("userid") == null){
+			CompanyDTO dto=companyDao.companyLogin(pdto.getCm_id());
+			
+			if(dto==null){		
+			mav.addObject("msg", "등록된 ID가 아닙니다.");
+			mav.addObject("url", "company_login.do");
+			mav.setViewName("company/company_msg");
+			
+			}else if(pdto.getCm_id().equals(dto.getCm_id())){
+				if(!pdto.getCm_pwd().equals(dto.getCm_pwd())){		
+					mav.addObject("msg", "잘못된 비밀번호입니다. ");
+					mav.addObject("url", "company_login.do");
+					mav.setViewName("company/company_msg");
+				}else{
+					Cookie ck= new Cookie("savecoId",savecoId);
+					ck.setMaxAge(savecoId==null?0:(60*60*24*30));
+					resp.addCookie(ck);
+					String cm_name=dto.getCm_name();
+					session.setAttribute("cm_name", cm_name);
+					session.setAttribute("savecoId",dto.getCm_id());
+					session.setAttribute("permit", dto.getCm_permit());
+					mav.setViewName("redirect:/index.do");
+				}
+			}
+		}
+		return mav;
+	}
 
 	/**병원관계자 로그인*/
 	@RequestMapping(value="/company_Blogin.do", method=RequestMethod.POST)

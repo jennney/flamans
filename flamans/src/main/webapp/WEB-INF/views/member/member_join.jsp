@@ -11,38 +11,38 @@
 <script>
 
 function pwdCheck(){
-	var m_pwd = document.member_join.m_pwd.value;
-	if(m_pwd.length <6 ){
-		var spanTag2=document.getElementById('pwdMsg');
-		spanTag2.innerHTML='비밀번호는 6자 이상이어야 합니다.';
-		document.member_join.m_pwd_check.value='';
-	}
-	if(m_pwd.length >5){
-		var spanTag2=document.getElementById('pwdMsg');
-		spanTag2.innerHTML='';
-		document.member_join.m_pwd_check.value='인증완료';
-	}
+   var m_pwd = document.member_join.m_pwd.value;
+   if(m_pwd.length <6 ){
+      var spanTag2=document.getElementById('pwdMsg');
+      spanTag2.innerHTML='비밀번호는 6자 이상이어야 합니다.';
+      document.member_join.m_pwd_check.value='';
+   }
+   if(m_pwd.length >5){
+      var spanTag2=document.getElementById('pwdMsg');
+      spanTag2.innerHTML='';
+      document.member_join.m_pwd_check.value='인증완료';
+   }
 }
 
 function idCheck(){
-	var m_id=document.member_join.m_id.value;
-	var params='m_id='+m_id;
-	sendRequest('member_id_check.do', params, idCheckResult, 'GET');
+   var m_id=document.member_join.m_id.value;
+   var params='m_id='+m_id;
+   sendRequest('member_id_check.do', params, idCheckResult, 'GET');
 }
 
 function idCheckResult(){
-	if(XHR.readyState==4){
-		if(XHR.status==200){
-			var data=XHR.responseText;
-			var spanTag1=document.getElementById('idMsg');
-			spanTag1.innerHTML=data;
-			data=data.trim();
-			if(data=='사용 가능한 ID입니다.'){
-				document.member_join.m_id_check.value='인증완료';
-			}
-			
-		}
-	}
+   if(XHR.readyState==4){
+      if(XHR.status==200){
+         var data=XHR.responseText;
+         var spanTag1=document.getElementById('idMsg');
+         spanTag1.innerHTML=data;
+         data=data.trim();
+         if(data=='사용 가능한 ID입니다.'){
+            document.member_join.m_id_check.value='인증완료';
+         }
+         
+      }
+   }
 }
 
  
@@ -63,45 +63,45 @@ function email3(userinput){
  
 function openEmail() {
 
-	var email = document.member_join.email1.value;
-	email+='@';
-	email+=document.member_join.email2.value;
-	document.member_join.m_email.value=email;
-	
-	var params='email='+email;
-	sendRequest('m_emailCheck.do', params, emailCheckResult, 'GET');
+   var email = document.member_join.email1.value;
+   email+='@';
+   email+=document.member_join.email2.value;
+   document.member_join.m_email.value=email;
+   
+   var params='email='+email;
+   sendRequest('m_emailCheck.do', params, emailCheckResult, 'GET');
 }
 var data_global=null;
 function emailCheckResult(){
-	if(XHR.readyState==4){
-		if(XHR.status==200){
-			var data=XHR.responseText;
-			data=data.trim();
-			/* document.member_join.m_email.value=data;
-			window.alert(data); */
-			data_global=data;
-			window.alert('이메일을 발송하였습니다.');		
-		}
-	}
+   if(XHR.readyState==4){
+      if(XHR.status==200){
+         var data=XHR.responseText;
+         data=data.trim();
+         /* document.member_join.m_email.value=data;
+         window.alert(data); */
+         data_global=data;
+         window.alert('이메일을 발송하였습니다.');      
+      }
+   }
 }
 
 function emailCheckOk() {
-	var number = document.getElementById("emailCheck");
-	var  verification = data_global;
-	
-	if(number.value==''){
-		window.alert('인증번호를 입력하세요');
-		return;
-	}
-	else if(number.value!=verification){
-		window.alert('틀린번호입니다. 인증번호를 다시 입력하세요.');
-		number.value='';
-	}
-	else if(number.value==verification){
-		window.alert('인증완료');
-		document.member_join.email_check.value='인증완료';
-		window.self.close();
-	}
+   var number = document.getElementById("emailCheck");
+   var  verification = data_global;
+   
+   if(number.value==''){
+      window.alert('인증번호를 입력하세요');
+      return;
+   }
+   else if(number.value!=verification){
+      window.alert('틀린번호입니다. 인증번호를 다시 입력하세요.');
+      number.value='';
+   }
+   else if(number.value==verification){
+      window.alert('인증완료');
+      document.member_join.email_check.value='인증완료';
+      window.self.close();
+   }
 }
 
 Now = new Date();
@@ -187,14 +187,14 @@ function fn_press_han(obj)
 /* 숫자만 입력받기 */
 function fn_press(event, type) {
     if(type == "numbers") {
-	    if(event.keyCode < 48 || 57 < event.keyCode) return false;
+         if(event.keyCode < 48 || 57 < event.keyCode) return false;
         //onKeyDown일 경우 좌, 우, tab, backspace, delete키 허용 정의 필요
     }
 }
 function yearmonth(){
 	
 	  Month = document.getElementById("Month");
-	  Year = document.getElementById("Year");s
+	  Year = document.getElementById("Year");
 	  Day = document.getElementById("Day");
 	  
 	  var m_birthday=Year.value+Month.value+Day.value;
@@ -206,93 +206,96 @@ function yearmonth(){
 </script>
 </head>
 <body onLoad="SetToToday('FirstSelect');">
-
-<h2>회원가입</h2>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
+<div class="center">
+	<h2>회원가입</h2>
+</div>
 <form name="member_join" action="member_join.do" method="post">
 <table>
-	<tr>
-		<td>ID</td>
-		<td><input type="text" name="m_id" onkeyup="idCheck()" onkeydown="fn_press_han(this);">
-		<span id="idMsg"></span>
-		<input type="hidden" name="m_id_check">
-		</td>
-	</tr>
-	<tr>
-		<td>Password</td>
-		<td><input type="password" name="m_pwd" onkeyup="pwdCheck()">
-		<span id="pwdMsg"></span>
-		<input type="hidden" name="m_pwd_check">
-		</td>
-	</tr>
-	<tr>
-		<td>이름</td>
-		<td><input type="text" name="m_name"></td>
-	</tr>
-	<tr>
-		<td>성별</td>
-		<td><input type="radio" name="m_sex" value="남" checked>남
-			<input type="radio" name="m_sex" value="여">여</td>
-	</tr>
-	<tr>
-		<td>생년 월 일</td>
-		<td><SELECT name="Year" onchange="ChangeOptionDays('FirstSelect')" id="Year">
-	        <script>
-	                document.write(WriteYearOptions());
-	      	</script>
-		</SELECT>
-		<SELECT name="Month" onchange="ChangeOptionDays('FirstSelect')" id="Month">
-		        <OPTION value="01">Jan</OPTION>
-		        <OPTION value="02">Feb</OPTION>
-		        <OPTION value="03">Mar</OPTION>
-		        <OPTION value="04">Apr</OPTION>
-		        <OPTION value="05">May</OPTION>
-		        <OPTION value="06">Jun</OPTION>
-		        <OPTION value="07">Jul</OPTION>
-		        <OPTION value="08">Aug</OPTION>
-		        <OPTION value="09">Sep</OPTION>
-		        <OPTION value="10">Oct</OPTION>
-		        <OPTION value="11">Nov</OPTION>
-		        <OPTION value="12">Dec</OPTION>
-		</SELECT>
-		<SELECT name="Day" id="Day">
-		        <OPTION value="01">1</OPTION>
-		        <OPTION value="02">2</OPTION>
-		        <OPTION value="03">3</OPTION>
-		        <OPTION value="04">4</OPTION>
-		        <OPTION value="05">5</OPTION>
-		        <OPTION value="06">6</OPTION>
-		        <OPTION value="07">7</OPTION>
-		        <OPTION value="08">8</OPTION>
-		        <OPTION value="09">9</OPTION>
-		        <OPTION value="10">10</OPTION>
-		        <OPTION value="11">11</OPTION>
-		        <OPTION value="12">12</OPTION>
-		        <OPTION value="13">13</OPTION>
-		        <OPTION value="14">14</OPTION>
-		        <OPTION value="15">15</OPTION>
-		        <OPTION value="16">16</OPTION>
-		        <OPTION value="17">17</OPTION>
-		        <OPTION value="18">18</OPTION>
-		        <OPTION value="19">19</OPTION>
-		        <OPTION value="20">20</OPTION>
-		        <OPTION value="21">21</OPTION>
-		        <OPTION value="22">22</OPTION>
-		        <OPTION value="23">23</OPTION>
-		        <OPTION value="24">24</OPTION>
-		        <OPTION value="25">25</OPTION>
-		        <OPTION value="26">26</OPTION>
-		        <OPTION value="27">27</OPTION>
-		        <OPTION value="28">28</OPTION>
-		        <OPTION value="29">29</OPTION>
-		        <OPTION value="30">30</OPTION>
-		        <OPTION value="31">31</OPTION>
-		</SELECT>
-		<input type="hidden" name="m_birthday">
-		</td>
-	</tr>
-	<tr>
-		<td>국적</td>
-		<td><select name="m_nationality">
+   <tr>
+      <td>ID</td>
+      <td><input type="text" name="m_id" onkeyup="idCheck()" onkeydown="fn_press_han(this);">
+      <span id="idMsg"></span>
+      <input type="hidden" name="m_id_check">
+      </td>
+   </tr>
+   <tr>
+      <td>Password</td>
+      <td><input type="password" name="m_pwd" onkeyup="pwdCheck()">
+      <span id="pwdMsg"></span>
+      <input type="hidden" name="m_pwd_check">
+      </td>
+   </tr>
+   <tr>
+      <td>이름</td>
+      <td><input type="text" name="m_name"></td>
+   </tr>
+   <tr>
+      <td>성별</td>
+      <td><input type="radio" name="m_sex" value="남" checked>남
+         <input type="radio" name="m_sex" value="여">여</td>
+   </tr>
+   <tr>
+      <td>생년 월 일</td>
+      <td><SELECT name="Year" onchange="ChangeOptionDays('FirstSelect')" id="Year">
+           <script>
+                   document.write(WriteYearOptions());
+            </script>
+      </SELECT>
+      <SELECT name="Month" onchange="ChangeOptionDays('FirstSelect')" id="Month">
+              <OPTION value="01">Jan</OPTION>
+              <OPTION value="02">Feb</OPTION>
+              <OPTION value="03">Mar</OPTION>
+              <OPTION value="04">Apr</OPTION>
+              <OPTION value="05">May</OPTION>
+              <OPTION value="06">Jun</OPTION>
+              <OPTION value="07">Jul</OPTION>
+              <OPTION value="08">Aug</OPTION>
+              <OPTION value="09">Sep</OPTION>
+              <OPTION value="10">Oct</OPTION>
+              <OPTION value="11">Nov</OPTION>
+              <OPTION value="12">Dec</OPTION>
+      </SELECT>
+      <SELECT name="Day" id="Day">
+              <OPTION value="01">1</OPTION>
+              <OPTION value="02">2</OPTION>
+              <OPTION value="03">3</OPTION>
+              <OPTION value="04">4</OPTION>
+              <OPTION value="05">5</OPTION>
+              <OPTION value="06">6</OPTION>
+              <OPTION value="07">7</OPTION>
+              <OPTION value="08">8</OPTION>
+              <OPTION value="09">9</OPTION>
+              <OPTION value="10">10</OPTION>
+              <OPTION value="11">11</OPTION>
+              <OPTION value="12">12</OPTION>
+              <OPTION value="13">13</OPTION>
+              <OPTION value="14">14</OPTION>
+              <OPTION value="15">15</OPTION>
+              <OPTION value="16">16</OPTION>
+              <OPTION value="17">17</OPTION>
+              <OPTION value="18">18</OPTION>
+              <OPTION value="19">19</OPTION>
+              <OPTION value="20">20</OPTION>
+              <OPTION value="21">21</OPTION>
+              <OPTION value="22">22</OPTION>
+              <OPTION value="23">23</OPTION>
+              <OPTION value="24">24</OPTION>
+              <OPTION value="25">25</OPTION>
+              <OPTION value="26">26</OPTION>
+              <OPTION value="27">27</OPTION>
+              <OPTION value="28">28</OPTION>
+              <OPTION value="29">29</OPTION>
+              <OPTION value="30">30</OPTION>
+              <OPTION value="31">31</OPTION>
+      </SELECT>
+      <input type="hidden" name="m_birthday">
+      </td>
+   </tr>
+   <tr>
+      <td>국적</td>
+      <td><select name="m_nationality">
          <option value="미국">미국</option>
          <option value="호주">호주</option>
          <option value="영국">영국</option>
@@ -304,10 +307,10 @@ function yearmonth(){
          <option value="태국">태국</option>
          <option value="기타">기타</option>
          </select></td>
-	</tr>
-	<tr>
-		<td>E-mail</td>
-		<td><input type="text" name="email1" onclick="yearmonth()">@<input type="text" name="email2">
+   </tr>
+   <tr>
+      <td>E-mail</td>
+      <td><input type="text" name="email1" onclick="yearmonth()">@<input type="text" name="email2">
          <select name="selEmail" onchange="email3(this.form)" >
          <option value="" selected>직접입력</option>
          <option value="naver.com">naver.com</option>
@@ -318,18 +321,18 @@ function yearmonth(){
          </select>
          <input type="hidden" name="m_email">
          <input type="button" onclick="openEmail()" value="인증메일 보내기">
-		</td>
-	</tr>	
-	<tr>
-		<td></td>
-		<td><input id="emailCheck" type="text" name="numberCheck" placeholder="인증번호 7자리입력">
-		<input type="hidden" name="email_check">
-		<input type="button" value="인증확인" onclick="emailCheckOk()">
-		</td>
-	</tr>
-	<tr>
-		<td>전화번호</td>
-		<td><select name="kind">
+      </td>
+   </tr>   
+   <tr>
+      <td></td>
+      <td><input id="emailCheck" type="text" name="numberCheck" placeholder="인증번호 7자리입력">
+      <input type="hidden" name="email_check">
+      <input type="button" value="인증확인" onclick="emailCheckOk()">
+      </td>
+   </tr>
+   <tr>
+      <td>전화번호</td>
+      <td><select name="kind">
          <option value="010">010</option>
          <option value="011">011</option>
          <option value="018">018</option>
@@ -338,13 +341,15 @@ function yearmonth(){
          <input type="text" name="number1" size="4" required onkeypress="return fn_press(event, 'numbers');" onkeydown="fn_press_han(this);" style="ime-mode:disabled;" >-
          <input type="text" name="number2" size="4" required onkeypress="return fn_press(event, 'numbers');" onkeydown="fn_press_han(this);" style="ime-mode:disabled;" >
          </td>
-	</tr>
-	<tr>
-		<td colspan="2">
-		<input type="reset" value="다시작성">
-		<input type="submit" value="회원가입"></td>
-	</tr>
+   </tr>
+   <tr>
+      <td colspan="2">
+      <input type="reset" value="다시작성">
+      <input type="submit" value="회원가입"></td>
+   </tr>
 </table>
 </form>
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

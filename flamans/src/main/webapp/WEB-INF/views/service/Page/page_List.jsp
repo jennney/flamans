@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img alt="" src="service_upload/page_upload/${pdto.pm_img}" width="700" height="700">
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
+	<img alt="" src="service_upload/page_upload/${pdto.pm_img}" width="700" height="700">
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

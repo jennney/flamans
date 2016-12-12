@@ -60,7 +60,12 @@ a:LINK {
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<h2>QNA</h2>
+<section>
+<div class="container">
+	<div class="center">
+	   <h2>Q&amp;A</h2>
+	</div>
+</div>
 <c:if test="${qna_kind eq 'site'}">
 <p id="p"><a href="qna_List.do?qna_kind=site">전체 보기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=meminfo">회원정보문의</a>&nbsp;&nbsp;
 |&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=memgroup">단체회원문의</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=tieup">제휴문의</a>
@@ -103,7 +108,11 @@ a:LINK {
 		</thead>
 		<tfoot>
 			<tr>
-				<td colspan="4" align="center" id="qna_listtd7">${qna_page}</td>
+				<td colspan="4" align="center" id="qna_listtd7">
+				<ul class="pagination pagination-lg">
+				<li>${qna_page}</li>
+				</ul>
+				</td>
 				<td align="right" id="qna_listtd7">
 					<button class="btn btn-default" onclick="location.href='qna_Write.do?qna_kind=${qna_kind}'">글쓰기</button>				
 				</td>
@@ -142,6 +151,7 @@ a:LINK {
 		</c:forEach>
 		</tbody>
 	</table>
+</section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

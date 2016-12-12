@@ -1,110 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-/**드롭다운*/
-.dropbtn {
-    background-color: grey;
-    color: white;
-    padding: 10px;
-    font-size: 14px;
-    width:150px;
-    heigth: 80px;    
-    border: none;
-    cursor: pointer;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: grey;
-}
-#pp:LINK{
-	color:black;
-	text-decoration:none;
-	font-size: 15px;
-}
-
-#pp:VISITED{
-	color:black;
-	text-decoration:none;
-	font-size: 15px;
-}
-#pp:hover{
-	color: black;
-   	text-decoration: none;
-   	font-size: 15px;
-}
-</style>
-</head>
-<body>
-<div class="row">
-  <div class="col-sm-5"></div>
-  <div class="col-sm-3">
-  	<img alt="logo" src="/flamans/img/flawoong.gif" width="50%" height="30px">
-  </div> 
-  <div class="col-sm-2"></div>
-  <div class="col-sm-2" >
-	<img alt="heart" src="#">
-	
-	<div class="dropdown">	
-		<button class="dropbtn">내 계정</button> 
-		  <div class="dropdown-content">
-		  	<c:if test="${empty sessionScope.username }">
-		  		<c:if test="${empty sessionScope.cm_name }">
-				    <a href="member_login.do" id="pp">로그인하기</a>
-				    <a href="member_join.do" id="pp">회원가입하기</a>
-				</c:if>
-		    </c:if>
-		    
-		    <c:if test="${!empty sessionScope.username }">
-				<a href="member_page.do">프로필</a>
-				<a href="logout.do">로그아웃</a>
-			</c:if>
-			
-			<c:if test="${!empty sessionScope.cm_name }">
-				<a href="manager.do">관리자계정</a>
-				<a href="logout.do">로그아웃</a>
-			</c:if>
-		  </div>	  
-		</div>
-			
-	</div>
-</div>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<header id="header">
+<div class="top-bar">
+	<div class="container">
+	   <div class="row">
+	       <div class="col-sm-6 col-xs-4"></div>
+		       	<div class="col-sm-6 col-xs-8">
+			       	 <nav class="navbar navbar-inverse" role="banner">
+					   <div class="collapse navbar-collapse navbar-right">
+					   <ul class="nav navbar-nav">
+							<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">MY PAGE<i class="fa fa-angle-down"></i></a>
+								<ul class="dropdown-menu">
+									<c:if test="${empty sessionScope.username}">
+										<c:if test="${empty sessionScope.cm_name}">
+											<li><a href="member_login.do">Login</a></li>
+											<li><a href="member_join.do">Join</a></li>
+										</c:if>
+									</c:if>
+									<c:if test="${!empty sessionScope.username }">
+										<li><a href="member_page.do">Profile</a></li>
+										<li><a href="logout.do">Logout</a><li>
+									</c:if>
+									<c:if test="${!empty sessionScope.cm_name }">
+										<li><a href="manager.do">AdminPage</a></li>
+										<li><a href="logout.do">Logout</a></li>
+									</c:if>
+								</ul>
+							</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+	        </div>
+	    </div>
+	</div><!--/.container-->
 
 
-<hr>
-</body>
-</html>
+<nav class="navbar navbar-inverse" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.do"><img src="img/logo.png" alt="logo"></a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li><a href="index.do">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">HOSPITAL<i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="hospital_list.do">Hospital</a></li>
+                        <li><a href="#">Simulation</a></li>
+                    </ul>
+                </li>
+                <li><a href="hotel_list.do">HOTEL</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">EVENT<i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">On Going Event</a></li>
+                        <li><a href="#">Finished Evnet</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">COMMUNITY<i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="no_List.do">Notice</a></li>
+                        <li><a href="faq_List.do">FAQ</a></li>
+                        <li><a href="qna_List.do?qna_kind=site">사이트Q&amp;A</a></li>
+                        <li><a href="qna_List.do?qna_kind=hospital">병원Q&amp;A</a></li>
+                        <li><a href="qna_List.do?qna_kind=hotel">호텔Q&amp;A</a></li>
+                        <li><a href="page_List.do?pm_item=page1">의료사고대처요령</a></li>
+                        <li><a href="page_List.do?pm_item=page2">출입국절차</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div><!--/.container-->
+</nav><!--/nav-->
+</header><!--/header-->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/wow.min.js"></script>

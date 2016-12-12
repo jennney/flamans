@@ -36,7 +36,7 @@ public class NoticeController {
 			@RequestParam(value = "findKey", required = false, defaultValue = "") String findKey,
 			@RequestParam(value = "findValue", required = false, defaultValue = "") String findValue) {
 		int totalCnt = noticeDao.noTotal(findKey, findValue);
-		int listSize = 5;
+		int listSize = 10;
 		int pageSize = 5;
 		String no_page = paging1.makePage("no_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,"");
 		List<NoticeDTO> noList = noticeDao.noList(cp, listSize, findKey, findValue);

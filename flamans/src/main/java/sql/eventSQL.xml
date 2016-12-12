@@ -3,77 +3,77 @@
 
 <mapper namespace="flamans.user.event">
 
-	<select id="event_user_list"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
+   <select id="event_user_list"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
         select * 
-        	from 
+           from 
         (select rownum as rnum,a.* from 
-        	(select * from fm_event
-        	<if test="e_item!=null and e_item != ''">
-	        	<if test="e_item==1">
-	        	where e_item=1
-	        	</if>
-	        	<if test="e_item==2">
-	        	where e_item=2
-	        	</if>
-        	</if>
-        	order by e_idx desc)a)b 
-      	<![CDATA[  where rnum>=#{start} 
-        	and 
+           (select * from fm_event
+           <if test="e_item!=null and e_item != ''">
+              <if test="e_item==1">
+              where e_item=1
+              </if>
+              <if test="e_item==2">
+              where e_item=2
+              </if>
+           </if>
+           order by e_idx desc)a)b 
+         <![CDATA[  where rnum>=#{start} 
+           and 
         rnum<=#{end}
-  	 ]]> 
-	</select>
-	
-	<select id="totalCnt" resultType="int" parameterType="Map">
-		select count(*) from fm_event
-		<if test="e_item !=0 and e_item !=''">
-			where e_item = #{e_item}
-		</if>
-		<if test="e_name!=null and e_name !=''">
-       		where e_name=#{e_name}
-       	</if>
-	</select>
-	
-	<select id="event_user_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
-		select * from fm_event where e_idx=#{e_idx}
-	</select>
-			
-	   <update id="e_readnum" parameterType="int">
+      ]]> 
+   </select>
+   
+   <select id="totalCnt" resultType="int" parameterType="Map">
+      select count(*) from fm_event
+      <if test="e_item !=0 and e_item !=''">
+         where e_item = #{e_item}
+      </if>
+      <if test="e_name!=null and e_name !=''">
+             where e_name=#{e_name}
+          </if>
+   </select>
+   
+   <select id="event_user_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
+      select * from fm_event where e_idx=#{e_idx}
+   </select>
+         
+      <update id="e_readnum" parameterType="int">
       update
          fm_event
          set
-         	e_readnum=e_readnum+1
+            e_readnum=e_readnum+1
          where
          e_idx=#{e_idx}
    </update>
    
-	<insert id="event_add" parameterType="flamans.user.event.model.EventDTO">
-		insert
-			into
-		fm_event
-			values(
-		#{e_img},
-			#{e_name},
-		sysdate,
-			#{e_start},
-		#{e_end},
-			#{e_subject},
-		fm_event_idx.nextval,
-			0,
-			#{e_item})
-	</insert>
-	<select id="event_list"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
-	<![CDATA[
+   <insert id="event_add" parameterType="flamans.user.event.model.EventDTO">
+      insert
+         into
+      fm_event
+         values(
+      #{e_img},
+         #{e_name},
+      sysdate,
+         #{e_start},
+      #{e_end},
+         #{e_subject},
+      fm_event_idx.nextval,
+         0,
+         #{e_item})
+   </insert>
+   <select id="event_list"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
+   <![CDATA[
         select * 
-        	from 
+           from 
         (select rownum as rnum,a.* from 
-        	(select * from fm_event order by e_idx desc)a)b 
+           (select * from fm_event order by e_idx desc)a)b 
         where rnum>=#{start} 
-        	and 
+           and 
         rnum<=#{end}
-  	 ]]> 
-	</select>
-	<select id="event_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
-		SELECT E_IMG
+      ]]> 
+   </select>
+   <select id="event_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
+      SELECT E_IMG
      , E_NAME
      , TO_CHAR(E_DATE,'YYYY-MM-DD') E_DATE
      , TO_CHAR(E_START,'YYYY-MM-DD') E_START
@@ -83,47 +83,48 @@
      , E_READNUM
      , E_ITEM
      from fm_event where e_idx=#{e_idx}
-	</select>
-	<update id="event_update" parameterType="Map">
-		update
-			fm_event
-		set
-		   e_date=sysdate,
-			e_subject=#{e_subject},
-		e_start = #{e_start},
-			e_end=#{e_end},
-		e_img = #{e_img}
-		where e_idx = #{e_idx}
-	</update>
-	
-	<update id="event_Date" parameterType="int">
-		update
-			fm_event
-		set
-			e_item = 2
-		where e_idx = #{e_idx}
-	</update>
-	
-	<delete id="event_delete" parameterType="int">
-	delete from fm_event where e_idx=#{e_idx}
-	</delete>
-	
-	<select id="event_co_list"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
-	<![CDATA[
+   </select>
+   <update id="event_update" parameterType="Map">
+      update
+         fm_event
+      set
+         e_date=sysdate,
+         e_subject=#{e_subject},
+      e_start = #{e_start},
+         e_end=#{e_end},
+      e_img = #{e_img}
+      where e_idx = #{e_idx}
+   </update>
+   
+   <update id="event_Date" parameterType="int">
+      update
+         fm_event
+      set
+         e_item = 2
+      where e_idx = #{e_idx}
+   </update>
+   
+   <delete id="event_delete" parameterType="int">
+   delete from fm_event where e_idx=#{e_idx}
+   </delete>
+   
+   <select id="event_co_list"  parameterType="Map" resultType="flamans.user.event.model.EventDTO">
+   <![CDATA[
         select * 
-        	from 
+           from 
         (select rownum as rnum,a.* from 
-        	(select * from fm_event 
-        		where e_name = #{e_name}
-        	order by e_idx desc)a)b 
+           (select * from fm_event 
+              where e_name = #{e_name}
+           order by e_idx desc)a)b 
         where rnum>=#{start} 
-        	and 
+           and 
         rnum<=#{end}
-  	 ]]> 
-	</select>
-	
-	<select id="event_co_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
-		SELECT E_IMG
+      ]]> 
+   </select>
+   
+   
+   <select id="event_co_content" parameterType="int" resultType="flamans.user.event.model.EventDTO">
+      SELECT E_IMG
      , E_NAME
      , TO_CHAR(E_DATE,'YYYY-MM-DD') E_DATE
      , TO_CHAR(E_START,'YYYY-MM-DD') E_START
@@ -133,22 +134,22 @@
      , E_READNUM
      , E_ITEM
      from fm_event where e_idx=#{e_idx}
-	</select>
-	
-	<update id="event_co_update" parameterType="Map">
-		update
-			fm_event
-		set
-		   e_date=sysdate,
-			e_subject=#{e_subject},
-		e_start = #{e_start},
-			e_end=#{e_end},
-		e_img = #{e_img}
-		where e_idx = #{e_idx}
-	</update>
-	
-	<delete id="event_co_delete" parameterType="int">
-	delete from fm_event where e_idx=#{e_idx}
-	</delete>
-	
+   </select>
+   
+   <update id="event_co_update" parameterType="Map">
+      update
+         fm_event
+      set
+         e_date=sysdate,
+         e_subject=#{e_subject},
+      e_start = #{e_start},
+         e_end=#{e_end},
+      e_img = #{e_img}
+      where e_idx = #{e_idx}
+   </update>
+   
+   <delete id="event_co_delete" parameterType="int">
+   delete from fm_event where e_idx=#{e_idx}
+   </delete>
+   
 </mapper>

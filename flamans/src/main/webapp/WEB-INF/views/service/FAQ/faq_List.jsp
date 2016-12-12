@@ -118,7 +118,8 @@ ul.tabs li.active, ul.tabs li.active a:hover {
 </script>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/header.jsp"%>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<section>
 	<form name="faq_List" action="faq_Find.do">
 		<div>
 			<label>FAQ</label> <input type="text" name="findValue"><input type="submit" value="검색">
@@ -245,6 +246,7 @@ ul.tabs li.active, ul.tabs li.active a:hover {
 			</div>
 		</div>
 	</div>
-	<%@ include file="/WEB-INF/views/footer.jsp"%>
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
