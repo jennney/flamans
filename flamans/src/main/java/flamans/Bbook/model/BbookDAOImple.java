@@ -123,7 +123,6 @@ public class BbookDAOImple implements BbookDAO {
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("hos_num", hos_num);
 		map.put("date", date);
-		
 		List<BbookDTO> cal=sqlMap.selectList("calendar", map);
 		return cal;
 	}

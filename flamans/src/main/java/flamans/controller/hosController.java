@@ -93,7 +93,8 @@ public class hosController {
 	
 	/**유저계정-병원예약*/
 	@RequestMapping(value="/bBook.do", method=RequestMethod.POST)
-	public ModelAndView bBook(BbookDTO dto, @RequestParam("B_time")String B_time, HttpSession session){
+	public ModelAndView bBook(BbookDTO dto, @RequestParam(value="B_time", required=false)String B_time,
+			HttpSession session){
 		
 		String temp= String.valueOf(dto.getBookingdate())+"/"+B_time;
 		dto.setBookingdate(temp);
@@ -101,18 +102,26 @@ public class hosController {
 		String hos_Bid=(String)session.getAttribute("userid");
 		dto.setHos_Bid(hos_Bid);
 		
-	/*	String cardnum=m_card+"-"+card1+"-"+card2+"-"+card3+"-"+card4;
-		dto.setCardnum(cardnum);
-		@RequestParam("m_card")String m_card, @RequestParam("card1")String card1,
-			@RequestParam("card2")String card2, @RequestParam("card3")String card3, @RequestParam("card4")String card4,
-		*/
-		
 		ModelAndView mav= new ModelAndView();
-		int result=Bdao.bBook(dto);
-		String msg=result>0?"병원이 예약되었습니다.":"병원 예약 실패하였습니다.";
-		mav.addObject("msg", msg);
-		mav.addObject("url", "index.do");
-		mav.setViewName("member/memberMsg");
+		
+		String ddate[]=dto.getBookingdate().split("/");
+		
+		if(ddate[0]==null||ddate[0].equals("")){
+			mav.addObject("msg", "예약시간을 입력해주세요");
+			mav.addObject("url", "bBook.do?hos_num="+dto.getHos_num()+"&doc_num="+dto.getDoc_num());
+			mav.setViewName("member/memberMsg");
+		}else if(B_time==null){
+			mav.addObject("msg", "예약일자를 입력해주세요");
+			mav.addObject("url", "bBook.do?hos_num="+dto.getHos_num()+"&doc_num="+dto.getDoc_num());
+			mav.setViewName("member/memberMsg");		
+		}else{
+			int result=Bdao.bBook(dto);
+			String msg=result>0?"병원이 예약되었습니다.":"병원 예약 실패하였습니다.";
+			mav.addObject("msg", msg);
+			mav.addObject("url", "index.do");
+			mav.setViewName("member/memberMsg");
+			
+		}
 		return mav;
 	}
 	
@@ -270,8 +279,13 @@ public class hosController {
 	
 	/**병원관계자 - 달력표시*/
 	@RequestMapping(value="/companyCal.do", method=RequestMethod.POST)
-	public ModelAndView calendar(HttpSession session, @RequestParam("date")String date){
-		String hos_num=(String)session.getAttribute("cm_number");
+	public ModelAndView calendar(HttpSession session, @RequestParam("date")String date,
+			@RequestParam(value="hos_num", required=false)String hos_num){
+		
+		if(hos_num==null){
+			hos_num=(String)session.getAttribute("cm_number");
+		}
+		
 		List<BbookDTO> cal=Bdao.calendar(hos_num, date);
 		ModelAndView mav=new ModelAndView("flamansJson", "cal", cal);
 		return mav;

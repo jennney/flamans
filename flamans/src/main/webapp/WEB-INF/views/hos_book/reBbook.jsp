@@ -136,8 +136,8 @@ textarea{	resize:none;}
 			</tr>
 			<tr>
 				<td id="td">예약일자</td>
-				<td><input type="text" name="bookingdate" id="bookdate" class="form-control" readonly>
-				<input type="text" name="Btime" id="Btime" class="form-control" readonly>
+				<td><input type="text" name="bookingdate" id="bookdate" class="form-control" readonly required >
+				<input type="text" name="Btime" id="Btime" class="form-control" readonly required >
 				</td>
 			</tr>
 			<tr>
