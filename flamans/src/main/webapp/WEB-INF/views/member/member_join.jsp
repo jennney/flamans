@@ -194,7 +194,7 @@ function fn_press(event, type) {
 function yearmonth(){
 	
 	  Month = document.getElementById("Month");
-	  Year = document.getElementById("Year");s
+	  Year = document.getElementById("Year");
 	  Day = document.getElementById("Day");
 	  
 	  var m_birthday=Year.value+Month.value+Day.value;

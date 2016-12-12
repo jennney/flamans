@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/flamans/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/flamans/js/httpRequest.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -53,9 +54,47 @@ function Bbook2(){
 function bookDate(currentYear, currentMonth, dateNum){
 	
 	var bookdate=document.getElementById("bookdate");
-	bookdate.value = currentYear+"-"+currentMonth+"-"+dateNum;
-}
+	var now=new Date();
+	var sysdate=new Date(now.getFullYear(), now.getMonth(), now.getDate()+1); 
+	var bodate=new Date(currentYear, currentMonth-1, dateNum);
+	if(bodate<sysdate){
+		alert(now.getFullYear()+'년'+(now.getMonth()+1)+'월'+(now.getDate()+1)+'일'+' 이후의 일자만 예약 가능합니다');
+		return false;
+	}else if(bodate>=sysdate){
+		var YeY = currentYear+"-"+currentMonth+"-"+dateNum;
+		bookdate.value=YeY;
+		var params='date='+YeY+'&hos_num='+'${Ddto.hos_num}';
+		sendRequest('companyCal.do', params, BooktimeCheckResult, 'POST');
+	}
 
+}
+function BooktimeCheckResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var data=XHR.responseText;
+			data=eval('('+data+')');
+			
+			var BtimeList=data.cal;
+			var btimetable=document.getElementById("B_time");
+
+			for(var i=0; i<btimetable.length; i++){
+				 btimetable.options[i].disabled = false;
+				 	for(var j=0;j<BtimeList.length;j++){						
+						var timetemp=BtimeList[j].bookingdate.split('/');
+						var time=timetemp[1]; //		disable 
+						if(time==btimetable.options[i].value){
+							   btimetable.options[i].disabled = true;
+							 /*   $('#B_time').options[i].attr('onclick', 'already()'); */
+							   
+						 }
+				 	}
+				}
+			}
+		}
+	}
+/* function already(){
+	alert('선택한 시간은 이미 예약된 시간입니다.');
+} */
 function Btime1(){
 	
 	var B_time=document.bBook.B_time.value;
@@ -198,8 +237,8 @@ textarea{
 			</tr>
 			<tr>
 				<td id="td">예약일자</td>
-				<td><input type="text" name="bookingdate" id="bookdate" class="form-control" readonly>
-				<input type="text" name="Btime" id="Btime" class="form-control" readonly>
+				<td><input type="text" name="bookingdate" id="bookdate" class="form-control" readonly >
+				<input type="text" name="Btime" id="Btime" class="form-control" readonly >
 				</td>
 			</tr>
 			<tr>

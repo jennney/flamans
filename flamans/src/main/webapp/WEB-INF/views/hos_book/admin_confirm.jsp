@@ -14,11 +14,18 @@
 <Script>
 function bookDate(currentYear, currentMonth, dateNum){
 	
+/* 	if(currentMonth<10){
+		currentMonth=parseInt(currentMonth);
+		currentMonth='0'+currentMonth;
+	}
+	if(dateNum<10){
+		dateNum=parseInt(dateNum);
+		dateNum='0'+dateNum;
+	} */
 	var BCallDate = currentYear+"-"+currentMonth+"-"+dateNum;
 	$('#Bookdate').html(BCallDate);
 	var params='bookingdate='+BCallDate;
 	sendRequest('bBbook_list.do', params, BookCheckResult, 'POST');
-	
 }
 function BookCheckResult(){
 	if(XHR.readyState==4){
@@ -45,12 +52,9 @@ function BookCheckResult(){
 				}
 				msg+='</table>';
 					
-			}
-			
+			}			
 			var table=document.getElementById("table");
 			table.innerHTML=msg;
-			
-	
 		}
 	}
 }
@@ -103,8 +107,8 @@ function cm_calendar(){
 	var tem2=tem.innerHTML;
 	var yyear=tem2.substring(0,4);
 	tem2=tem.innerHTML.split(' ');
-	var mmonth=tem2[1].substring(0,2);	
-	var ttem=yyear+'-'+mmonth;   
+	var mmonth=tem2[1].substring(0,2);
+	var ttem=yyear+'-'+mmonth;  
 	var params='date='+ttem;
 	sendRequest('companyCal.do', params, cm_calendarResult, 'POST');
 }
@@ -113,32 +117,32 @@ function cm_calendarResult(){
 	if(XHR.readyState==4){
 		if(XHR.status==200){
 			var data=XHR.responseText;
-			data=eval('('+data+')');
+			data=eval('('+data+')');		
 			var cal=data.cal;
 			for(i=0; i<cal.length; i++){
 				var caltemp=cal[i].bookingdate.split('/');
 				var calId=document.getElementById(caltemp[0]);
-				calId.innerHTML='예약';			
+				calId.innerHTML='<img src="img/bBook1.JPG" width="20px" heigth="20px">';			
 			}
 		}
 	}
 }
 </Script>
 <style>
-#b{ width:800px; height:400px;  margin-top: 30px;   border-color: green;}
-#c{ float:left; width:400px;  height:400px;  margin:0px center;}
-#d{	width:360px;height:400px;float: left;margin-left:15px;margin-right:15px;overflow-y:scroll; white-space:nowrap;}
-#kCalendar{  width:400px;  height:400px;  border : 1px solid #EAEAEA;  font:15px/1.0 맑은 고딕;}
+#b{ width:850px; height:450px;  margin-top: 30px;   border-color: green;}
+#c{ float:left; width:450px;  height:450px;  margin:0px center;}
+#d{	width:360px;height:450px;float: left;margin-left:15px;margin-right:15px;overflow-y:scroll; white-space:nowrap;}
+#kCalendar{  width:450px;  height:450px;  border : 1px solid #EAEAEA;  font:15px/1.0 맑은 고딕;}
 #Bookdate{text-align: center;font:20px/1.0 맑은 고딕;}
 th{	text-align: center;}
 #call{	padding-right:10px;	color: blue;}
 #accept{	padding-right:5px;	color: red;}
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 * {font-family: 15px/1.0 맑은 고딕;}
-#kCalendar {width: 400px; height: 400px; /* border: 1px solid black; */}
+#kCalendar {width: 450px; height: 450px; /* border: 1px solid black; */}
 #kCalendar #header {height: 80px; line-height: 80px; text-align: center; font-size: 25px; font-weight: bold}
 #kCalendar .button {color: #000; text-decoration: none;}
-#kCalendar table {width: 380px; height: 300px; padding-left: 18px; }
+#kCalendar table {width: 430px; height: 340px; padding-left: 5px; }
 #kCalendar caption {display: none;}
 #kCalendar .sun {text-align: center; color: deeppink;}
 #kCalendar .mon {text-align: center;}
@@ -147,18 +151,19 @@ th{	text-align: center;}
 #kCalendar .thu {text-align: center;}
 #kCalendar .fri {text-align: center;}
 #kCalendar .sat {text-align: center; color: deepskyblue;}
+#cc{width:45px;  height:35px;} 
 </Style>
 </head>
 <body onload="kCalendar('kCalendar');cm_calendar()">
 <c:set var="cal" value='${cal}'/>
 	<div id="b" >
-	<div id="c">
-		<div id="kCalendar" class="form-control"></div>
-	</div>
-	<div id="d" class="well well-lg">
-	  <div id="Bookdate"></div><br>
-	  <div id="table"></div>
-	</div>
+		<div id="c">
+			<div id="kCalendar" class="form-control"></div>
+		</div>
+		<div id="d" class="well well-lg">
+		  <div id="Bookdate"></div><br>
+		  <div id="table"></div>
+		</div>
 	</div> 
 </body>
 </html>

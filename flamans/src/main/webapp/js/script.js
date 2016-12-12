@@ -64,13 +64,13 @@ function kCalendar(id, date) {
 	calendar += '			<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
 	calendar += '			<thead>';
 	calendar += '				<tr>';
-	calendar += '				  <th class="sun" scope="row">일</th>';
-	calendar += '				  <th class="mon" scope="row">월</th>';
-	calendar += '				  <th class="tue" scope="row">화</th>';
-	calendar += '				  <th class="wed" scope="row">수</th>';
-	calendar += '				  <th class="thu" scope="row">목</th>';
-	calendar += '				  <th class="fri" scope="row">금</th>';
-	calendar += '				  <th class="sat" scope="row">토</th>';
+	calendar += '				  <th class="sun" scope="row" id="cc">일</th>';
+	calendar += '				  <th class="mon" scope="row" id="cc">월</th>';
+	calendar += '				  <th class="tue" scope="row" id="cc">화</th>';
+	calendar += '				  <th class="wed" scope="row" id="cc">수</th>';
+	calendar += '				  <th class="thu" scope="row" id="cc">목</th>';
+	calendar += '				  <th class="fri" scope="row" id="cc">금</th>';
+	calendar += '				  <th class="sat" scope="row" id="cc">토</th>';
 	calendar += '				</tr>';
 	calendar += '			</thead>';
 	calendar += '			<tbody>';
@@ -81,12 +81,19 @@ function kCalendar(id, date) {
 		calendar += '			<tr>';
 		for(var j = 0; j < 7; j++, dateNum++) {
 			if( dateNum < 1 || dateNum > currentLastDate ) {
-				calendar += '				<td class="' + dateString[j] + '"> </td>';
+				calendar += '				<td class="' + dateString[j] + 'id="cc"> </td>';
 				continue;
 			}
-			
-			calendar += '				<td class="' + dateString[j] + '" id="cc"><a href="#" onclick="bookDate('+currentYear+","+currentMonth+","+dateNum+');">' +dateNum + '</a><span id="'+currentYear+'-'+currentMonth+'-'+dateNum+'"></sapn></td>';
-		}
+			if(currentMonth<10){
+				currentMonth=parseInt(currentMonth);
+				currentMonth='0'+currentMonth;
+			}
+			if(dateNum<10){
+				dateNum=parseInt(dateNum);
+				dateNum='0'+dateNum;
+			}
+			calendar += '				<td class="' + dateString[j] + '" id="cc"><a href="#" onclick="bookDate('+currentYear+","+currentMonth+","+dateNum+');">' +dateNum + '</a><br><div id="'+currentYear+'-'+currentMonth+'-'+dateNum+'" style="float:right;width:20px;height:20px;"></div></td>';
+		}																							
 		calendar += '			</tr>';
 	}
 	
