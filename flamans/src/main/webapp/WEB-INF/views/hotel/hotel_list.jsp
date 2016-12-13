@@ -125,7 +125,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.tmpl.js"></script>
-<script type="text/javascript" src="/myweb/js/httpRequest.js"></script>
+<script type="text/javascript" src="/flamans/js/httpRequest.js"></script>
 
 <script>
 	

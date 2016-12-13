@@ -23,7 +23,7 @@
 	
 <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.tmpl.js"></script>
-<script type="text/javascript" src="/myweb/js/httpRequest.js"></script>
+<script type="text/javascript" src="/flamans/js/httpRequest.js"></script>
 
 <meta charset=UTF-8">
 <title>Insert title here</title>
