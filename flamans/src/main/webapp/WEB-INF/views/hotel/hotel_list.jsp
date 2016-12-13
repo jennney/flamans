@@ -270,7 +270,6 @@ input[type=range]:focus::-ms-fill-upper {
 					hotel_list +='<td width="100"><a href="hot_wishlist.do?hot_num='+data[i].hot_num+'&hotel_link=hotel_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					hotel_list +='<a href="booking_hot.do?hot_num='+data[i].hot_num+'"><input type="button" class="btn btn-default" value="예약"></a></td>';
 					hotel_list +='</tr></table>';
-					alert(i+'data.length'+data.length);
 					
 					if(i == data.length-1){
 						hotel_list +='<table><tr><td>'+pagedata+'</td></tr></table>';	
@@ -476,7 +475,7 @@ input[type=range]:focus::-ms-fill-upper {
 			params += 'checkout='+checkout;
 			z=1;
 		}
-		
+		alert(params);
 		hotel_sub_search(params);
 	}
 </script>

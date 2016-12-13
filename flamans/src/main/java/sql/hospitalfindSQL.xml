@@ -25,9 +25,15 @@
 	</select>
 	
 	<select id="hospital_sub_totalCnt" parameterType="java.util.HashMap" resultType="int">
-	<bind name="find" value="'%'+find+'%'"/> 
-	
-			select count(*) from fm_hospital ${m_sb} and hos_name like #{find}
+			select count(*) from fm_hospital where 1=1
+			
+			<if test="m_sb!='' and m_sb !=null"> 
+				and ${m_sb}
+			</if>
+			
+			<if test="find!='' and find !=null"> 
+				and hos_name like '%' ||#{find}|| '%'
+			</if>
 	</select>
 	
 	<select id="hospital_sub_search" parameterType="java.util.HashMap" resultType="flamans.hos_find.model.HospitalDTO">
@@ -35,11 +41,20 @@
 			select * 
         	from 
         	(select rownum as rnum,a.* from 
-        	(select * from fm_hospital ${m_sb} and hos_name like #{find}
+        	(select * from fm_hospital where 1=1
+        	
+			<if test="m_sb!='' and m_sb !=null"> 
+				and ${m_sb}
+			</if>
+			
+			<if test="find!='' and find !=null">
+				and hos_name like '%' ||#{find}|| '%'
+			</if>
+			
         	order by hos_num desc)a)b<![CDATA[ 
 			where rnum>=#{start} 
-        	and
-       		rnum<=#{end}
+	        	and
+	        rnum<=#{end}
         ]]> 
 	</select>
 	

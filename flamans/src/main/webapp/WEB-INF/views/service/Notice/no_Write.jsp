@@ -19,6 +19,7 @@
 #no_wrth1{
 	width: 200px;
 	border-right: 3px solid #BDBDBD;
+	text-align: center;
 }
 #no_wrtd1{
 	width: 500px;
@@ -37,21 +38,20 @@
 }
 #no_wrth2,#no_wrth3{
 	border-right: 2px solid #BDBDBD;
+	text-align: center;
 }
 #no_wrtd3,#no_wrth3{
 	border-bottom: 2px solid #BDBDBD;
 	height: 30px;
 }
 #no_wrtd4{
-	height: 30px;
+	height: 50px;
 	text-align: right;
-}
-h2{
-	text-align: center;
 }
 </style>
 <script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script>
 	window.onload=function(){
 	    CKEDITOR.replace('no_content', {
@@ -96,7 +96,7 @@ h2{
 	<table id="no_wr">
 		<tr>
 			<th id="no_wrth1">SUBJECT</th>
-			<td id="no_wrtd1"><input type="text" name="no_subject" size="50"></td>
+			<td id="no_wrtd1"><input type="text" name="no_subject" class="form-control"></td>
 		</tr>
 		<tr>
 			<td colspan="2" id="no_wrtx"><textarea name="no_content" id="no_content"></textarea></td>
@@ -110,8 +110,11 @@ h2{
 			<td id="no_wrtd3"><input type="file" name="upload"></td>
 		</tr>
 		<tr>
-			<td><input type="button" value="목록으로" onclick="location.href='no_List.do'"></td>
-			<td id="no_wrtd4" colspan="1"><input type="submit" value="작성"><input type="reset" value="다시작성"></td>
+			<td><button type="button" class="btn btn-default" onclick="location.href='no_List.do'">목록으로</button></td>
+			<td id="no_wrtd4" colspan="1">
+				<button type="submit" class="btn btn-default">작성</button>&nbsp;&nbsp;
+				<button type="reset" class="btn btn-default">다시작성</button>
+			</td>
 		</tr>
 	</table>
 </form>

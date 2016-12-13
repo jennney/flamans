@@ -266,9 +266,6 @@ public class HotFindController{
 		
 		//플래그 변수들. where_con & z
 		
-		//where 조건이 한번만 들어가기위해 작성
-		int where_con=0;
-		
 		//첫번째 조건이 들어갈때 조건문을 걸어줘야함
 		int z=0;
 		

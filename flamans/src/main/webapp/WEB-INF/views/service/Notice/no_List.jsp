@@ -6,6 +6,8 @@
 <html>
 <head>
 
+	<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <meta charset="UTF-8">
 <title>Notice</title>
 <style>
@@ -145,6 +147,59 @@ h2 {
 
 
 
+
+<section style="border: 1px solid red;">
+	
+	
+		  <form action="" id = "fo">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <ul id="mess">
+    
+	</ul>
+
+
+</section>
+
+
+
+<!-- ========================================================================================7 -->
+<script>
+
+var socket = io('https://192.168.20.18:8080');
+
+$('form').submit(function(){
+    socket.emit('chat_message', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+
+
+socket.on('chat_message', function(msg){
+	
+console.log(msg)
+	//document.getElementById("li_4").innerHTML = ""+msg+"";
+	   $('#mess').append($('<li>').text(msg));
+	
+});
+
+send  = function(){
+	
+	
+	var msg = document.getElementById("m").value;
+	//window.alert(msg);
+	socket.emit('chat_message',msg);
+	
+}
+
+
+
+
+
+
+
+</script>
+<!-- ========================================================================================7 -->
 
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>

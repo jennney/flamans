@@ -50,10 +50,15 @@ function showResult(){
 </script>
 </head>
 <body>
-<h2>호텔 관리 하기</h2>
-<input type="button" value="승인된 호텔" onclick="show(1);">
-<input type="button" value="신청한 호텔" onclick="show(2);">
-<br><br>
-<div id="table"></div>
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
+		<h2>호텔 관리 하기</h2>
+		<input type="button" value="승인된 호텔" onclick="show(1);">
+		<input type="button" value="신청한 호텔" onclick="show(2);">
+		<br><br>
+		<div id="table"></div>
+	</div>
+</div>
 </body>
 </html>
