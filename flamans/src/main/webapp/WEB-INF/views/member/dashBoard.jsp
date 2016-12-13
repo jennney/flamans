@@ -98,7 +98,6 @@ th{	text-align: center;}
 #kCalendar .fri {text-align: center;}
 #kCalendar .sat {text-align: center; color: deepskyblue;}
 #cc{width:45px;  height:35px;}
-/* #bodycolor{background-color: #EAEAEA;} */
 #la2{float:left; width:400px;}
 #white{font:15px/1.0 맑은 고딕; color: white; padding-top: 40px;}
 #dashtab {  margin: 0; padding: 0; float: left; list-style: none; height: 32px; border-bottom: 1px solid #EAEAEA;
@@ -117,7 +116,7 @@ th{	text-align: center;}
 .tab_content {  padding: 5px; font-size: 1.0em; }
 </style>
 </head>
-<body onload="kCalendar('kCalendar');cm_calendar()" id="bodycolor">
+<body onload="kCalendar('kCalendar');cm_calendar()">
 <div id="wrapper">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 <div id="page-wrapper">
