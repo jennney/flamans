@@ -46,4 +46,5 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 		List<HotelRoomDTO> list=sqlMap.selectList("fm_hotroom",hot_num);
 		return list;
 	}
+	    
 }
