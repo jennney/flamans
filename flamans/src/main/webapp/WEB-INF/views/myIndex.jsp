@@ -17,8 +17,7 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav side-nav">
 	        <li>
-	            <a href="#"><i class="fa fa-fw fa-dashboard"></i>  Dashboard</a>
-	            <a href="member_dashBoard.do">Dashboard</a>
+	            <a href="member_dashBoard.do"><i class="fa fa-fw fa-dashboard"></i>  Dashboard</a>
 	        </li>
 	        <li>
 	            <a href="member_page.do"><i class="fa fa-fw fa-user"></i>  MyPage</a>

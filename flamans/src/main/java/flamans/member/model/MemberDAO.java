@@ -2,6 +2,7 @@ package flamans.member.model;
 
 import java.util.List;
 
+import flamans.Bbook.model.BbookDTO;
 import flamans.hot.book.model.Hot_bookDTO;
 import flamans.qna.model.*;
 
@@ -29,6 +30,8 @@ public interface MemberDAO {
 	public int memberUpdate(MemberDTO dto);
 	
 	public List<QnaDTO> myqna(String qna_writer);
+	
+	public List<BbookDTO> mcalendar(String hos_bid, String date);
 
 	public List<Hot_bookDTO> book(String name);
 	

@@ -124,6 +124,7 @@ public class CompanyController {
 					String cm_name=dto.getCm_name();
 					session.setAttribute("cm_name", cm_name);
 					session.setAttribute("savecoId",dto.getCm_id());
+					session.setAttribute("cm_number",dto.getCm_number());
 					session.setAttribute("permit", dto.getCm_permit());
 					mav.setViewName("redirect:/index.do");
 				}

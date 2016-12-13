@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import flamans.Bbook.model.BbookDAO;
+import flamans.Bbook.model.BbookDTO;
 import flamans.hot.book.model.Hot_bookDTO;
 import flamans.member.model.*;
 import flamans.qna.model.*;
@@ -273,19 +275,18 @@ public class MemberController {
 	public ModelAndView memberPage(HttpSession session){
 		
 		ModelAndView mav= new ModelAndView();
-        
+		
 		String userid=(String)session.getAttribute("userid");
 		List<QnaDTO> myqna = memberDao.myqna(userid);
 		if(userid != null){
 			MemberDTO dto=memberDao.memberLogin(userid);
-			List<Hot_bookDTO> list = memberDao.book(userid); 
+			
 			if(dto==null||dto.equals("")){
 				mav.addObject("msg", "잘못된 접근입니다.");
 				mav.addObject("url", "index.do");
 				mav.setViewName("member/memberMsg");
 				
-			}else{				
-		        mav.addObject("list",list);
+			}else{
 				mav.addObject("dto", dto);
 				mav.addObject("myqna",myqna);
 				mav.setViewName("member/member_mypage");
@@ -295,7 +296,7 @@ public class MemberController {
 			mav.addObject("url", "member_login.do");
 			mav.setViewName("member/memberMsg");
 		}
-       
+		
 		return mav;
 	}
 
@@ -361,4 +362,35 @@ public class MemberController {
 				
 		return mav;
 	}
+	
+	/**대시보드*/
+	@RequestMapping("/member_dashBoard.do")
+	public ModelAndView dashBoard(HttpSession session){
+		
+		String m_id=(String)session.getAttribute("userid");
+		ModelAndView mav= new ModelAndView();
+		if(m_id==null||m_id.equals("")){
+			mav.addObject("msg", "로그인 후 이용해주세요.");
+			mav.addObject("url", "member_login.do");
+			mav.setViewName("member/memberMsg");
+		}
+		
+		mav.setViewName("member/dashBoard");
+		return mav;
+	}
+	
+	/**유저 - 달력표시*/
+	@RequestMapping(value="/memberCal.do", method=RequestMethod.POST)
+	public ModelAndView calendar(HttpSession session, @RequestParam("date")String date){
+		
+		String userid=(String)session.getAttribute("userid");
+	
+		List<BbookDTO> cal=memberDao.mcalendar(userid, date);//병원
+		//List<BbookDTO> calH=memberDao.hcalendar(userid, date);
+		//호텔정보 가져올것
+		ModelAndView mav=new ModelAndView("flamansJson", "cal", cal);
+		return mav;
+		
+	}
+
 }
