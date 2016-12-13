@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import flamans.hot.book.model.Hot_bookDTO;
 import flamans.member.model.*;
 import flamans.qna.model.*;
 
@@ -272,18 +273,19 @@ public class MemberController {
 	public ModelAndView memberPage(HttpSession session){
 		
 		ModelAndView mav= new ModelAndView();
-		
+        
 		String userid=(String)session.getAttribute("userid");
 		List<QnaDTO> myqna = memberDao.myqna(userid);
 		if(userid != null){
 			MemberDTO dto=memberDao.memberLogin(userid);
-			
+			List<Hot_bookDTO> list = memberDao.book(userid); 
 			if(dto==null||dto.equals("")){
 				mav.addObject("msg", "잘못된 접근입니다.");
 				mav.addObject("url", "index.do");
 				mav.setViewName("member/memberMsg");
 				
-			}else{
+			}else{				
+		        mav.addObject("list",list);
 				mav.addObject("dto", dto);
 				mav.addObject("myqna",myqna);
 				mav.setViewName("member/member_mypage");
@@ -293,7 +295,7 @@ public class MemberController {
 			mav.addObject("url", "member_login.do");
 			mav.setViewName("member/memberMsg");
 		}
-		
+       
 		return mav;
 	}
 
@@ -359,5 +361,4 @@ public class MemberController {
 				
 		return mav;
 	}
-
 }
