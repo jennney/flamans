@@ -124,7 +124,6 @@ function hoswishresult(){
 									</c:if>
 								</ul>
 							</li>
-		               
 							</ul>
 						</div>
 					</nav>
