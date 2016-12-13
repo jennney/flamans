@@ -2,7 +2,10 @@ package flamans.member.model;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import flamans.Bbook.model.BbookDTO;
+=======
+>>>>>>> branch 'master' of https://github.com/jennney/flamans.git
 import flamans.hot.book.model.Hot_bookDTO;
 import flamans.qna.model.*;
 
@@ -33,4 +36,6 @@ public interface MemberDAO {
 	
 	public List<BbookDTO> mcalendar(String hos_bid, String date);
 
+	public List<Hot_bookDTO> book(String name);
+	
 }

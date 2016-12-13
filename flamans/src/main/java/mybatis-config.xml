@@ -15,5 +15,6 @@
 		<mapper resource="sql/hotelSQL.xml"/>
 		<mapper resource="sql/hospitalSQL.xml"/>
 		<mapper resource="sql/hos_book.xml"/>
+		<mapper resource="sql/hot_bookSQL.xml"/>
 	</mappers>
 </configuration>
