@@ -38,19 +38,12 @@ body{
 	 				<option value="4">4성</option>
 	 				<option value="5">5성</option>
 	 		</select><br>
-	 방정보 : <input type="text" name="hot_roominfo" class="form-control">
-	 	
-	 
-	 
-	 <br>
-	 옵션 : <input type="checkbox" name="hot_option" value="wifi">와이파이 
-	 	 <input type="checkbox" name="hot_option" value="parking">주차장 
-	 	 <input type="checkbox" name="hot_option" value="1">1 
-	 	 <input type="checkbox" name="hot_option" value="2">2 
-	 	 <input type="checkbox" name="hot_option" value="3">3 
-	 	 <input type="checkbox" name="hot_option" value="4">4 
-	 	 <input type="checkbox" name="hot_option" value="5">5 
-	 <br>
+	<!--  옵션 : <input type="checkbox" name="hot_option" value="wifi">무료 와이파이 
+	 	 <input type="checkbox" name="hot_option" value="pool">수영장
+	 	 <input type="checkbox" name="hot_option" value="">피트니스
+	 	 <input type="checkbox" name="hot_option" value="">조식
+	 	 <input type="checkbox" name="hot_option" value="3">욕조
+	 <br> -->
 	 부대시설 <textarea rows="4" cols="200" name="hot_etc"></textarea><br>
 	<input type="submit" value="등록하기" class="btn btn-default"> <input type="reset" value="초기화" class="btn btn-default">
 </form>

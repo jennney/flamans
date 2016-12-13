@@ -3,12 +3,21 @@ package flamans.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpSession;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import flamans.hotel_find.model.HotelDTO;
+import flamans.hotel_find.model.HotelRoomDTO;
 import flamans.manager.model.Hotel_ManagerDAO;
 import flamans.qna.model.QnaDTO;
 
@@ -116,6 +126,7 @@ public class Hotel_ManagerController {
 	@RequestMapping(value="/hotelAdd.do",method=RequestMethod.POST)
 	public ModelAndView hotelAdd(@RequestParam("upload") MultipartFile upload,HotelDTO dto,HttpSession session){
 		
+		
 		copyinto(dto.getHot_num(),upload);
 		String img=upload.getOriginalFilename();
 		dto.setHot_img(img);
@@ -143,11 +154,11 @@ public class Hotel_ManagerController {
 				sb.append("' >");
 			}
 			sb.append(i);
-			sb.append("성 </option>");
+			sb.append("등급 </option>");
 		}
 		sb.append("</select>");
 		
-		String option[]={"wifi","parking","1","2","3","4","5"};
+	/*	String option[]={"wifi","parking","1","2","3","4","5"};
 		String result[]=dto.getHot_option().split(",");
 		StringBuffer sb1=new StringBuffer();
 		for(int k=0;k<option.length;k++){
@@ -163,10 +174,11 @@ public class Hotel_ManagerController {
 			sb1.append(">");
 			sb1.append(option[k]);
 		}
+		*/
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.addObject("grade", sb.toString());
-		mav.addObject("options", sb1.toString());
+//		mav.addObject("options", sb1.toString());
 		mav.setViewName("manager/hotel/hotelUpdate");
 		return mav;
 	}
@@ -203,4 +215,115 @@ public class Hotel_ManagerController {
 		return "manager/hotel/hotelAddrFind";
 	}
 	
+	@RequestMapping("/hotelRoomList.do")
+	public ModelAndView hotelRoomList(HttpSession session,@RequestParam(value="cp",defaultValue="1") int cp){
+		String cm_number=(String)session.getAttribute("cm_number");
+		int totalCnt=hotmDao.hotelRoomCnt(cm_number);
+		int listSize=10;
+		int pageSize=5;
+		List<HotelRoomDTO> list=hotmDao.hotelRoomList(cm_number, cp, listSize);
+		String hotelRoomPage=flamans.paging.PageModule.makePage("hotelRoomList.do", totalCnt, listSize, pageSize, cp);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("hotelRoomPage", hotelRoomPage);
+		mav.setViewName("manager/hotel/hotelRoomList");
+		return mav;
+	}
+	
+	@RequestMapping(value="/hotelRoomAdd.do",method=RequestMethod.GET)
+	public String hotelRoomAddForm(HttpSession session){
+		return "manager/hotel/hotelRoomAdd";
+	}
+	
+	@RequestMapping(value="/hotelRoomAdd.do",method=RequestMethod.POST)
+	public ModelAndView hotelRoomAdd(HotelRoomDTO dto){
+		int result=hotmDao.hotelRoomAdd(dto);
+		String msg=result>0?"등록 성공":"등록 실패";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "hotelRoomList.do");
+		mav.setViewName("manager/Msg");
+		return mav;
+	}
+	
+	@RequestMapping("/hotelRoomContent.do")
+	public ModelAndView hotelRoomContent(int room_idx){
+		List<HotelRoomDTO> list=hotmDao.hotelRoomContent(room_idx);
+		ModelAndView mav=new ModelAndView();
+		if(list==null||list.size()==0){
+			mav.addObject("msg", "삭제된 방 정보 이거나 잘못된 접근입니다.");
+			mav.addObject("url", "hotelRoomList.do");
+			mav.setViewName("manager/Msg");
+		}else{
+			StringBuffer sb=new StringBuffer();
+			String option[]={"1","2","3","4","5"};
+			String result[]=list.get(0).getRoom_option().split(",");
+			for(int k=0;k<option.length;k++){
+				
+				sb.append("<input type='checkbox' name='room_option' value='");
+				sb.append(option[k]);
+				sb.append("'");
+				for(int j=0;j<result.length;j++){
+					if(option[k].equals(result[j])){
+						sb.append(" checked='checked'");
+					}
+				}
+				sb.append(">");
+				sb.append(option[k]);
+			}
+			mav.addObject("list",list);
+			mav.addObject("options", sb.toString());
+			mav.setViewName("manager/hotel/hotelRoomContent");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/hotelRoomUpdate.do",method=RequestMethod.GET)
+	public ModelAndView hotelRoomUpdateForm(int room_idx){
+		HotelRoomDTO dto=hotmDao.hotelRoomUpdateForm(room_idx);
+		StringBuffer sb=new StringBuffer();
+		String option[]={"1","2","3","4","5"};
+		String result[]=dto.getRoom_option().split(",");
+		for(int k=0;k<option.length;k++){
+			
+			sb.append("<input type='checkbox' name='room_option' value='");
+			sb.append(option[k]);
+			sb.append("'");
+			for(int j=0;j<result.length;j++){
+				if(option[k].equals(result[j])){
+					sb.append(" checked='checked'");
+				}
+			}
+			sb.append(">");
+			sb.append(option[k]);
+		}
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("dto", dto);
+		mav.addObject("options", sb.toString());
+		mav.setViewName("manager/hotel/hotelRoomUpdate");
+		return mav;
+	}
+	
+	@RequestMapping(value="/hotelRoomUpdate.do",method=RequestMethod.POST)
+	public ModelAndView hotelRoomUpdate(HotelRoomDTO dto){
+		int result=hotmDao.hotelRoomUpdate(dto);
+		String msg=result>0?"수정 성공":"수정 실패";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "hotelRoomContent.do?room_idx="+dto.getRoom_idx());
+		mav.setViewName("manager/Msg");
+		return mav;
+	}
+	
+	@RequestMapping("/hotelRoomDelete.do")
+	public ModelAndView hotelRoomDelete(int room_idx){
+		int result=hotmDao.hotelRoomDelete(room_idx);
+		String msg=result>0?"삭제 성공":"삭제 실패";
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("msg", msg);
+		mav.addObject("url", "hotelRoomList.do");
+		mav.setViewName("manager/Msg");
+		return mav;
+		
+	}
 }

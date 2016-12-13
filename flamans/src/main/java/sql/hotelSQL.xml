@@ -23,8 +23,6 @@
 			null, 
 			#{hot_mapinfo}, 
 			#{hot_grade}, 
-			#{hot_roominfo}, 
-			#{hot_option}, 
 			#{hot_etc} 
 			) 
 	</insert>
@@ -38,8 +36,6 @@
 			hot_content=#{hot_content}, 
 			hot_mapinfo=#{hot_mapinfo}, 
 			hot_grade=#{hot_grade}, 
-			hot_roominfo=#{hot_roominfo}, 
-			hot_option=#{hot_option}, 
 			hot_etc=#{hot_etc} 
 		where 
 			hot_num=#{hot_num} 
@@ -73,5 +69,49 @@
 	
 	<delete id="hotelOut" parameterType="String">
 		delete from fm_company where cm_number=#{cm_number}
+	</delete>
+	
+	<select id="hotelRoomLIst" resultType="flamans.hotel_find.model.HotelRoomDTO" parameterType="Map">
+		select * from
+		(select rownum as rnum,a.* from
+		(select * from fm_hotroom where hot_num = #{cm_number} order by room_idx desc) a) b
+		where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="hotelRoomCnt" resultType="Integer" parameterType="String">
+		select count(*) from fm_hotroom where hot_num=#{cm_number}
+	</select>
+	
+	<insert id="hotelRoomAdd" parameterType="flamans.hotel_find.model.HotelRoomDTO">
+		insert into
+			fm_hotroom
+		values(
+			#{hot_num},
+			#{roomname},
+			#{roomprice},
+			#{roomnum},
+			fm_hotroom_idx.nextval,
+			#{room_option}
+		)
+	</insert>
+	
+	<select id="hotelRoomContent" parameterType="Integer" resultType="flamans.hotel_find.model.HotelRoomDTO">
+		select * from fm_hotroom where room_idx=#{room_idx}
+	</select>
+	
+	<update id="hotelRoomUpdate" parameterType="flamans.hotel_find.model.HotelRoomDTO">
+		update
+			fm_hotroom
+		set
+			roomname=#{roomname},
+			roomprice=#{roomprice},
+			roomnum=#{roomnum},
+			room_option=#{room_option}
+		where
+			room_idx=#{room_idx}
+	</update>
+	
+	<delete id="hotelRoomDelete" parameterType="Integer">
+		delete from fm_hotroom where room_idx=#{room_idx}
 	</delete>
 </mapper>

@@ -3,6 +3,7 @@ package flamans.manager.model;
 import java.util.List;
 
 import flamans.hotel_find.model.HotelDTO;
+import flamans.hotel_find.model.HotelRoomDTO;
 import flamans.qna.model.QnaDTO;
 
 public interface Hotel_ManagerDAO {
@@ -28,4 +29,18 @@ public interface Hotel_ManagerDAO {
 	public int hotelUpdate(HotelDTO dto);
 	
 	public int hotelDelete(String hot_num);
+	
+	public int hotelRoomCnt(String cm_number);
+	
+	public List<HotelRoomDTO> hotelRoomList(String cm_number,int cp,int listSize);
+	
+	public int hotelRoomAdd(HotelRoomDTO dto);
+	
+	public List<HotelRoomDTO> hotelRoomContent(int room_idx);
+	
+	public HotelRoomDTO	hotelRoomUpdateForm(int room_idx);
+	
+	public int hotelRoomUpdate(HotelRoomDTO dto);
+	
+	public int hotelRoomDelete(int room_idx);
 }

@@ -10,15 +10,13 @@ public class HotelDTO {
 	private int hot_map_y;
 	private String hot_mapinfo;
 	private int hot_grade;
-	private String hot_roominfo;
-	private String hot_option;
 	private String hot_etc;
 	
 	public HotelDTO() {
 		super();
 	}
 	public HotelDTO(String hot_num, String hot_name, String hot_addr, String hot_img, String hot_content, int hot_map_x,
-			int hot_map_y, String hot_mapinfo, int hot_grade, String hot_roominfo, String hot_option, String hot_etc) {
+			int hot_map_y, String hot_mapinfo, int hot_grade, String hot_etc) {
 		super();
 		this.hot_num = hot_num;
 		this.hot_name = hot_name;
@@ -29,8 +27,6 @@ public class HotelDTO {
 		this.hot_map_y = hot_map_y;
 		this.hot_mapinfo = hot_mapinfo;
 		this.hot_grade = hot_grade;
-		this.hot_roominfo = hot_roominfo;
-		this.hot_option = hot_option;
 		this.hot_etc = hot_etc;
 	}
 	
@@ -87,18 +83,6 @@ public class HotelDTO {
 	}
 	public void setHot_grade(int hot_grade) {
 		this.hot_grade = hot_grade;
-	}
-	public String getHot_roominfo() {
-		return hot_roominfo;
-	}
-	public void setHot_roominfo(String hot_roominfo) {
-		this.hot_roominfo = hot_roominfo;
-	}
-	public String getHot_option() {
-		return hot_option;
-	}
-	public void setHot_option(String hot_option) {
-		this.hot_option = hot_option;
 	}
 	public String getHot_etc() {
 		return hot_etc;

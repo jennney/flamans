@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import flamans.hotel_find.model.HotelDTO;
+import flamans.hotel_find.model.HotelRoomDTO;
 import flamans.qna.model.QnaDTO;
 
 public class Hotel_ManagerDAOImple implements Hotel_ManagerDAO {
@@ -76,6 +77,47 @@ public class Hotel_ManagerDAOImple implements Hotel_ManagerDAO {
 	
 	public int hotelDelete(String hot_num) {
 		int count=sqlMap.delete("hotelDelete", hot_num);
+		return count;
+	}
+	
+	public int hotelRoomCnt(String cm_number) {
+		int count=sqlMap.selectOne("hotelRoomCnt", cm_number);
+		return count;
+	}
+	
+	public List<HotelRoomDTO> hotelRoomList(String cm_number, int cp, int listSize) {
+		int start=(cp-1)*listSize+1 ;
+		int end=cp*listSize;
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("cm_number", cm_number);
+		map.put("start", start);
+		map.put("end", end);
+		List<HotelRoomDTO> list=sqlMap.selectList("hotelRoomLIst", map);
+		return list;
+	}
+	
+	public int hotelRoomAdd(HotelRoomDTO dto) {
+		int count=sqlMap.insert("hotelRoomAdd", dto);
+		return count;
+	}
+	
+	public List<HotelRoomDTO> hotelRoomContent(int room_idx) {
+		List<HotelRoomDTO> list=sqlMap.selectList("hotelRoomContent", room_idx);
+		return list;
+	}
+	
+	public HotelRoomDTO hotelRoomUpdateForm(int room_idx) {
+		HotelRoomDTO dto=sqlMap.selectOne("hotelRoomContent", room_idx);
+		return dto;
+	}
+	
+	public int hotelRoomUpdate(HotelRoomDTO dto) {
+		int count=sqlMap.update("hotelRoomUpdate", dto);
+		return count;
+	}
+	
+	public int hotelRoomDelete(int room_idx) {
+		int count=sqlMap.delete("hotelRoomDelete", room_idx);
 		return count;
 	}
 }
