@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -21,7 +22,7 @@ a:link {
 	font-weight: bold;
 	text-decoration: none;
 }
- 
+
 a:visited {
 	color: #666;
 	font-weight: bold;
@@ -331,54 +332,15 @@ a#booking_pop:hover {
 					$("#datepicker1").datepicker("option", "minDate",selectedDate);
 	
 				});
-		
 		$("#datepicker").change(function() {
 			$("#txt").text($(this).val());
+			var checkin = $(this).val();
+			$("#checkin").val(checkin);
 		});
 		$("#datepicker1").change(function() {
 			$("#txt1").text($(this).val());
-		});
-		$("#room1").change(function() {
-			var name = "스탠다드 더블 룸";
-			$("#txt2").text($(this).val()+name);
-		if($(this).val()==0){
-			$("#txt2").text("");			
-		}
-		});
-		$("#room2").change(function() {
-			var name= "스탠다드 트윈 룸";
-			$("#txt3").text($(this).val()+name);
-		if($(this).val()==0){
-				$("#txt3").text("");			
-			}
-		});
-		$("#room3").change(function() {
-			var name="패밀리 더블 룸";
-			$("#txt4").text($(this).val()+name);
-		if($(this).val()==0){
-				$("#txt4").text("");			
-			}
-		});
-		$("#room4").change(function() {
-			var name="패밀리 트윈 룸";
-			$("#txt5").text($(this).val()+name);
-		if($(this).val()==0){
-				$("#txt5").text("");			
-			}
-		});
-		$("#room5").change(function() {
-			var name="세미 스위트 룸";
-			$("#txt6").text($(this).val()+name);
-		if($(this).val()==0){
-				$("#txt6").text("");			
-			}
-		});
-		$("#room6").change(function() {
-			var name="스위트 룸";
-			$("#txt7").text($(this).val()+name);
-		if($(this).val()==0){
-				$("#txt7").text("");			
-			}
+			var checkout = $(this).val();
+			$("#checkout").val(checkout);
 		});
 		$("#adult").change(function() {
 			$("#txt8").text($(this).val());
@@ -386,176 +348,145 @@ a#booking_pop:hover {
 		$("#child").change(function() {
 			$("#txt9").text($(this).val());
 		});
+		$("#roomnum1").change(function() {
+			var roomnum = $(this).val();
+			$("#roomnum").val(roomnum);
+		});
+		$("#booking_pop").click(function(){
+			var child = $("#txt9").text();
+			var adult = $("#txt8").text();
+			var people ='어른 : '+adunlt+'/어린이 : '+child;
+			$("#people").val(people);
+		});
+		$("#roomnum1").click(function(){
+			var roomnum = $(this).val();
+			$("#roomnum").val(roomnum);
+		});
 	});
 </script>
 </head>
 <body>
-	<form name="booking_hot" action="booking_hot_info.do">
-		<table cellspacing='0' border="0">
-			<tr>
-				<th colspan="2">체크인</th>
-				<td><input type="text" id="datepicker" name="checkin"
-					class="btn btn-default" placeholder="체크인"></td>
-				<th colspan="2">체크아웃</th>
-				<td><input type="text" id="datepicker1" name="checkout"
-					class="btn btn-default" placeholder="체크아웃"></td>
-			</tr>
-			<tr>
-				<th>객실</th>
-				<td><select name="room">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-				</select></td>
-				<th>성인</th>
-				<td><select name="adult" id="adult">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-				</select></td>
-				<th>어린이</th>
-				<td><select name="child" id="child">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-				</select></td>
-			</tr>
+	<table cellspacing='0' border="0">
+	
+		<tr>
+			<th colspan="2">체크인</th>
+			<td><input type="text" id="datepicker" name="checkin"
+				class="btn btn-default" placeholder="체크인"></td>
+			<th colspan="2">체크아웃</th>
+			<td><input type="text" id="datepicker1" name="checkout"
+				class="btn btn-default" placeholder="체크아웃"></td>
+		</tr>
+		<tr>
+			<th>객실 </th>
+			<td><select name="room" id="roomnum1">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+			</select></td>
+			<th>성인</th>
+			<td><select name="adult" id="adult">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+			</select></td>
+			<th>어린이</th>
+			<td><select name="child" id="child">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+			</select></td>
+		</tr>
 
-			<tr>
-				<th>객실유형</th>
-				<th>정 원</th>
-				<th>객실요금</th>
-				<th>조 건</th>
-				<th>객실 선택</th>
-				<th rowspan="7">선택한 객실<br> <a href="#booking_form"
-					id="booking_pop"><input type="button" value="예약하기"></a></th>
-			</tr>
-			<tr>
-				<td id="roomname">스탠다드 더블 룸</td>
-				<td>2명</td>
-				<td>100000원</td>
-				<td>조식 포함</td>
-				<td><select name="room1" id="room1">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-				</select></td>
-				<th></th>
-			</tr>
-			<tr class="even">
-				<td id="roomname">스탠다드 트윈 룸</td>
-				<td>2명</td>
-				<td>120000원</td>
-				<td>조식 불포함</td>
-				<td><select name="room2" id="room2">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-				</select></td>
-				<th></th>
-			</tr>
-
-			<tr>
-				<td id="roomname2">패밀리 더블 룸</td>
-				<td>3명</td>
-				<td>150000원</td>
-				<td>조식 포함</td>
-				<td><select name="room3" id="room3">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-				</select></td>
-				<th></th>
-			</tr>
-			<tr class='even'>
-				<td id="roomname3">패밀리 트윈 룸</td>
-				<td>3명</td>
-				<td>170000원</td>
-				<td>조식 포함</td>
-				<td><select name="room4" id="room4">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-				</select></td>
-				<th></th>
-			</tr>
-
-			<tr>
-				<td id="roomname4">세미 스위트 룸</td>
-				<td>4명</td>
-				<td>200000원</td>
-				<td>조식 불포함</td>
-				<td><select name="room5" id="romm5"> 
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-				</select></td>
-				<th></th>
-			</tr>
-			<tr class="even">
-				<td id="roomname5">스위트 룸</td>
-				<td>4명</td>
-				<td>280000원</td>
-				<td>조식 포함</td>
-				<td><select name="room6" id="room6">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-				</select></td>
-				<th></th>
-			</tr>
-		</table>
-
-		<a href="#x" class="overlay" id="booking_form"></a>
-		<div class="popup">
-
-			<div>
-				<label for="checkin">체크인:</label>
-				<span id="txt"></span>
-
-			</div>
-			<div>
-				<label for="checkout">체크아웃:</label>
-				<span id="txt1"></span>
-			</div>
-			<div>
-				<label for="adult">성인:</label>
-				<span id="txt8"></span>
-			</div>
-			<div>
-				<label for="child">어린이:</label>
-				<span id="txt9"></span>
-			</div>
-			<div>
-				<label for="roomtype">객실 타입:</label>
-				<span id="txt2"></span>
-				<span id="txt3"></span>
-				<span id="txt4"></span>
-				<span id="txt5"></span>
-				<span id="txt6"></span>
-				<span id="txt7"></span>
-			</div>
-			<div>
-				<label><input type="submit" value="예약" name="예약"></label>
-			</div>
-			<a class="close" href="#close"></a>	
+		<tr>
+			<th>객실유형</th>
+			<th>정 원</th>
+			<th>객실요금</th>
+			<th>조 건</th>
+			<th>객실 선택</th>
+			<th rowspan="7">선택한 객실<br> 
+			<a href="#booking_form" id="booking_pop">
+			<input type="button" value="예약하기"></a></th>
+		</tr>
+		<c:forEach var="dto" items="${hotelroom}">	
+		<tr>
+			<td id="roomname"> ${dto.roomname}</td>
+			<td>2명</td>
+			<td>${dto.roomprice }</td>
+			<td>${dto.room_option }</td>
+			<td>
+				<select name="room1" id="room1">
+				<c:forEach begin="0" end="${dto.roomnum}" step="1" var="i">
+					<option value="0">${i}</option>
+				</c:forEach>
+				</select>
+			</td>
+			<th></th>
+		</tr>
+	 </c:forEach>
+	</table>
+  
+	<a href="#x" class="overlay" id="booking_form"></a>
+	<div class="popup">
+		<div>
+			<label for="checkin">체크인:</label>
+			<span id="txt"></span>
 		</div>
+		<div>
+			<label for="checkout">체크아웃:</label>
+			<span id="txt1"></span>
+		</div>
+		<div>
+			<label for="adult">성인:</label>
+			<span id="txt8"></span>
+		</div>
+		<div>
+			<label for="child">어린이:</label>
+			<span id="txt9"></span>
+		</div>
+		<div>
+			<label for="roomtype">객실 타입:</label>
+			<span id="spantxt"></span>
+		</div>
+	    <hr>
+	  	[예약자 정보 입력]
+	  	<div></div>
+	  	<form name="booking_hot" action="booking_hot.do" method="post">
+	  	<input type="hidden" name="hot_num" value="${hot_num}">
+	  	<input type="hidden" name="name" value="${mdto.m_name}">
+	  	<input type="hidden" name="sex" value="${mdto.m_sex}">
+		<input type="hidden" name="nationality" value="${mdto.m_nationality}">
+		<input type="hidden" name="checkin" id="checkin">  	
+		<input type="hidden" name="checkout" id="checkout">  	 		
+		<input type="hidden" name="room" id="roomnum">
+		<input type="hidden" name="people" id="people">  	
+		<input type="hidden" name="roomselect" value="2">	
+		<input type="hidden" name="permit" value="0"> 	   
+		<div>
+		예약자명: ${mdto.m_name}
+		</div>
+		<div>
+		성 별: ${mdto.m_sex }
+		</div>
+		<div>
+		국적:${mdto.m_nationality}
+		</div>
+		<div>카드 번호: 
+			<select name="카드회사">
+				<option value="Lotte">롯데</option>
+				<option value="BC">비씨</option>
+				<option value="Master">마스터</option>
+				</select>&nbsp;
+				<input type="text" name="card">
+		</div>
+	<div>
+		<label><input type="submit" value="예약"></label>
+	</div>
 	</form>
+		<a class="close" href="#close"></a>	
+</div>
 </body>
 </html>
