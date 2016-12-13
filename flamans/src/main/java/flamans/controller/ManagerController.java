@@ -12,10 +12,11 @@ public class ManagerController {
 	@RequestMapping("/manager.do")
 	public ModelAndView managerPage(HttpSession session){
 		String cm_number_s = (String)session.getAttribute("cm_number");
+		String cm_id = (String)session.getAttribute("savecoId");
 		String cm_number = cm_number_s.substring(0,1);
-		System.out.println(cm_number);
+		System.out.println(session.getAttribute("savecoId"));
 		ModelAndView mav=new ModelAndView();
-		if(session.getAttribute("savecoId").equals("admin")){
+		if(cm_id.equals("admin")){
 			mav.setViewName("manager/site/siteManager");
 		}else if(cm_number.equals("B")){
 			mav.setViewName("manager/hospital/hospitalManager");

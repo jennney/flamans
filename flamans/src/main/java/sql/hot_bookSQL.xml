@@ -2,49 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="flamans.hot.book">
-	
-	<insert id="booking_hot" parameterType="flamans.hot.book.model.Hot_bookDTO">
-		insert
-			into
-		fm_hot_book
-			values(
-		#{hot_num},
-			#{writer},
-		#{sex},
-			#{age},
-		#{nationality},
-			#{checkin},
-		#{checkout},
-			#{card},
-		sysdate
-			#{hot_optiono},
-		#{room},
-			#{people},
-		#{roomselect},
-			#{permit},
-		#{booingnum},	
-			)
-	</insert>
-	<insert id="booking_hot_info" parameterType="flamans.hot.book.model.Hot_bookDTO">
-		insert
-			into
-		fm_hot_book
-			values(
-		#{hot_num},
-			#{writer},
-		#{sex},
-			#{age},
-		#{nationality},
-			#{checkin},
-		#{checkout},
-			#{card},
-		sysdate
-			#{hot_optiono},
-		#{room},
-			#{people},
-		#{roomselect},
-			#{permit},
-		#{booingnum},	
-			)
-	</insert>
+   <insert id="booking_hot" parameterType="flamans.hot.book.model.Hot_bookDTO">
+      insert
+         into
+      fm_hot_book
+         values(#{hot_num},
+         #{name},
+            #{sex},
+                  #{nationality},
+         #{checkin},
+            #{checkout},
+         #{card},
+            sysdate,
+         #{room},
+            #{people},
+         #{roomselect},
+            #{permit},
+         fm_hot_book_bookingnum.nextval)
+   </insert>
+   
+   <select id="hot_info" resultType="flamans.member.model.MemberDTO">
+        select * from fm_member where m_id=#{m_id}
+   </select>
+   
+   <select id="fm_hotroom" resultType="flamans.hotel_find.model.HotelRoomDTO">
+      select * from fm_hotroom where hot_num=#{hot_num}
+   </select> 
+       
 </mapper>
