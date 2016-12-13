@@ -99,5 +99,10 @@ public class HospitalDAOImple implements HospitalDAO {
 		sqlMap.update("add_memberFind", map);
 		
 	}
+	
+	public String get_hosdate() {
+		String write_date = sqlMap.selectOne("get_date");
+		return write_date;
+	}
 
 }

@@ -1,5 +1,6 @@
 package flamans.controller;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -427,7 +428,7 @@ public class HosFindController {
 				return mav;
 			}
 			
-			
+			String wishdate=hotel_info.get_date();
 			
 			hossearchObject1.put("hos_num",list.get(0).getHos_num());
 			hossearchObject1.put("hos_name",list.get(0).getHos_name());
@@ -435,7 +436,7 @@ public class HosFindController {
 			hossearchObject1.put("hos_img",list.get(0).getHos_img());
 			hossearchObject1.put("hos_content",list.get(0).getHos_content());
 			hossearchObject1.put("hos_map_info",list.get(0).getHos_mapinfo());
-			//hossearchObject1.put("hos_wishnum",);
+			hossearchObject1.put("hos_wishnum",wishdate);
 			hossearchArray1.add(hossearchObject1);
 			
 			hossearchObject.put("hos", hossearchArray1);

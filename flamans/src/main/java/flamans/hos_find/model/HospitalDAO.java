@@ -20,6 +20,8 @@ public interface HospitalDAO {
 	public List<DoctorDTO> hospital_docinfo(int num);
 	public void add_memberFind(String memberfind, String id);
 	
+	public String get_hosdate();
+	
 	public int memberUpdateWishlist(String wishlist, String m_id);
 	
 }
