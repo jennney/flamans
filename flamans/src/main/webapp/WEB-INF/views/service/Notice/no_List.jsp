@@ -5,6 +5,7 @@
 <!DOCTYPE>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Notice</title>
 <style>
@@ -137,6 +138,14 @@ h2 {
 		</tbody>
 	</table>
 </section>
+
+
+
+
+
+
+
+
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

@@ -254,7 +254,6 @@ input[type=range]:focus::-ms-fill-upper {
 				}else{
 					starimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
 				}
-
 				
 				// http://localhost:9090/myweb/img/1.jpg;
 				data = eval('('+data+')');
@@ -271,13 +270,15 @@ input[type=range]:focus::-ms-fill-upper {
 					hotel_list +='<td width="100"><a href="hot_wishlist.do?hot_num='+data[i].hot_num+'&hotel_link=hotel_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					hotel_list +='<a href="booking_hot.do?hot_num='+data[i].hot_num+'"><input type="button" class="btn btn-default" value="예약"></a></td>';
 					hotel_list +='</tr></table>';
+					alert(i+'data.length'+data.length);
 					
-					if(i == data.length){
-						
+					if(i == data.length-1){
+						hotel_list +='<table><tr><td>'+pagedata+'</td></tr></table>';	
 					}
 				}
+				
 				if(data.length==0){
-					hotel_list
+					hotel_list +='<table><tr><td>검색조건에 맞는 호텔이 없습니다.</td></tr></table>';
 				}
 				var hotels = document.getElementById('hotellistarea');
 				hotels.innerHTML=hotel_list;
@@ -441,7 +442,7 @@ input[type=range]:focus::-ms-fill-upper {
 			}
 		}
 		
-		if(roomprice>=10000 && roomprice<=100000){
+		if(roomprice>=10000 && roomprice<=200000){
 			i=0;
 	 		if(z==1){
 	 			params+='&';
@@ -685,12 +686,12 @@ input[type=range]:focus::-ms-fill-upper {
 						</tr>
 						
 						<tr>
-							<td colspan="5" align="center">[10000원]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[100000원]</td>
+							<td colspan="5" align="center">[10000원]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[200000원]</td>
 						</tr>
 						
 						<tr>
 							<td colspan="5" align="center">
-							<input type="range" name="price_hotel" min="10000" max="100000" step="10000" onchange="hot_grade_search(this.value)"></td>
+							<input type="range" name="price_hotel" min="10000" max="200000" step="10000" value="200000" onchange="hot_grade_search(this.value)"></td>
 						</tr>
 						
 						<tr>
