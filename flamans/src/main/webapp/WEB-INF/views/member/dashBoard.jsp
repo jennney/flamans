@@ -47,11 +47,19 @@ function cm_calendarResult(){
 			data=eval('('+data+')');		
 			var cal=data.cal;
 			/* var calH=data.calH;
-			for(j=0; j<calH.length; j++){
-				HH=document.getElementById(calH[j]);
+			for(j=0; j<calH.checkin.length; j++){
+
 				alert(calH[j].checkin);
 				alert(calH[j].checkout);
-				HH.innerHTML='<img src="img/hBook.JPG" width="20px" heigth="20px">';
+				var chtemp=calH[j].checkin.split('-');
+				var bodate=new Date(chtemp[0], chtemp[1], chtemp[2]);
+				var cotemp=calH[j].checkout.split('-');
+				var outdate=new Date(cotemp[0], cotemp[1], cotemp[2]);
+				for(chtemp[2]; chtemp[2]<=cotemp[2];chtemp[2]++){
+					HH=document.getElementById(calH[j]);
+					HH.innerHTML='<img src="img/hBook.JPG" width="20px" heigth="20px">';
+				}
+
 			} */
 			for(i=0; i<cal.length; i++){
 				var caltemp=cal[i].bookingdate.split('/');
@@ -90,7 +98,7 @@ th{	text-align: center;}
 #kCalendar .fri {text-align: center;}
 #kCalendar .sat {text-align: center; color: deepskyblue;}
 #cc{width:45px;  height:35px;}
-#bodycolor{background-color: #EAEAEA;}
+/* #bodycolor{background-color: #EAEAEA;} */
 #la2{float:left; width:400px;}
 #white{font:15px/1.0 맑은 고딕; color: white; padding-top: 40px;}
 #dashtab {  margin: 0; padding: 0; float: left; list-style: none; height: 32px; border-bottom: 1px solid #EAEAEA;
