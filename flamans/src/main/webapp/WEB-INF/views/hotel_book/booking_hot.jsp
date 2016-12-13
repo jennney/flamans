@@ -351,18 +351,24 @@ a#booking_pop:hover {
 		$("#roomnum1").change(function() {
 			var roomnum = $(this).val();
 			$("#roomnum").val(roomnum);
-		});
+		});		
 		$("#booking_pop").click(function(){
 			var child = $("#txt9").text();
 			var adult = $("#txt8").text();
-			var people ='어른 : '+adunlt+'/어린이 : '+child;
+			var people ='어른 : '+adult+'/어린이 : '+child;
 			$("#people").val(people);
 		});
-		$("#roomnum1").click(function(){
-			var roomnum = $(this).val();
-			$("#roomnum").val(roomnum);
-		});
+
 	});
+
+	function change(idx,name){
+		var temp = new Array();
+		var target = document.getElementById(idx);
+		var room = target.options[target.selectedIndex].text;
+		var txt = name+" "+room+"객실";
+		document.getElementById("spantxt").innerHTML = txt;
+		document.getElementById("roomselect").value = idx;
+	}
 </script>
 </head>
 <body>
@@ -418,9 +424,9 @@ a#booking_pop:hover {
 			<td>${dto.roomprice }</td>
 			<td>${dto.room_option }</td>
 			<td>
-				<select name="room1" id="room1">
+				<select name="room" onchange="javascript:change('${dto.room_idx}','${dto.roomname}')" id="${dto.room_idx }">
 				<c:forEach begin="0" end="${dto.roomnum}" step="1" var="i">
-					<option value="0">${i}</option>
+					<option value="${i}">${i}</option>
 				</c:forEach>
 				</select>
 			</td>
@@ -463,8 +469,8 @@ a#booking_pop:hover {
 		<input type="hidden" name="checkout" id="checkout">  	 		
 		<input type="hidden" name="room" id="roomnum">
 		<input type="hidden" name="people" id="people">  	
-		<input type="hidden" name="roomselect" value="2">	
-		<input type="hidden" name="permit" value="0"> 	   
+		<input type="text" name="roomselect" id="roomselect">	
+		<input type="hidden" name="permit" value="0"> 	    
 		<div>
 		예약자명: ${mdto.m_name}
 		</div>
