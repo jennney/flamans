@@ -16,7 +16,7 @@ public class ManagerController {
 		String cm_number = cm_number_s.substring(0,1);
 		System.out.println(session.getAttribute("savecoId"));
 		ModelAndView mav=new ModelAndView();
-		if(cm_id.equals("admin")){
+		if(cm_id.equals("admin")){  
 			mav.setViewName("manager/site/siteManager");
 		}else if(cm_number.equals("B")){
 			mav.setViewName("manager/hospital/hospitalManager");
