@@ -22,7 +22,7 @@ public class HotController {
 		mav.setViewName("hotel_book/booking_hot");
 		return mav;
 
-	}
+	} 
 	@RequestMapping(value="/booking_hot.do",method=RequestMethod.POST)
 	public ModelAndView booking_hot(@ModelAttribute("dto") Hot_bookDTO command){
 		ModelAndView mav = new ModelAndView();

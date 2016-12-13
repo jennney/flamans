@@ -21,7 +21,7 @@ html, body {
 .push {
 	height: 120px; /* 하단 이미지 높이 영역 */
 	text-align:center;
-}
+} 
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0 auto;

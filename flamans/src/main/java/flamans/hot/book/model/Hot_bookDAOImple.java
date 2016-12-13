@@ -21,5 +21,5 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 		
 		int count=sqlMap.insert("booking_hot_info",dto);
 		return count;
-	}
+	} 
 }
