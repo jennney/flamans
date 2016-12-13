@@ -7,7 +7,7 @@
 <title>페이지관리</title>
 <style type="text/css">
 .container {
-	width: 1000px; margin: 10px auto;
+	width: 900px; margin: 10px auto;
 }
 
 ul.tabs {
@@ -72,8 +72,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  {
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="/myweb/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/myweb/js/httpRequest.js"></script>
+<script type="text/javascript" src="/flamans/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/flamans/js/httpRequest.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -105,9 +105,9 @@ function findlistresult(){
 					var data_hos = '';
 					
 					for(var i=data.hos.length-1; i>=0; i--){
-						data_hos+='<table class="table table-hover" border="1" width="1000" height="300" cellspacing="0"><tr align="center">'
+						data_hos+='<table class="table table-hover" border="1" width="900" height="300" cellspacing="0"><tr align="center">'
 						+'<td width="300" rowspan="3"><img src="'+data.hos[i].hos_img+'" width=300 height=300></td>'
-						+'<td width="650" height="50">검색어 : '+data.hos[i].find_name+'</td>'
+						+'<td width="550" height="50">검색어 : '+data.hos[i].find_name+'</td>'
 						+'<td widdh="50">휴지통 자리</td>'
 						+'<tr>'
 						+'<td colspan="2" height="200"></td>'
@@ -124,9 +124,9 @@ function findlistresult(){
 				// 호텔 최근 검색 목록
 					var data_hot = '';
 					for(var i=data.hot.length-1; i>=0; i--){
-						data_hot+='<table class="table table-hover" border="1" width="1000" height="300" cellspacing="0"><tr align="center">'
+						data_hot+='<table class="table table-hover" border="1" width="900" height="300" cellspacing="0"><tr align="center">'
 						+'<td width="300" rowspan="3"><img src="'+data.hot[i].hot_img+'" width=300 height=300></td>'
-						+'<td width="650" height="50">검색어 : '+data.hot[i].find_name+'</td>'
+						+'<td width="550" height="50">검색어 : '+data.hot[i].find_name+'</td>'
 						+'<td widdh="50">휴지통 자리</td>'
 						+'<tr>'
 						+'<td colspan="2" height="200">체크인 : '+data.hot[i].checkin+'&nbsp;~&nbsp; 체크아웃 :'+data.hot[i].checkout+'<br>'
@@ -183,7 +183,7 @@ $(document).ready(function() {
 </script>
 </head>
 
-<body>
+<body onload="findlist()">
 <div class="container">
     <ul class="tabs">
         <li onclick="findlist()"><a href="#tab1">호텔최근검색</a></li>

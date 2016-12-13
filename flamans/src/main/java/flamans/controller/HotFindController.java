@@ -187,7 +187,7 @@ public class HotFindController{
 		@RequestParam(value="grade1",defaultValue="0")int grade1,@RequestParam(value="grade2",defaultValue="0")int grade2,@RequestParam(value="grade3",defaultValue="0")int grade3,@RequestParam(value="grade4",defaultValue="0")int grade4,@RequestParam(value="grade5",defaultValue="0")int grade5,
 		@RequestParam(value="option1",defaultValue="0")String option1,@RequestParam(value="option2",defaultValue="0")String option2,@RequestParam(value="option3",defaultValue="0")String option3,@RequestParam(value="option4",defaultValue="0")String option4,@RequestParam(value="option5",defaultValue="0")String option5,
 		@RequestParam(value="star1",defaultValue="0")int star1,@RequestParam(value="star2",defaultValue="0")int star2,@RequestParam(value="star3",defaultValue="0")int star3,@RequestParam(value="star4",defaultValue="0")int star4,@RequestParam(value="star5",defaultValue="0")int star5,
-		@RequestParam(value="price",defaultValue="0")int price,
+		@RequestParam(value="price",defaultValue="200000")int price,
 		@RequestParam(value="findname", defaultValue="")String findname,
 		@RequestParam(value="checkin", defaultValue="")String checkin,
 		@RequestParam(value="checkout", defaultValue="")String checkout,
@@ -323,7 +323,7 @@ public class HotFindController{
 				sb.append(" and ");
 			}
 			
-			sb.append(" hot_num in (select hot_num from fm_hotroom where roomprice < "+price);
+			sb.append(" hot_num in (select hot_num from fm_hotroom where roomprice <= "+price);
 			
 			z=1;
 			
@@ -346,7 +346,7 @@ public class HotFindController{
 				z=1;
 				
 			}else if(star[i]!=0 && z==1){
-				sb.append(", '옵션"+star[i]+"'");
+				sb.append(", "+star[i]);
 			}
 		}
 		if(z==1){

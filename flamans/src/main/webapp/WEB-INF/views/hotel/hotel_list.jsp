@@ -271,8 +271,14 @@ input[type=range]:focus::-ms-fill-upper {
 					hotel_list +='<td width="100"><a href="hot_wishlist.do?hot_num='+data[i].hot_num+'&hotel_link=hotel_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					hotel_list +='<a href="booking_hot.do?hot_num='+data[i].hot_num+'"><input type="button" class="btn btn-default" value="예약"></a></td>';
 					hotel_list +='</tr></table>';
+					
+					if(i == data.length){
+						
+					}
 				}
-				hotel_list +='<table><tr><td>'+pagedata+'</td></tr></table>';
+				if(data.length==0){
+					hotel_list
+				}
 				var hotels = document.getElementById('hotellistarea');
 				hotels.innerHTML=hotel_list;
 				
