@@ -14,11 +14,13 @@
 	방 가격 : <input type="text" name="roomprice"><br>
 	방 개수 : <input type="text" name="roomnum"><br>
 	방 옵션 
-	<input type="checkbox" name="room_option" value="1"> 1
-	<input type="checkbox" name="room_option" value="2"> 2
-	<input type="checkbox" name="room_option" value="3"> 3
-	<input type="checkbox" name="room_option" value="4"> 4
-	<input type="checkbox" name="room_option" value="5"> 5
+	<input type="checkbox" name="room_option" value="breakfast"> 조식
+	<input type="checkbox" name="room_option" value="minibar"> 미니바
+	<input type="checkbox" name="room_option" value="safebox"> 안전금고
+	<input type="checkbox" name="room_option" value="bath"> 욕조
+	<input type="checkbox" name="room_option" value="morningcall"> 모닝콜 서비스
+	<!-- 옵션 : 조식 여부, 미니바,안전금고, 욕조,모닝콜 서비스 
+	 -->
 	<br>
 	<input type="submit" value="등록하기">
 	<input type="reset" value="다시작성">

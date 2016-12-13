@@ -36,7 +36,7 @@ body{
 	<label>상세정보</label> <textarea rows="4" class="form-control" cols="200" name="hot_content">${dto.hot_content }</textarea><br>
 	<label>찾아오는길</label> <textarea rows="2" class="form-control" cols="200" name="hot_mapinfo">${dto.hot_mapinfo }</textarea><br>
 	<label>등급</label> ${grade } <br>
-	<label>부대시설</label> <textarea rows="4" class="form-control" cols="200" name="hot_etc">${dto.hot_etc }</textarea><br>
+	<label>부대시설</label> ${etcs }<br>
 	<input type="submit" class="btn btn-default" value="등록하기"> <input type="reset" class="btn btn-default" value="초기화">
 </form>
 </body>

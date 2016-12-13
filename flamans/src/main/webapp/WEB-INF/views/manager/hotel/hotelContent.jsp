@@ -21,7 +21,7 @@
 	이름 : ${dto.hot_name } <br>
 	주소 : ${dto.hot_addr } <br>
 	등급 : ${dto.hot_grade } <br>
-	부대시설 : ${dto.hot_etc } <br>
+	부대시설 : ${etcs} <br>
 	상세내용 : ${dto.hot_content } <br>
 	오시는길 : ${dto.hot_mapinfo } <br>
 	<c:url var="hotelUpdateUrl" value="hotelUpdate.do">

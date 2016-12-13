@@ -3,22 +3,12 @@ package flamans.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpSession;
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -100,8 +90,31 @@ public class Hotel_ManagerController {
 	@RequestMapping("/hotelContent.do")
 	public ModelAndView hotelContent(HttpSession session){
 		List<HotelDTO> list=hotmDao.hotelContent((String)session.getAttribute("cm_number"));
+		String etc[]={"wifi","parking","restaurant","pool","fitness","laundry"};
+		String result[]=list.get(0).getHot_etc().split(",");
+		StringBuffer sb1=new StringBuffer();
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("wifi", "무료 와이파이");
+		map.put("parking", "무료 주차장");
+		map.put("restaurant", "레스토랑");
+		map.put("pool", "실내 수영장");
+		map.put("fitness", "피트니스");
+		map.put("laundry", "세탁 서비스");
+		for(int j=0;j<etc.length;j++){
+			sb1.append("<input type='checkbox' name='hot_etc' value='");
+			sb1.append(etc[j]);
+			sb1.append("'");
+			for(int k=0;k<result.length;k++){
+				if(etc[j].equals(result[k])){
+					sb1.append(" checked='checked'");
+				}
+			}
+			sb1.append(">");
+			sb1.append(map.get(etc[j]));
+		}
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("list", list);
+		mav.addObject("etcs", sb1.toString());
 		mav.setViewName("manager/hotel/hotelContent");
 		return mav;
 	}
@@ -158,27 +171,33 @@ public class Hotel_ManagerController {
 		}
 		sb.append("</select>");
 		
-	/*	String option[]={"wifi","parking","1","2","3","4","5"};
-		String result[]=dto.getHot_option().split(",");
+		String etc[]={"wifi","parking","restaurant","pool","fitness","laundry"};
+		String result[]=dto.getHot_etc().split(",");
 		StringBuffer sb1=new StringBuffer();
-		for(int k=0;k<option.length;k++){
-			
-			sb1.append("<input type='checkbox' name='hot_option' value='");
-			sb1.append(option[k]);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("wifi", "무료 와이파이");
+		map.put("parking", "무료 주차장");
+		map.put("restaurant", "레스토랑");
+		map.put("pool", "실내 수영장");
+		map.put("fitness", "피트니스");
+		map.put("laundry", "세탁 서비스");
+		for(int j=0;j<etc.length;j++){
+			sb1.append("<input type='checkbox' name='hot_etc' value='");
+			sb1.append(etc[j]);
 			sb1.append("'");
-			for(int j=0;j<result.length;j++){
-				if(option[k].equals(result[j])){
+			for(int k=0;k<result.length;k++){
+				if(etc[j].equals(result[k])){
 					sb1.append(" checked='checked'");
 				}
 			}
 			sb1.append(">");
-			sb1.append(option[k]);
+			sb1.append(map.get(etc[j]));
 		}
-		*/
+
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.addObject("grade", sb.toString());
-//		mav.addObject("options", sb1.toString());
+		mav.addObject("etcs", sb1.toString());
 		mav.setViewName("manager/hotel/hotelUpdate");
 		return mav;
 	}
@@ -256,7 +275,13 @@ public class Hotel_ManagerController {
 			mav.setViewName("manager/Msg");
 		}else{
 			StringBuffer sb=new StringBuffer();
-			String option[]={"1","2","3","4","5"};
+			String option[]={"breakfast","minibar","safebox","bath","morningcall"};
+			HashMap<String, Object> map=new HashMap<String, Object>();
+			map.put("breakfast", "조식");
+			map.put("minibar", "미니바");
+			map.put("safebox", "안전금고");
+			map.put("bath", "욕조");
+			map.put("morningcall", "모닝콜서비스");
 			String result[]=list.get(0).getRoom_option().split(",");
 			for(int k=0;k<option.length;k++){
 				
@@ -269,7 +294,7 @@ public class Hotel_ManagerController {
 					}
 				}
 				sb.append(">");
-				sb.append(option[k]);
+				sb.append(map.get(option[k]));
 			}
 			mav.addObject("list",list);
 			mav.addObject("options", sb.toString());
