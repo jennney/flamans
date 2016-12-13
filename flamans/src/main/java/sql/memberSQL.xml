@@ -92,5 +92,18 @@
 	<delete id="memberKick" parameterType="String">
 		delete from fm_member where m_id=#{m_id}
 	</delete>
-	
+	<select id="m_Bcalendar"  parameterType="Map" resultType="flamans.Bbook.model.BbookDTO">
+		select bookingdate
+		from
+			fm_hos_book
+		where 
+			hos_bid=#{hos_bid} and bookingdate like ''||#{date}||'%'
+	</select>
+	<select id="m_Hcalendar"  parameterType="Map" resultType="flamans.Bbook.model.BbookDTO">
+		select checkin, checkout
+		from
+			fm_hot_book
+		where 
+			name=#{name} and checkin like ''||#{date}||'%'
+	</select>
 </mapper>

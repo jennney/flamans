@@ -26,7 +26,7 @@
 										</c:if>
 									</c:if>
 									<c:if test="${!empty sessionScope.username }">
-										<li><a href="member_page.do">Profile</a></li>
+										<li><a href="member_dashBoard.do">Profile</a></li>
 										<li><a href="logout.do">Logout</a><li>
 									</c:if>
 									<c:if test="${!empty sessionScope.cm_name }">
