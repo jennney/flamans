@@ -40,6 +40,8 @@
 	
 	<bean class="flamans.paging.PageModule" id="paging"/>
 	<bean class="flamans.paging.PageModule1" id="paging1"/>
+	<bean class="flamans.hotel_find.model.HotelPageModule" id="hotelPageModule"/>
+	<bean class="flamans.hos_find.model.HospitalPageModule" id="hospitalPageModule"/>
 	
 	<bean id="companyDao" class="flamans.company.model.CompanyDAOImple">
     	 <constructor-arg>

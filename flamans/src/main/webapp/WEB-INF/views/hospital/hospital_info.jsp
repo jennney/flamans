@@ -148,7 +148,11 @@
 						<c:param name="hos_num">${hospital_info.hos_num }</c:param>
 						<c:param name="hospital_link">hospital_get_info.do</c:param>
 					</c:url>
-
+				<form name="doctors" action="bBook.do">
+					
+					<input type="hidden" name="hos_num" value="${hospital_info.hos_num}" }>
+					<c:set var="hospital_info" value="${hospital_info }"/>
+						
 					<table border="0" width="700" class="table table-hover">
 
 						<tr>
@@ -156,12 +160,12 @@
 									${hospital_info.hos_name } 】</h1>
 								<br></td>
 							<td width="100" style="vertical-align: middle;"><a
-								href="${wishlistUrl}"><input type="button" value=" ♥ "></a>
-								<input type="button" value="예약"></td>
+								href="${wishlistUrl}"><input type="button" class="btn btn-default" value=" ♥ "></a>
+								<input type="button" class="btn btn-default" value="예약"></td>
 						</tr>
 					</table>
 
-					<table border="0" width="700" class="table table-hover">
+					<table border="0" width="700" class="table">
 						<tr>
 							<td width="150"><img alt="병원사진영역"
 								src="${hospital_info.hos_img }" width="150" height="150"></td>
@@ -191,9 +195,7 @@
 
 					</table>
 
-					<form name="doctors" action="bBook.do">
-
-						<br />
+						<br/>
 						<hr>
 						<h3>의료진 정보</h3>
 						<c:forEach var="hospital_doclist" items="${hospital_doclist }">
@@ -209,9 +211,8 @@
 										${hospital_doclist.doc_career }<br /> 기타:
 										${hospital_doclist.doc_etc }<br />
 									</td>
-									<td><input type="radio" name="doctor_num"
-										+${hospital_doclist.doc_name}></td>
-								</tr>
+									<td><input type="radio" checked="checked" name="doc_num" value="${hospital_doclist.doc_num}"></td>								
+									</tr>
 
 							</table>
 
@@ -226,7 +227,7 @@
 				<c:set var="hospital_info" value="${hospital_info}" />
 
 				<form name="comment_write" action="hospital_input_comment_grade.do">
-					<table class="table table-hover">
+					<table class="table">
 
 						<tr>
 							<td><textarea rows="4" cols="90" name="c_comment"
@@ -235,24 +236,27 @@
 
 					</table>
 
-					<table class="table table-hover">
-						<tr>
-							<td width="110">평점테스트:</td>
-							<td width="200"><input type="text" name="c_grade"></td>
-							<td></td>
-						</tr>
-
-						<tr>
-							<td width="110">작성자테스트:</td>
-							<td><input type="text" name="c_writer"></td>
-							<td><input type="submit" value="작성"></td>
-						</tr>
-
+					<table class="table">
+							<tr>
+								<td width="110">평점</td>
+								<td width="200"><input type="text" class="form-control" name="c_grade"></td>
+								<td></td>
+							</tr>
+							
+							<tr>
+								<td width="110">작성자</td><td>
+								<input type="text" class="form-control" name="c_writer"></td>
+								<td><input type="submit" class="btn btn-default" value="작성"></td>
+							</tr>
+							
 					</table>
 
 					<hr>
-					<input type="hidden" name="c_number" value="1"> <br>
+					<c:forEach var="hospital_info" items="${hospital_info }">
 
+						<input type="hidden" name="c_number" value="${ hospital_info.hos_num}">
+						
+					</c:forEach>
 				</form>
 
 				<h2>평점/후기</h2>

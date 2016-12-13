@@ -4,9 +4,45 @@
     
   	<mapper namespace="flamans.hos_find">
   
-  	<select id="hospital_list" resultType="flamans.hos_find.model.HospitalDTO">
-  		select * from fm_hospital
+  	<select id="hospital_list" parameterType="Map" resultType="flamans.hos_find.model.HospitalDTO">
+  		select * 
+        	from 
+        (select rownum as rnum,a.* from 
+        	(select * from fm_hospital
+        	order by hos_num asc)a)b 
+      	<![CDATA[  where rnum>=#{start} 
+        	and 
+        rnum<=#{end}
+  	 ]]> 
   	</select>
+  	
+  	<select id="get_date" resultType="String">
+  		select SYSDATE from dual
+  	</select>
+  	
+  	<select id="hospital_totalCnt" resultType="int">
+		select count(*) from fm_hospital
+	</select>
+	
+	<select id="hospital_sub_totalCnt" parameterType="java.util.HashMap" resultType="int">
+	<bind name="find" value="'%'+find+'%'"/> 
+	
+			select count(*) from fm_hospital ${m_sb} and hos_name like #{find}
+	</select>
+	
+	<select id="hospital_sub_search" parameterType="java.util.HashMap" resultType="flamans.hos_find.model.HospitalDTO">
+	<bind name="find" value="'%'+find+'%'"/> 
+			select * 
+        	from 
+        	(select rownum as rnum,a.* from 
+        	(select * from fm_hospital ${m_sb} and hos_name like #{find}
+        	order by hos_num desc)a)b<![CDATA[ 
+			where rnum>=#{start} 
+        	and
+       		rnum<=#{end}
+        ]]> 
+	</select>
+	
   	
   	<select id="hospital_get_info" resultType="flamans.hos_find.model.HospitalDTO">
   		select * from fm_hospital where hos_num = #{num}
@@ -23,5 +59,25 @@
 	<select id="hospital_doclist" resultType="flamans.hos_find.model.DoctorDTO">
 	    select * from fm_doctor where hos_num = #{num}
 	</select>
+	
+	<select id="hospital_docinfo" resultType="flamans.hos_find.model.DoctorDTO">
+		select * from fm_doctor where doc_num = #{num}
+	</select>
+	
+	<update id="add_memberFind" parameterType="Map">
+		update fm_member
+		set
+			m_history=#{m_history}
+		where
+			m_id=#{m_id}
+	</update>
+	
+	<update id="update_wishlist" parameterType="Map" >
+		update fm_member
+		set
+			m_wishlist=#{m_wishlist}
+		where
+			m_id=#{m_id}
+	</update>
   	
 	</mapper>

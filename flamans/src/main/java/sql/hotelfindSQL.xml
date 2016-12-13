@@ -5,26 +5,73 @@
     
     <mapper namespace="flamans.hotel_find">
     
-    	<select id="hotel_list" resultType="flamans.hotel_find.model.HotelDTO">
-    		select * from fm_hotel
+    	<select id="hotel_totalCnt" resultType="int">
+			select count(*) from fm_hotel #{sub_sql}
+		</select>
+    
+    	<select id="hotel_list" parameterType="Map" resultType="flamans.hotel_find.model.HotelDTO">
+    		select * 
+        	from (select rownum as rnum,a.* from 
+        	(select * from fm_hotel
+        	order by hot_num asc)a)b
+      	<![CDATA[  where rnum>=#{start} 
+        	and 
+        rnum<=#{end}
+  	 	]]>
     	</select>
     	
     	<select id="hotel_get_info" resultType="flamans.hotel_find.model.HotelDTO">
     		select * from fm_hotel where hot_num = #{num}
     	</select>
     	
+    	<select id="hotel_get_info_list" resultType="flamans.hotel_find.model.HotelDTO">
+    		select * from fm_hotel
+    	</select>
+    	
     	<!-- <select id="hotel_search_name" parameterType="String" resultType="flamans.hotel_find.model.HotelDTO">
     		select * from fm_hotel
     		where hot_name = #{name}
-    	</select>
+    		</select>
     	-->
     	
     	<select id="hotel_search_name" parameterType="java.util.HashMap" resultType="flamans.hotel_find.model.HotelDTO">
-	    <bind name="find" value="'%'+find+'%'"/>   
+	    <bind name="find" value="'%'+find+'%'"/>
 	      select * from
 	         fm_hotel
-	      where 
+	      where
 	         hot_name like #{find}
+		</select>
+		
+		<select id="hotel_sub_totalCnt" parameterType="java.util.HashMap" resultType="int">
+			select count(*) from fm_hotel where 1=1
+			
+			<if test="m_sb!='' and m_sb !=null"> 
+				and ${m_sb}
+			</if>
+			
+			<if test="find!='' and find !=null"> 
+				and hot_name like '%' ||#{find}|| '%'
+			</if>
+		</select>
+		
+		<select id="hotel_sub_search" parameterType="java.util.HashMap" resultType="flamans.hotel_find.model.HotelDTO">
+			select * 
+        	from 
+        (select rownum as rnum,a.* from 
+        	(select * from fm_hotel where 1=1
+        	
+			<if test="m_sb!='' and m_sb !=null"> 
+				and ${m_sb}
+			</if>
+			
+			<if test="find!='' and find !=null"> 
+				and hot_name like '%' ||#{find}|| '%'
+			</if>
+        	order by hot_num desc)a)b<![CDATA[ 
+		where rnum>=#{start} 
+        	and
+        rnum<=#{end}
+        ]]> 
 		</select>
     	
     </mapper>
