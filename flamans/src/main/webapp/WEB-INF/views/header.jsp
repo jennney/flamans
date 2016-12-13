@@ -99,7 +99,7 @@ function hoswishresult(){
 					   				 <li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<button class="dropbtn" style="background: black;" onmouseover="wishlist()">
-									<img alt="heart" src="/myweb/img/heart.png" width="30">
+									<img alt="heart" src="img/heart.png" width="30">
 									</button><i class="fa fa-angle-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><p id=header_wishlist></p></li>
