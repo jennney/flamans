@@ -74,7 +74,8 @@ function cm_calendarResult(){
 }
 </script>
 <style>
-#dash_img{width:850px;height:150px;background:url("/myweb/img/dashboard.JPG") no-repeat;}
+#dash_img{width:860px;height:150px; }
+#dashimg { position:absolute; z-index:1; width:860px; height:150px; }
 #b{ width:880px; height:480px;  margin-top: 30px;   border-color: green; }
 #d{ float:left; width:450px;  height:450px;  margin:0px center;}
 #c{	width:360px;height:450px; float: left; margin-left:15px; margin-right:15px; }
@@ -99,7 +100,8 @@ th{	text-align: center;}
 #kCalendar .sat {text-align: center; color: deepskyblue;}
 #cc{width:45px;  height:35px;}
 #la2{float:left; width:400px;}
-#white{font:15px/1.0 맑은 고딕; color: white; padding-top: 40px;}
+#white{font:15px/1.0 맑은 고딕; color: white; padding-left:10px; position:absolute; z-index:2;}
+#name{position:absolute; z-index:2;padding-top: 15px; padding-left:10px;}
 #dashtab {  margin: 0; padding: 0; float: left; list-style: none; height: 32px; border-bottom: 1px solid #EAEAEA;
       border-left: 1px solid #EAEAEA;; width: 100%; }
 /*탭메뉴*/
@@ -122,9 +124,9 @@ th{	text-align: center;}
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<h4>내 대시보드</h4>
-		<div id="dash_img"><div style="height: 20px;"></div><span id="white">반갑습니다! </span><br><br><br><br>
+		<div id="dash_img"><img src="/myweb/img/dashboard.JPG" id="dashimg"><div style="height: 20px;"></div><span id="white">반갑습니다! </span><br><br><br><br>
 		<c:if test="${!empty sessionScope.username }">
-			${sessionScope.username}님
+			<div id="name">${sessionScope.username}님 계정입니다.</div>
 		</c:if>
 		</div>
 			

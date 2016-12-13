@@ -26,10 +26,10 @@
 	            <a href="#"><i class="fa fa-fw fa-table"></i>  Booking</a>
 	        </li>
 	        <li>
-	            <a href="#"><i class="fa fa-fw fa-desktop"></i>  WishList</a>
+	            <a href="wishlist_compare.do"><i class="fa fa-fw fa-desktop"></i>  WishList</a>
 	        </li>
 	        <li>
-	            <a href="#">Find</a>
+	            <a href="member_find.do">Find</a>
 	        </li>
 	        <li>
 	            <a href="logout.do"><i class="fa fa-fw fa-power-off"></i>  Logout</a>
