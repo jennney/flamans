@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import flamans.hos_find.model.HospitalDTO;
+import flamans.hotel_find.model.HotelDTO;
 import flamans.paging.PageModule1;
 import flamans.qna.model.QnaDAO;
 import flamans.qna.model.QnaDTO;
@@ -149,11 +152,23 @@ public class QnaController {
 		printWriter.flush();
 	}
 
-	@RequestMapping(value = "/qna_Search.do", method = RequestMethod.GET)
-	public ModelAndView qna_SearchForm(@RequestParam("searchKey") String searchKey,
-			@RequestParam("qna_findname") String searchValue) {
+	@RequestMapping(value = "/search.do", method = RequestMethod.GET)
+	public String qna_SearchForm(@RequestParam("kind")String kind,Model model) {
+		model.addAttribute("kind",kind);
+		return "service/QNA/qna_search";
+	}
+	
+	@RequestMapping(value = "/search.do", method = RequestMethod.POST)
+	public ModelAndView qna_Search(@RequestParam("name")String name,@RequestParam("kind")String kind) {
 		ModelAndView mav = new ModelAndView();
-
+		if(kind.equals("hotel")){
+			List<HotelDTO> list = qnaDao.hot_Search(name);
+			mav.addObject("hot_list",list);
+		}else{
+			List<HospitalDTO> list = qnaDao.hos_Search(name);
+			mav.addObject("hos_list",list);
+		}
+		mav.setViewName("service/QNA/qna_search");
 		return mav;
 	}
 

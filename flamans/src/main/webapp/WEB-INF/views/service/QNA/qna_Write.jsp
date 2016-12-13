@@ -195,6 +195,7 @@ h2 {
 	function cbcheck(){
 		window.alert('정부수집에 동의하지 않으면 서비스 이용에 제한이 있습니다.');
 	}
+	
 </script>
 </head>
 <body>
@@ -205,8 +206,7 @@ h2 {
 	   <h2>Q&amp;A</h2>
 	</div>
 
-	<form name="qna_Write" action="qna_Write.do" method="post"
-		enctype="multipart/form-data" onsubmit="return check()">
+	<form name="qna_Write" action="qna_Write.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
 		<table id="qna_wr">
 			<tr>
 				<th id="qna_wrth1">SUBJECT</th>
@@ -238,9 +238,9 @@ h2 {
 								<option value="hosbooking">예약문의</option>
 								<option value="etc">기타문의</option>
 							</select>
-						&nbsp;&nbsp;&nbsp; 병원 검색 <input type="text" name="qna_findname"
-								id="findName">
-							<input type="button" value="검색하기" onclick="qna_Search()">
+							<input type="hidden" name="qna_findname" id="hos_num">
+							<input type="button" value="검색하기" onclick="javascript:window.open('search.do?kind=hospital','search','width=450 ,height=150,top=300,left=300')">
+							<span id="hos_span"></span>
 						</c:when>
 						<c:when test="${qna_kind eq 'hotel'}">
 							<select name="qna_item" onchange="qna_select()" id="qna_item">
@@ -249,8 +249,9 @@ h2 {
 								<option value="room">방문의</option>
 								<option value="etc">기타문의</option>
 							</select>
-						&nbsp;&nbsp;&nbsp; 호텔 검색 <input type="text" name="qna_findname">
-							<input type="button" value="검색하기" onclick="javascript:window.open('search.do','search','width=450 ,height=150,top=300,left=300')">
+							<input type="hidden" name="qna_findname" id="hot_num">
+							<input type="button" value="검색하기" onclick="javascript:window.open('search.do?kind=hotel','search','width=450 ,height=150,top=300,left=300')">
+							<span id="hot_span"></span>
 						</c:when>
 					</c:choose></td>
 			</tr>

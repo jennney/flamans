@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="css/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom CSS -->
 <link href="css/css/sb-admin.css" rel="stylesheet">
@@ -17,26 +17,26 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav side-nav">
 	        <li>
-	            <a href="#">Dashboard</a>
+	            <a href="#"><i class="fa fa-fw fa-dashboard"></i>  Dashboard</a>
+	            <a href="member_dashBoard.do">Dashboard</a>
 	        </li>
 	        <li>
-	            <a href="member_page.do">MyPage</a>
+	            <a href="member_page.do"><i class="fa fa-fw fa-user"></i>  MyPage</a>
 	        </li>
 	        <li>
-	            <a href="#">Booking</a>
+	            <a href="#"><i class="fa fa-fw fa-table"></i>  Booking</a>
 	        </li>
 	        <li>
-	            <a href="#">WishList</a>
+	            <a href="#"><i class="fa fa-fw fa-desktop"></i>  WishList</a>
 	        </li>
 	        <li>
 	            <a href="#">Find</a>
 	        </li>
 	        <li>
-	            <a href="logout.do">Logout</a>
+	            <a href="logout.do"><i class="fa fa-fw fa-power-off"></i>  Logout</a>
 	        </li>
 	    </ul>
 	</div>
 </nav>
-
 <script src="js/js/jquery.js"></script>
 <script src="js/js/bootstrap.min.js"></script>

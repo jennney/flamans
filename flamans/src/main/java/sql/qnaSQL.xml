@@ -242,4 +242,25 @@
 		where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
+	<select id="search_Hotel" resultType="flamans.hotel_find.model.HotelDTO" parameterType="String">
+		select
+			hot_num,
+		hot_name,
+			hot_addr
+		from
+			fm_hotel
+		where hot_name 
+			like '%' ||#{hot_name}|| '%'
+	</select>
+	
+	<select id="search_Hospital" resultType="flamans.hos_find.model.HospitalDTO" parameterType="String">
+		select
+			hos_num,
+		hos_name,
+			hos_addr
+		from
+			fm_hospital
+		where hos_name 
+			like '%' ||#{hos_name}|| '%'
+	</select>
 </mapper>

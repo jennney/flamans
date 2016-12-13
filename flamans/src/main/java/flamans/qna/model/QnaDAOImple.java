@@ -6,6 +6,9 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import flamans.hos_find.model.HospitalDTO;
+import flamans.hotel_find.model.HotelDTO;
+
 public class QnaDAOImple implements QnaDAO {
 	
 	private SqlSessionTemplate sqlMap;
@@ -85,5 +88,15 @@ public class QnaDAOImple implements QnaDAO {
 	public int qnaDelete(int qna_idx) {
 		int count = sqlMap.delete("qna_Delete",qna_idx);
 		return count;
+	}
+	
+	public List<HospitalDTO> hos_Search(String hos_name) {
+		List<HospitalDTO> list = sqlMap.selectList("search_Hospital",hos_name);
+		return list;
+	}
+	
+	public List<HotelDTO> hot_Search(String hot_name) {
+		List<HotelDTO> list = sqlMap.selectList("search_Hotel",hot_name);
+		return list;
 	}
 }

@@ -7,6 +7,7 @@
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
+<link rel="shortcut icon" href="img/title.png">
 <header id="header">
 <div class="top-bar">
 	<div class="container">
@@ -26,7 +27,7 @@
 										</c:if>
 									</c:if>
 									<c:if test="${!empty sessionScope.username }">
-										<li><a href="member_page.do">Profile</a></li>
+										<li><a href="member_dashBoard.do">Profile</a></li>
 										<li><a href="logout.do">Logout</a><li>
 									</c:if>
 									<c:if test="${!empty sessionScope.cm_name }">

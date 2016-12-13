@@ -12,7 +12,7 @@ public class ManagerController {
 	@RequestMapping("/manager.do")
 	public ModelAndView managerPage(HttpSession session){
 		ModelAndView mav=new ModelAndView();
-		if(session.getAttribute("savecoId")!=null){
+		if(session.getAttribute("savecoId")!=null && session.getAttribute("savecoId").equals("admin")){
 			mav.setViewName("manager/site/siteManager");
 		}else{
 			mav.addObject("msg", "관리자로그인이 필요한 메뉴입니다.");
