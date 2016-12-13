@@ -46,18 +46,18 @@
 	     </c:if>
    	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'H'}">
    	        <li><a href="#">  Dashboard</a></li>
-	        <li><a href="#">  HotelCommunity</a></li>
-	        <li><a href="#">  HotelInfo</a></li>
-	        <li><a href="#">  HotelRoomInfo</a></li>
-	        <li><a href="#">  Find</a></li>
+	        <li><a href="hotelBbsList.do">  HotelCommunity</a></li>
+	        <li><a href="hotelContent.do">  HotelInfo</a></li>
+	        <li><a href="hotelRoomList.do">  HotelRoomInfo</a></li>
+	        <li><a href="event_co_list.do?e_name=${sessionScope.userHid}"> HotelEvent</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
 	     </c:if>
    	     <c:if test="${sessionScope.savecoId eq 'admin'}">
 	        <li><a href="#">  Dashboard</a></li>
 	        <li><a href="memberList.do">  Member</a></li>
-	        <li><a href="#">  Event</a></li>
+	        <li><a href="event_list.do">  Event</a></li>
 	        <li><a href="hotelInfo.do">  Hotel</a></li>
-	        <li><a href="#">  Hospital</a></li>
+	        <li><a href="hospitalInfo.do">  Hospital</a></li>
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Community <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">

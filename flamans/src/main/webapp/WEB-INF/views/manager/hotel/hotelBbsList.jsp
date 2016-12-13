@@ -8,43 +8,48 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>고객 센터 리스트 보기</h2>
-<table border="1" cellspacing="0" width="600">
-	<thead>
-		<tr>
-			<th>구분</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>조회수</th>
-		</tr>
-	</thead>
-	<tfoot>
-		<tr>
-			<td colspan="4" align="center"> ${hotBbsPage } </td>
-		</tr>
-	</tfoot>
-	<tbody>
-		<c:if test="${empty list }">
-		<tr>
-			<td colspan="4" align="center">
-				검색된 게시 글이 없습니다.
-			</td>
-		</tr>
-		</c:if>
-		<c:if test="${!empty list }">
-			<c:forEach var="dto" items="${list }">
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
+		<h2>고객 센터 리스트 보기</h2>
+		<table border="1" cellspacing="0" width="600">
+			<thead>
 				<tr>
-					<td>${dto.qna_item }</td>
-					<c:url var="hotelBbsContentUrl" value="hotelBbsContent.do">
-						<c:param name="qna_idx">${dto.qna_idx }</c:param>
-					</c:url>
-					<td><a href="${hotelBbsContentUrl }">${dto.qna_subject }</a></td>
-					<td>${dto.qna_writer }</td>
-					<td>${dto.readnum }</td>
+					<th>구분</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
 				</tr>
-			</c:forEach>
-		</c:if>
-	</tbody>
-</table>
+			</thead>
+			<tfoot>
+				<tr>
+					<td colspan="4" align="center"> ${hotBbsPage } </td>
+				</tr>
+			</tfoot>
+			<tbody>
+				<c:if test="${empty list }">
+				<tr>
+					<td colspan="4" align="center">
+						검색된 게시 글이 없습니다.
+					</td>
+				</tr>
+				</c:if>
+				<c:if test="${!empty list }">
+					<c:forEach var="dto" items="${list }">
+						<tr>
+							<td>${dto.qna_item }</td>
+							<c:url var="hotelBbsContentUrl" value="hotelBbsContent.do">
+								<c:param name="qna_idx">${dto.qna_idx }</c:param>
+							</c:url>
+							<td><a href="${hotelBbsContentUrl }">${dto.qna_subject }</a></td>
+							<td>${dto.qna_writer }</td>
+							<td>${dto.readnum }</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+			</tbody>
+		</table>
+	</div>
+</div>
 </body>
 </html>
