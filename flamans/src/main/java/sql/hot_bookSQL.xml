@@ -14,7 +14,7 @@
             #{checkout},
          #{card},
             sysdate,
-         #{room},
+
             #{people},
          #{roomselect},
             #{permit},
@@ -44,8 +44,7 @@
      , TO_CHAR(checkout,'YYYY-MM-DD') checkout,
         card           
      , TO_CHAR(bookingdate,'YYYY-MM-DD') bookingdate,
-     room,
-        people,
+         people,
         roomselect,
         permit,
         bookingnum
