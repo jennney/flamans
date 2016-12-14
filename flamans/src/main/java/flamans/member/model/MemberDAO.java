@@ -32,6 +32,8 @@ public interface MemberDAO {
 	public List<QnaDTO> myqna(String qna_writer);
 	
 	public List<BbookDTO> mcalendar(String hos_bid, String date);
+	
+	public List<Hot_bookDTO> Hcalendar(String name, String date);
 
 	public List<Hot_bookDTO> book(String name);
 	

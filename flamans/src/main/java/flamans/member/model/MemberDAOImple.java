@@ -6,8 +6,8 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
-import flamans.Bbook.model.BbookDTO;
-import flamans.hot.book.model.Hot_bookDTO;
+import flamans.Bbook.model.*;
+import flamans.hot.book.model.*;
 import flamans.member.model.MemberDTO;
 import flamans.qna.model.QnaDTO;
 
@@ -127,8 +127,19 @@ public class MemberDAOImple implements MemberDAO {
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("hos_bid", hos_bid);
 		map.put("date", date);
+		 System.out.println("컨트롤러"+hos_bid+"/"+date);
 		List<BbookDTO> cal=sqlMap.selectList("m_Bcalendar", map);
 		return cal;
+	}
+	
+
+	public List<Hot_bookDTO> Hcalendar(String name, String date) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("name","윤두준"); //이름으로 저장되서 바꿔야 됨
+		map.put("date", date);
+		 System.out.println("컨트롤러"+name+"/"+date);
+		List<Hot_bookDTO> calH=sqlMap.selectList("m_Hcalendar", map);
+		return calH;
 	}
 	
 

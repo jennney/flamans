@@ -46,28 +46,32 @@ function cm_calendarResult(){
 			var data=XHR.responseText;
 			data=eval('('+data+')');		
 			var cal=data.cal;
-			/* var calH=data.calH;
-			for(j=0; j<calH.checkin.length; j++){
-
-				alert(calH[j].checkin);
-				alert(calH[j].checkout);
-				var chtemp=calH[j].checkin.split('-');
-				var bodate=new Date(chtemp[0], chtemp[1], chtemp[2]);
-				var cotemp=calH[j].checkout.split('-');
-				var outdate=new Date(cotemp[0], cotemp[1], cotemp[2]);
-				for(chtemp[2]; chtemp[2]<=cotemp[2];chtemp[2]++){
-					HH=document.getElementById(calH[j]);
-					HH.innerHTML='<img src="img/hBook.JPG" width="20px" heigth="20px">';
+			var calH=data.calH;
+			for(j=0; j<calH.length; j++){
+				HH=document.getElementById(calH[j]);
+				if(calH[j].checkin!=null){
+					var checkin=calH[j].checkin.split(' ');
+					alert(checkin);
+					var HH=document.getElementById(checkin[0]);
+					HH.innerHTML='checkin';
+				}
+				if(calH[j].checkout!=null){ 
+					var checkout=calH[j].checkout.split(' ');
+					alert(checkout);
+					var HH=document.getElementById(checkout[0]);
+					HH.innerHTML='checkout';
+				}
+				for(i=0; i<cal.length; i++){
+					alert('안들어옴?');
+					var caltemp=cal[i].bookingdate.split('/');
+					var calId=document.getElementById(caltemp[0]);
+					calHtemp=calId.innerHTML;
+					calHtemp+='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
+					calId.innerHTML=calHtemp;
 				}
 
-			} */
-			for(i=0; i<cal.length; i++){
-				var caltemp=cal[i].bookingdate.split('/');
-				var calId=document.getElementById(caltemp[0]);
-				calHtemp=calId.innerHTML;
-				calHtemp+='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
-				calId.innerHTML=calHtemp;
-			}
+			} 
+			
 		
 		}
 	}

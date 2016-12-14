@@ -99,11 +99,12 @@
 		where 
 			hos_bid=#{hos_bid} and bookingdate like ''||#{date}||'%'
 	</select>
-	<select id="m_Hcalendar"  parameterType="Map" resultType="flamans.Bbook.model.BbookDTO">
+	<select id="m_Hcalendar"  parameterType="Map" resultType="flamans.hot.book.model.Hot_bookDTO">
 		select checkin, checkout
 		from
 			fm_hot_book
 		where 
-			name=#{name} and checkin like ''||#{date}||'%'
+			name=#{name} and (to_char(checkin,'yyyy-MM-DD')) like ''||#{date}||'%'
+             or (to_char(checkout,'yyyy-MM-DD')) like ''||#{date}||'%'
 	</select>
 </mapper>
