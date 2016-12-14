@@ -12,6 +12,16 @@
 function addrFind(){
 	window.open('hotAddrFind.do', '주소검색', 'width="600",height="500",top="200",left="200"');
 }
+function fileCheck(){
+	   var fileext = document.getElementById('file').value; //input type="file" id="file"
+	   fileext = fileext.slice(fileext.indexOf(".")+1).toLowerCase(); // 파일 확장자를 잘라내고 비교를 위해 소문자로 만듦
+	   
+	   if(fileext != "jpg" && fileext !="png" && fileext != "gif" && fileext != "bmp"){
+	      alert('이미지 파일만 등록이 가능합니다.');
+	      return false;
+	   }
+	   
+	}
 </script>
 <style>
 body{
@@ -29,9 +39,9 @@ body{
 		<h2>호텔 정보 등록 하기</h2>
 		<form name="hotelInfo" action="hotelAdd.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="hot_num" value="${sessionScope.cm_number }">
-			 이름 : <input type="text" name="hot_name" class="form-control"><br>
+			 이름 : <input type="text" name="hot_name" class="form-control" value="${sessionScope.cm_name }" readonly><br>
 			 주소 : <input type="text" name="hot_addr" class="form-control" readonly><input type="button" value="검색" class="btn btn-default" onclick="addrFind();"><br>
-			 이미지 : <input type="file" name="upload" class="form-control"><br>
+			 이미지 : <input type="file" name="upload" class="form-control" id="file" onchange="fileCheck()"><br>
 			 상세내용 : <textarea rows="4" cols="200" name="hot_content" class="form-control"></textarea><br>
 			 찾아오는길 : <textarea rows="2" cols="200" name="hot_mapinfo" class="form-control"></textarea><br>
 			 등급 : <select name="hot_grade">

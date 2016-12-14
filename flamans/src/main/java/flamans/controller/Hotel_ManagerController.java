@@ -5,8 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.StringTokenizer;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -129,16 +129,15 @@ public class Hotel_ManagerController {
 		return "manager/hotel/hotelAdd";
 	}
 	
-	public void copyinto(String writer,MultipartFile upload){
+	public void copyinto(String writer,MultipartFile upload, String path){
 		try {
+			
 			byte bytes[]=upload.getBytes();
-			String path="C:/Users/YunJunHo/git/flamans/flamans/src/main/webapp/img/hotel";
 			File newFile=new File(path+"/"+writer);
 			if(!newFile.exists()){
 				newFile.mkdirs();
 			}
-			String savepath=path+"/"+writer;
-			newFile=new File(savepath+"/"+upload.getOriginalFilename());
+			newFile=new File(path+"/"+writer+"/"+upload.getOriginalFilename());
 			FileOutputStream fos=new FileOutputStream(newFile);
 			fos.write(bytes);
 			fos.close();
@@ -150,8 +149,8 @@ public class Hotel_ManagerController {
 	@RequestMapping(value="/hotelAdd.do",method=RequestMethod.POST)
 	public ModelAndView hotelAdd(@RequestParam("upload") MultipartFile upload,HotelDTO dto,HttpSession session){
 		
-		
-		copyinto(dto.getHot_num(),upload);
+		String path=session.getServletContext().getRealPath("img/hotel");
+		copyinto(dto.getHot_num(),upload,path);
 		String img=upload.getOriginalFilename();
 		dto.setHot_img(img);
 		int result=hotmDao.hotelAdd(dto);
@@ -215,9 +214,9 @@ public class Hotel_ManagerController {
 	
 	@RequestMapping(value="/hotelUpdate.do", method=RequestMethod.POST)
 	public ModelAndView hotelUpdate(HotelDTO dto,@RequestParam("upload") MultipartFile upload,HttpSession session){
-		
 		if(!upload.getOriginalFilename().equals("")){
-			copyinto(dto.getHot_num(), upload);
+			String path=session.getServletContext().getRealPath("img/hotel");
+			copyinto(dto.getHot_num(), upload,path);
 			dto.setHot_img(upload.getOriginalFilename());
 		}
 		int result=hotmDao.hotelUpdate(dto);

@@ -17,7 +17,7 @@
 			<fieldset>
 				<legend>의사 정ㅋ보ㅋ</legend>
 				<label>이름 : </label> ${dto.doc_name }<br>
-				<label>이미지 : </label> <img src="img/${dto.doc_img }"> <br> 
+				<label>이미지 : </label> <img src="img/hospital/${sessionScope.cm_number }/doctor/${dto.doc_img }" width="150" height="150"> <br> 
 				<label>학력 :</label> ${dto.doc_level }<br>
 				<label>경력 </label> ${dto.doc_career }<br>
 				<label>기타사항 : </label> ${dto.doc_etc }<br>
