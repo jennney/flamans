@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<html lang="en">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
@@ -17,42 +17,36 @@ a:link {
 	font-weight: bold;
 	text-decoration: none;
 }
-
 a:visited {
 	color: #666;
 	font-weight: bold;
 	text-decoration: none;
 }
-
 a:active, a:hover {
 	color: #bd5a35;
 	text-decoration: underline;
 }
-
 table a:link {
 	color: #666;
 	font-weight: bold;
 	text-decoration: none;
 }
-
 table a:visited {
 	color: #999999;
 	font-weight: bold;
 	text-decoration: none;
 }
-
 table a:active, table a:hover {
 	color: #bd5a35;
 	text-decoration: underline;
 }
-
 table {
 	font-family: Arial, Helvetica, sans-serif;
 	color: #666;
 	font-size: 12px;
 	text-shadow: 1px 1px 0px #fff;
 	background: #eaebec;
-	margin: 20px;
+	margin: 0px auto;
 	border: #ccc 1px solid;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -61,7 +55,6 @@ table {
 	-webkit-box-shadow: 0 1px 2px #d1d1d1;
 	box-shadow: 0 1px 2px #d1d1d1;
 }
-
 table th {
 	padding: 15px;
 	border-top: 1px solid #fafafa;
@@ -71,35 +64,29 @@ table th {
 		to(#ebebeb));
 	background: -moz-linear-gradient(top, #ededed, #ebebeb);
 }
-
 table th:first-child {
 	text-align: left;
 	padding-left: 20px;
 }
-
 table tr:first-child th:first-child {
 	-moz-border-radius-topleft: 3px;
 	-webkit-border-top-left-radius: 3px;
 	border-top-left-radius: 3px;
 }
-
 table tr:first-child th:last-child {
 	-moz-border-radius-topright: 3px;
 	-webkit-border-top-right-radius: 3px;
 	border-top-right-radius: 3px;
 }
-
 table tr {
 	text-align: center;
 	padding-left: 20px;
 }
-
 table tr td:first-child {
 	text-align: left;
 	padding-left: 20px;
 	border-left: 0;
 }
-
 table tr td {
 	padding: 12px;
 	border-top: 1px solid #ffffff;
@@ -110,43 +97,36 @@ table tr td {
 		to(#fafafa));
 	background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
 }
-
 table tr.even td {
 	background: #f6f6f6;
 	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8),
 		to(#f6f6f6));
 	background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
 }
-
 table tr:last-child td {
 	border-bottom: 0;
 }
-
 table tr:last-child td:first-child {
 	-moz-border-radius-bottomleft: 3px;
 	-webkit-border-bottom-left-radius: 3px;
 	border-bottom-left-radius: 3px;
 }
-
 table tr:last-child td:last-child {
 	-moz-border-radius-bottomright: 3px;
 	-webkit-border-bottom-right-radius: 3px;
 	border-bottom-right-radius: 3px;
 }
-
 table tr:hover td {
 	background: #f2f2f2;
 	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2),
 		to(#f0f0f0));
 	background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
-
 .panel {
 	background-color: #444;
 	height: 34px;
 	padding: 10px;
 }
-
 .panel a#booking_pop {
 	border: 2px solid #aaa;
 	color: #fff;
@@ -163,11 +143,9 @@ table tr:hover td {
 	border-radius: 10px;
 	font-family: 'dotum';
 }
-
 a#booking_pop:hover {
 	border-color: #eee;
 }
-
 .overlay {
 	background-color: rgba(0, 0, 0, 0.6);
 	bottom: 0;
@@ -185,12 +163,10 @@ a#booking_pop:hover {
 	-o-transition: opacity .5s;
 	transition: opacity .5s;
 }
-
 .overlay:target {
 	visibility: visible;
 	opacity: 1;
 }
-
 .popup {
 	background-color: #fff;
 	border: 3px solid #fff;
@@ -224,13 +200,11 @@ a#booking_pop:hover {
 	-o-transition: opacity .5s, top .5s;
 	transition: opacity .5s, top .5s;
 }
-
 .overlay:target+.popup {
 	top: 50%;
 	opacity: 1;
 	visibility: visible;
 }
-
 .close {
 	background-color: rgba(0, 0, 0, 0.8);
 	height: 30px;
@@ -247,22 +221,18 @@ a#booking_pop:hover {
 	-o-border-radius: 15px;
 	border-radius: 15px;
 }
-
 .close:before {
 	color: rgba(255, 255, 255, 0.9);
 	content: "X";
 	font-size: 24px;
 	text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
 }
-
 .close:hover {
 	background-color: rgba(64, 128, 128, 0.8);
 }
-
 .popup p, .popup div {
 	margin-bottom: 10px;
 }
-
 .popup label {
 	display: inline-block;
 	text-align: left;
@@ -274,114 +244,82 @@ a#booking_pop:hover {
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script>
 	$(document).ready(function() {
-		$.datepicker.regional['ko'] = {
-			closeText : '닫기',
-			prevText : '이전달',
-			nextText : '다음달',
-			currentText : '오늘',
-			monthNames : [ '1월(JAN)', '2월(FEB)', '3월(MAR)', '4월(APR)',
-					'5월(MAY)', '6월(JUN)', '7월(JUL)', '8월(AUG)',
-					'9월(SEP)', '10월(OCT)', '11월(NOV)', '12월(DEC)' ],
-			monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월',
-					'7월', '8월', '9월', '10월', '11월', '12월' ],
-			dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-			weekHeader : 'Wk',
+		$("#datepicker1").datepicker({
+			numberOfMonths: 1,
 			dateFormat : 'yy-mm-dd',
-			firstDay : 0,
-			isRTL : false,
-			showMonthAfterYear : true,
-			yearSuffix : '',
-			showOn : 'both',
-			buttonText : "달력",
-			changeMonth : true,
-			changeYear : true,
-			showButtonPanel : true,
-			yearRange : 'c-99:c+99',
-		};
-		$.datepicker.setDefaults($.datepicker.regional['ko']);
-	
-		$('#datepicker').datepicker();
-		$('#datepicker').datepicker("option", "maxDate",
-				$("#datepicker1").val());
-		$('#datepicker').datepicker("option","onClose",function(selectedDate) {
-					$("#datepicker").datepicker("option", "maxDate",selectedDate);
-		});
-	
-		$('#datepicker').datepicker();
-		$('#datepicker').datepicker("option", "minDate",
-				$("#datepicker1").val());
-		$('#datepicker').datepicker("option","onClose",function(selectedDate) {
-					$("#datepicker").datepicker("option", "minDate",selectedDate);
-				});
-		$('#datepicker1').datepicker();
-		$('#datepicker1').datepicker("option", "maxDate",$("#datepicker1").val());
-		$('#datepicker1').datepicker("option","onClose",function(selectedDate) {
-					$("#datepicker1").datepicker("option", "maxDate",selectedDate);
-				});
-	
-		$('#datepicker1').datepicker();
-		$('#datepicker1').datepicker("option", "minDate",$("#datepicker1").val());
-		$('#datepicker1').datepicker("option","onClose",function(selectedDate) {
-					$("#datepicker1").datepicker("option", "minDate",selectedDate);
-	
-				});
-		$("#datepicker").change(function() {
-			$("#txt").text($(this).val());
-			var checkin = $(this).val();
-			$("#checkin").val(checkin);
-		});
-		$("#datepicker1").change(function() {
-			$("#txt1").text($(this).val());
-			var checkout = $(this).val();
-			$("#checkout").val(checkout);
-		});
-		$("#adult").change(function() {
-			$("#txt8").text($(this).val());
-		});
-		$("#child").change(function() {
-			$("#txt9").text($(this).val());
-		});
-		$("#roomnum1").change(function() {
-			var roomnum = $(this).val();
-			$("#roomnum").val(roomnum);
-		});		
-		$("#booking_pop").click(function(){
-			var child = $("#txt9").text();
-			var adult = $("#txt8").text();
-			var people ='어른 : '+adult+'/어린이 : '+child;
-			$("#people").val(people);
-		});
-
+			minDate: 0,
+			 closeText : '닫기',
+			onSelect: function(selected) {
+			$("#datepicker2").datepicker("option","minDate", selected)
+			}
+			});
+			$("#datepicker2").datepicker({
+			numberOfMonths: 1,
+			dateFormat : 'yy-mm-dd',
+			minDate: 0,
+			 closeText : '닫기',
+			onSelect: function(selected) {
+			$("#datepicker1").datepicker("option","maxDate", selected)
+			}
+			})
 	});
-
 	function change(idx,name){
 		var target = document.getElementById(idx);
 		var room = target.options[target.selectedIndex].text;
 		var txt = name+" "+room+"객실";
+		if(room==0){
+			window.alert('객실을 선택하세요');	
+		}
 		document.getElementById("spantxt").innerHTML = txt;
 		document.getElementById("roomselect").value = room;
 		document.getElementById("room_idx").value = idx;
 	}
+	function check(idx){
+		var adult = document.getElementById('adult').value;
+		var child = document.getElementById('child').value;
+		var room = document.getElementById(idx).value;
+		var checkin = document.getElementById('datepicker1').value;
+		var checkout = document.getElementById('datepicker2').value;
+		if( room==0){
+			window.alert('객실을 선택하세요');
+			location.href='booking_hot.do?hot_num=${hot_num}#close';
+		}
+		if(adult==0 && child==0){
+			window.alert('인원수를 체크 해주세요');
+			location.href='booking_hot.do?hot_num=${hot_num}#close';
+		}else if(adult==0 && child>0){
+			window.alert('어린이만 예약할 수 없습니다.');
+			location.href='booking_hot.do?hot_num=${hot_num}#close';
+		}
+		else{
+			location.href='booking_hot.do?hot_num=${hot_num}#booking_form';
+			document.getElementById("txt").innerHTML = checkin;
+			document.getElementById("txt1").innerHTML = checkout;
+			document.getElementById("txt8").innerHTML = adult;
+			document.getElementById("txt9").innerHTML = child;
+			var people = '어른 : '+adult+'/ 어린이 : '+child;
+			document.getElementById("people").value = people;
+			document.getElementById("chekin").value = checkin;
+			document.getElementById("chekout").value = checkout;
+		}
+	}
 </script>
 </head>
 <body>
+
+<div class="center">
+   <h2>예약하기</h2>
+</div>
 	<table cellspacing='0' border="0">
 		<tr>
 			<th colspan="2">체크인</th>
-			<td><input type="text" id="datepicker" name="checkin" class="btn btn-default" placeholder="체크인"></td>
+			<td><input type="text" id="datepicker1" name="checkin" placeholder="체크인"></td>
 			<th colspan="2">체크아웃</th>
-			<td><input type="text" id="datepicker1" name="checkout" class="btn btn-default" placeholder="체크아웃"></td>
+			<td><input type="text" id="datepicker2" name="checkout" placeholder="체크아웃"></td>
 		</tr>
 		<tr>
 			<th>객실 </th>
 			<td>
-			<select name="room" id="roomnum1">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-			</select>
 			</td>
 			<th>성인</th>
 			<td>
@@ -411,7 +349,7 @@ a#booking_pop:hover {
 			<th>객실요금</th>
 			<th>조 건</th>
 			<th>객실 선택</th>
-			<th rowspan="7">선택한 객실<br> <a href="#booking_form" id="booking_pop"><input type="button" value="예약하기"></a></th>
+			<th>선택한 객실</th>
 		</tr>
 		<c:forEach var="dto" items="${hotelroom}">	
 		<tr>
@@ -426,7 +364,7 @@ a#booking_pop:hover {
 				</c:forEach>
 				</select>
 			</td>
-			<th></th>
+			<th><input type="button" value="예약하기" id="booking_pop" onclick="javascript:check(${dto.room_idx})"></th>
 		</tr>
 	 </c:forEach>
 	</table>
@@ -489,5 +427,6 @@ a#booking_pop:hover {
 	</form>
 		<a class="close" href="#close"></a>	
 </div>
+
 </body>
 </html>
