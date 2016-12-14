@@ -23,13 +23,20 @@ public class FaqController {
 	private FaqDAO faqDao;
 	
 	@RequestMapping("/faq_List.do")
-	public ModelAndView faqList(@RequestParam(value="faq_item",required=false)String faq_item){
-		List<FaqDTO> list = faqDao.faqList(faq_item);
+	public ModelAndView faqList(){
+		List<FaqDTO> list = faqDao.faqList();
 		List<FaqDTO> bestList = faqDao.faqBestList();
-
+		List<FaqDTO> memList = faqDao.faqmemList();
+		List<FaqDTO> hosList = faqDao.faqhosList();
+		List<FaqDTO> hotList = faqDao.faqhotList();
+		List<FaqDTO> etcList = faqDao.faqetc();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("bestList", bestList);
+		mav.addObject("memList", memList);
+		mav.addObject("hosList", hosList);
+		mav.addObject("hotList", hotList);
+		mav.addObject("etcList", etcList);
 		mav.setViewName("service/FAQ/faq_List");
 		return mav;		
 	}

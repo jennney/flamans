@@ -77,4 +77,36 @@
 			faq_subject like '%' ||#{findValue}|| '%'
   		</if>
 	</select>
+	
+	<select id="faq_memList" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq 
+			where faq_item = 
+		'member'
+	</select>
+
+	<select id="faq_hosList" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq 
+			where faq_item = 
+		'hospital' order by faq_idx desc
+	</select>
+
+	<select id="faq_hotList" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq 
+			where faq_item = 
+		'hotel' order by faq_idx desc
+	</select>
+	
+	<select id="faq_etc" resultType="flamans.faq.model.FaqDTO">
+		select *
+			from
+		fm_faq 
+			where faq_item = 
+		'etc' order by faq_idx desc
+	</select>
 </mapper>
