@@ -60,15 +60,15 @@ public class HotController {
 		return mav;
 	}
 	
-/*	*//**관리자계정-병원예약요청*//*
-	@RequestMapping(value="/bBbook_list.do", method=RequestMethod.GET)
+	/**관리자계정-호텔예약 관리 페이지*/
+	@RequestMapping(value="/Hbook_list.do", method=RequestMethod.GET)
 	public String bBbook_CList(){
-		return "hos_book/admin_confirm";
+		return "hotel_book/hot_admin";
 	}
 	
 	
-	*//**관리자계정-병원예약리스트*//*
-	@RequestMapping(value="/bBbook_list.do", method=RequestMethod.POST)
+	/*	*//**관리자계정-병원예약리스트*//*
+	@RequestMapping(value="/book_list.do", method=RequestMethod.POST)
 	public ModelAndView bBbook_AList(HttpSession session, @RequestParam("bookingdate")String bookingdate){
 		String cm_number=(String)session.getAttribute("cm_number");
 		List<BbookDTO> list = Bdao.bBbook_List(cm_number, bookingdate);

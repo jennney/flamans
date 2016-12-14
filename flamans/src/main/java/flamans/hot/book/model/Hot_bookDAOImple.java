@@ -2,6 +2,7 @@ package flamans.hot.book.model;
 
 
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,6 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 		this.sqlMap = sqlMap;
 	}
 
-	public int booking_hot(Hot_bookDTO dto) {
 
 		int count=sqlMap.insert("booking_hot",dto);
 		return count;
@@ -49,21 +49,25 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 		return list;
 	}
 
-	
-	/*public List<BbookDTO> bBbook_List(String hos_num, String bookingdate) {
-		
-		List<BbookDTO> Alist=null;
+	public List<HotelRoomDTO> Hbook_List(String hot_num, Date checkin) {
+		List<HotelRoomDTO> Hlist=null;
 		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("hos_num", hos_num);
-		map.put("bookingdate", bookingdate);
+		map.put("hot_num", hot_num);
+		map.put("checkin", checkin);
 		
 		try{
-			Alist=sqlMap.selectList("bBbook_list", map);
-			return Alist;
+			Hlist=sqlMap.selectList("HBbook_list", map);
+			return Hlist;
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	
+	/*public List<BbookDTO> bBbook_List(String hos_num, String bookingdate) {
+		
+		
 	}
 
 	public int bBbook_permit(String hos_num, int bookingnum) {
