@@ -96,93 +96,91 @@ function wishlistresult(){
 			
 			if('${not empty sessionScope.userid}'=='true'){
 				data = eval('('+data+')');
-				var data_hos = '<table class="table table-hover" border="1" height="70" cellspacing="0"><tr align="center"><td width="150"><h3>병원이름</h3></td>';
-				var data_hot = '<table class="table table-hover" border="1" height="70" cellspacing="0"><tr align="center"><td width="150"><h3>호텔이름</h3></td>';
 
 				var wishlist = data.list;
 				data = eval('('+wishlist+')');
 				
+				var data_hos = '<table class="table table-hover" border="1" height="70" cellspacing="0"><tr align="center"><td width="150"><h3>등록일</h3></td>';
+				var data_hot = '<table class="table table-hover" border="1" height="70" cellspacing="0"><tr align="center"><td width="150"><h3>등록일</h3></td>';
+				
 				// 병원 비교 추가
-				for( var i in data.hos ){
-					if(i==5)break;
-					data_hos += '<td width="200" align="center"><a href="hosel_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_name+'</a></td>';
+				
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_wishdate+'</a></td>';
 				}data_hos += '</tr></table>';
 				
-				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="160"><h3>호텔사진</h3></td>';
-				for( var i in data.hos ){
-					if(i==5)break;
-					data_hos += '<td width="200" align="center"><a href="hosel_get_info.do?hos_num='+data.hos[i].hos_num+'">'+'<img src="'+data.hos[i].hos_img+'" width=120 height=140></a></td>';
+				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>병원이름</h3></td>';
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_name+'</a></td>';
 				}data_hos += '</tr></table>';
 				
-				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔정보</h3></td>';
-				for( var i in data.hos ){
-					if(i==5)break;
-					data_hos += '<td width="200" align="center"><a href="hosel_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_content+'</a></td>';
+				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔사진</h3></td>';
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+'<img src="'+data.hos[i].hos_img+'" width=120 height=140></a></td>';
 				}data_hos += '</tr></table>';
 				
-				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔방정보</h3></td>';
-				for( var i in data.hos ){
-					if(i==5)break;
-					data_hos += '<td width="200" align="center"><a href="hosel_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_roominfo+'</a></td>';
+				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>병원정보</h3></td>';
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_content+'</a></td>';
 				}data_hos += '</tr></table>';
 				
-				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔방옵션</h3></td>';
-				for( var i in data.hos ){
-					if(i==5)break;
-					data_hos += '<td width="200" height="150" align="center"><a href="hosel_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_option+'</a></td>';
+				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>병원정보</h3></td>';
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_roominfo+'</a></td>';
 				}data_hos += '</tr></table>';
 				
-				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>기타정보</h3></td>';
-				for( var i in data.hos ){
-					if(i==5)break;
-					data_hos += '<td width="200" align="center"><a href="hosel_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_etc+'</a></td>';
+				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>병원옵션</h3></td>';
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<td width="200" height="150" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_option+'</a></td>';
 				}data_hos += '</tr></table>';
 				
-				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔오시는길</h3></td>';
-				for( var i in data.hos ){
-					if(i==5)break;
-					data_hos += '<td width="200" align="center"><a href="hosel_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_mapinfo+'</a></td>';
+				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>병원기타정보</h3></td>';
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_etc+'</a></td>';
 				}data_hos += '</tr></table>';
 				
-				// 호텔 비교
-				for( var i in data.hot ){
-					if(i==5)break;
+				data_hos+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>병원오시는길</h3></td>';
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_mapinfo+'</a></td>';
+				}data_hos += '</tr></table>';
+				
+				// 호텔 비교 추가
+				for( var i=data.hot.length-1; i>=0; i-- ){
+					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_wishdate+'</a></td>';
+				}data_hot += '</tr></table>';
+				
+				data_hot+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔이름</h3></td>';
+				for( var i=data.hot.length-1; i>=0; i-- ){
 					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_name+'</a></td>';
 				}data_hot += '</tr></table>';
 				
-				data_hot+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="160"><h3>호텔사진</h3></td>';
-				for( var i in data.hot ){
-					if(i==5)break;
+				data_hot+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔사진</h3></td>';
+				for( var i=data.hot.length-1; i>=0; i-- ){
 					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+'<img src="'+data.hot[i].hot_img+'" width=120 height=140></a></td>';
 				}data_hot += '</tr></table>';
 				
 				data_hot+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔정보</h3></td>';
-				for( var i in data.hot ){
-					if(i==5)break;
+				for( var i=data.hot.length-1; i>=0; i-- ){
 					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_content+'</a></td>';
 				}data_hot += '</tr></table>';
 				
 				data_hot+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔방정보</h3></td>';
-				for( var i in data.hot ){
-					if(i==5)break;
+				for( var i=data.hot.length-1; i>=0; i-- ){
 					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_roominfo+'</a></td>';
 				}data_hot += '</tr></table>';
 				
 				data_hot+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔방옵션</h3></td>';
-				for( var i in data.hot ){
-					if(i==5)break;
+				for( var i=data.hot.length-1; i>=0; i-- ){
 					data_hot += '<td width="200" height="150" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_option+'</a></td>';
 				}data_hot += '</tr></table>';
 				
 				data_hot+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>기타정보</h3></td>';
-				for( var i in data.hot ){
-					if(i==5)break;
+				for( var i=data.hot.length-1; i>=0; i-- ){
 					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_etc+'</a></td>';
 				}data_hot += '</tr></table>';
 				
 				data_hot+= '<table class="table table-hover" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔오시는길</h3></td>';
-				for( var i in data.hot ){
-					if(i==5)break;
+				for( var i=data.hot.length-1; i>=0; i-- ){
 					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_mapinfo+'</a></td>';
 				}data_hot += '</tr></table>';
 				

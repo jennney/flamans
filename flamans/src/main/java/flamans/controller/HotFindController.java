@@ -613,7 +613,12 @@ public class HotFindController{
 			hotsearchObject1.put("hot_roominfo",list.get(0).getHot_roominfo());
 			hotsearchObject1.put("hot_option",list.get(0).getHot_option());
 			hotsearchObject1.put("hot_etc",list.get(0).getHot_etc());
-			hotsearchObject1.put("hos_wishnum",wishdate);
+			hotsearchObject1.put("hot_wishdate",wishdate);
+			
+			if(hotsearchArray1.size()>2){
+				hotsearchArray1.remove(0);
+			}
+			
 			hotsearchArray1.add(hotsearchObject1);
 			
 			hotsearchObject.put("hot", hotsearchArray1);

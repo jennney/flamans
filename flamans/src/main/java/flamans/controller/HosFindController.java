@@ -314,7 +314,6 @@ public class HosFindController {
 		mav.addObject("doctor_info",list);
 		mav.setViewName("hospital/Bbook");
 		return mav;
-		
 	}
 
 	@RequestMapping("/hospital_input_comment_grade.do")
@@ -432,7 +431,12 @@ public class HosFindController {
 			hossearchObject1.put("hos_img",list.get(0).getHos_img());
 			hossearchObject1.put("hos_content",list.get(0).getHos_content());
 			hossearchObject1.put("hos_map_info",list.get(0).getHos_mapinfo());
-			hossearchObject1.put("hos_wishnum",wishdate);
+			hossearchObject1.put("hos_wishdate",wishdate);
+			
+			if(hossearchArray1.size()>2){
+				hossearchArray1.remove(0);
+			}
+			
 			hossearchArray1.add(hossearchObject1);
 			
 			hossearchObject.put("hos", hossearchArray1);

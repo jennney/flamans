@@ -475,7 +475,6 @@ input[type=range]:focus::-ms-fill-upper {
 			params += 'checkout='+checkout;
 			z=1;
 		}
-		alert(params);
 		hotel_sub_search(params);
 	}
 </script>
