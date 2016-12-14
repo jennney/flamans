@@ -152,8 +152,8 @@ function hoswishresult(){
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">EVENT<i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">On Going Event</a></li>
-                        <li><a href="#">Finished Evnet</a></li>
+                        <li><a href="event_user_list.do?e_item=1">On Going Event</a></li>
+                        <li><a href="event_user_list.do?e_item=2">Finished Event</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
