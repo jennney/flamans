@@ -52,6 +52,28 @@ public class QnaController {
 		mav.setViewName("service/QNA/qna_List");
 		return mav;
 	}
+	
+	@RequestMapping("/qna_List_admin.do")
+	public ModelAndView qnaListAdmin(@RequestParam("qna_kind") String qna_kind,
+			@RequestParam(value = "cp", defaultValue = "1") int cp,
+			@RequestParam(value = "qna_item", required = false, defaultValue = "") String qna_item,
+			@RequestParam(value = "findKey", required = false, defaultValue = "") String findKey,
+			@RequestParam(value = "findValue", required = false, defaultValue = "") String findValue) {
+		int totalCnt = qnaDao.qnaTotal(qna_kind, qna_item,findKey,findValue);
+		int listSize = 10;
+		int pageSize = 5;
+		String qna_page = paging1.makePage("qna_List_admin.do", totalCnt, listSize, pageSize, cp, findKey, findValue,qna_kind);
+		List<QnaDTO> qnaList = qnaDao.qnaList(qna_kind, cp, listSize, qna_item,findKey, findValue);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("qnaList", qnaList);
+		mav.addObject("qna_kind", qna_kind);
+		mav.addObject("qna_page", qna_page);
+		mav.addObject("qna_item",qna_item);
+		mav.addObject("findKey", findKey);
+		mav.addObject("findValue", findValue);
+		mav.setViewName("service/QNA/qna_List_admin");
+		return mav;
+	}
 
 	@RequestMapping(value = "/qna_Write.do", method = RequestMethod.GET)
 	public ModelAndView qnaWriteForm(@RequestParam("qna_kind") String qna_kind) {
@@ -82,6 +104,16 @@ public class QnaController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("qdto", qdto);
 		mav.setViewName("service/QNA/qna_Content");
+		return mav;
+	}
+	
+	@RequestMapping("/qna_Content_admin.do")
+	public ModelAndView qnaContentAdmin(@RequestParam("qna_idx") int qna_idx) {
+		QnaDTO qdto = qnaDao.qnaContent(qna_idx);
+		int count = qnaDao.qnaReadnum(qna_idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("qdto", qdto);
+		mav.setViewName("service/QNA/qna_Content_admin");
 		return mav;
 	}
 
@@ -184,7 +216,7 @@ public class QnaController {
 		String msg = result > 0 ? "답변 등록이 완료되었습니다." : "답변 등록이 실패되었습니다.";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url", "qna_List.do?qna_kind=" + qdto.getQna_kind());
+		mav.addObject("url", "qna_List_admin.do?qna_kind=" + qdto.getQna_kind());
 		mav.setViewName("service/QNA/qna_Msg");
 		return mav;
 	}

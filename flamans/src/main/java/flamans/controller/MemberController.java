@@ -27,9 +27,12 @@ public class MemberController {
    
    @Autowired
    private Hot_bookDAO Hot_bookDao;
-   
+      
    @Autowired
    private MemberDAO memberDao;
+   
+   @Autowired
+   private BbookDAO BbookDao;
    
    @RequestMapping("/index.do")
    public String index(){
@@ -396,14 +399,18 @@ public class MemberController {
       
    }
    
+   /**호텔,병원 예약 현황 확인*/
    @RequestMapping("/booking.do")
    public ModelAndView bookingInfo(HttpSession session){
       String m_id = (String)session.getAttribute("userid");
       List<Hot_bookDTO> list = Hot_bookDao.fm_myhot_book(m_id);
+      List<BbookDTO> list1 = BbookDao.fm_myhos_book(m_id);
       ModelAndView mav = new ModelAndView();
       mav.addObject("mdto",list);
+      mav.addObject("bdto",list1);
       mav.setViewName("hotel_book/bookingInfo");
       return mav;
    }
+
 
 }

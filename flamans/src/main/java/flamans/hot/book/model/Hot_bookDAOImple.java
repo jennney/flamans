@@ -68,6 +68,15 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 		}
 	}
 	
+	public int Hbook_refuse(String hot_num, int bookingnum) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("hot_num", hot_num);
+		map.put("bookingnum", bookingnum);
+		
+		int result=sqlMap.delete("HBook_del", map);
+		return result;
+	}
+	
 	public int Hbook_permit(String hot_num, int bookingnum) {
 		
 		Map<String, Object> map=new HashMap<String, Object>();
@@ -79,15 +88,6 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 		return result;
 	}
 
-	public int Hbook_refuse(String hot_num, int bookingnum) {
-		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("hot_num", hot_num);
-		map.put("bookingnum", bookingnum);
-		
-		int result=sqlMap.delete("HBook_del", map);
-		return result;
-	}
-	
 	public int fm_hotroomnum(int room_idx, int roomselect) {
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put("room_idx", room_idx);
@@ -96,5 +96,8 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 			return count;
 		}
 
+
 }	
+  
+
   

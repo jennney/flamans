@@ -15,4 +15,5 @@ public interface CompanyDAO {
    
    public int company_update(CompanyDTO dto);
 
+   public CompanyDTO companyInfo(String cm_id);
 }

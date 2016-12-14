@@ -40,7 +40,7 @@
 								<c:param name="doc_num">${dto.doc_num }</c:param>
 							</c:url>
 							<td><a href="${doctorContentUrl }">${dto.doc_name }</a></td>
-							<td>${dto.doc_img }</td>
+							<td><img alt="의사사진" src="img/hospital/${sessionScope.cm_number }/doctor/${dto.doc_img }" width="30" height="30"/> ${dto.doc_img }</td>
 							<td>${dto.doc_kind }</td>
 						</tr> 
 					</c:forEach>

@@ -102,20 +102,20 @@ public class CompanyController {
 		ModelAndView mav = new ModelAndView();
 		if(session.getAttribute("userid") != null){
 			mav.addObject("msg", "로그아웃 후 이용해주세요.");
-			mav.addObject("url", "company_login.do");
+			mav.addObject("url", "member_login.do");
 			mav.setViewName("company/company_msg");
 		}else if(session.getAttribute("userid") == null){
 			CompanyDTO dto=companyDao.companyLogin(pdto.getCm_id());
 			
 			if(dto==null){		
 			mav.addObject("msg", "등록된 ID가 아닙니다.");
-			mav.addObject("url", "company_login.do");
+			mav.addObject("url", "member_login.do");
 			mav.setViewName("company/company_msg");
 			
 			}else if(pdto.getCm_id().equals(dto.getCm_id())){
 				if(!pdto.getCm_pwd().equals(dto.getCm_pwd())){		
 					mav.addObject("msg", "잘못된 비밀번호입니다. ");
-					mav.addObject("url", "company_login.do");
+					mav.addObject("url", "member_login.do");
 					mav.setViewName("company/company_msg");
 				}else{
 					Cookie ck= new Cookie("savecoId",savecoId);

@@ -115,7 +115,7 @@
 	<div id="page-wrapper">
 		<form name="faq_List" action="faq_Find.do" >
 		<div>
-			<label>FAQ</label> <input type="text" name="findValue"><input type="submit" value="검색">
+			<label><h2>FAQ</h2></label><input type="text" class="form-control" name="findValue" style="width: 100px;"><button type="submit" class="btn btn-default" style="float: center;">검색</button>
 		</div>
 		</form>
 		<label>자주하는 질문 BEST 5</label>

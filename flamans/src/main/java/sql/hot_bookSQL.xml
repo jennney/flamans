@@ -14,13 +14,12 @@
             #{checkout},
          #{card},
             sysdate,
-         #{room},
             #{people},
          #{roomselect},
             #{permit},
-         fm_hot_book_bookingnum.nextval)
+         fm_hot_book_bookingnum.nextval,
+         #{room_idx})
    </insert>
-   
    <select id="hot_info" resultType="flamans.member.model.MemberDTO">
         select * from fm_member where m_id=#{m_id}
    </select>
@@ -45,8 +44,7 @@
      , TO_CHAR(checkout,'YYYY-MM-DD') checkout,
         card           
      , TO_CHAR(bookingdate,'YYYY-MM-DD') bookingdate,
-     room,
-        people,
+         people,
         roomselect,
         permit,
         bookingnum
@@ -68,4 +66,12 @@
 		delete from fm_hot_book
 		where hot_num=#{hot_num} and bookingnum=#{bookingnum}
 	</delete>
+
+   <update id="fm_hotroomnum" parameterType="Map">
+		update
+			fm_hotroom
+		set roomnum=roomnum-#{roomselect}
+		where room_idx = #{room_idx}
+   </update>
+
 </mapper>  

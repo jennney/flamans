@@ -2,6 +2,8 @@ package flamans.Bbook.model;
 
 import java.util.*;
 
+import flamans.hot.book.model.Hot_bookDTO;
+
 public interface BbookDAO {
 
 	public DoctorDTO doctorView(String hos_num, int doc_num, String userid);
@@ -24,4 +26,5 @@ public interface BbookDAO {
 	
 	public List<BbookDTO> calendar(String hos_num, String date);
 	
+	public List<BbookDTO> fm_myhos_book(String m_id);   
 }

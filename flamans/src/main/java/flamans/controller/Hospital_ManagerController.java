@@ -3,6 +3,7 @@ package flamans.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -96,7 +97,18 @@ public class Hospital_ManagerController {
 	public ModelAndView hospitalContent(HttpSession session){
 		List<HospitalDTO> list=hosmDao.hospitalContent((String)session.getAttribute("cm_number"));
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("list", list);
+		if(list!=null&&list.size()!=0){
+			HashMap<String, Object> map=new HashMap<String, Object>();
+			map.put("face", "안면윤곽");
+			map.put("bimaxillary", "양약수술");
+			map.put("eyes", "눈 성형");
+			map.put("nose", "코 성형");
+			map.put("man", "남성 성형");
+			
+			
+			mav.addObject("list", list);
+			mav.addObject("sp", map.get(list.get(0).getHos_special()));
+		}
 		mav.setViewName("manager/hospital/hospitalContent");
 		return mav;
 	}
@@ -106,10 +118,24 @@ public class Hospital_ManagerController {
 		return "manager/hospital/hospitalAdd";
 	}
 	
-	public void copyinto(String writer,MultipartFile upload){
+	public void copyinto(String writer,MultipartFile upload,int i,String path){
 		try {
 			byte bytes[]=upload.getBytes();
-			File newFile=new File("C:/Users/YunJunHo/git/flamans/flamans/src/main/webapp/img/"+upload.getOriginalFilename());
+			File newFile=new File(path+"/"+writer);
+			if(!newFile.exists()){
+				newFile.mkdirs();
+			}
+			
+			if(i==1){
+				newFile=new File(path+"/"+writer+"/"+upload.getOriginalFilename());
+			}else if(i==2){
+			
+				newFile=new File(path+"/"+writer+"/doctor/");
+				if(!newFile.exists()){
+					newFile.mkdirs();
+				}
+				newFile=new File(path+"/"+writer+"/doctor/"+upload.getOriginalFilename());
+			}
 			FileOutputStream fos=new FileOutputStream(newFile);
 			fos.write(bytes);
 			fos.close();
@@ -119,8 +145,9 @@ public class Hospital_ManagerController {
 	}
 	
 	@RequestMapping(value="/hospitalAdd.do",method=RequestMethod.POST)
-	public ModelAndView hospitalAdd(HospitalDTO dto,@RequestParam("upload") MultipartFile upload){
-		copyinto(dto.getHos_num(), upload);
+	public ModelAndView hospitalAdd(HospitalDTO dto,@RequestParam("upload") MultipartFile upload,HttpSession session){
+		String path=session.getServletContext().getRealPath("img/hospital");
+		copyinto(dto.getHos_num(), upload,1,path);
 		dto.setHos_img(upload.getOriginalFilename());
 		int result=hosmDao.hospitalAdd(dto);
 		String msg=result>0?"등록 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
@@ -135,16 +162,39 @@ public class Hospital_ManagerController {
 	public ModelAndView hospitalUpdateForm(HttpSession session){
 		String cm_number=(String)session.getAttribute("cm_number");
 		HospitalDTO dto=hosmDao.hospitalUpdateForm(cm_number);
+		StringBuffer sb=new StringBuffer();
+		String special[]={"face","bimaxillary","eyes","nose","man"};
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("face", "안면윤곽");
+		map.put("bimaxillary", "양약수술");
+		map.put("eyes", "눈 성형");
+		map.put("nose", "코 성형");
+		map.put("man", "남성 성형");
+		String sp=dto.getHos_special();
+		sb.append("<select name='hos_special'>");
+		for(int i=0;i<special.length;i++){
+			sb.append("<option value='");
+			sb.append(special[i]);
+			sb.append("'");
+			if(special[i].equals(sp)){
+				sb.append(" selected='selected'");
+			}
+			sb.append(">");
+			sb.append(map.get(special[i]));
+		}
+		sb.append("</select>");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("dto", dto);
+		mav.addObject("sp", sb.toString());
 		mav.setViewName("manager/hospital/hospitalUpdate");
 		return mav;
 	}
 	
 	@RequestMapping(value="/hospitalUpdate.do",method=RequestMethod.POST)
-	public ModelAndView hospitalUpdate(@RequestParam("upload") MultipartFile upload,HospitalDTO dto){
+	public ModelAndView hospitalUpdate(@RequestParam("upload") MultipartFile upload,HospitalDTO dto,HttpSession session){
 		if(!upload.getOriginalFilename().equals("")){
-			copyinto(dto.getHos_num(), upload);
+			String path=session.getServletContext().getRealPath("img/hospital");
+			copyinto(dto.getHos_num(), upload,1,path);
 			dto.setHos_img(upload.getOriginalFilename());
 		}
 		int result=hosmDao.hospitalUpdate(dto);
@@ -158,8 +208,15 @@ public class Hospital_ManagerController {
 	
 	@RequestMapping("/hospitalDelete.do")
 	public ModelAndView hospitalDelete(String hos_num){
-		int result=hosmDao.hospitalDelete(hos_num);
-		String msg=result>0?"삭제성공":"ㅋㅋㅋㅋㅋㅋㅋ";
+		List<DoctorDTO> list=hosmDao.doctorList(hos_num);
+		String msg="";
+		if(list==null||list.size()==0){
+			int result=hosmDao.hospitalDelete(hos_num);
+			msg=result>0?"삭제성공":"ㅋㅋㅋㅋㅋㅋㅋ";
+		}else{
+			msg="의사 정보를 먼저 삭제 해야합니다.";
+		}
+		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "hospitalContent.do");
@@ -177,13 +234,24 @@ public class Hospital_ManagerController {
 	}
 	
 	@RequestMapping(value="/doctorAdd.do",method=RequestMethod.GET)
-	public String doctorAddForm(){
-		return "manager/hospital/doctorAdd";
+	public ModelAndView doctorAddForm(HttpSession session){
+		String cm_number=(String)session.getAttribute("cm_number");
+		List<HospitalDTO> list=hosmDao.hospitalContent(cm_number);
+		ModelAndView mav=new ModelAndView();
+		if(list==null||list.size()==0){
+			mav.addObject("msg", "병원 정보를 우선 등록해야 합니다.");
+			mav.addObject("url", "doctorList.do");
+			mav.setViewName("manager/Msg");
+		}else{
+			mav.setViewName("manager/hospital/doctorAdd");
+		}
+		return mav;
 	}
 	
 	@RequestMapping(value="/doctorAdd.do",method=RequestMethod.POST)
-	public ModelAndView doctorAdd(DoctorDTO dto,@RequestParam("upload") MultipartFile upload){
-		copyinto(dto.getHos_num(), upload);
+	public ModelAndView doctorAdd(DoctorDTO dto,@RequestParam("upload") MultipartFile upload,HttpSession session){
+		String path=session.getServletContext().getRealPath("img/hospital");
+		copyinto(dto.getHos_num(), upload,2,path);
 		dto.setDoc_img(upload.getOriginalFilename());
 		int result=hosmDao.doctorAdd(dto);
 		String msg=result>0?"등록 성공":"등록 실패 ㅠ";
@@ -219,9 +287,10 @@ public class Hospital_ManagerController {
 	}
 	
 	@RequestMapping(value="/doctorUpdate.do",method=RequestMethod.POST)
-	public ModelAndView doctorUpdate(DoctorDTO dto,@RequestParam("upload") MultipartFile upload){
+	public ModelAndView doctorUpdate(DoctorDTO dto,@RequestParam("upload") MultipartFile upload,HttpSession session){
 		if(upload.getOriginalFilename()!=null){
-			copyinto(dto.getHos_num(), upload);
+			String path=session.getServletContext().getRealPath("img/hospital");
+			copyinto(dto.getHos_num(), upload,2,path);
 			dto.setDoc_img(upload.getOriginalFilename());
 		}
 		int result=hosmDao.doctorUpdate(dto);

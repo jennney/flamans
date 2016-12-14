@@ -78,4 +78,9 @@ public class CompanyDAOImple implements CompanyDAO {
       return 0;
    }
 
+   
+   public CompanyDTO companyInfo(String cm_id) {
+	CompanyDTO dto=sqlMap.selectOne("cm_logInCheck", cm_id);   
+	return dto;
+	}
 }

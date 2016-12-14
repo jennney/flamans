@@ -12,11 +12,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
-body {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0 auto;
-}
-
 a:link {
 	color: #666;
 	font-weight: bold;
@@ -362,49 +357,52 @@ a#booking_pop:hover {
 	});
 
 	function change(idx,name){
-		var temp = new Array();
 		var target = document.getElementById(idx);
 		var room = target.options[target.selectedIndex].text;
 		var txt = name+" "+room+"객실";
 		document.getElementById("spantxt").innerHTML = txt;
-		document.getElementById("roomselect").value = idx;
+		document.getElementById("roomselect").value = room;
+		document.getElementById("room_idx").value = idx;
 	}
 </script>
 </head>
 <body>
 	<table cellspacing='0' border="0">
-	
 		<tr>
 			<th colspan="2">체크인</th>
-			<td><input type="text" id="datepicker" name="checkin"
-				class="btn btn-default" placeholder="체크인"></td>
+			<td><input type="text" id="datepicker" name="checkin" class="btn btn-default" placeholder="체크인"></td>
 			<th colspan="2">체크아웃</th>
-			<td><input type="text" id="datepicker1" name="checkout"
-				class="btn btn-default" placeholder="체크아웃"></td>
+			<td><input type="text" id="datepicker1" name="checkout" class="btn btn-default" placeholder="체크아웃"></td>
 		</tr>
 		<tr>
 			<th>객실 </th>
-			<td><select name="room" id="roomnum1">
+			<td>
+			<select name="room" id="roomnum1">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
-			</select></td>
+			</select>
+			</td>
 			<th>성인</th>
-			<td><select name="adult" id="adult">
+			<td>
+			<select name="adult" id="adult">
 					<option value="0">0</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
-			</select></td>
+			</select>
+			</td>
 			<th>어린이</th>
-			<td><select name="child" id="child">
+			<td>
+			<select name="child" id="child">
 					<option value="0">0</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
-			</select></td>
+			</select>
+			</td>
 		</tr>
 
 		<tr>
@@ -413,9 +411,7 @@ a#booking_pop:hover {
 			<th>객실요금</th>
 			<th>조 건</th>
 			<th>객실 선택</th>
-			<th rowspan="7">선택한 객실<br> 
-			<a href="#booking_form" id="booking_pop">
-			<input type="button" value="예약하기"></a></th>
+			<th rowspan="7">선택한 객실<br> <a href="#booking_form" id="booking_pop"><input type="button" value="예약하기"></a></th>
 		</tr>
 		<c:forEach var="dto" items="${hotelroom}">	
 		<tr>
@@ -434,7 +430,6 @@ a#booking_pop:hover {
 		</tr>
 	 </c:forEach>
 	</table>
-  
 	<a href="#x" class="overlay" id="booking_form"></a>
 	<div class="popup">
 		<div>
@@ -467,10 +462,10 @@ a#booking_pop:hover {
 		<input type="hidden" name="nationality" value="${mdto.m_nationality}">
 		<input type="hidden" name="checkin" id="checkin">  	
 		<input type="hidden" name="checkout" id="checkout">  	 		
-		<input type="hidden" name="room" id="roomnum">
 		<input type="hidden" name="people" id="people">  	
-		<input type="text" name="roomselect" id="roomselect">	
-		<input type="hidden" name="permit" value="0"> 	    
+		<input type="hidden" name="roomselect" id="roomselect">	
+		<input type="hidden" name="permit" value="0">
+		<input type="hidden" name="room_idx" id="room_idx">
 		<div>
 		예약자명: ${mdto.m_name}
 		</div>
@@ -481,12 +476,12 @@ a#booking_pop:hover {
 		국적:${mdto.m_nationality}
 		</div>
 		<div>카드 번호: 
-			<select name="카드회사">
+			<select name="cardco">
 				<option value="Lotte">롯데</option>
 				<option value="BC">비씨</option>
 				<option value="Master">마스터</option>
 				</select>&nbsp;
-				<input type="text" name="card">
+				<input type="text" name="cardnum">
 		</div>
 	<div>
 		<label><input type="submit" value="예약"></label>

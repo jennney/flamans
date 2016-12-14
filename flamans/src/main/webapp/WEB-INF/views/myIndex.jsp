@@ -24,7 +24,7 @@
 	            <a href="member_page.do"><i class="fa fa-fw fa-user"></i>  MyPage</a>
 	        </li>
 	        <li>
-	            <a href="#"><i class="fa fa-fw fa-table"></i>  Booking</a>
+	            <a href="booking.do"><i class="fa fa-fw fa-table"></i>  Booking</a>
 	        </li>
 	        <li>
 	            <a href="wishlist_compare.do"><i class="fa fa-fw fa-desktop"></i>  WishList</a>
