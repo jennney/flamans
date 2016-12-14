@@ -1,6 +1,6 @@
 package flamans.hot.book.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import flamans.company.model.CompanyDTO;
@@ -21,11 +21,15 @@ public interface Hot_bookDAO {
 	
 	public List<Hot_bookDTO> fm_myhot_book(String m_id);  
 	 
-	public List<HotelRoomDTO> Hbook_List(String hot_num, Date checkin);
+	public List<HotelRoomDTO> Hbook_List(String hot_num, String checkin);
 	
-	/*public int bBbook_permit(String hos_num, int bookingnum);
+	public int Hbook_permit(String hot_num, int bookingnum);
 	
-	public int bBbook_refuse(String hos_num, int bookingnum);
+	public int Hbook_refuse(String hot_num, int bookingnum);
+	
+	public int fm_hotroomnum(int room_idx,int roomselect);
+	
+	/*
 	
 	public BbookDTO bBook_content(int bookingnum);
 	

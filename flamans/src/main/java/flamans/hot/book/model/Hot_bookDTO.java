@@ -11,164 +11,117 @@ public class Hot_bookDTO {
    private String checkout;
    private String card;
    private Date bookingdate;
-   private String room;
    private String people;
-   private String roomselect;
+   private int roomselect;
    private String permit;
    private String bookingnum;
-                    
-   public Hot_bookDTO() {
-      super();
-   }
-
+   private int room_idx;
+   private String roomname;
    
-   public Hot_bookDTO(String hot_num, String name, String sex, String nationality, String checkin,
-         String checkout, String card, Date bookingdate, String room, String people, String roomselect,
-         String permit, String bookingnum) {
-      super();
-      this.hot_num = hot_num;
-      this.name = name;
-      this.sex = sex;
-      this.nationality = nationality;
-      this.checkin = checkin;
-      this.checkout = checkout;
-      this.card = card;
-      this.bookingdate = bookingdate;
-      this.room = room;
-      this.people = people;
-      this.roomselect = roomselect;
-      this.permit = permit;
-      this.bookingnum = bookingnum;
-   }
-
-   public String getHot_num() {
-      return hot_num;
-   }
-
-
-   public void setHot_num(String hot_num) {
-      this.hot_num = hot_num;
-   }
-
-
-   public String getName() {
-      return name;
-   }
-
-
-   public void setName(String name) {
-      this.name = name;
-   }
-
-
-   public String getSex() {
-      return sex;
-   }
-
-
-   public void setSex(String sex) {
-      this.sex = sex;
-   }
-
-
-   public String getNationality() {
-      return nationality;
-   }
-
-
-   public void setNationality(String nationality) {
-      this.nationality = nationality;
-   }
-
-
-   public String getCheckin() {
-      return checkin;
-   }
-
-
-   public void setCheckin(String checkin) {
-      this.checkin = checkin;
-   }
-
-
-   public String getCheckout() {
-      return checkout;
-   }
-
-
-   public void setCheckout(String checkout) {
-      this.checkout = checkout;
-   }
-
-
-   public String getCard() {
-      return card;
-   }
-
-
-   public void setCard(String card) {
-      this.card = card;
-   }
-
-
-   public Date getBookingdate() {
-      return bookingdate;
-   }
-
-
-   public void setBookingdate(Date bookingdate) {
-      this.bookingdate = bookingdate;
-   }
-
-
-   public String getRoom() {
-      return room;
-   }
-
-
-   public void setRoom(String room) {
-      this.room = room;
-   }
-
-
-   public String getPeople() {
-      return people;
-   }
-
-
-   public void setPeople(String people) {
-      this.people = people;
-   }
-
-
-   public String getRoomselect() {
-      return roomselect;
-   }
-
-
-   public void setRoomselect(String roomselect) {
-      this.roomselect = roomselect;
-   }
-
-
-   public String getPermit() {
-      return permit;
-   }
-
-
-   public void setPermit(String permit) {
-      this.permit = permit;
-   }
-
-
-   public String getBookingnum() {
-      return bookingnum;
-   }
-
-
-   public void setBookingnum(String bookingnum) {
-      this.bookingnum = bookingnum;
-       
-      }
-      
+	public Hot_bookDTO(String hot_num, String name, String sex, String nationality, String checkin, String checkout,
+			String card, Date bookingdate, String people, int roomselect, String permit, String bookingnum, int room_idx,
+			String roomname) {
+		super();
+		this.hot_num = hot_num;
+		this.name = name;
+		this.sex = sex;
+		this.nationality = nationality;
+		this.checkin = checkin;
+		this.checkout = checkout;
+		this.card = card;
+		this.bookingdate = bookingdate;
+		this.people = people;
+		this.roomselect = roomselect;
+		this.permit = permit;
+		this.bookingnum = bookingnum;
+		this.room_idx = room_idx;
+		this.roomname = roomname;
+	}
+	
+	public String getHot_num() {
+		return hot_num;
+	}
+	public void setHot_num(String hot_num) {
+		this.hot_num = hot_num;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+	public String getCheckin() {
+		return checkin;
+	}
+	public void setCheckin(String checkin) {
+		this.checkin = checkin;
+	}
+	public String getCheckout() {
+		return checkout;
+	}
+	public void setCheckout(String checkout) {
+		this.checkout = checkout;
+	}
+	public String getCard() {
+		return card;
+	}
+	public void setCard(String card) {
+		this.card = card;
+	}
+	public Date getBookingdate() {
+		return bookingdate;
+	}
+	public void setBookingdate(Date bookingdate) {
+		this.bookingdate = bookingdate;
+	}
+	public String getPeople() {
+		return people;
+	}
+	public void setPeople(String people) {
+		this.people = people;
+	}
+	public int getRoomselect() {
+		return roomselect;
+	}
+	public void setRoomselect(int roomselect) {
+		this.roomselect = roomselect;
+	}
+	public String getPermit() {
+		return permit;
+	}
+	public void setPermit(String permit) {
+		this.permit = permit;
+	}
+	public String getBookingnum() {
+		return bookingnum;
+	}
+	public void setBookingnum(String bookingnum) {
+		this.bookingnum = bookingnum;
+	}
+	public int getRoom_idx() {
+		return room_idx;
+	}
+	public void setRoom_idx(int room_idx) {
+		this.room_idx = room_idx;
+	}
+	public String getRoomname() {
+		return roomname;
+	}
+	public void setRoomname(String roomname) {
+		this.roomname = roomname;
+	}
+	                    
+   
 }
