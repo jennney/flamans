@@ -10,7 +10,7 @@
          #{name},
             #{sex},
                   #{nationality},
-         #{checkin},
+         #{checkin},        
             #{checkout},
          #{card},
             sysdate,
@@ -24,9 +24,26 @@
    <select id="hot_info" resultType="flamans.member.model.MemberDTO">
         select * from fm_member where m_id=#{m_id}
    </select>
-   
    <select id="fm_hotroom" resultType="flamans.hotel_find.model.HotelRoomDTO">
       select * from fm_hotroom where hot_num=#{hot_num}
    </select> 
-       
+   <select id="fm_myhot_book" resultType="flamans.hot.book.model.Hot_bookDTO">
+      select hot_num,
+         name,
+            sex,
+         nationality,
+         TO_CHAR(checkin,'YYYY-MM-DD') checkin
+     , TO_CHAR(checkout,'YYYY-MM-DD') checkout,
+        card           
+     , TO_CHAR(bookingdate,'YYYY-MM-DD') bookingdate,
+     room,
+        people,
+        roomselect,
+        permit,
+        bookingnum
+      from fm_hot_book where name = #{m_id}
+   </select>
+   <select id="fm_hotname" resultType="flamans.company.model.CompanyDTO">
+      select cm_name from fm_company where cm_number = #{hot_num}   
+   </select>
 </mapper>  
