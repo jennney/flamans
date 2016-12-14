@@ -16,9 +16,12 @@ public class Hot_bookDTO {
    private String permit;
    private String bookingnum;
    private int room_idx;
-
    private String roomname;
    
+	public Hot_bookDTO() {
+	super();
+}
+
 	public Hot_bookDTO(String hot_num, String name, String sex, String nationality, String checkin, String checkout,
 			String card, Date bookingdate, String people, int roomselect, String permit, String bookingnum, int room_idx,
 			String roomname) {
