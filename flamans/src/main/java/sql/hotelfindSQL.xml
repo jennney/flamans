@@ -57,7 +57,7 @@
 		<select id="hotel_sub_search" parameterType="java.util.HashMap" resultType="flamans.hotel_find.model.HotelDTO">
 			select * 
         	from 
-        (select rownum as rnum,a.* from 
+        	(select rownum as rnum,a.* from 
         	(select * from fm_hotel where 1=1
         	
 			<if test="m_sb!='' and m_sb !=null"> 
@@ -68,9 +68,9 @@
 				and hot_name like '%' ||#{find}|| '%'
 			</if>
         	order by hot_num desc)a)b<![CDATA[ 
-		where rnum>=#{start} 
-        	and
-        rnum<=#{end}
+			where rnum>=#{start} 
+	        	and
+	        rnum<=#{end}
         ]]> 
 		</select>
     	

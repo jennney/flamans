@@ -2,7 +2,7 @@ package flamans.hos_find.model;
 
 public class HospitalPageModule {
 	
-	public static String makePage(String pagename, int totalCnt, int listSize, int pageSize, int cp, int option[], String hos_find_name){
+	public static String makePage(String pagename, int totalCnt, int listSize, int pageSize, int cp, String option[], String hos_find_name){
 		int totalPage = (totalCnt/listSize)+1;
 		if(totalCnt%listSize == 0) totalPage--;
 		int userGroup = cp/pageSize;
@@ -19,7 +19,7 @@ public class HospitalPageModule {
 			
 
 			for(int i=0; i<5; i++){
-				if(option[i]!=0){
+				if(!option[i].equals("")){
 					sb.append("&option"+(i+1)+"=");
 					sb.append(option[i]);
 				}
@@ -61,7 +61,7 @@ public class HospitalPageModule {
 			sb.append(i);
 			
 			for(int j=0; j<5; j++){
-				if(option[j]!=0){
+				if(!option[i].equals("")){
 					sb.append("&option"+(j+1)+"=");
 					sb.append(option[j]);
 				}
@@ -84,7 +84,7 @@ public class HospitalPageModule {
 			sb.append(temp);
 			
 			for(int j=0; j<5; j++){
-				if(option[j]!=0){
+				if(!option[j].equals("")){
 					sb.append("&option"+(j+1)+"=");
 					sb.append(option[j]);
 				}

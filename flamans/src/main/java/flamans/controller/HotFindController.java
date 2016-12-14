@@ -187,7 +187,7 @@ public class HotFindController{
 		@RequestParam(value="grade1",defaultValue="0")int grade1,@RequestParam(value="grade2",defaultValue="0")int grade2,@RequestParam(value="grade3",defaultValue="0")int grade3,@RequestParam(value="grade4",defaultValue="0")int grade4,@RequestParam(value="grade5",defaultValue="0")int grade5,
 		@RequestParam(value="option1",defaultValue="0")String option1,@RequestParam(value="option2",defaultValue="0")String option2,@RequestParam(value="option3",defaultValue="0")String option3,@RequestParam(value="option4",defaultValue="0")String option4,@RequestParam(value="option5",defaultValue="0")String option5,
 		@RequestParam(value="star1",defaultValue="0")int star1,@RequestParam(value="star2",defaultValue="0")int star2,@RequestParam(value="star3",defaultValue="0")int star3,@RequestParam(value="star4",defaultValue="0")int star4,@RequestParam(value="star5",defaultValue="0")int star5,
-		@RequestParam(value="price",defaultValue="0")int price,
+		@RequestParam(value="price",defaultValue="200000")int price,
 		@RequestParam(value="findname", defaultValue="")String findname,
 		@RequestParam(value="checkin", defaultValue="")String checkin,
 		@RequestParam(value="checkout", defaultValue="")String checkout,
@@ -266,9 +266,6 @@ public class HotFindController{
 		
 		//플래그 변수들. where_con & z
 		
-		//where 조건이 한번만 들어가기위해 작성
-		int where_con=0;
-		
 		//첫번째 조건이 들어갈때 조건문을 걸어줘야함
 		int z=0;
 		
@@ -323,7 +320,7 @@ public class HotFindController{
 				sb.append(" and ");
 			}
 			
-			sb.append(" hot_num in (select hot_num from fm_hotroom where roomprice < "+price);
+			sb.append(" hot_num in (select hot_num from fm_hotroom where roomprice <= "+price);
 			
 			z=1;
 			
@@ -346,7 +343,7 @@ public class HotFindController{
 				z=1;
 				
 			}else if(star[i]!=0 && z==1){
-				sb.append(", '옵션"+star[i]+"'");
+				sb.append(", "+star[i]);
 			}
 		}
 		if(z==1){
@@ -507,15 +504,44 @@ public class HotFindController{
 	}
 	
 	@RequestMapping("/hotel_input_comment_grade.do")
-	public ModelAndView hotel_input_comment_grade(HotCommentGradeDTO commentDTO){
+	public ModelAndView hotel_input_comment_grade(
+			@RequestParam(value="c_number",defaultValue="")String c_number,
+			@RequestParam(value="c_grade",defaultValue="")String c_grade,
+			@RequestParam(value="c_comment",defaultValue="")String c_comment,
+			HttpSession session){
+		
+		
 		
 		ModelAndView mav = new ModelAndView();
+		
+		if(c_comment.equals("") || c_grade.equals("")){
+			mav.addObject("msg","내용 또는 평점을 입력해주세요!");
+			mav.addObject("url","hotel_get_info.do?hot_num="+c_number);
+			mav.setViewName("hotel/hotel_msg");
+			return mav;
+		}
+		
+		String username = (String)session.getAttribute("username");
+		int c_grade1 = Integer.parseInt(c_grade);
+		
+		HotCommentGradeDTO commentDTO = null;
+		commentDTO.setC_comment(c_comment);
+		commentDTO.setC_grade(c_grade1);
+		commentDTO.setC_number(c_number);
+		commentDTO.setC_writer(username);
+		
+		if(username==null || username.equals("")){
+			mav.addObject("msg","로그인이 필요합니다!");
+			mav.addObject("url","hotel_get_info.do?hot_num="+commentDTO.getC_number());
+			mav.setViewName("hotel/hotel_msg");
+			return mav;
+		}
 		
 		int count = hotel_comment.hotel_input_comment_grade(commentDTO);
 		String result = count > 0 ? "후기 등록 성공!":"후기 등록 실패!";
 		mav.addObject("msg",result);
-		mav.addObject("c_number",commentDTO.getC_number());
-		mav.setViewName("hotel/hotel_Msg");
+		mav.addObject("url","hotel_get_info.do?hot_num="+commentDTO.getC_number());
+		mav.setViewName("hotel/hotel_msg");
 		return mav;
 	}
 	
@@ -524,7 +550,7 @@ public class HotFindController{
 	public ModelAndView add_wishlist(
 				@RequestParam("hot_num")String num,
 				@RequestParam("hotel_link")String link,
-				MemberDTO member, 
+				MemberDTO member,
 				HttpSession session){
 		
 		/** 선언부분 */
@@ -616,7 +642,12 @@ public class HotFindController{
 			hotsearchObject1.put("hot_roominfo",list.get(0).getHot_roominfo());
 			hotsearchObject1.put("hot_option",list.get(0).getHot_option());
 			hotsearchObject1.put("hot_etc",list.get(0).getHot_etc());
-			hotsearchObject1.put("hos_wishnum",wishdate);
+			hotsearchObject1.put("hot_wishdate",wishdate);
+			
+			if(hotsearchArray1.size()>2){
+				hotsearchArray1.remove(0);
+			}
+			
 			hotsearchArray1.add(hotsearchObject1);
 			
 			hotsearchObject.put("hot", hotsearchArray1);
