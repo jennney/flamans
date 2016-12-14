@@ -24,6 +24,7 @@ function addrFind(){
 		<form name="hospitalInfo" action="hospitalUpdate.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="hos_num" value="${sessionScope.cm_number }">
 			 이름 : <input type="text" name="hos_name" value="${dto.hos_name }" class="form-control"><br>
+			 전문기술 : <input type="text" name="hos_special" value="${dto.hos_special }" class="form-control"><br>
 			 주소 : <input type="text" name="hos_addr" value="${dto.hos_addr }" class="form-control"> <input type="button" value="검색" onclick="addrFind();" class="btn btn-default"><br>
 			 이미지 : <input type="file" name="upload" class="form-control">
 			 	<input type="hidden" name="hos_img" value="${dto.hos_img }">

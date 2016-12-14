@@ -106,10 +106,23 @@ public class Hospital_ManagerController {
 		return "manager/hospital/hospitalAdd";
 	}
 	
-	public void copyinto(String writer,MultipartFile upload){
+	public void copyinto(String writer,MultipartFile upload,int i){
 		try {
 			byte bytes[]=upload.getBytes();
-			File newFile=new File("C:/Users/YunJunHo/git/flamans/flamans/src/main/webapp/img/"+upload.getOriginalFilename());
+			String path="C:/Users/YunJunHo/git/flamans/flamans/src/main/webapp/img/hospital";
+			File newFile=new File(path+"/"+writer);
+			if(!newFile.exists()){
+				newFile.mkdirs();
+			}
+			String savepath=path+"/"+writer;
+			if(i==2){
+				savepath=savepath+"/doctor";
+				File f=new File(savepath);
+				if(!f.exists()){
+					f.mkdirs();
+				}
+			}
+			newFile=new File(savepath+"/"+upload.getOriginalFilename());
 			FileOutputStream fos=new FileOutputStream(newFile);
 			fos.write(bytes);
 			fos.close();
@@ -120,7 +133,7 @@ public class Hospital_ManagerController {
 	
 	@RequestMapping(value="/hospitalAdd.do",method=RequestMethod.POST)
 	public ModelAndView hospitalAdd(HospitalDTO dto,@RequestParam("upload") MultipartFile upload){
-		copyinto(dto.getHos_num(), upload);
+		copyinto(dto.getHos_num(), upload,1);
 		dto.setHos_img(upload.getOriginalFilename());
 		int result=hosmDao.hospitalAdd(dto);
 		String msg=result>0?"등록 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
@@ -144,7 +157,7 @@ public class Hospital_ManagerController {
 	@RequestMapping(value="/hospitalUpdate.do",method=RequestMethod.POST)
 	public ModelAndView hospitalUpdate(@RequestParam("upload") MultipartFile upload,HospitalDTO dto){
 		if(!upload.getOriginalFilename().equals("")){
-			copyinto(dto.getHos_num(), upload);
+			copyinto(dto.getHos_num(), upload,1);
 			dto.setHos_img(upload.getOriginalFilename());
 		}
 		int result=hosmDao.hospitalUpdate(dto);
@@ -183,7 +196,7 @@ public class Hospital_ManagerController {
 	
 	@RequestMapping(value="/doctorAdd.do",method=RequestMethod.POST)
 	public ModelAndView doctorAdd(DoctorDTO dto,@RequestParam("upload") MultipartFile upload){
-		copyinto(dto.getHos_num(), upload);
+		copyinto(dto.getHos_num(), upload,2);
 		dto.setDoc_img(upload.getOriginalFilename());
 		int result=hosmDao.doctorAdd(dto);
 		String msg=result>0?"등록 성공":"등록 실패 ㅠ";
@@ -221,7 +234,7 @@ public class Hospital_ManagerController {
 	@RequestMapping(value="/doctorUpdate.do",method=RequestMethod.POST)
 	public ModelAndView doctorUpdate(DoctorDTO dto,@RequestParam("upload") MultipartFile upload){
 		if(upload.getOriginalFilename()!=null){
-			copyinto(dto.getHos_num(), upload);
+			copyinto(dto.getHos_num(), upload,2);
 			dto.setDoc_img(upload.getOriginalFilename());
 		}
 		int result=hosmDao.doctorUpdate(dto);

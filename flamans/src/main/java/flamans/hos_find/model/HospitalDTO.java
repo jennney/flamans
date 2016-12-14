@@ -8,6 +8,8 @@ public class HospitalDTO {
 	private String hos_img;
 	private String hos_content;
 	private String hos_mapinfo;
+	private int hos_star;
+	private String hos_special;
 	
 	public HospitalDTO() {
 		super();
@@ -16,7 +18,7 @@ public class HospitalDTO {
 	
 
 	public HospitalDTO(String hos_num, String hos_name, String hos_addr, String hos_img, String hos_content,
-			String hos_mapinfo) {
+			String hos_mapinfo, int hos_star, String hos_special) {
 		super();
 		this.hos_num = hos_num;
 		this.hos_name = hos_name;
@@ -24,6 +26,8 @@ public class HospitalDTO {
 		this.hos_img = hos_img;
 		this.hos_content = hos_content;
 		this.hos_mapinfo = hos_mapinfo;
+		this.hos_star = hos_star;
+		this.hos_special = hos_special;
 	}
 
 
@@ -74,6 +78,22 @@ public class HospitalDTO {
 
 	public void setHos_mapinfo(String hos_mapinfo) {
 		this.hos_mapinfo = hos_mapinfo;
+	}
+
+	public int getHos_star() {
+		return hos_star;
+	}
+
+	public void setHos_star(int hos_star) {
+		this.hos_star = hos_star;
+	}
+
+	public String getHos_special() {
+		return hos_special;
+	}
+
+	public void setHos_special(String hos_special) {
+		this.hos_special = hos_special;
 	}
 	
 }

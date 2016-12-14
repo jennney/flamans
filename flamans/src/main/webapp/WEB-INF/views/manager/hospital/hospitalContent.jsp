@@ -19,6 +19,7 @@
 			<c:forEach var="dto" items="${list }">
 				<img src="img/${dto.hos_img }" width="150" height="150"><br>
 				이름 : ${dto.hos_name } <br>
+				전문부위 : ${dto.hos_special } <br>
 				주소 : ${dto.hos_addr } <br>
 				상세내용 : ${dto.hos_content } <br>
 				오시는길 : ${dto.hos_mapinfo } <br>

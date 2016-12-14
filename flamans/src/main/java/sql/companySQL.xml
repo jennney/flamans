@@ -41,4 +41,5 @@
 	<delete id="companyOut" parameterType="String">
 		delete from fm_company where cm_number=#{cm_number}
 	</delete>
+	
 </mapper>
