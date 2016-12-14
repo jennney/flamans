@@ -29,12 +29,12 @@ function wishlistresult(){
 				
 				for( var i in data.hos){
 					data_hos += '<a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'
-					+'<img src="'+data.hos[i].hos_img+'" width=50 height=50>&nbsp;&nbsp;&nbsp;'+data.hos[i].hos_name+'</a>';
+					+'<img src="'+data.hos[i].hos_img+'" width=50 height=50>&nbsp;&nbsp;&nbsp; = '+data.hos[i].hos_name+'</a><br>';
 				}
 				
 				for (var i in data.hot){
 					data_hot += '<a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'
-					+'<img src="'+data.hot[i].hot_img+'" width=50 height=50>&nbsp;&nbsp;&nbsp;'+data.hot[i].hot_name+'</a>';
+					+'<img src="'+data.hot[i].hot_img+'" width=50 height=50>&nbsp;&nbsp;&nbsp; '+data.hot[i].hot_name+'</a><br>';
 				}
 				
 				var wishlist = '<h4 align="center">〔 위시 리스트 〕</h4><hr> <h5 align="center">[ 병원 리스트 ]</h6> '+data_hos+' <hr> <h5 align="center">[ 호텔 리스트 ]</h6>'+data_hot;

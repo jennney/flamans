@@ -113,51 +113,53 @@
 	 	option = document.getElementsByName("option");
 	 	
 	 	var findname = document.hospital_main_search.findname.value;
-
+		var params='';
+		var z=0;
+		
 		//////////////////■top옵션 ■/////////////////
-		if(search_option == 'option1'){
+		if(search_option == 'face'){
 			if(option[0].checked){
 				option[0].checked = false;
 			}else{
 				option[0].checked = true;
 			}
-		}else if(search_option == 'option2'){
+		}else if(search_option == 'bimaxillary'){
 			if(option[1].checked){
 				option[1].checked = false;
 			}else{
 				option[1].checked = true;
 			}
-		}else if(search_option == 'option3'){
+		}else if(search_option == 'eyes'){
 			if(option[2].checked){
 				option[2].checked = false;
 			}else{
 				option[2].checked = true;
 			}
-		}else if(search_option == 'option4'){
+		}else if(search_option == 'nose'){
 			if(option[3].checked){
 				option[3].checked = false;
 			}else{
 				option[3].checked = true;
 			}
-		}else if(search_option == 'option5'){
+		}else if(search_option == 'man'){
 			if(option[4].checked){
 				option[4].checked = false;
 			}else{
 				option[4].checked = true;
 			}
 		}
-	 	
-		var params='';
-		
-		var z=0;
 		
 		for(var i=1; i<6; i++){	
 			if(option[i-1].checked){
 				if(z==1){
 					params+='&';
 				}
-				params += 'option'+i+'='+i;
-				z=1;
+				if(i==1){
+					params += 'option1=man';
+					z=1;
+				}else if(i==2){
+					
+				}
 			}
 		}
 		
@@ -186,10 +188,7 @@
 			
 			<tr>
 				<td>
-
 					<form name="hospital_main_search">
-					
-		
 						<table>
 								<tr>
 									<td align="center">
@@ -200,7 +199,6 @@
 						</table>
 						<br/>
 					</form>
-	
 				</td>
 			</tr>
 		</table>
@@ -217,27 +215,27 @@
 						</tr>
 						
 						<tr>
-							<td onclick="hos_grade_search('option1')">
+							<td onclick="hos_grade_search('face')">
 								<div id=optionimg1><img alt="옵션1" src="img/1.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="1">
 							</td>
 							
-							<td onclick="hos_grade_search('option2')">
+							<td onclick="hos_grade_search('bimaxillary')">
 								<div id=optionimg2><img alt="옵션2" src="img/2.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="2">
 							</td>
 							
-							<td onclick="hos_grade_search('option3')">
+							<td onclick="hos_grade_search('eyes')">
 								<div id=optionimg3><img alt="옵션3" src="img/3.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="3">
 							</td>
 							
-							<td onclick="hos_grade_search('option4')">
+							<td onclick="hos_grade_search('nose')">
 								<div id=optionimg4><img alt="옵션4" src="img/4.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="4">
 							</td>
 							
-							<td onclick="hos_grade_search('option5')">
+							<td onclick="hos_grade_search('man')">
 								<div id=optionimg5><img alt="옵션5" src="img/5.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="5">
 							</td>

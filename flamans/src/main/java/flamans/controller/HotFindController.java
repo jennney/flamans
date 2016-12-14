@@ -510,8 +510,6 @@ public class HotFindController{
 			@RequestParam(value="c_comment",defaultValue="")String c_comment,
 			HttpSession session){
 		
-		
-		
 		ModelAndView mav = new ModelAndView();
 		
 		if(c_comment.equals("") || c_grade.equals("")){
@@ -538,9 +536,10 @@ public class HotFindController{
 		}
 		
 		int count = hotel_comment.hotel_input_comment_grade(commentDTO);
+		
 		String result = count > 0 ? "후기 등록 성공!":"후기 등록 실패!";
 		mav.addObject("msg",result);
-		mav.addObject("url","hotel_get_info.do?hot_num="+commentDTO.getC_number());
+		mav.addObject("url","hotel_get_info.do?hot_num="+c_number);
 		mav.setViewName("hotel/hotel_msg");
 		return mav;
 	}

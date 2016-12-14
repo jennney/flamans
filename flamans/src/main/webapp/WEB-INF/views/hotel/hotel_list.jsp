@@ -165,61 +165,61 @@ input[type=range]:focus::-ms-fill-upper {
 				if(grade[0].checked){
 					gradeimg1.innerHTML = '<img alt="등급1" src="img/select_grade1.jpg" width="50" height="50">';
 				}else{
-					gradeimg1.innerHTML = '<img alt="등급1" src="img/1.jpg" width="50" height="50">';
+					gradeimg1.innerHTML = '<img alt="등급1" src="img/grade1.jpg" width="50" height="50">';
 				}
 				
 				if(grade[1].checked){
 					gradeimg2.innerHTML = '<img alt="등급1" src="img/select_grade2.jpg" width="50" height="50">';
 				}else{
-					gradeimg2.innerHTML = '<img alt="등급1" src="img/2.jpg" width="50" height="50">';
+					gradeimg2.innerHTML = '<img alt="등급1" src="img/grade2.jpg" width="50" height="50">';
 				}
 				
 				if(grade[2].checked){
 					gradeimg3.innerHTML = '<img alt="등급1" src="img/select_grade3.jpg" width="50" height="50">';
 				}else{
-					gradeimg3.innerHTML = '<img alt="등급1" src="img/3.jpg" width="50" height="50">';
+					gradeimg3.innerHTML = '<img alt="등급1" src="img/grade3.jpg" width="50" height="50">';
 				}
 				
 				if(grade[3].checked){
 					gradeimg4.innerHTML = '<img alt="등급1" src="img/select_grade4.jpg" width="50" height="50">';
 				}else{
-					gradeimg4.innerHTML = '<img alt="등급1" src="img/4.jpg" width="50" height="50">';
+					gradeimg4.innerHTML = '<img alt="등급1" src="img/grade4.jpg" width="50" height="50">';
 				}
 				
 				if(grade[4].checked){
 					gradeimg5.innerHTML = '<img alt="등급1" src="img/select_grade5.jpg" width="50" height="50">';
 				}else{
-					gradeimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
+					gradeimg5.innerHTML = '<img alt="등급1" src="img/grade5.jpg" width="50" height="50">';
 				}
 				
 				if(option[0].checked){
-					optionimg1.innerHTML = '<img alt="등급1" src="img/select_grade1.jpg" width="50" height="50">';
+					optionimg1.innerHTML = '<img alt="등급1" src="img/select_alarm.jpg" width="50" height="50">';
 				}else{
-					optionimg1.innerHTML = '<img alt="등급1" src="img/1.jpg" width="50" height="50">';
+					optionimg1.innerHTML = '<img alt="등급1" src="img/alarm.jpg" width="50" height="50">';
 				}
 				
 				if(option[1].checked){
-					optionimg2.innerHTML = '<img alt="등급1" src="img/select_grade2.jpg" width="50" height="50">';
+					optionimg2.innerHTML = '<img alt="등급1" src="img/select_bath.jpg" width="50" height="50">';
 				}else{
-					optionimg2.innerHTML = '<img alt="등급1" src="img/2.jpg" width="50" height="50">';
+					optionimg2.innerHTML = '<img alt="등급1" src="img/bath.jpg" width="50" height="50">';
 				}
 				
 				if(option[2].checked){
-					optionimg3.innerHTML = '<img alt="등급1" src="img/select_grade3.jpg" width="50" height="50">';
+					optionimg3.innerHTML = '<img alt="등급1" src="img/select_breakfast.jpg" width="50" height="50">';
 				}else{
-					optionimg3.innerHTML = '<img alt="등급1" src="img/3.jpg" width="50" height="50">';
+					optionimg3.innerHTML = '<img alt="등급1" src="img/breakfast.jpg" width="50" height="50">';
 				}
 				
 				if(option[3].checked){
-					optionimg4.innerHTML = '<img alt="등급1" src="img/select_grade4.jpg" width="50" height="50">';
+					optionimg4.innerHTML = '<img alt="등급1" src="img/select_minibar.jpg" width="50" height="50">';
 				}else{
-					optionimg4.innerHTML = '<img alt="등급1" src="img/4.jpg" width="50" height="50">';
+					optionimg4.innerHTML = '<img alt="등급1" src="img/minibar.jpg" width="50" height="50">';
 				}
 				
 				if(option[4].checked){
-					optionimg5.innerHTML = '<img alt="등급1" src="img/select_grade5.jpg" width="50" height="50">';
+					optionimg5.innerHTML = '<img alt="등급1" src="img/select_safebox.jpg" width="50" height="50">';
 				}else{
-					optionimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
+					optionimg5.innerHTML = '<img alt="등급1" src="img/safebox.jpg" width="50" height="50">';
 				}
 				
 				
@@ -333,31 +333,31 @@ input[type=range]:focus::-ms-fill-upper {
 	 	
 	 	
 		//////////////////■top옵션 ■/////////////////
-		if(search_option == 'wifi'){
+		if(search_option == 'alarm'){
 			if(option[0].checked){
 				option[0].checked = false;
 			}else{
 				option[0].checked = true;
 			}
-		}else if(search_option == 'swim'){
+		}else if(search_option == 'bath'){
 			if(option[1].checked){
 				option[1].checked = false;
 			}else{
 				option[1].checked = true;
 			}
-		}else if(search_option == 'fit'){
+		}else if(search_option == 'breakfast'){
 			if(option[2].checked){
 				option[2].checked = false;
 			}else{
 				option[2].checked = true;
 			}
-		}else if(search_option == 'brunch'){
+		}else if(search_option == 'minibar'){
 			if(option[3].checked){
 				option[3].checked = false;
 			}else{
 				option[3].checked = true;
 			}
-		}else if(search_option == 'tub'){
+		}else if(search_option == 'safebox'){
 			if(option[4].checked){
 				option[4].checked = false;
 			}else{
@@ -417,15 +417,15 @@ input[type=range]:focus::-ms-fill-upper {
 				}
 				
 				if(i==1){
-					params += 'option'+i+'=wifi';
+					params += 'option'+i+'=alarm';
 				}else if (i==2){
-					params += 'option'+i+'=swim';
+					params += 'option'+i+'=bath';
 				}else if (i==3){
-					params += 'option'+i+'=fit';
+					params += 'option'+i+'=breakfast';
 				}else if (i==4){
-					params += 'option'+i+'=brunch';
-				}else if (i==4){
-					params += 'option'+i+'=tub';
+					params += 'option'+i+'=minibar';
+				}else if (i==5){
+					params += 'option'+i+'=safebox';
 				}
 				z=1;
 			}
@@ -540,27 +540,27 @@ input[type=range]:focus::-ms-fill-upper {
 						
 						<tr>
 							<td onclick="hot_grade_search('grade1')">
-								<div id=gradeimg1><img alt="등급1" src="img/1.jpg" width="50" height="50"></div>
+								<div id=gradeimg1><img alt="등급1" src="img/grade1.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="1">
 							</td>
 							
 							<td onclick="hot_grade_search('grade2')">
-								<div id=gradeimg2><img alt="등급2" src="img/2.jpg" width="50" height="50"></div>
+								<div id=gradeimg2><img alt="등급2" src="img/grade2.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="2">
 							</td>
 							
 							<td onclick="hot_grade_search('grade3')">
-								<div id=gradeimg3><img alt="등급3" src="img/3.jpg" width="50" height="50"></div>
+								<div id=gradeimg3><img alt="등급3" src="img/grade3.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="3">
 							</td>
 							
 							<td onclick="hot_grade_search('grade4')">
-								<div id=gradeimg4><img alt="등급4" src="img/4.jpg" width="50" height="50"></div>
+								<div id=gradeimg4><img alt="등급4" src="img/grade4.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="4">
 							</td>
 							
 							<td onclick="hot_grade_search('grade5')">
-								<div id=gradeimg5><img alt="등급4" src="img/5.jpg" width="50" height="50"></div>
+								<div id=gradeimg5><img alt="등급4" src="img/grade5.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="5">
 							</td>
 							
@@ -616,28 +616,28 @@ input[type=range]:focus::-ms-fill-upper {
 						
 						<tr>
 						
-							<td onclick="hot_grade_search('wifi')">
-								<div id=optionimg1><img alt="옵션1" src="img/1.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('alarm')">
+								<div id=optionimg1><img alt="옵션1" src="img/alarm.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="1">
 							</td>
 							
-							<td onclick="hot_grade_search('swim')">
-								<div id=optionimg2><img alt="옵션2" src="img/2.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('bath')">
+								<div id=optionimg2><img alt="옵션2" src="img/bath.jpg" width="50" height="50">&nbsp;</div>
 								<input type="checkbox" name="option" class="grade" value="2">
 							</td>
 							
-							<td onclick="hot_grade_search('fit')">
-								<div id=optionimg3><img alt="옵션3" src="img/3.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('breakfast')">
+								<div id=optionimg3><img alt="옵션3" src="img/breakfast.jpg" width="50" height="50">&nbsp;</div>
 								<input type="checkbox" name="option" class="grade" value="3">
 							</td>
 							
-							<td onclick="hot_grade_search('brunch')">
-								<div id=optionimg4><img alt="옵션4" src="img/4.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('minibar')">
+								<div id=optionimg4><img alt="옵션4" src="img/minibar.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="4">
 							</td>
 							
-							<td onclick="hot_grade_search('tub')">
-								<div id=optionimg5><img alt="옵션5" src="img/5.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('safebox')">
+								<div id=optionimg5><img alt="옵션5" src="img/safebox.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="5">
 							</td>
 							

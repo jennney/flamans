@@ -181,6 +181,7 @@ public class HosFindController {
 		
 		//두번째조건이 들어갈때
 		z=0;
+		
 		for(int i=0; i<option.length; i++){
 			if(!option[i].equals("") && z==0){
 				
@@ -188,7 +189,7 @@ public class HosFindController {
 					sb.append(" and ");
 				}
 				
-				sb.append(" hos_num in (select hos_num from fm_hospital where hos_option in ('"+option[i]+"'");
+				sb.append(" hos_num in (select hos_num from fm_hospital where hos_special in ('"+option[i]+"'");
 				z=1;
 				
 			}else if(!option[i].equals("") && z==1){
@@ -317,15 +318,34 @@ public class HosFindController {
 	}
 
 	@RequestMapping("/hospital_input_comment_grade.do")
-	public ModelAndView hospital_input_comment_grade(HotCommentGradeDTO commentDTO, HttpSession session){
+	public ModelAndView hospital_input_comment_grade(
+			@RequestParam(value="c_number",defaultValue="")String c_number,
+			@RequestParam(value="c_grade",defaultValue="")String c_grade,
+			@RequestParam(value="c_comment",defaultValue="")String c_comment,
+			HttpSession session){
 		
 		ModelAndView mav = new ModelAndView();
 		
-		String id = (String)session.getAttribute("userid");
-		if(id==null || id.equals("")){
+		if(c_comment.equals("") || c_grade.equals("")){
+			mav.addObject("msg","내용 또는 평점을 입력해주세요!");
+			mav.addObject("url","hospital_get_info.do?hos_num="+c_number);
+			mav.setViewName("hotel/hotel_msg");
+			return mav;
+		}
+		
+		String username = (String)session.getAttribute("username");
+		int c_grade1 = Integer.parseInt(c_grade);
+		
+		HotCommentGradeDTO commentDTO = null;
+		commentDTO.setC_comment(c_comment);
+		commentDTO.setC_grade(c_grade1);
+		commentDTO.setC_number(c_number);
+		commentDTO.setC_writer(username);
+		
+		if(username==null || username.equals("")){
 			mav.addObject("msg","로그인이 필요합니다!");
-			mav.addObject("url","hospital_get_info.do?hos_num="+commentDTO.getC_number());
-			mav.setViewName("hospital/hospital_msg");
+			mav.addObject("url","hospital_get_info.do?hos_num="+c_number);
+			mav.setViewName("hotel/hotel_msg");
 			return mav;
 		}
 		
@@ -333,7 +353,7 @@ public class HosFindController {
 		
 		String result = count > 0? "후기 등록 성공!" : "후기 등록 실패!";
 		mav.addObject("msg",result);
-		mav.addObject("url","hospital_get_info.do?hos_num="+commentDTO.getC_number());
+		mav.addObject("url","hospital_get_info.do?hos_num="+c_number);
 		mav.setViewName("hospital/hospital_msg");
 		return mav;
 	}
