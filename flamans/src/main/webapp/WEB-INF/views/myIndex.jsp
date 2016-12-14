@@ -61,9 +61,9 @@
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Community <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
-                    <li><a href="no_List.do">Notice</a></li>
-                    <li><a href="faq_List.do">FAQ</a></li>
-                    <li><a href="qna_List.do?qna_kind=site">Q&amp;A</a></li>
+                    <li><a href="no_List_admin.do">Notice</a></li>
+                    <li><a href="faq_List_admin.do">FAQ</a></li>
+                    <li><a href="qna_List_admin.do?qna_kind=site">Q&amp;A</a></li>
                 </ul>
             </li>
 	        <li><a href="#">  1:1</a></li>

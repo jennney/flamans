@@ -146,12 +146,7 @@
 					등록된 글이 없습니다.
 				</c:if>
 				<c:forEach var="list" items="${list}">
-					<div class="accordion_title">${list.faq_subject}
-						<c:if test="${sessionScope.permit eq 3}">
-							<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-							<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-						</c:if>
-					</div>
+					<div class="accordion_title">${list.faq_subject}</div>
 					<div class="accordion_sub">${list.faq_content}</div>
 				</c:forEach>
 			</div>
@@ -163,12 +158,7 @@
 					등록된 글이 없습니다.
 				</c:if>
 				<c:forEach var="hosList" items="${hosList}">
-					<div class="accordion_title">${hosList.faq_subject}
-						<c:if test="${sessionScope.permit eq 3}">
-							<a href="faq_Delete.do?faq_idx=${hosList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-							<a href="faq_Update.do?faq_idx${hosList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-						</c:if>
-					</div>
+					<div class="accordion_title">${hosList.faq_subject}</div>
 					<div class="accordion_sub">${hosList.faq_content}</div>
 				</c:forEach>
 			</div>
@@ -180,12 +170,7 @@
 					등록된 글이 없습니다.
 				</c:if>
 				<c:forEach var="hotList" items="${hotList}">
-					<div class="accordion_title">${hotList.faq_subject}
-						<c:if test="${sessionScope.permit eq 3}">
-							<a href="faq_Delete.do?faq_idx=${hotList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-							<a href="faq_Update.do?faq_idx=${hotList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-						</c:if>
-					</div>
+					<div class="accordion_title">${hotList.faq_subject}</div>
 					<div class="accordion_sub">${hotList.faq_content}</div>
 				</c:forEach>
 			</div>
@@ -197,12 +182,7 @@
 					등록된 글이 없습니다.
 				</c:if>
 				<c:forEach var="memList" items="${memList}">
-					<div class="accordion_title">${memList.faq_subject}
-						<c:if test="${sessionScope.permit eq 3}">
-							<a href="faq_Delete.do?faq_idx=${memList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-							<a href="faq_Update.do?faq_idx=${memList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-						</c:if>
-					</div>
+					<div class="accordion_title">${memList.faq_subject}</div>
 					<div class="accordion_sub">${memList.faq_content}</div>
 				</c:forEach>
 			</div>
@@ -214,12 +194,7 @@
 					등록된 글이 없습니다.
 				</c:if>
 				<c:forEach var="etcList" items="${etcList}">
-					<div class="accordion_title">${etcList.faq_subject}
-						<c:if test="${sessionScope.permit eq 3}">
-							<a href="faq_Delete.do?faq_idx=${etcList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-							<a href="faq_Update.do?faq_idx=${etcList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-						</c:if>
-					</div>
+					<div class="accordion_title">${etcList.faq_subject}</div>
 					<div class="accordion_sub">${etcList.faq_content}</div>
 				</c:forEach>
 			</div>

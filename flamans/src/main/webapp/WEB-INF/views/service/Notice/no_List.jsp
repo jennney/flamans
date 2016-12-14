@@ -53,13 +53,6 @@ h2 {
 #no_listtdd{
 	height: 50px;
 }
-#mess > li{
-
-list-style: none;
-}
-
-   #fo { background: #000; padding: 3px;  }
-      #fo input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
 
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
@@ -94,7 +87,7 @@ list-style: none;
 								내용</option>
 							<option value="no_subject" ${findKey eq 'no_subject'?"selected":""}>
 								제목</option>
-						</select> <input type="text" name="findValue" value="${findValue}" >
+						</select> <input type="text" name="findValue" value="${findValue}">
 						<input type="submit" value="검색">
 					</form>
 				</td>
@@ -108,23 +101,11 @@ list-style: none;
 		</thead>
 		<tfoot>
 			<tr>
-				<c:if test="${sessionScope.permit eq 3}">
-					<td colspan="3" align="center" id="no_listtdd">
-						<ul  class="pagination pagination-lg">
-							<li>${no_page}</li>
-						</ul>
-					</td>
-					<td align="right" colspan="1" id="no_listtdd">
-						<button type="button" class="btn btn-default" onclick="location.href='no_Write.do'">글쓰기</button>
-					</td>
-				</c:if>
-				<c:if test="${empty sessionScope.permit}">
-					<td colspan="4" align="center" id="no_listtdd">
+				<td colspan="4" align="center" id="no_listtdd">
 					<ul  class="pagination pagination-lg">
 						<li>${no_page}</li>
 					</ul>
-					</td>
-				</c:if>
+				</td>
 			</tr>
 		</tfoot>
 		<tbody>
@@ -147,6 +128,14 @@ list-style: none;
 		</tbody>
 	</table>
 </section>
+
+
+
+
+
+
+
+
 <section style="border: 1px solid red;">
 	
 	

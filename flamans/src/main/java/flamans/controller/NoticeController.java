@@ -48,6 +48,24 @@ public class NoticeController {
 		mav.setViewName("service/Notice/no_List");
 		return mav;
 	}
+	
+	@RequestMapping("/no_List_admin.do")
+	public ModelAndView noListAdmin(@RequestParam(value = "cp", defaultValue = "1") int cp,
+			@RequestParam(value = "findKey", required = false, defaultValue = "") String findKey,
+			@RequestParam(value = "findValue", required = false, defaultValue = "") String findValue) {
+		int totalCnt = noticeDao.noTotal(findKey, findValue);
+		int listSize = 10;
+		int pageSize = 5;
+		String no_page = paging1.makePage("no_List_admin.do", totalCnt, listSize, pageSize, cp, findKey, findValue,"");
+		List<NoticeDTO> noList = noticeDao.noList(cp, listSize, findKey, findValue);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("noList", noList);
+		mav.addObject("no_page", no_page);
+		mav.addObject("findValue", findValue);
+		mav.addObject("findKey", findKey);
+		mav.setViewName("service/Notice/no_List_admin");
+		return mav;
+	}
 
 	@RequestMapping(value = "/no_Write.do", method = RequestMethod.GET)
 	public String noWriteForm() {
@@ -127,6 +145,24 @@ public class NoticeController {
 			return mav;
 		}
 	}
+	
+	@RequestMapping("/no_Content_admin.do")
+	public ModelAndView noContentAdmin(@RequestParam(value = "idx", defaultValue = "0") int no_idx) {
+		NoticeDTO ndto = noticeDao.noContent(no_idx);
+		int count = noticeDao.noReadnum(no_idx);
+		ModelAndView mav = new ModelAndView();
+		if (ndto == null) {
+			mav.addObject("msg", "삭제되었거나 잘못된 접근입니다.");
+			mav.addObject("url", "no_List_admin.do");
+			mav.setViewName("/service/Notice/no_Msg");
+			return mav;
+		} else {
+			ndto.setNo_content(ndto.getNo_content().replaceAll("\n", "<br>"));
+			mav.addObject("ndto", ndto);
+			mav.setViewName("service/Notice/no_Content_admin");
+			return mav;
+		}
+	}
 
 	@RequestMapping("no_Delete.do")
 	public ModelAndView noDelete(@RequestParam("idx") int no_idx) {
@@ -178,7 +214,7 @@ public class NoticeController {
 		String msg = result > 0 ? "수정이 완료되었습니다." : "수정이 실패되었습니다.";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url", "no_List.do");
+		mav.addObject("url", "no_List_admin.do");
 		mav.setViewName("service/Notice/no_Msg");
 		return mav;
 	}

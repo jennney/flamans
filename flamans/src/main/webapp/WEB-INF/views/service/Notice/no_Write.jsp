@@ -87,38 +87,37 @@
 </script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-<div class="center">
-   <h2>공지사항</h2>
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
+		<h2>공지사항</h2>
+		<form name="no_Write" action="no_Write.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
+			<table id="no_wr">
+				<tr>
+					<th id="no_wrth1">SUBJECT</th>
+					<td id="no_wrtd1"><input type="text" name="no_subject" class="form-control"></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="no_wrtx"><textarea name="no_content" id="no_content"></textarea></td>
+				</tr>
+				<tr>	
+					<th id="no_wrth2">첨부파일1</th>
+					<td id="no_wrtd2"><input type="file" name="upload"></td>
+				</tr>
+				<tr>	
+					<th id="no_wrth3">첨부파일2</th>
+					<td id="no_wrtd3"><input type="file" name="upload"></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="btn btn-default" onclick="location.href='no_List.do'">목록으로</button></td>
+					<td id="no_wrtd4" colspan="1">
+						<button type="submit" class="btn btn-default">작성</button>&nbsp;&nbsp;
+						<button type="reset" class="btn btn-default">다시작성</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </div>
-<form name="no_Write" action="no_Write.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
-	<table id="no_wr">
-		<tr>
-			<th id="no_wrth1">SUBJECT</th>
-			<td id="no_wrtd1"><input type="text" name="no_subject" class="form-control"></td>
-		</tr>
-		<tr>
-			<td colspan="2" id="no_wrtx"><textarea name="no_content" id="no_content"></textarea></td>
-		</tr>
-		<tr>	
-			<th id="no_wrth2">첨부파일1</th>
-			<td id="no_wrtd2"><input type="file" name="upload"></td>
-		</tr>
-		<tr>	
-			<th id="no_wrth3">첨부파일2</th>
-			<td id="no_wrtd3"><input type="file" name="upload"></td>
-		</tr>
-		<tr>
-			<td><button type="button" class="btn btn-default" onclick="location.href='no_List.do'">목록으로</button></td>
-			<td id="no_wrtd4" colspan="1">
-				<button type="submit" class="btn btn-default">작성</button>&nbsp;&nbsp;
-				<button type="reset" class="btn btn-default">다시작성</button>
-			</td>
-		</tr>
-	</table>
-</form>
-</section>
-<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
