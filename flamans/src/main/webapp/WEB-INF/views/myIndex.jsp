@@ -16,6 +16,7 @@
 	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav side-nav">
+	    <c:if test="${!empty sessionScope.username }">
 	        <li>
 	            <a href="member_dashBoard.do"><i class="fa fa-fw fa-dashboard"></i>  Dashboard</a>
 	        </li>
@@ -34,6 +35,40 @@
 	        <li>
 	            <a href="logout.do"><i class="fa fa-fw fa-power-off"></i>  Logout</a>
 	        </li>
+	     </c:if>
+	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'B'}">
+   	        <li><a href="member_dashBoard.do">  Dashboard</a></li>
+	        <li><a href="member_page.do">  MyPage</a></li>
+	        <li><a href="#">  Booking</a></li>
+	        <li><a href="wishlist_compare.do">  WishList</a></li>
+	        <li><a href="member_find.do">Find</a></li>
+	        <li><a href="logout.do">  Logout</a></li>
+	     </c:if>
+   	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'H'}">
+   	        <li><a href="#">  Dashboard</a></li>
+	        <li><a href="hotelBbsList.do">  HotelCommunity</a></li>
+	        <li><a href="hotelContent.do">  HotelInfo</a></li>
+	        <li><a href="hotelRoomList.do">  HotelRoomInfo</a></li>
+	        <li><a href="event_co_list.do?e_name=${sessionScope.userHid}"> HotelEvent</a></li>
+	        <li><a href="logout.do">  Logout</a></li>
+	     </c:if>
+   	     <c:if test="${sessionScope.savecoId eq 'admin'}">
+	        <li><a href="#">  Dashboard</a></li>
+	        <li><a href="memberList.do">  Member</a></li>
+	        <li><a href="event_list.do">  Event</a></li>
+	        <li><a href="hotelInfo.do">  Hotel</a></li>
+	        <li><a href="hospitalInfo.do">  Hospital</a></li>
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Community <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo" class="collapse">
+                    <li><a href="no_List.do">Notice</a></li>
+                    <li><a href="faq_List.do">FAQ</a></li>
+                    <li><a href="qna_List.do?qna_kind=site">Q&amp;A</a></li>
+                </ul>
+            </li>
+	        <li><a href="#">  1:1</a></li>
+	        <li><a href="logout.do">  Logout</a></li>
+	     </c:if>
 	    </ul>
 	</div>
 </nav>

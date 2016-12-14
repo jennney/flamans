@@ -48,6 +48,7 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 		List<HotelRoomDTO> list=sqlMap.selectList("fm_hotroom",hot_num);
 		return list;
 	}
+
 	
 	/*public List<BbookDTO> bBbook_List(String hos_num, String bookingdate) {
 		
@@ -109,4 +110,5 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 	}
 */
 	
+
 }

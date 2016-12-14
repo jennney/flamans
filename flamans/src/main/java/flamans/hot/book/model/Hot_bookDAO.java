@@ -16,7 +16,7 @@ public interface Hot_bookDAO {
 	public int booking_hot1(Hot_bookDTO bdto);
 	
 	public List<HotelRoomDTO> hotelroom(String hot_num);
-	
+	 
 	/*public List<BbookDTO> bBbook_List(String hos_num, String bookingdate);
 	
 	public int bBbook_permit(String hos_num, int bookingnum);

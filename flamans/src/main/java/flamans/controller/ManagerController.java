@@ -14,6 +14,7 @@ public class ManagerController {
 		String cm_number_s = (String)session.getAttribute("cm_number");
 		String cm_id = (String)session.getAttribute("savecoId");
 		String cm_number = cm_number_s.substring(0,1);
+		session.setAttribute("cm_kind", cm_number);
 		System.out.println(session.getAttribute("savecoId"));
 		ModelAndView mav=new ModelAndView();
 		if(cm_id.equals("admin")){  
