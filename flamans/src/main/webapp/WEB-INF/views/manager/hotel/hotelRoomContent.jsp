@@ -15,6 +15,7 @@
 		<c:forEach var="dto" items="${list }">
 		호텔 이름 : ${sessionScope.cm_name } <br>
 		방 이름 : ${dto.roomname }<br>
+		최대 인원 : ${dto.people_num}<br>
 		방 가격 : ${dto.roomprice }<br>
 		방 개수 : ${dto.roomnum }<br>
 		옵션 : ${options }<br>

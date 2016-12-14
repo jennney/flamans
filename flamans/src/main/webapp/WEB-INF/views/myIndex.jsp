@@ -38,9 +38,9 @@
 	     </c:if>
 	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'B'}">
    	        <li><a href="#">  Dashboard</a></li>
-	        <li><a href="#">  HospitalCommunity</a></li>
-	        <li><a href="#">  HospitalInfo</a></li>
-	        <li><a href="#">  DoctorInfo</a></li>
+	        <li><a href="hospitalBbsList.do">  HospitalCommunity</a></li>
+	        <li><a href="hospitalContent.do">  HospitalInfo</a></li>
+	        <li><a href="doctorList.do">  DoctorInfo</a></li>
 	        <li><a href="#"> HospitalEvent</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
 	     </c:if>

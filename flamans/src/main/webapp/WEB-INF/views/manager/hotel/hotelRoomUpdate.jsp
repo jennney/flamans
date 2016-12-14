@@ -17,6 +17,7 @@
 			<input type="hidden" name="hot_num" value="${sessionScope.cm_number }">
 			<input type="hidden" name="room_idx" value="${dtos.room_idx }">
 			방 이름 : <input type="text" name="roomname" value="${dtos.roomname }"><br>
+			최대 인원 : ${num }<br>
 			방 가격 : <input type="text" name="roomprice" value="${dtos.roomprice }"><br>
 			방 개수 : <input type="text" name="roomnum" value="${dtos.roomnum }"><br>
 			방 옵션 

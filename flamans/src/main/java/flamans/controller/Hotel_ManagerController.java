@@ -306,8 +306,30 @@ public class Hotel_ManagerController {
 	@RequestMapping(value="/hotelRoomUpdate.do",method=RequestMethod.GET)
 	public ModelAndView hotelRoomUpdateForm(int room_idx){
 		HotelRoomDTO dto=hotmDao.hotelRoomUpdateForm(room_idx);
+		StringBuffer num=new StringBuffer();
+		int cnum[]={1,2,4,6};
+		int pnum=dto.getPeople_num();
+		num.append("<select name='people_num'>");
+		for(int i=0;i<cnum.length;i++){
+			num.append("<option value='");
+			num.append(cnum[i]);
+			num.append("'");
+			if(cnum[i]==pnum){
+				num.append(" selected='selected'");
+			}
+			num.append(">");
+			String temp=cnum[i]+"명";
+			num.append(temp);
+		}
+		num.append("</select>");
 		StringBuffer sb=new StringBuffer();
-		String option[]={"1","2","3","4","5"};
+		String option[]={"breakfast","minibar","safebox","bath","morningcall"};
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("breakfast", "조식");
+		map.put("minibar", "미니바");
+		map.put("safebox", "안전금고");
+		map.put("bath", "욕조");
+		map.put("morningcall", "모닝콜서비스");
 		String result[]=dto.getRoom_option().split(",");
 		for(int k=0;k<option.length;k++){
 			
@@ -320,11 +342,12 @@ public class Hotel_ManagerController {
 				}
 			}
 			sb.append(">");
-			sb.append(option[k]);
+			sb.append(map.get(option[k]));
 		}
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.addObject("options", sb.toString());
+		mav.addObject("num", num.toString());
 		mav.setViewName("manager/hotel/hotelRoomUpdate");
 		return mav;
 	}
