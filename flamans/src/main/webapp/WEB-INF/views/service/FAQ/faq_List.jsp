@@ -6,75 +6,67 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href='http://fonts.googleapis.com/css?family=Raleway'rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 <style>
-.container {
-	width: 705px;
+.seaTabs * {
+	box-sizing: border-box;
 }
 
-ul.tabs {
-	margin: 0;
-	padding: 0;
-	float: left;
-	list-style: none;
-	height: 50px;
-	border-bottom: 1px solid #999;
-	border-left: 1px solid #999;
-	width: 705px;
-}
-
-ul.tabs li {
-	float: left;
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	width:140px;
-	height: 50px;
-	line-height: 50px;
-	border: 1px solid #999;
-	border-left: none;
-	margin-bottom: -1px;
-	background: #F0F0F0;
+.seaTabs_switch {
 	overflow: hidden;
-	position: relative;
 }
 
-ul.tabs li a {
-	text-decoration: none;
-	color: #000;
-	display: block;
-	font-size: 1.2em;
-	padding: 0 20px;
-	border: 1px solid #fff;
-	outline: none;
-}
-
-ul.tabs li a:hover {
-	background: #ccc;
-}
-
-ul.tabs li.active, ul.tabs li.active a:hover {
-	background: #fff;
-	border-bottom: 1px solid #fff;
-}
-
-.tab_container {
-	border: 1px solid #999;
-	border-top: none;
-	clear: both;
+.seaTabs_tab {
 	float: left;
-	width: 705px;
-	background: #fff;
-	-moz-border-radius-bottomright: 5px;
-	-khtml-border-radius-bottomright: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	-khtml-border-radius-bottomleft: 5px;
-	-webkit-border-bottom-left-radius: 5px;
+	cursor: pointer;
 }
 
-.tab_content {
-	font-size: 1.2em;
+.seaTabs_switch_active {
+	cursor: default;
+}
+
+.seaTabs_item {
+	display: none;
+}
+
+.seaTabs_content_active {
+	display: block;
+}
+
+.seaTabs_switch {
+	
+}
+.seaTabs_tab {
+	padding: 10px 20px;
+	border-width: 1px 1px 1px 0;
+	border-style: solid;
+	border-color: #ccc;
+	background: #eaeaea;
+}
+
+.seaTabs_tab:first-child {
+	border-left: 1px solid #ccc;
+	border-top-left-radius: 5px;
+}
+
+.seaTabs_tab:last-child {
+	border-top-right-radius: 5px;
+}
+
+.seaTabs_content {
+	margin-top: -1px;
+	width: 700px;
+}
+
+.seaTabs_item {
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 0 0 5px 5px;
+}
+
+.seaTabs_switch_active {
+	border-bottom: 1px solid #fff;
+	background: #fff;
 }
 
 .accordion_sub {
@@ -82,29 +74,29 @@ ul.tabs li.active, ul.tabs li.active a:hover {
 }
 
 .accordion_title {
-	width: 700px;
+	border-bottom: 1px solid;
+	width: 500px;
 }
 
 .accordion_sub {
-	width: 700px;
+	width: 500px;
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$(".tab_content").hide();
-		$("ul.tabs li:first").addClass("active").show();
-		$(".tab_content:first").show();
-
-		$("ul.tabs li").click(function() {
-			$("ul.tabs li").removeClass("active");
-			$(this).addClass("active");
-			$(".tab_content").hide();
-			var activeTab = $(this).find("a").attr("href");
-			$(activeTab).fadeIn();
-			return false;
-		});
-		
+		$('.seaTabs_tab').each(
+			function(item) {
+				$(this).click(
+					function() {
+						$(this).addClass('seaTabs_switch_active')
+							.siblings().removeClass(
+							'seaTabs_switch_active');
+						$($('.seaTabs_item')[item]).addClass(
+							'seaTabs_content_active').siblings()
+							.removeClass('seaTabs_content_active');
+					});
+			});
 		$(".accordion_banner .accordion_title").click(function() {
 			if ($(this).next("div").is(":visible")) {
 				$(this).next("div").slideUp("fast");
@@ -120,132 +112,120 @@ ul.tabs li.active, ul.tabs li.active a:hover {
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
 <section>
-	<form name="faq_List" action="faq_Find.do">
-		<div>
-			<label>FAQ</label> <input type="text" name="findValue"><input type="submit" value="검색">
-		</div>
-	</form>
-	<div>
-	<label>자주하는 질문 BEST 5</label>
-	<div class="accordion_banner">
-		<c:if test="${empty bestList}">
+<form name="faq_List" action="faq_Find.do" >
+<div>
+	<label>FAQ</label> <input type="text" name="findValue"><input type="submit" value="검색">
+</div>
+</form>
+<label>자주하는 질문 BEST 5</label>
+<div class="accordion_banner">
+	<c:if test="${empty bestList}">
 		등록된 글이 없습니다.
 	</c:if>
-		<c:forEach var="bestList" items="${bestList}">
-			<div class="accordion_title">${bestList.faq_subject}</div>
-			<div class="accordion_sub">${bestList.faq_content}</div>
-		</c:forEach>
+	<c:forEach var="bestList" items="${bestList}">
+		<div class="accordion_title">${bestList.faq_subject}</div>
+		<div class="accordion_sub">${bestList.faq_content}</div>
+	</c:forEach>
+</div>
+<c:if test="${sessionScope.permit eq 3}">
+	<p><a href="faq_Write.do"><img alt="작성" src="img/write.png"></a></p>
+</c:if>
+<div class="seaTabs">
+	<div class="seaTabs_switch">
+		<div class="seaTabs_tab">전체</div>
+		<div class="seaTabs_tab">병원</div>
+		<div class="seaTabs_tab">호텔</div>
+		<div class="seaTabs_tab">회원</div>
+		<div class="seaTabs_tab">기타</div>
 	</div>
-	<c:if test="${sessionScope.permit eq 1}">
-		<p><a href="faq_Write.do"><img alt="작성" src="img/write.png"></a></p>
-	</c:if>
-	</div>
-	<div class="container">
-		<ul class="tabs">
-			<li><a href="#tab1">전 체</a></li>
-			<li><a href="#tab2">병 원</a></li>
-			<li><a href="#tab3">호 텔</a></li>
-			<li><a href="#tab4">회 원</a></li>
-			<li><a href="#tab5">기 타</a></li>
-		</ul>
-		<div class="tab_container">
-			<div id="tab1" class="tab_content">
-				<div class="accordion_banner">
-					<c:if test="${empty list}">
-						등록된 글이 없습니다.
-					</c:if>
-					<c:forEach var="list" items="${list}">
-						<div class="accordion_title">
-						${list.faq_subject}
-							<c:if test="${sessionScope.permit eq 1}">
-								<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</c:if>
-						</div>
-						<div class="accordion_sub">
-							${list.faq_content}
-						</div>
-					</c:forEach>
-				</div>
+
+	<div class="seaTabs_content">
+		<div class="seaTabs_item seaTabs_content_active">
+			<div class="accordion_banner">
+				<c:if test="${empty list}">
+					등록된 글이 없습니다.
+				</c:if>
+				<c:forEach var="list" items="${list}">
+					<div class="accordion_title">${list.faq_subject}
+						<c:if test="${sessionScope.permit eq 3}">
+							<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
+							<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
+						</c:if>
+					</div>
+					<div class="accordion_sub">${list.faq_content}</div>
+				</c:forEach>
 			</div>
-			<div id="tab2" class="tab_content">
-				<div class="accordion_banner">
-					<c:if test="${empty list}">
-						등록된 글이 없습니다.
-					</c:if>
-					<c:forEach var="list" items="${list}">
-						<div class="accordion_title">
-						${list.faq_subject}
-							<c:if test="${sessionScope.permit eq 1}">
-								<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</c:if>
-						</div>
-						<div class="accordion_sub">
-							${list.faq_content}
-						</div>
-					</c:forEach>
-				</div>
+		</div>
+
+		<div class="seaTabs_item">
+			<div class="accordion_banner">
+				<c:if test="${empty hosList}">
+					등록된 글이 없습니다.
+				</c:if>
+				<c:forEach var="hosList" items="${hosList}">
+					<div class="accordion_title">${hosList.faq_subject}
+						<c:if test="${sessionScope.permit eq 3}">
+							<a href="faq_Delete.do?faq_idx=${hosList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
+							<a href="faq_Update.do?faq_idx${hosList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
+						</c:if>
+					</div>
+					<div class="accordion_sub">${hosList.faq_content}</div>
+				</c:forEach>
 			</div>
-			<div id="tab3" class="tab_content">
-				<div class="accordion_banner">
-					<c:if test="${empty list}">
-						등록된 글이 없습니다.
-					</c:if>
-					<c:forEach var="list" items="${list}">
-						<div class="accordion_title">
-						${list.faq_subject}
-							<c:if test="${sessionScope.permit eq 1}">
-								<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</c:if>
-						</div>
-						<div class="accordion_sub">
-							${list.faq_content}
-						</div>
-					</c:forEach>
-				</div>
+		</div>
+
+		<div class="seaTabs_item">
+			<div class="accordion_banner">
+				<c:if test="${empty hotList}">
+					등록된 글이 없습니다.
+				</c:if>
+				<c:forEach var="hotList" items="${hotList}">
+					<div class="accordion_title">${hotList.faq_subject}
+						<c:if test="${sessionScope.permit eq 3}">
+							<a href="faq_Delete.do?faq_idx=${hotList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
+							<a href="faq_Update.do?faq_idx=${hotList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
+						</c:if>
+					</div>
+					<div class="accordion_sub">${hotList.faq_content}</div>
+				</c:forEach>
 			</div>
-			<div id="tab4" class="tab_content">
-				<div class="accordion_banner">
-					<c:if test="${empty list}">
-						등록된 글이 없습니다.
-					</c:if>
-					<c:forEach var="list" items="${list}">
-						<div class="accordion_title">
-						${list.faq_subject}
-							<c:if test="${sessionScope.permit eq 1}">
-								<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</c:if>
-						</div>
-						<div class="accordion_sub">
-							${list.faq_content}
-						</div>
-					</c:forEach>
-				</div>
+		</div>
+
+		<div class="seaTabs_item">
+			<div class="accordion_banner">
+				<c:if test="${empty memList}">
+					등록된 글이 없습니다.
+				</c:if>
+				<c:forEach var="memList" items="${memList}">
+					<div class="accordion_title">${memList.faq_subject}
+						<c:if test="${sessionScope.permit eq 3}">
+							<a href="faq_Delete.do?faq_idx=${memList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
+							<a href="faq_Update.do?faq_idx=${memList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
+						</c:if>
+					</div>
+					<div class="accordion_sub">${memList.faq_content}</div>
+				</c:forEach>
 			</div>
-			<div id="tab5" class="tab_content">
-				<div class="accordion_banner">
-					<c:if test="${empty list}">
-						등록된 글이 없습니다.
-					</c:if>
-					<c:forEach var="list" items="${list}">
-						<div class="accordion_title">
-						${list.faq_subject}
-							<c:if test="${sessionScope.permit eq 1}">
-								<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</c:if>
-						</div>
-						<div class="accordion_sub">
-							${list.faq_content}
-						</div>
-					</c:forEach>
-				</div>
+		</div>
+
+		<div class="seaTabs_item">
+			<div class="accordion_banner">
+				<c:if test="${empty etcList}">
+					등록된 글이 없습니다.
+				</c:if>
+				<c:forEach var="etcList" items="${etcList}">
+					<div class="accordion_title">${etcList.faq_subject}
+						<c:if test="${sessionScope.permit eq 3}">
+							<a href="faq_Delete.do?faq_idx=${etcList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
+							<a href="faq_Update.do?faq_idx=${etcList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
+						</c:if>
+					</div>
+					<div class="accordion_sub">${etcList.faq_content}</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
+</div>
 </section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>

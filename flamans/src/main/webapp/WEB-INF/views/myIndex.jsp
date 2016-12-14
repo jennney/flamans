@@ -37,11 +37,11 @@
 	        </li>
 	     </c:if>
 	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'B'}">
-   	        <li><a href="member_dashBoard.do">  Dashboard</a></li>
-	        <li><a href="member_page.do">  MyPage</a></li>
-	        <li><a href="#">  Booking</a></li>
-	        <li><a href="wishlist_compare.do">  WishList</a></li>
-	        <li><a href="member_find.do">Find</a></li>
+   	        <li><a href="#">  Dashboard</a></li>
+	        <li><a href="#">  HospitalCommunity</a></li>
+	        <li><a href="#">  HospitalInfo</a></li>
+	        <li><a href="#">  DoctorInfo</a></li>
+	        <li><a href="#"> HospitalEvent</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
 	     </c:if>
    	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'H'}">

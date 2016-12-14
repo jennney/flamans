@@ -15,10 +15,8 @@ public class FaqDAOImple implements FaqDAO {
 		this.sqlMap = sqlMap;
 	}
 	
-	public List<FaqDTO> faqList(String faq_item) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("faq_item", faq_item);
-		List<FaqDTO> list = sqlMap.selectList("faq_List",map);
+	public List<FaqDTO> faqList() {
+		List<FaqDTO> list = sqlMap.selectList("faq_List");
 		return list;
 	}
 	
@@ -29,6 +27,26 @@ public class FaqDAOImple implements FaqDAO {
 	
 	public List<FaqDTO> faqBestList() {
 		List<FaqDTO> list = sqlMap.selectList("faq_BestList");
+		return list;
+	}
+	
+	public List<FaqDTO> faqmemList() {
+		List<FaqDTO> list = sqlMap.selectList("faq_memList");
+		return list;
+	}
+	
+	public List<FaqDTO> faqhotList() {
+		List<FaqDTO> list = sqlMap.selectList("faq_hotList");
+		return list;
+	}
+	
+	public List<FaqDTO> faqhosList() {
+		List<FaqDTO> list = sqlMap.selectList("faq_hosList");
+		return list;
+	}
+	
+	public List<FaqDTO> faqetc() {
+		List<FaqDTO> list = sqlMap.selectList("faq_etc");
 		return list;
 	}
 	
