@@ -1,6 +1,7 @@
 package flamans.controller;
 
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,6 +28,7 @@ public class HotController {
 
 	@Autowired
 	private Hot_bookDAO Hot_bookDao;
+	
 
 	@RequestMapping(value="/booking_hot.do",method=RequestMethod.GET)
 	public ModelAndView booking_hotForm(HttpSession session,@RequestParam("hot_num")String hot_num) {
@@ -69,33 +71,32 @@ public class HotController {
 	}
 	
 	
-	/*	*//**관리자계정-병원예약리스트*//*
-	@RequestMapping(value="/book_list.do", method=RequestMethod.POST)
-	public ModelAndView bBbook_AList(HttpSession session, @RequestParam("bookingdate")String bookingdate){
-		String cm_number=(String)session.getAttribute("cm_number");
-		List<BbookDTO> list = Bdao.bBbook_List(cm_number, bookingdate);
-		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
+	/**관리자계정-호텔예약리스트*/
+	@RequestMapping(value="/Hbook_list.do", method=RequestMethod.POST)
+	public ModelAndView HBbook_AList(HttpSession session, @RequestParam("checkin")String checkin){
+		String hot_num=(String)session.getAttribute("cm_number");
+		List<HotelRoomDTO> Hlist = Hot_bookDao.Hbook_List(hot_num, checkin);
+		ModelAndView mav=new ModelAndView("flamansJson", "Hlist", Hlist);
 		return mav;
 	}
 	
-	*//**관리자계정-병원예약 삭제*//*
-	@RequestMapping(value="/bBbook_refuse.do", method=RequestMethod.POST)
+	/**관리자계정-병원예약 삭제*/
+	@RequestMapping(value="/HBbook_refuse.do", method=RequestMethod.POST)
 	public ModelAndView bBbook_refuse(HttpSession session, @RequestParam("bookingnum")int bookingnum){
 		
-		String hos_number=(String)session.getAttribute("cm_number");
-
-		int result=Bdao.bBbook_refuse(hos_number, bookingnum);
+		String hot_num=(String)session.getAttribute("cm_number");
+		int result=Hot_bookDao.Hbook_refuse(hot_num, bookingnum);
 		String msg=result>0?"예약이 삭제되었습니다.":"예약 삭제 실패했습니다.";
 		ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
 		return mav;
 	}
 	
-	*//**관리자계정-예약수락*//*
-	@RequestMapping(value="/bBook_permit.do", method=RequestMethod.POST)
+	/**관리자계정-예약수락*/
+	@RequestMapping(value="/HBook_permit.do", method=RequestMethod.POST)
 	public ModelAndView bBbook_permit(HttpSession session, @RequestParam("bookingnum")int bookingnum){
 		
-		String hos_num=(String)session.getAttribute("cm_number");
-		int result=Bdao.bBbook_permit(hos_num, bookingnum);
+		String hot_num=(String)session.getAttribute("cm_number");
+		int result=Hot_bookDao.Hbook_permit(hot_num, bookingnum);
 		String msg=result>0?"예약요청을 수락하셨습니다.":"예약요청을 수락하지 못하였습니다.";
 		ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
 		

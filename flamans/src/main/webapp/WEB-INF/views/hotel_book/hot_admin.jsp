@@ -10,138 +10,151 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-function kCalendar(id, date) {
-	
-	var kCalendar = document.getElementById(id);
-	
-	if( typeof( date ) !== 'undefined' ) {
-		date = date.split('-');
-		date[1] = date[1] - 1;
-		date = new Date(date[0], date[1], date[2]);
-	} else {
-		var date = new Date();
+function HbookDate(){
+	var table=document.getElementById("Hdate");
+	var ttdate=table.value;
+	if(ttdate==null){
+		var now=new Date();
+		ttdate=now.getFullYear()+'-'+now.getMonth();	
 	}
-	var currentYear = date.getFullYear();
-	//년도를 구함
-	
-	var currentMonth = date.getMonth() + 1;
-	//연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
-	
-	var currentDate = date.getDate();
-	//오늘 일자.
-	
-	date.setDate(1);
-	var currentDay = date.getDay();
-	//이번달 1일의 요일은 출력. 0은 일요일 6은 토요일
-	
-	//var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
-	var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-	if( (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0 )
-		lastDate[1] = 29;
-	//각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일 임.
-	
-	var currentLastDate = lastDate[currentMonth-1];
-	var week = Math.ceil( ( currentDay + currentLastDate ) / 7 );
-	//총 몇 주인지 구함.
-	
-	if(currentMonth != 1)
-		var prevDate = currentYear + '-' + ( currentMonth - 1 ) + '-' + currentDate;
-	else
-		var prevDate = ( currentYear - 1 ) + '-' + 12 + '-' + currentDate;
-	//만약 이번달이 1월이라면 1년 전 12월로 출력.
-	
-	if(currentMonth != 12) 
-		var nextDate = currentYear + '-' + ( currentMonth + 1 ) + '-' + currentDate;
-	else
-		var nextDate = ( currentYear + 1 ) + '-' + 1 + '-' + currentDate;
-	//만약 이번달이 12월이라면 1년 후 1월로 출력.
-
-	
-	if( currentMonth < 10 )
-		var currentMonth = '0' + currentMonth;
-	//10월 이하라면 앞에 0을 붙여준다.
-	
-	var calendar = '';
-	
-	calendar += '<div id="header">';
-	calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')"> < </a></span>';
-	calendar += '			<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
-	calendar += '			<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\')"> > </a></span>';
-	calendar += '		</div>';
-	calendar += '		<table border="0" cellspacing="0" cellpadding="0" id="calen">';
-	calendar += '			<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
-	calendar += '			<thead>';
-	calendar += '				<tr>';
-	calendar += '				  <th>체크인</th>';
-	calendar += '				  <th>체크아웃</th>';
-	calendar += '				  <th>예약자명</th>';
-	calendar += '				  <th>객실유형</th>';
-	calendar += '				  <th>인원</th>';
-	calendar += '				  <th>진행상태</th>';
-	calendar += '				  <th></th>';
-	calendar += '				</tr>';
-	calendar += '			</thead>';
-	calendar += '			<tbody id="hotBooktbody">';
-	calendar += '			</tbody>';
-	calendar += '		</table>';
-	
-	kCalendar.innerHTML = calendar;
-	
-	
+	var params='checkin='+ttdate;
+	sendRequest('Hbook_list.do', params, HBookCheckResult, 'POST');
 }
-function cm_calendar(){
-	var tem=document.getElementById("date");
-	var tem2=tem.innerHTML;
-	var yyear=tem2.substring(0,4);
-	tem2=tem.innerHTML.split(' ');
-	var mmonth=tem2[1].substring(0,2);
-	var ttem=yyear+'-'+mmonth;  
-	var params='date='+ttem;
-	sendRequest('companyCal.do', params, cm_calendarResult, 'POST');
-}
-var count=0;
-function cm_calendarResult(){
+function HBookCheckResult(){
 	if(XHR.readyState==4){
 		if(XHR.status==200){
 			var data=XHR.responseText;
-			data=eval('('+data+')');		
-			var cal=data.cal;
-			for(i=0; i<cal.length; i++){
-				var caltemp=cal[i].bookingdate.split('/');
-				var calId=document.getElementById(caltemp[0]);
-				calId.innerHTML='<img src="img/bBook1.JPG" width="20px" heigth="20px">';			
-			}
+			data=eval('('+data+')');
+			
+			var HbookList=data.Hlist;
+			
+			var msg='';
+			
+			if(HbookList.length==0){
+				msg+='<tr><td colspan="7" align="center"><br> 요청날짜에 예약이 없습니다. </td></tr>';	
+			}else{
+				for(var i=0;i<HbookList.length;i++){						
+					var Hbook=HbookList[i];
+					var checkin=Hbook.checkin.split(' ');
+					var checkout=Hbook.checkin.split(' ');
+					if(Hbook.permit=='0'){	
+						
+						msg+='<tr><td><span>'+checkin[0]+'</span></td>';
+						msg+='<td><span>'+checkout[0]+'</span></td>';
+						msg+='<td><span><a href="#" click="HbookContent('+Hbook.bookingnum+')">'+Hbook.name+'</a></span></td>';
+						msg+='<td><span>'+Hbook.roomname+'</span></td>';
+						msg+='<td><span>'+Hbook.card+'</span></td>';
+						msg+='<td><span>'+Hbook.people+'</span></td>';
+						msg+='<td><span id="call">예약대기</span></td>';
+						msg+='<td><button type="button" class="btn btn-default" onclick="Hbookpermit('+Hbook.bookingnum+')">확정</button><button type="button" class="btn btn-default" onclick="Hbookdel('+Hbook.bookingnum+')">삭제</button></td></tr>';
+					}else{
+						msg+='<tr><td><span>'+checkin[0]+'</span></td>';
+						msg+='<td><span>'+checkout[0]+'</span></td>';
+						msg+='<td><span><a href="#" click="HbookContent('+Hbook.bookingnum+')">'+Hbook.name+'</a></span></td>';
+						msg+='<td><span>'+Hbook.roomname+'</span></td>';
+						msg+='<td><span>'+Hbook.card+'</span></td>';
+						msg+='<td><span>'+Hbook.people+'</span></td>';
+						msg+='<td><span id="accept">예약완료</span></td>';
+						msg+='<td><button type="button" class="btn btn-default" onclick="Hbookdel('+Hbook.bookingnum+')">삭제</button></td></tr>';
+					}
+				}
+				msg+='';
+					
+			}			
+			var table=document.getElementById("hotBooktbody");
+			table.innerHTML=msg;
 		}
 	}
 }
+ function Hbookdel(bookingnum){
+	var result=window.confirm('정말 삭제하시겠습니까?');
+	if(result){
+		var params='bookingnum='+bookingnum;
+		sendRequest('HBbook_refuse.do', params, HbookdelResult, 'POST');
+	}
+}
+function HbookdelResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var data=XHR.responseText;
+			data=eval('('+data+')');
+			var msg=data.msg;
+			alert(msg);
+			HbookDate();
+		}
+	}
+}
+function Hbookpermit(bookingnum){
+	var params='bookingnum='+bookingnum;
+	sendRequest('HBook_permit.do', params, HbookpermitResult, 'POST');
+}
+function HbookpermitResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var data=XHR.responseText;
+			data=eval('('+data+')');
+			var msg=data.msg;
+			alert(msg);
+			HbookDate();
+		}
+	}
+} 
+function HbookContent(bookingnum){
+	
+}
+
 </script>
 <style>
 /* #b{ width:850px; height:450px;  margin-top: 30px;   border-color: green;}
 #c{ float:left; width:450px;  height:450px;  margin:0px center;}
 #d{	width:360px;height:450px;float: left;margin-left:15px;margin-right:15px;overflow-y:scroll; white-space:nowrap;} */
-#kCalendar{  width:850px;  height:550px;  border : 1px solid #EAEAEA;  font:15px/1.0 맑은 고딕;}
+#hotBooktbody{}
+#kCalendar{  width:950px;  height:650px;  border : 1px solid #EAEAEA;  font:15px/1.0 맑은 고딕; overflow-y:scroll; white-space:nowrap;}
 #Bookdate{text-align: center;font:20px/1.0 맑은 고딕;}
 th{	text-align: center;}
 #call{	padding-right:10px;	color: blue;}
 #accept{	padding-right:5px;	color: red;}
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 * {font-family: 15px/1.0 맑은 고딕;}
-#kCalendar {width: 850px; height: 550px; /* border: 1px solid black; */}
-#kCalendar #header {height: 80px; line-height: 80px; text-align: center; font-size: 25px; font-weight: bold}
+#kCalendar #header {height: 80px; line-height: 50px; text-align: center; font-size: 25px; font-weight: bold; }
 #kCalendar .button {color: #000; text-decoration: none;}
-#kCalendar table {width: 430px; height: 340px; padding-left: 5px; }
-#kCalendar caption {display: none;}
-#kCalendar .sun {text-align: center; color: deeppink;}
-#kCalendar .mon {text-align: center;}
-#kCalendar .tue {text-align: center;}
-#kCalendar .wed {text-align: center;}
-#kCalendar .thu {text-align: center;}
-#kCalendar .fri {text-align: center;}
-#kCalendar .sat {text-align: center; color: deepskyblue;}
-#cc{width:45px;  height:35px;} 
+#kCalendar table {width: 900px; height: 540px; padding-left: 5px; }
+#kCalendar table td{text-align: center;}
+#call{	padding-right:10px;	color: blue;}
+#accept{	padding-right:5px;	color: red;}
+#a1{width:90px; text-align: center;}
+#a2{width:90px; text-align: center;}
+#a3{width:100px; text-align: center;}
+#a4{width:130px; text-align: center;}
+#a5{width:150px; text-align: center;}
+#a6{width:50px; text-align: center;}
+#a7{width:50px; text-align: center;}
+#a8{width:90px; text-align: center;}
 </Style>
 </head>
-<body onload="kCalendar('kCalendar')">
-	<div id="kCalendar" class="form-control"></div>
+<body>
+<section>
+	<div id="header">
+		<div id="kCalendar" class="form-control">
+		<div id="header"><input type="month" id="Hdate" onchange="HbookDate()"></div>
+			<table id="calen" >
+				<thead>
+					<tr>
+						<th><label id="a1">체크인</label></th>
+						<th><label id="a2">체크아웃</label></th>
+						<th><label id="a3">예약자명</label></th>
+						<th><label id="a4">객실유형</label></th>
+						<th><label id="a5">카드번호</label></th>
+						<th><label id="a6">인원</label></th>
+						<th><label id="a7">진행상태</label></th>
+						<th><label id="a8">예약 관리</label></th>
+					</tr>
+				</thead>
+				<tbody id="hotBooktbody">
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
 </body>
 </html>

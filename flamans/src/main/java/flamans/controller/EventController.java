@@ -33,6 +33,7 @@ public class EventController {
 	@RequestMapping("/event_user_list.do")
 	public ModelAndView eventUserList(@RequestParam(value = "cp", defaultValue = "1") int cp,
 			@RequestParam(value = "e_item", required = false) int e_item) {
+		
 		/*
 		 * 오늘 날짜 비교 캘린더 받아와서 비교 if() 기존 데이터랑 비교해서 날짜가 이전이면 e_item 2 로 업데이트
 		 */

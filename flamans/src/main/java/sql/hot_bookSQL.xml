@@ -26,11 +26,12 @@
    <select id="fm_hotroom" resultType="flamans.hotel_find.model.HotelRoomDTO">
       select * from fm_hotroom where hot_num=#{hot_num}
    </select> 
-    <select id="HBbook_list" parameterType="Map" resultType="flamans.hotel_find.model.HotelRoomDTO">
-		select * 
+    <select id="Hbook_list" parameterType="Map" resultType="flamans.hot.book.model.Hot_bookDTO">
+		select h.*, roomname
 		from
-			 fm_hot_book
-		where hot_num=#{hot_num} and (to_char(checkin,'yyyy-MM-DD')) like ''||#{checkin}||'%'
+			 fm_hot_book h, fm_hotroom r
+		where h.hot_num=#{hot_num} and r.room_idx=h.room_idx and
+		 (to_char(checkin,'yyyy-MM-DD')) like ''||#{checkin}||'%'
 		order by 
 			checkin
 	</select>   
@@ -52,10 +53,25 @@
    <select id="fm_hotname" resultType="flamans.company.model.CompanyDTO">
       select cm_name from fm_company where cm_number = #{hot_num}   
    </select>
+   <update id="HBook_request" parameterType="Map">
+		update 
+			fm_hot_book
+		set
+			permit=1
+		where 	
+			bookingnum=#{bookingnum} and hot_num=#{hot_num}
+	</update>
+	
+	<delete id="HBook_del" parameterType="Map">
+		delete from fm_hot_book
+		where hot_num=#{hot_num} and bookingnum=#{bookingnum}
+	</delete>
+
    <update id="fm_hotroomnum" parameterType="Map">
 		update
 			fm_hotroom
 		set roomnum=roomnum-#{roomselect}
 		where room_idx = #{room_idx}
    </update>
+
 </mapper>  
