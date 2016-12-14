@@ -35,4 +35,5 @@ public interface MemberDAO {
 
 	public List<Hot_bookDTO> book(String name);
 	
+	
 }

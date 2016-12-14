@@ -140,5 +140,5 @@ public class MemberDAOImple implements MemberDAO {
 		List<MemberDTO> hot_info = sqlMap.selectList("hot_info",m_name);
 		return hot_info;
 	}
-
+    
 }

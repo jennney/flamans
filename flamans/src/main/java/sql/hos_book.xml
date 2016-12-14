@@ -102,4 +102,25 @@
 		where 
 			hos_num=#{hos_num} and bookingdate like ''||#{date}||'%'
 	</select>
+	 <select id="fm_myhos_book" resultType="flamans.Bbook.model.BbookDTO">
+      select hos_num,
+         name,
+            sex,
+          age,
+         	nationality,
+        surgery,
+      		etc,
+       bookingnum         
+    	 , TO_CHAR(bookingdate,'YYYY-MM-DD') bookingdate,
+       bwdate,
+       		permit,
+       doc_num_number,
+       		hos_bid,
+       	doc_num
+      from fm_hos_book where name = #{m_id}
+  
+   </select>
+   <select id="fm_hosname" resultType="flamans.company.model.CompanyDTO">
+      select cm_name from fm_company where cm_number = #{hos_num}   
+   </select>
 </mapper>

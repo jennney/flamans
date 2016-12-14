@@ -4,6 +4,8 @@ import java.util.*;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import flamans.hot.book.model.Hot_bookDTO;
+
 public class BbookDAOImple implements BbookDAO {
 
 	private SqlSessionTemplate sqlMap;
@@ -126,7 +128,11 @@ public class BbookDAOImple implements BbookDAO {
 		List<BbookDTO> cal=sqlMap.selectList("calendar", map);
 		return cal;
 	}
-
+	
+	public List<BbookDTO> fm_myhos_book(String m_id) {
+		List<BbookDTO> list = sqlMap.selectList("fm_myhos_book",m_id);
+		return list;
+	}
 	
 	
 }
