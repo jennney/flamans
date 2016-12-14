@@ -55,7 +55,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  {
    	border-top: none;
    	clear: both;
    	float: left; 
-   	width: 100%;
+   	width: 900px;
    	background: #fff;
    	-moz-border-radius-bottomright: 5px;
    	-khtml-border-radius-bottomright: 5px;
@@ -105,15 +105,15 @@ function findlistresult(){
 					var data_hos = '';
 					
 					for(var i=data.hos.length-1; i>=0; i--){
-						data_hos+='<table class="table table-hover" border="1" width="900" height="300" cellspacing="0"><tr align="center">'
-						+'<td width="300" rowspan="3"><img src="'+data.hos[i].hos_img+'" width=300 height=300></td>'
-						+'<td width="550" height="50">검색어 : '+data.hos[i].find_name+'</td>'
-						+'<td widdh="50">휴지통 자리</td>'
+						data_hos+='<table class="table table-hover" border="1" width="900" height="200" cellspacing="0"><tr align="center">'
+						+'<td width="200" rowspan="3"><img src="'+data.hos[i].hos_img+'" width="200" height="200"></td>'
+						+'<td width="520" height="30">검색어 : '+data.hos[i].find_name+'</td>'
+						+'<td width="100">휴지통</td>'
 						+'<tr>'
-						+'<td colspan="2" height="200"></td>'
+						+'<td colspan="2" height="100"></td>'
 						+'</tr>'
 						+'<tr>'
-						+'<td colspan="2" height="50">검색일 : '+data.hos[i].write_date+'</td>'
+						+'<td colspan="2" height="30">검색일 : '+data.hos[i].write_date+'</td>'
 						+'</tr></table>';
 					}
 				}else{
@@ -124,16 +124,16 @@ function findlistresult(){
 				// 호텔 최근 검색 목록
 					var data_hot = '';
 					for(var i=data.hot.length-1; i>=0; i--){
-						data_hot+='<table class="table table-hover" border="1" width="900" height="300" cellspacing="0"><tr align="center">'
-						+'<td width="300" rowspan="3"><img src="'+data.hot[i].hot_img+'" width=300 height=300></td>'
-						+'<td width="550" height="50">검색어 : '+data.hot[i].find_name+'</td>'
-						+'<td widdh="50">휴지통 자리</td>'
+						data_hot+='<table class="table table-hover" border="1" width="900" height="200" cellspacing="0"><tr align="left">'
+						+'<td width="200" rowspan="3"><img src="'+data.hot[i].hot_img+'" width="200" height="200"></td>'
+						+'<td width="520" height="30">검색어 : '+data.hot[i].find_name+'</td>'
+						+'<td width="100">휴지통</td>'
 						+'<tr>'
-						+'<td colspan="2" height="200">체크인 : '+data.hot[i].checkin+'&nbsp;~&nbsp; 체크아웃 :'+data.hot[i].checkout+'<br>'
+						+'<td colspan="2" height="100">체크인 : '+data.hot[i].checkin+'&nbsp;~&nbsp; 체크아웃 :'+data.hot[i].checkout+'<br>'
 						+'방정보 : '+data.hot[i].room_info+'</td>'
 						+'</tr>'
 						+'<tr>'
-						+'<td colspan="2" height="50">검색일 : '+data.hot[i].write_date+'</td>'
+						+'<td colspan="2" height="30">검색일 : '+data.hot[i].write_date+'</td>'
 						+'</tr></table>';
 					}
 				}else{
@@ -184,7 +184,11 @@ $(document).ready(function() {
 </head>
 
 <body onload="findlist()">
-<div class="container">
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+<div id="page-wrapper">
+	<div class="container-fluid">
+	<section>
     <ul class="tabs">
         <li onclick="findlist()"><a href="#tab1">호텔최근검색</a></li>
         <li onclick="findlist()"><a href="#tab2">병원최근검색</a></li>
@@ -207,6 +211,9 @@ $(document).ready(function() {
         	</form>
         </div>
     </div>
+	</section>
+	</div>
 </div>
+</div>	
 </body>
 </html>

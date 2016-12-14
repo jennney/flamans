@@ -17,4 +17,16 @@ public interface Hot_bookDAO {
 	
 	public List<HotelRoomDTO> hotelroom(String hot_num);
 	 
+	/*public List<BbookDTO> bBbook_List(String hos_num, String bookingdate);
+	
+	public int bBbook_permit(String hos_num, int bookingnum);
+	
+	public int bBbook_refuse(String hos_num, int bookingnum);
+	
+	public BbookDTO bBook_content(int bookingnum);
+	
+	public int bBook_reWrite(BbookDTO dto, String hos_num);
+	
+	public List<BbookDTO> calendar(String hos_num, String date);*/
+	
 }
