@@ -88,16 +88,20 @@
 				for(var i in data){
 					hospital_list += '';
 					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a>';
-					hospital_list +='<table><tr>';
+					hospital_list +='<table class="table table-hover"><tr>';
 					hospital_list +='<td width="200"><img alt="병원사진영역" src="'+data[i].hos_img+'"width="200" height="200"></td>';
 					hospital_list +='<td width="400">'+data[i].hos_content+'</td>';
-					hospital_list +='<td width="100"><a href="hos_wishlist.do?hos_num='+data[i].hos_num+'&hospital_link=hospital_list.do"><input type="button" value="♥"></a>';
-					hospital_list +='<a href="booking_hos.do?hos_num='+data[i].hos_num+'"><input type="button" value="예약"></a></td>';
+					hospital_list +='<td width="100"><a href="hos_wishlist.do?hos_num='+data[i].hos_num+'&hospital_link=hospital_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
+					//<a href="booking_hos.do?hos_num='+data[i].hos_num+'"><input type="button" value="예약"></a>
+					hospital_list +='</td>';
 					hospital_list +='</tr></table>';
-					
+					if(i == data.length-1){
+						hospital_list +='<table><tr><td>'+pagedata+'</td></tr></table>';	
+					}
 				}
-				
-				hospital_list +='<table><tr><td>'+pagedata+'</td></tr></table>';
+				if(data.length==0){
+					hospital_list +='<table><tr><td>검색조건에 맞는 병원이 없습니다.</td></tr></table>';
+				}
 				var hospitals = document.getElementById('hospitallistarea');
 				hospitals.innerHTML=hospital_list;
 				
@@ -109,7 +113,7 @@
 	 	option = document.getElementsByName("option");
 	 	
 	 	var findname = document.hospital_main_search.findname.value;
-	 	
+
 		//////////////////■top옵션 ■/////////////////
 		if(search_option == 'option1'){
 			if(option[0].checked){
@@ -164,7 +168,6 @@
 			params += 'findname='+findname;
 			z=1;
 		}
-		
 		hospital_sub_search(params);
 	}
 	

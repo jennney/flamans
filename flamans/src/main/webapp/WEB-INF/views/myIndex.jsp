@@ -37,11 +37,11 @@
 	        </li>
 	     </c:if>
 	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'B'}">
-   	        <li><a href="member_dashBoard.do">  Dashboard</a></li>
-	        <li><a href="member_page.do">  MyPage</a></li>
-	        <li><a href="#">  Booking</a></li>
-	        <li><a href="wishlist_compare.do">  WishList</a></li>
-	        <li><a href="member_find.do">Find</a></li>
+   	        <li><a href="#">  Dashboard</a></li>
+	        <li><a href="hospitalBbsList.do">  HospitalCommunity</a></li>
+	        <li><a href="hospitalContent.do">  HospitalInfo</a></li>
+	        <li><a href="doctorList.do">  DoctorInfo</a></li>
+	        <li><a href="#"> HospitalEvent</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
 	     </c:if>
    	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'H'}">
@@ -61,9 +61,9 @@
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Community <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
-                    <li><a href="no_List.do">Notice</a></li>
-                    <li><a href="faq_List.do">FAQ</a></li>
-                    <li><a href="qna_List.do?qna_kind=site">Q&amp;A</a></li>
+                    <li><a href="no_List_admin.do">Notice</a></li>
+                    <li><a href="faq_List_admin.do">FAQ</a></li>
+                    <li><a href="qna_List_admin.do?qna_kind=site">Q&amp;A</a></li>
                 </ul>
             </li>
 	        <li><a href="#">  1:1</a></li>

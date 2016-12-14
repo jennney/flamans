@@ -91,7 +91,8 @@
 			#{roomprice},
 			#{roomnum},
 			fm_hotroom_idx.nextval,
-			#{room_option}
+			#{room_option},
+			#{people_num}
 		)
 	</insert>
 	
@@ -106,7 +107,8 @@
 			roomname=#{roomname},
 			roomprice=#{roomprice},
 			roomnum=#{roomnum},
-			room_option=#{room_option}
+			room_option=#{room_option},
+			people_num=#{people_num}
 		where
 			room_idx=#{room_idx}
 	</update>

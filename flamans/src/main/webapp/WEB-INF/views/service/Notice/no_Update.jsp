@@ -87,37 +87,37 @@ h2{
 </script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-<div class="center">
-   <h2>공지사항</h2>
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
+		<h2>공지사항</h2>
+		<form name="no_Update" action="no_Update.do" method="post">
+			<table id="no_up">
+				<tr>
+					<td id="no_upth1">SUBJECT</td>
+					<td id="no_uptd1"><input type="text" name="no_subject" value="${ndto.no_subject}"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><textarea name="no_content" id="no_content">${ndto.no_content}</textarea></td>
+				</tr>
+				<tr>	
+					<td id="no_uptd2">첨부파일1</td>
+					<td id="no_uptd2"><input type="file" name="upload"  value="${ndto.no_file1}"></td>
+				</tr>
+				<tr>	
+					<td id="no_uptd3">첨부파일2</td>
+					<td id="no_uptd3"><input type="file" name="upload" value="${ndto.no_file2}"></td>
+				</tr>
+				<tr>
+					<tr>
+						<td id="no_uptd5"><input type="button" value="목록으로" onclick="location.href='no_List.do'"></td>
+						<td id="no_uptd4"><input type="hidden" name="no_idx" value="${ndto.no_idx}"><input type="submit" value="수정하기"></td>
+					<tr>
+				</tr>
+			</table>
+		</form>
+	</div>
 </div>
-<form name="no_Update" action="no_Update.do" method="post">
-	<table id="no_up">
-		<tr>
-			<td id="no_upth1">SUBJECT</td>
-			<td id="no_uptd1"><input type="text" name="no_subject" value="${ndto.no_subject}"></td>
-		</tr>
-		<tr>
-			<td colspan="2"><textarea name="no_content" id="no_content">${ndto.no_content}</textarea></td>
-		</tr>
-		<tr>	
-			<td id="no_uptd2">첨부파일1</td>
-			<td id="no_uptd2"><input type="file" name="upload"  value="${ndto.no_file1}"></td>
-		</tr>
-		<tr>	
-			<td id="no_uptd3">첨부파일2</td>
-			<td id="no_uptd3"><input type="file" name="upload" value="${ndto.no_file2}"></td>
-		</tr>
-		<tr>
-			<tr>
-				<td id="no_uptd5"><input type="button" value="목록으로" onclick="location.href='no_List.do'"></td>
-				<td id="no_uptd4"><input type="hidden" name="no_idx" value="${ndto.no_idx}"><input type="submit" value="수정하기"></td>
-			<tr>
-		</tr>
-	</table>
-</form>
-</section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

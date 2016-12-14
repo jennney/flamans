@@ -17,20 +17,21 @@
 				<tr>
 					<th>번호</th>
 					<th>방 이름</th>
+					<th>최대 인원</th>
 					<th>방 가격</th>
 					<th>방 개수</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<td colspan="3" align="center">${hotelRoomPage }</td>
+					<td colspan="4" align="center">${hotelRoomPage }</td>
 					<td align="center"><a href="hotelRoomAdd.do">방등록하기</a></td>
 				</tr>
 			</tfoot>
 			<tbody>
 			<c:if test="${empty list }">
 				<tr>
-					<td colspan="4" align="center">등록된 방이 없습니다.</td>
+					<td colspan="5" align="center">등록된 방이 없습니다.</td>
 				</tr>
 			</c:if>
 			<c:if test="${!empty list }">
@@ -41,6 +42,7 @@
 						<c:param name="room_idx">${dto.room_idx }</c:param>
 					</c:url>
 					<td><a href=${hotelRoomContentUrl }>${dto.roomname }</a></td>
+					<td>${dto.people_num }</td>
 					<td>${dto.roomprice }</td>
 					<td>${dto.roomnum }</td>
 				</tr>

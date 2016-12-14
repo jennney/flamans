@@ -95,7 +95,7 @@ public class HosFindController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/hospital_sub_search.do")
 	public ModelAndView hospital_sub_search(
-			@RequestParam(value="option1",defaultValue="1")int option1,@RequestParam(value="option2",defaultValue="0")int option2,@RequestParam(value="option3",defaultValue="0")int option3,@RequestParam(value="option4",defaultValue="0")int option4,@RequestParam(value="option5",defaultValue="0")int option5,
+			@RequestParam(value="option1",defaultValue="옵션1")String option1,@RequestParam(value="option2",defaultValue="")String option2,@RequestParam(value="option3",defaultValue="")String option3,@RequestParam(value="option4",defaultValue="")String option4,@RequestParam(value="option5",defaultValue="")String option5,
 			@RequestParam(value="findname", defaultValue="")String findname,
 			
 			@RequestParam(value="cp",defaultValue="1")int cp,
@@ -165,7 +165,7 @@ public class HosFindController {
 		
 		String hospital_name_find = findname.toLowerCase();
 		
-		int option[] = {option1,option2,option3,option4,option5};
+		String option[] = {option1,option2,option3,option4,option5};
 		StringBuffer sb= new StringBuffer();
 		
 		//플래그 변수들. where_con & z
@@ -179,28 +179,24 @@ public class HosFindController {
 		//한개의조건문을 탈출했을경우 and 값을 넣어줘야하는 플래그변수
 		int and_flag =0;
 		
+		//두번째조건이 들어갈때
 		z=0;
 		for(int i=0; i<option.length; i++){
-			if(option[i]!=0 && z==0){
-				if(where_con==0){
-					sb.append("where ");
-					where_con=1;
-				}
+			if(!option[i].equals("") && z==0){
 				
 				if(and_flag==1){
 					sb.append(" and ");
 				}
 				
-				sb.append("hos_option in ('옵션"+option[i]+"'");
+				sb.append(" hos_num in (select hos_num from fm_hospital where hos_option in ('"+option[i]+"'");
 				z=1;
 				
-			}else if(option[i]!=0 && z==1){
-				sb.append(", '옵션"+option[i]+"'");
+			}else if(!option[i].equals("") && z==1){
+				sb.append(", '"+option[i]+"'");
 			}
 		}
-		
 		if(z==1){
-			sb.append(")");
+			sb.append("))");
 			and_flag=1;
 		}
 		System.out.println("hospital_name_find="+hospital_name_find);
@@ -318,7 +314,6 @@ public class HosFindController {
 		mav.addObject("doctor_info",list);
 		mav.setViewName("hospital/Bbook");
 		return mav;
-		
 	}
 
 	@RequestMapping("/hospital_input_comment_grade.do")
@@ -436,7 +431,12 @@ public class HosFindController {
 			hossearchObject1.put("hos_img",list.get(0).getHos_img());
 			hossearchObject1.put("hos_content",list.get(0).getHos_content());
 			hossearchObject1.put("hos_map_info",list.get(0).getHos_mapinfo());
-			hossearchObject1.put("hos_wishnum",wishdate);
+			hossearchObject1.put("hos_wishdate",wishdate);
+			
+			if(hossearchArray1.size()>2){
+				hossearchArray1.remove(0);
+			}
+			
 			hossearchArray1.add(hossearchObject1);
 			
 			hossearchObject.put("hos", hossearchArray1);

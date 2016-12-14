@@ -16,18 +16,23 @@ function addrFind(){
 </script>
 </head>
 <body>
-<h2>병원 업데이트 페이지</h2>
-<c:set var="dto" value="${dto }"/>
-<form name="hospitalInfo" action="hospitalUpdate.do" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="hos_num" value="${sessionScope.cm_number }">
-	 이름 : <input type="text" name="hos_name" value="${dto.hos_name }" class="form-control"><br>
-	 주소 : <input type="text" name="hos_addr" value="${dto.hos_addr }" class="form-control"> <input type="button" value="검색" onclick="addrFind();" class="btn btn-default"><br>
-	 이미지 : <input type="file" name="upload" class="form-control">
-	 	<input type="hidden" name="hos_img" value="${dto.hos_img }">
-	 <br>
-	 상세내용 : <textarea rows="4" cols="200" name="hos_content" class="form-control">${dto.hos_content }</textarea><br>
-	 찾아오는길 : <textarea rows="2" cols="200" name="hos_mapinfo" class="form-control">${dto.hos_mapinfo }</textarea><br>
-	<input type="submit" value="수정하기" class="btn btn-default"> <input type="reset" value="초기화" class="btn btn-default">
-</form>
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">		
+		<h2>병원 업데이트 페이지</h2>
+		<c:set var="dto" value="${dto }"/>
+		<form name="hospitalInfo" action="hospitalUpdate.do" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="hos_num" value="${sessionScope.cm_number }">
+			 이름 : <input type="text" name="hos_name" value="${dto.hos_name }" class="form-control"><br>
+			 주소 : <input type="text" name="hos_addr" value="${dto.hos_addr }" class="form-control"> <input type="button" value="검색" onclick="addrFind();" class="btn btn-default"><br>
+			 이미지 : <input type="file" name="upload" class="form-control">
+			 	<input type="hidden" name="hos_img" value="${dto.hos_img }">
+			 <br>
+			 상세내용 : <textarea rows="4" cols="200" name="hos_content" class="form-control">${dto.hos_content }</textarea><br>
+			 찾아오는길 : <textarea rows="2" cols="200" name="hos_mapinfo" class="form-control">${dto.hos_mapinfo }</textarea><br>
+			<input type="submit" value="수정하기" class="btn btn-default"> <input type="reset" value="초기화" class="btn btn-default">
+		</form>
+	</div>
+</div>		
 </body>
 </html>

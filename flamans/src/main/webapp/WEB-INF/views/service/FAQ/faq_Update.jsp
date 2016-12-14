@@ -58,35 +58,40 @@ h2{
 </script>
 </head>
 <body>
-<h2>FAQ</h2>
-<form name="faq_Update" action="faq_Update.do" method="post" onsubmit="return check()">
-	<table id="faq_wr">
-		<tr>
-			<th id="faq_wrth1">SUBJECT</th>
-			<td id="faq_wrtd1"><input type="text" name="faq_subject" size="70" value="${fdto.faq_subject}"></td>
-		</tr>
-		<tr>
-			<th id="faq_wrth2">ITME</th>
-			<td colspan="1" id="faq_wrtd2">
-				<select name="faq_item">
-					<option value="hospital"${fdto.faq_item eq 'hospital'?"selected":""}>병원</option>
-					<option value="hotel" ${fdto.faq_item eq 'hotel'?"selected":""}>호텔</option>
-					<option value="member" ${fdto.faq_item eq 'member'?"selected":""}>회원서비스</option>
-					<option value="etc" ${fdto.faq_item eq 'etc'?"selected":""}>기타</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"><textarea name="faq_content" id="tx">${fdto.faq_content}</textarea></td>
-		</tr>
-		<tr>
-			<td colspan="2" id="faq_wrtd3">
-				<input type="hidden" name="faq_idx" value="${fdto.faq_idx}">
-				<input type="checkbox" value="on" name = "faq_checked" ${fdto.faq_checked eq 'on'?"checked":""}>BEST 등록   
-				<input type="submit" value="작성하기">   <input type="reset" value="다시쓰기">
-			</td>
-		</tr>
-	</table>
-</form>
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
+		<h2>FAQ</h2>
+		<form name="faq_Update" action="faq_Update.do" method="post" onsubmit="return check()">
+			<table id="faq_wr">
+				<tr>
+					<th id="faq_wrth1">SUBJECT</th>
+					<td id="faq_wrtd1"><input type="text" name="faq_subject" size="70" value="${fdto.faq_subject}"></td>
+				</tr>
+				<tr>
+					<th id="faq_wrth2">ITME</th>
+					<td colspan="1" id="faq_wrtd2">
+						<select name="faq_item">
+							<option value="hospital"${fdto.faq_item eq 'hospital'?"selected":""}>병원</option>
+							<option value="hotel" ${fdto.faq_item eq 'hotel'?"selected":""}>호텔</option>
+							<option value="member" ${fdto.faq_item eq 'member'?"selected":""}>회원서비스</option>
+							<option value="etc" ${fdto.faq_item eq 'etc'?"selected":""}>기타</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><textarea name="faq_content" id="tx">${fdto.faq_content}</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="faq_wrtd3">
+						<input type="hidden" name="faq_idx" value="${fdto.faq_idx}">
+						<input type="checkbox" value="on" name = "faq_checked" ${fdto.faq_checked eq 'on'?"checked":""}>BEST 등록   
+						<input type="submit" value="작성하기">   <input type="reset" value="다시쓰기">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
 </body>
 </html>

@@ -129,9 +129,9 @@
    <!-- 1.dataSource -->
    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-      <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
-      <property name="username" value="scott"/>
-      <property name="password" value="1234"/>
+      <property name="url" value="jdbc:oracle:thin:@yongstudy.iptime.org:9000:orcl"/>
+      <property name="username" value="project02_02"/>
+      <property name="password" value="project02_02"/>
    </bean>
    
    <!-- 2. 트랜잭션관리자 등록 -->

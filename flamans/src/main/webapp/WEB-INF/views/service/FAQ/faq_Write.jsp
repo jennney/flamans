@@ -56,34 +56,39 @@
 </script>
 </head>
 <body>
-<h2>FAQ</h2>
-<form name="faq_Write" action="faq_Write.do" method="post" onsubmit="return check()">
-	<table id="faq_wr">
-		<tr>
-			<th id="faq_wrth1">SUBJECT</th>
-			<td id="faq_wrtd1"><input type="text" name="faq_subject" size="70"></td>
-		</tr>
-		<tr>
-			<th id="faq_wrth2">ITME</th>
-			<td colspan="1" id="faq_wrtd2">
-				<select name="faq_item">
-					<option value="hospital">병원</option>
-					<option value="hotel">호텔</option>
-					<option value="member">회원서비스</option>
-					<option value="etc">기타</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"><textarea name="faq_content" id="tx"></textarea></td>
-		</tr>
-		<tr>
-			<td colspan="2" id="faq_wrtd3">
-				<input type="checkbox" value="on" name = "faq_checked">BEST 등록   
-				<input type="submit" value="작성하기">   <input type="reset" value="다시쓰기">
-			</td>
-		</tr>
-	</table>
-</form>
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
+		<h2>FAQ</h2>
+		<form name="faq_Write" action="faq_Write.do" method="post" onsubmit="return check()">
+			<table id="faq_wr">
+				<tr>
+					<th id="faq_wrth1">SUBJECT</th>
+					<td id="faq_wrtd1"><input type="text" name="faq_subject" size="70"></td>
+				</tr>
+				<tr>
+					<th id="faq_wrth2">ITME</th>
+					<td colspan="1" id="faq_wrtd2">
+						<select name="faq_item">
+							<option value="hospital">병원</option>
+							<option value="hotel">호텔</option>
+							<option value="member">회원서비스</option>
+							<option value="etc">기타</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><textarea name="faq_content" id="tx"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="faq_wrtd3">
+						<input type="checkbox" value="on" name = "faq_checked">BEST 등록   
+						<input type="submit" value="작성하기">   <input type="reset" value="다시쓰기">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
 </body>
 </html>

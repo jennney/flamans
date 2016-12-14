@@ -160,11 +160,11 @@ public class CompanyController {
 			}else if(userBid.equals(dto.getCm_id())){
 				if(!userBpwd.equals(dto.getCm_pwd())){		
 					mav.addObject("msg", "잘못된 비밀번호입니다. ");
-					mav.addObject("url", "company_login.do");
+					mav.addObject("url", "member_login.do");
 					mav.setViewName("company/company_msg");
 				}else if(!cm_number.equals(dto.getCm_number())){
 					mav.addObject("msg", "사업자 번호를 확인해주세요. ");
-					mav.addObject("url", "company_login.do");
+					mav.addObject("url", "member_login.do");
 					mav.setViewName("company/company_msg");
 				}else{
 					Cookie ck= new Cookie("saveBid", userBid);
