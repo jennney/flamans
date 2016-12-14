@@ -83,7 +83,7 @@
 			from
 		fm_faq 
 			where faq_item = 
-		'member'
+		'member' order by faq_idx desc
 	</select>
 
 	<select id="faq_hosList" resultType="flamans.faq.model.FaqDTO">

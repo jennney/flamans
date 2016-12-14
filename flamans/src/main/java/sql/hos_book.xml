@@ -114,7 +114,7 @@
     	 , TO_CHAR(bookingdate,'YYYY-MM-DD') bookingdate,
        bwdate,
        		permit,
-       doc_num_number,
+       doc_num,
        		hos_bid,
        	doc_num
       from fm_hos_book where name = #{m_id}

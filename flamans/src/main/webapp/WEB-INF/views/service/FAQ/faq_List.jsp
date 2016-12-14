@@ -127,9 +127,6 @@
 		<div class="accordion_sub">${bestList.faq_content}</div>
 	</c:forEach>
 </div>
-<c:if test="${sessionScope.permit eq 3}">
-	<p><a href="faq_Write.do"><img alt="작성" src="img/write.png"></a></p>
-</c:if>
 <div class="seaTabs">
 	<div class="seaTabs_switch">
 		<div class="seaTabs_tab">전체</div>

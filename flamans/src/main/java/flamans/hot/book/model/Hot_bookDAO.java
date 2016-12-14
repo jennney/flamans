@@ -32,6 +32,6 @@ public interface Hot_bookDAO {
 	public int bBook_reWrite(BbookDTO dto, String hos_num);
 	
 	public List<BbookDTO> calendar(String hos_num, String date);*/
-	
+	public int fm_hotroomnum(int room_idx,int roomselect);
 }
    

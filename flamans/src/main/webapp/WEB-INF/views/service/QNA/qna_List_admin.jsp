@@ -63,8 +63,8 @@ a:LINK {
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
 	   <h2>Q&amp;A</h2>
-<p id="p"><a href="qna_List.do?qna_kind_admin=site">전체 보기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=meminfo">회원정보문의</a>&nbsp;&nbsp;
-|&nbsp;&nbsp;<a href="qna_List.do?qna_kind_admin=site&qna_item=memgroup">단체회원문의</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=tieup">제휴문의</a>
+<p id="p"><a href="qna_List_admin.do?qna_kind=site">전체 보기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List_admin.do?qna_kind=site&qna_item=meminfo">회원정보문의</a>&nbsp;&nbsp;
+|&nbsp;&nbsp;<a href="qna_List_admin.do?qna_kind=site&qna_item=memgroup">단체회원문의</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List_admin.do?qna_kind=site&qna_item=tieup">제휴문의</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List_admin.do?qna_kind=site&qna_item=etc">기타문의</a></p>
 	<table id="qn_list">
 		<thead>
@@ -94,13 +94,10 @@ a:LINK {
 		</thead>
 		<tfoot>
 			<tr>
-				<td colspan="4" align="center" id="qna_listtd7">
-				<ul class="pagination pagination-lg">
-				<li>${qna_page}</li>
-				</ul>
-				</td>
-				<td align="right" id="qna_listtd7">
-					<button class="btn btn-default" onclick="location.href='qna_Write.do?qna_kind=${qna_kind}'">글쓰기</button>				
+				<td colspan="5" align="center" id="qna_listtd7">
+					<ul class="pagination pagination-lg">
+						<li>${qna_page}</li>
+					</ul>
 				</td>
 		   	</tr>
 		</tfoot>

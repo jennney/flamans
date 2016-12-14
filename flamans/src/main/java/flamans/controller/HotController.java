@@ -49,10 +49,12 @@ public class HotController {
 
 	}
 	@RequestMapping(value="/booking_hot.do",method=RequestMethod.POST)
-	public ModelAndView booking_hot(Hot_bookDTO bdto){
+	public ModelAndView booking_hot(Hot_bookDTO bdto,@RequestParam("cardco")String cardco,@RequestParam("cardnum")String cardnum){
 		ModelAndView mav = new ModelAndView();
-	
+		String card = cardco+" "+cardnum;
+		bdto.setCard(card);
 		int result = Hot_bookDao.booking_hot1(bdto);
+		int roomcount = Hot_bookDao.fm_hotroomnum(bdto.getRoom_idx(),bdto.getRoomselect());
 		String msg = result>0?"예약되었습니다.":"예약 실패되었습니다.";
 		mav.addObject("msg",msg);
 		mav.addObject("url","hotel_list.do");
@@ -178,5 +180,4 @@ public class HotController {
 	}
 	*/
 	
-
 }

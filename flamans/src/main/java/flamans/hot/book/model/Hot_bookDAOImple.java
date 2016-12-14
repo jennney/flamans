@@ -68,6 +68,13 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 			return null;
 		}
 	}
+	public int fm_hotroomnum(int room_idx, int roomselect) {
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("room_idx", room_idx);
+			map.put("roomselect",roomselect);
+			int count = sqlMap.update("fm_hotroomnum",map);
+			return count;
+		}
 }	
   
 /*public int booking_hot_info(Hot_bookDTO dto){
