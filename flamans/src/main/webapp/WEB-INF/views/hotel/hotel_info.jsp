@@ -15,6 +15,7 @@
 	$(document).ready(function() {
 		$('.slideControl').slideControl();
 	});
+	
 	</script>
 	<style>
 		
@@ -130,7 +131,6 @@
 	<meta charset="UTF-8">
 	<title>[name] 호텔 상세페이지</title>
 	
-	
 	<style>
 	#container {
 		overflow: hidden;
@@ -174,9 +174,17 @@
 	}
 	</style>
 
-
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=ebe809a3005bdc67543fbb052162f94d&libraries=services"></script>
 <script>
+
+function number_check(num){
+	var m_star = document.getElementById("m_star");
+	if(!(num>0 && num<6)){
+		alert('( 평점 ) 1~5사이의 숫자를 넣어주세요');
+		document.comment_write.m_star.value='';
+	}
+}
+
 
 function hotel_sub_search(param){
 	sendRequest('hotel_sub_search.do', param, hotel_result_search, 'POST');
@@ -792,7 +800,7 @@ function toggleMap(active) {
 						
 						<tr>
 							<td colspan="5" align="center">
-							<input type="range" name="price_hotel" min="10000" max="100000" step="10000" onchange="hot_grade_search(this.value)"></td>
+							<input type="range" name="price_hotel" min="10000" max="100000" step="10000" onkeydown="hot_grade_search(this.value)"></td>
 						</tr>
 						
 						<tr>
@@ -908,7 +916,6 @@ function toggleMap(active) {
 				
 				<h4>[ 평점/후기 작성 ]</h4>
 				
-				<c:set var="hotel_info" value="${hotel_info}"/>
 				<form name="comment_write" action="hotel_input_comment_grade.do">
 					
 					<table class="table">
@@ -916,21 +923,24 @@ function toggleMap(active) {
 							<td><textarea style="resize:none;" class="form-control" rows="4" cols="85" name="c_comment" placeholder="로그인 후 작성 가능합니다."></textarea></td>
 						</tr>
 					</table>
+					
 					<table class="table">
+					
 						<tr>
-							<td>평점테스트:<input type="text" class="form-control" name="c_grade"></td>
+							<td width="50">평점:</td>
+							<td width="200"><input type="text" size="50" id="m_star" class="form-control" name="c_grade" onkeyup="number_check(this.value)"></td>
+							<td><input type="submit" class="btn btn-default" value="작성"></td>
 						</tr>
-						<tr>
-							<td>작성자테스트:<input type="text" class="form-control" name="c_writer">
-							<input type="submit" class="btn btn-default" value="작성"></td>
-						</tr>
+					
 					</table>
 					
 					<hr>
-					<input type="hidden" name="c_number" value="1">
+						<c:forEach var="hotel_info" items="${hotel_info }">
+							<input type="hidden" name="c_number" value="${hotel_info.hot_num }">
+						</c:forEach>
 					<br>
+					
 				</form>
-				
 				<h2>평점/후기</h2>
 				<c:if test="${empty hotel_comment }">
 					<li> ---- 덧글이 없습니다. 남겨주세요! ---- </li>
