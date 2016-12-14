@@ -27,6 +27,14 @@
    <select id="fm_hotroom" resultType="flamans.hotel_find.model.HotelRoomDTO">
       select * from fm_hotroom where hot_num=#{hot_num}
    </select> 
+    <select id="HBbook_list" parameterType="Map" resultType="flamans.hotel_find.model.HotelRoomDTO">
+		select * 
+		from
+			 fm_hot_book
+		where hot_num=#{hot_num} and (to_char(checkin,'yyyy-MM-DD')) like ''||#{checkin}||'%'
+		order by 
+			checkin
+	</select>   
    <select id="fm_myhot_book" resultType="flamans.hot.book.model.Hot_bookDTO">
       select hot_num,
          name,
