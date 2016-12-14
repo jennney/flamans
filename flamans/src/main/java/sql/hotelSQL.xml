@@ -19,11 +19,10 @@
 			#{hot_addr}, 
 			#{hot_img}, 
 			#{hot_content}, 
-			null, 
-			null, 
 			#{hot_mapinfo}, 
 			#{hot_grade}, 
-			#{hot_etc} 
+			#{hot_etc},
+			1 
 			) 
 	</insert>
 	

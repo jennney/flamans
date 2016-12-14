@@ -24,17 +24,12 @@ function addrAdd(){
 </script>
 </head>
 <body>
-<div id="wrapper">
-<%@ include file="/WEB-INF/views/myIndex.jsp"%>
-	<div id="page-wrapper">
-		<h2>주소 찾기 창?</h2>
-		<input type="text" name="addr_num" id="addr_num" class="postcodify_postcode5" value="" />
-		<button id="postcodify_search_button">검색</button><br />
-		<input type="text" name="addr1" id="addr1" class="postcodify_address" value="" /><br />
-		<input type="text" name="addr2" id="addr2" class="postcodify_details" value="" /><br />
-		<input type="text" name="addr3" id="addr3" class="postcodify_extra_info" value="" /><br />
-		<input type="button" value="입력완료" onclick="addrAdd()">
-	</div>
-</div>
+<h2>주소 찾기 창?</h2>
+<input type="text" name="addr_num" id="addr_num" class="postcodify_postcode5" value="" />
+<button id="postcodify_search_button">검색</button><br />
+<input type="text" name="addr1" id="addr1" class="postcodify_address" value="" /><br />
+<input type="text" name="addr2" id="addr2" class="postcodify_details" value="" /><br />
+<input type="text" name="addr3" id="addr3" class="postcodify_extra_info" value="" /><br />
+<input type="button" value="입력완료" onclick="addrAdd()">
 </body>
 </html>

@@ -16,9 +16,9 @@
 			#{hos_addr}, 
 			#{hos_img}, 
 			#{hos_content}, 
-			0, 
-			0, 
-			#{hos_mapinfo} 
+			#{hos_mapinfo},
+			1,
+			#{hos_special}
 			) 
 	</insert>
 	
@@ -29,7 +29,8 @@
 				hos_addr=#{hos_addr},
 				hos_img=#{hos_img},
 				hos_content=#{hos_content},
-				hos_mapinfo=#{hos_mapinfo}
+				hos_mapinfo=#{hos_mapinfo},
+				hos_special=#{hos_special}
 			where
 				hos_num=#{hos_num}
 	</update>

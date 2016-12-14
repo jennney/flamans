@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,31 +91,35 @@ public class Hotel_ManagerController {
 	@RequestMapping("/hotelContent.do")
 	public ModelAndView hotelContent(HttpSession session){
 		List<HotelDTO> list=hotmDao.hotelContent((String)session.getAttribute("cm_number"));
-		String etc[]={"wifi","parking","restaurant","pool","fitness","laundry"};
-		String result[]=list.get(0).getHot_etc().split(",");
-		StringBuffer sb1=new StringBuffer();
-		HashMap<String, Object> map=new HashMap<String, Object>();
-		map.put("wifi", "무료 와이파이");
-		map.put("parking", "무료 주차장");
-		map.put("restaurant", "레스토랑");
-		map.put("pool", "실내 수영장");
-		map.put("fitness", "피트니스");
-		map.put("laundry", "세탁 서비스");
-		for(int j=0;j<etc.length;j++){
-			sb1.append("<input type='checkbox' name='hot_etc' value='");
-			sb1.append(etc[j]);
-			sb1.append("'");
-			for(int k=0;k<result.length;k++){
-				if(etc[j].equals(result[k])){
-					sb1.append(" checked='checked'");
-				}
-			}
-			sb1.append(">");
-			sb1.append(map.get(etc[j]));
-		}
 		ModelAndView mav=new ModelAndView();
+		if(list!=null&&list.size()!=0){
+			String etc[]={"wifi","parking","restaurant","pool","fitness","laundry"};
+			String result[]=list.get(0).getHot_etc().split(",");
+			StringBuffer sb1=new StringBuffer();
+			HashMap<String, Object> map=new HashMap<String, Object>();
+			map.put("wifi", "무료 와이파이");
+			map.put("parking", "무료 주차장");
+			map.put("restaurant", "레스토랑");
+			map.put("pool", "실내 수영장");
+			map.put("fitness", "피트니스");
+			map.put("laundry", "세탁 서비스");
+			for(int j=0;j<etc.length;j++){
+				sb1.append("<input type='checkbox' name='hot_etc' value='");
+				sb1.append(etc[j]);
+				sb1.append("'");
+				for(int k=0;k<result.length;k++){
+					if(etc[j].equals(result[k])){
+						sb1.append(" checked='checked'");
+					}
+				}
+				sb1.append(">");
+				sb1.append(map.get(etc[j]));
+			}
+			mav.addObject("etcs", sb1.toString());
+		}
+		
 		mav.addObject("list", list);
-		mav.addObject("etcs", sb1.toString());
+		
 		mav.setViewName("manager/hotel/hotelContent");
 		return mav;
 	}
@@ -127,7 +132,13 @@ public class Hotel_ManagerController {
 	public void copyinto(String writer,MultipartFile upload){
 		try {
 			byte bytes[]=upload.getBytes();
-			File newFile=new File("C:/Users/YunJunHo/git/flamans/flamans/src/main/webapp/img/"+upload.getOriginalFilename());
+			String path="C:/Users/YunJunHo/git/flamans/flamans/src/main/webapp/img/hotel";
+			File newFile=new File(path+"/"+writer);
+			if(!newFile.exists()){
+				newFile.mkdirs();
+			}
+			String savepath=path+"/"+writer;
+			newFile=new File(savepath+"/"+upload.getOriginalFilename());
 			FileOutputStream fos=new FileOutputStream(newFile);
 			fos.write(bytes);
 			fos.close();
