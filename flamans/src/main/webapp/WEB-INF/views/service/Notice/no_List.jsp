@@ -101,23 +101,11 @@ h2 {
 		</thead>
 		<tfoot>
 			<tr>
-				<c:if test="${sessionScope.permit eq 3}">
-					<td colspan="3" align="center" id="no_listtdd">
-						<ul  class="pagination pagination-lg">
-							<li>${no_page}</li>
-						</ul>
-					</td>
-					<td align="right" colspan="1" id="no_listtdd">
-						<button type="button" class="btn btn-default" onclick="location.href='no_Write.do'">글쓰기</button>
-					</td>
-				</c:if>
-				<c:if test="${empty sessionScope.permit}">
-					<td colspan="4" align="center" id="no_listtdd">
+				<td colspan="4" align="center" id="no_listtdd">
 					<ul  class="pagination pagination-lg">
 						<li>${no_page}</li>
 					</ul>
-					</td>
-				</c:if>
+				</td>
 			</tr>
 		</tfoot>
 		<tbody>

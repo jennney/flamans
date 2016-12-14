@@ -40,6 +40,25 @@ public class FaqController {
 		mav.setViewName("service/FAQ/faq_List");
 		return mav;		
 	}
+	
+	@RequestMapping("/faq_List_admin.do")
+	public ModelAndView faqListAdmin(){
+		List<FaqDTO> list = faqDao.faqList();
+		List<FaqDTO> bestList = faqDao.faqBestList();
+		List<FaqDTO> memList = faqDao.faqmemList();
+		List<FaqDTO> hosList = faqDao.faqhosList();
+		List<FaqDTO> hotList = faqDao.faqhotList();
+		List<FaqDTO> etcList = faqDao.faqetc();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("bestList", bestList);
+		mav.addObject("memList", memList);
+		mav.addObject("hosList", hosList);
+		mav.addObject("hotList", hotList);
+		mav.addObject("etcList", etcList);
+		mav.setViewName("service/FAQ/faq_List_admin");
+		return mav;		
+	}
 
 	@RequestMapping(value="/faq_Write.do",method=RequestMethod.GET)
 	public String faqWriteForm(){
@@ -55,7 +74,7 @@ public class FaqController {
 		String msg = result>0?"자주하는질문이 등록되었습니다.":"잘주하는질문등록이 실패하였습니다.";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg",msg);
-		mav.addObject("url","faq_List.do");
+		mav.addObject("url","faq_List_admin.do");
 		mav.setViewName("service/FAQ/faq_Msg");
 		return mav;
 	}
@@ -66,7 +85,7 @@ public class FaqController {
 		String msg = result>0?"삭제 완료 되었습니다.":"삭제가 실패 되었습니다.";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url","faq_List.do");
+		mav.addObject("url","faq_List_admin.do");
 		mav.setViewName("service/FAQ/faq_Msg");
 		return mav;
 	}
@@ -89,7 +108,7 @@ public class FaqController {
 		String msg = result>0?"수정이 완료되었습니다.":"수정이 실패되었습니다.";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg",msg);
-		mav.addObject("url","faq_List.do");
+		mav.addObject("url","faq_List_admin.do");
 		mav.setViewName("service/FAQ/faq_Msg");
 		return mav;
 	}
@@ -107,6 +126,22 @@ public class FaqController {
 		mav.addObject("findValue",findValue);
 		mav.addObject("page",faq_page);
 		mav.setViewName("service/FAQ/faq_Find");
+		return mav;
+	}
+	
+	@RequestMapping(value="/faq_Find_admin.do")
+	public ModelAndView faqFindAdmin(@RequestParam("findValue")String findValue,@RequestParam(value = "cp", defaultValue = "1") int cp){
+		List<FaqDTO> list = faqDao.faqFind(findValue);
+		int totalCnt = faqDao.faqTotal(findValue);
+		int listSize = 5;
+		int pageSize = 5;
+		String faq_page = paging1.makePage("faq_Find.do", totalCnt, listSize, pageSize, cp,"all", findValue,"");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("count",totalCnt);
+		mav.addObject("findValue",findValue);
+		mav.addObject("page",faq_page);
+		mav.setViewName("service/FAQ/faq_Find_admin");
 		return mav;
 	}
 }

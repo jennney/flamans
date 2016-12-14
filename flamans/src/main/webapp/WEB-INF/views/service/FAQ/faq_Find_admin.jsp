@@ -36,22 +36,23 @@
 </script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-	${findValue}에 대해 총 ${count}건의 FAQ가 검색되었습니다.
-	<div class="accordion_banner">
-	<c:forEach var="list" items="${list}">
-		<div class="accordion_title">${list.faq_subject}
-			<c:if test="${sessionScope.permit eq 1}">
-				<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-				<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-			</c:if>
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
+		${findValue}에 대해 총 ${count}건의 FAQ가 검색되었습니다.
+		<div class="accordion_banner">
+		<c:forEach var="list" items="${list}">
+			<div class="accordion_title">${list.faq_subject}
+				<c:if test="${sessionScope.permit eq 1}">
+					<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
+					<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
+				</c:if>
+			</div>
+			<div class="accordion_sub">${list.faq_content}</div>
+		</c:forEach>
+		${page}
 		</div>
-		<div class="accordion_sub">${list.faq_content}</div>
-	</c:forEach>
-	${page}
 	</div>
-</section>
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+</div>
 </body>
 </html>
