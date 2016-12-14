@@ -128,8 +128,8 @@
    
    <!-- 1.dataSource -->
    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-      <property name="driverClassName" value="jdbc:oracle:thin:@yongstudy.iptime.org:9000:orcl"/>
-      <property name="url" value="yongstudy.iptime.org"/>
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="url" value="jdbc:oracle:thin:@yongstudy.iptime.org:9000:orcl"/>
       <property name="username" value="project02_02"/>
       <property name="password" value="project02_02"/>
    </bean>
