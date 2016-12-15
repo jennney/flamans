@@ -24,62 +24,62 @@ $(document).ready(function dddate(){
 	var checkout='${Hdto.checkout }';
 	checkin=checkin.split(' ');
 	checkout=checkout.split(' ');
-	alert(checkin[0]+'~'+checkout[0]);
-	ddate.text=checkin[0]+'~'+checkout[0];
+	ddate.innerHTML=checkin[0]+'~'+checkout[0];
 });
 </script>
+<style>
+#ttt{width:180px;}
+#tt{text-align: center;/* float: right; width:220px;  */}
+</style>
 </head>
 <body>
 <section>
 	<fieldset>
 	<br>
-	<div class="col-sm-6">
 	<c:set var="Hdto" value='${Hdto}'/>
 			<table class="table">
 				<tr>
-					<th>호텔 명</th>
+					<th id="ttt">호텔 명</th>
 					<td>${Hdto.cm_name }</td>
 				</tr>
 				<tr>
-					<th>체크인 / 체크아웃</th>
-					<td id="ddate"></td>
+					<th id="ttt">체크인 / 체크아웃</th>
+					<td><span id="ddate"></span></td>
 				</tr>
 				<tr>
-					<th>예약자명</th>
+					<th id="ttt">예약자명</th>
 					<td>${Hdto.name}</td>
 				</tr>
 				<tr>
-					<th>국적</th>
+					<th id="ttt">국적</th>
 					<td>${Hdto.nationality}</td>
 				</tr>			
 				<tr>
-					<th>룸 타입</th>
+					<th id="ttt">룸 타입</th>
 					<td>${Hdto.roomname }</td>
 				</tr>
 				<tr>
-					<th>인원</th>
+					<th id="ttt">인원</th>
 					<td>${Hdto.people }</td>
 				</tr>
 				<tr>
-					<th>카드 정보</th>
+					<th id="ttt">카드 정보</th>
 					<td>${Hdto.card }</td>
 				</tr>
 				<tr>
-					<th>예약 시간</th>
-					<td>${Hdto.bookingdate }</td>
-					
+					<th id="ttt">예약 시간</th>
+					<td>${Hdto.bookingdate }</td>	
 				</tr>
 				<tr>
-					<td style="text-align: center;">
+					<td colspan="2" id="tt">
 					<br>
 						<button type="button" class="btn btn-default" onclick="closeCon()">확인</button>
 						<c:if test="${!empty sessionScope.cm_name }">
 		              		<button type="button" class="btn btn-default" onclick="HbookreWrite('${Hdto.bookingnum}','${Hdto.name}')">수정</button>
-		            	</c:if>
+		            	</c:if><label id="tt"></label>
 					</td>
 				</tr>
-			</table>
-		</div>	
+			</table>	
 		</fieldset>	
 	</section>
 </body>

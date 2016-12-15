@@ -282,26 +282,27 @@ a#booking_pop:hover {
       var checkout = document.getElementById('datepicker2').value;
       if(room==0){
          window.alert('객실을 선택하세요');
-         location.href='HBook_reWrite.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }else if(adult==0 && child==0){
          window.alert('인원수를 체크 해주세요');
-         location.href='HBook_reWrite.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }else if(adult==0 && child>0){
          window.alert('어린이만 예약할 수 없습니다.');
-         location.href='HBook_reWrite.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }else if(checkin=="" || checkin==null){
          window.alert('체크인 날짜를 선택하세요');
-         location.href='HBook_reWrite.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }else if(checkout=="" || checkout==null){
          window.alert('체크아웃 날짜를 선택하세요');
-         location.href='HBook_reWrite.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }
       else{
-         location.href='HBook_reWrite.do?hot_num=${hot_num}#booking_form';
-         document.getElementById("txt").innerHTML = checkin;
-         document.getElementById("txt1").innerHTML = checkout;
-         document.getElementById("txt8").innerHTML = adult;
-         document.getElementById("txt9").innerHTML = child;
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#booking_form';
+         alert(checkin);
+         document.getElementById("txt").value = checkin;
+         document.getElementById("txt1").value = checkout;
+         document.getElementById("txt8").value = adult;
+         document.getElementById("txt9").value = child;
          var people = '어른 : '+adult+'/ 어린이 : '+child;
          document.getElementById("people").value = people;
          document.getElementById("checkin").value = checkin;
@@ -327,6 +328,13 @@ function HreWrite(){
 	document.getElementById("adult").value=adult;
 	document.getElementById("child").value=child;
 	document.getElementById('${Hdto.room_idx }').value='${Hdto.room_idx }';
+	document.getElementById("child").value=child;
+	document.getElementById("child").value=child;
+	document.getElementById("child").value=child;
+	var cardnum='${Hdto.card}';
+	cardnum=cardnum.split(' ');
+	document.getElementById("cardco").value=cardnum[0];
+	document.getElementById("text").value=cardnum[1];
 }   
 </script>
 </head>
@@ -389,7 +397,7 @@ function HreWrite(){
             </c:forEach>
             </select>
          </td>
-         <th><input type="button" value="수정하기" id="booking_pop" onclick="javascript:check(${dto.room_idx})"></th>
+         <th><input type="button" value="수정하기" id="booking_pop" onclick="javascript:check(${dto.room_idx},${Hdto.bookingnum})"></th>
       </tr>
     </c:forEach>
    </table>

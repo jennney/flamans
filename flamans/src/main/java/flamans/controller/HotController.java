@@ -191,9 +191,9 @@ public class HotController {
 	
 	/**호텔관계자 - 예약 수정 폼*/
 	@RequestMapping(value="/HBook_reWrite.do", method=RequestMethod.GET)
-	public ModelAndView Bbook_reWrite(HttpSession session, BbookDTO dto, @RequestParam("name")String name,
+	public ModelAndView Bbook_reWrite(HttpSession session, BbookDTO dto, 
 			@RequestParam("bookingnum")int bookingnum){
-		
+	/*	@RequestParam("name")String name,*/
 		String hot_num=(String)session.getAttribute("cm_number");
 		ModelAndView mav= new ModelAndView();
 		if(hot_num==null||hot_num.equals("")){		
@@ -203,8 +203,9 @@ public class HotController {
 			return mav;
 			
 		}else{
-			MemberDTO mdto = Hot_bookDao.booking_info(name);
 			Hot_bookDTO Hdto=Hot_bookDao.HBook_content(bookingnum);
+			String name=Hdto.getName();
+			MemberDTO mdto = Hot_bookDao.booking_info(name);
 			List<HotelRoomDTO> hotelroom = Hot_bookDao.hotelroom(hot_num);
 			mav.addObject("mdto",mdto);
 			mav.addObject("hot_num",hot_num);
@@ -238,6 +239,7 @@ public class HotController {
 			return mav;
 		
 	}
+	
 	
 	
 }

@@ -121,7 +121,7 @@ function HbookpermitResult(){
 function HbookContent(bookingnum){
 	var bookingnum=bookingnum;
 	var addr='Hbookcontent.do?bookingnum='+bookingnum;
-	window.open(addr, 'Hcontent', 'width:480px;, height:450px;, left=100, top=30');
+	window.open(addr, 'Hcontent', 'width=480, height=450, left=100, top=30');
 }	
 
 
