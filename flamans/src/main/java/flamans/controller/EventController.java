@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -188,14 +191,13 @@ public class EventController {
 	// 호텔,병원관리자-리스트
 	@RequestMapping("/event_co_list.do")
 	public ModelAndView event_hot_list(@RequestParam(value = "e_name", defaultValue = "") String e_name,
-			@RequestParam(value = "cp", defaultValue = "1", required = false) int cp) {
+			@RequestParam(value = "cp", defaultValue = "1", required = false) int cp,HttpSession session) {
 		int totalCnt = eventDao.getTotalCnt(e_name, 0);
 		int listSize = 5;
 		int pageSize = 5;
 		String pageStr = PageModule.makePage("event_co_list.do", totalCnt, listSize, pageSize, cp);
 		List<EventDTO> list = eventDao.event_co_list(cp, listSize, e_name);
 		ModelAndView mav = new ModelAndView();
-
 		mav.addObject("list", list);
 		mav.addObject("pageStr", pageStr);
 		mav.setViewName("event/event_co_list");

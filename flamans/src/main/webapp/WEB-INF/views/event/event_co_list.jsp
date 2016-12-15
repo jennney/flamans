@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <body>
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
 <table>
 	<c:if test="${empty list}">
 		<tr>
@@ -28,7 +31,7 @@
 			<td>${dto.e_date}</td>
 		</tr>
 		<tr>
-			<td colspan="4"><a href="event_co_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}"></a></td>
+			<td colspan="4"><a href="event_co_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}" width="800px" height="400px"></a></td>
 		</tr>
 	</c:forEach>
 	<tr>
@@ -36,10 +39,15 @@
 	</tr>
 	<tr>
 		<td colspan="4" align="center">
-		${pageStr }	   		
+		<ul  class="pagination pagination-lg">
+			<li>${pageStr }</li>
+		</ul>
+		   		
 		</td>
 	</tr>
 	
-</table>	
+</table>
+</div>
+</div>	
 </body>
 </html>
