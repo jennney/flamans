@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@ include file="/WEB-INF/views/header.jsp"%>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE>
 <html>
@@ -26,21 +27,21 @@ a:active, a:hover {
    color: #bd5a35;
    text-decoration: underline;
 }
-table a:link {
+#bt a:link {
    color: #666;
    font-weight: bold;
    text-decoration: none;
 }
-table a:visited {
+#bt a:visited {
    color: #999999;
    font-weight: bold;
    text-decoration: none;
 }
-table a:active, table a:hover {
+#bt a:active,#bt a:hover {
    color: #bd5a35;
    text-decoration: underline;
 }
-table {
+#bt {
    font-family: Arial, Helvetica, sans-serif;
    color: #666;
    font-size: 12px;
@@ -55,7 +56,7 @@ table {
    -webkit-box-shadow: 0 1px 2px #d1d1d1;
    box-shadow: 0 1px 2px #d1d1d1;
 }
-table th {
+#bt th {
    padding: 15px;
    border-top: 1px solid #fafafa;
    border-bottom: 1px solid #e0e0e0;
@@ -64,30 +65,30 @@ table th {
       to(#ebebeb));
    background: -moz-linear-gradient(top, #ededed, #ebebeb);
 }
-table th:first-child {
+#bt th:first-child {
    text-align: left;
    padding-left: 20px;
 }
-table tr:first-child th:first-child {
+#bt tr:first-child th:first-child {
    -moz-border-radius-topleft: 3px;
    -webkit-border-top-left-radius: 3px;
    border-top-left-radius: 3px;
 }
-table tr:first-child th:last-child {
+#bt tr:first-child th:last-child {
    -moz-border-radius-topright: 3px;
    -webkit-border-top-right-radius: 3px;
    border-top-right-radius: 3px;
 }
-table tr {
+#bt tr {
    text-align: center;
    padding-left: 20px;
 }
-table tr td:first-child {
+#bt tr td:first-child {
    text-align: left;
    padding-left: 20px;
    border-left: 0;
 }
-table tr td {
+#bt tr td {
    padding: 12px;
    border-top: 1px solid #ffffff;
    border-bottom: 1px solid #e0e0e0;
@@ -97,26 +98,26 @@ table tr td {
       to(#fafafa));
    background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
 }
-table tr.even td {
+#bt tr.even td {
    background: #f6f6f6;
    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8),
       to(#f6f6f6));
    background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
 }
-table tr:last-child td {
+#bt tr:last-child td {
    border-bottom: 0;
 }
-table tr:last-child td:first-child {
+#bt tr:last-child td:first-child {
    -moz-border-radius-bottomleft: 3px;
    -webkit-border-bottom-left-radius: 3px;
    border-bottom-left-radius: 3px;
 }
-table tr:last-child td:last-child {
+#bt tr:last-child td:last-child {
    -moz-border-radius-bottomright: 3px;
    -webkit-border-bottom-right-radius: 3px;
    border-bottom-right-radius: 3px;
 }
-table tr:hover td {
+#bt tr:hover td {
    background: #f2f2f2;
    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2),
       to(#f0f0f0));
@@ -250,7 +251,7 @@ a#booking_pop:hover {
          minDate: 0,
           closeText : '닫기',
          onSelect: function(selected) {
-         $("#datepicker2").datepicker("option","minDate", selected)
+         	$("#datepicker2").datepicker("option","minDate", selected)
          }
          });
          $("#datepicker2").datepicker({
@@ -259,7 +260,7 @@ a#booking_pop:hover {
          minDate: 0,
           closeText : '닫기',
          onSelect: function(selected) {
-         $("#datepicker1").datepicker("option","maxDate", selected)
+        	 $("#datepicker1").datepicker("option","maxDate", selected)
          }
          })
    });
@@ -311,12 +312,12 @@ a#booking_pop:hover {
 </script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>	
+
 <section>
 <div class="center">
    <h2>예약하기</h2>
 </div>
-   <table cellspacing='0' border="0">
+   <table cellspacing='0' border="0" id="bt">
       <tr>
          <th colspan="2">체크인</th>
          <td><input type="text" id="datepicker1" name="checkin" placeholder="체크인"></td>
@@ -324,10 +325,7 @@ a#booking_pop:hover {
          <td><input type="text" id="datepicker2" name="checkout" placeholder="체크아웃"></td>
       </tr>
       <tr>
-         <th>객실 </th>
-         <td>
-         </td>
-         <th>성인</th>
+         <th colspan="2">성인</th>
          <td>
          <select name="adult" id="adult">
                <option value="0">0</option>
@@ -337,7 +335,7 @@ a#booking_pop:hover {
                <option value="4">4</option>
          </select>
          </td>
-         <th>어린이</th>
+         <th colspan="2">어린이</th>
          <td>
          <select name="child" id="child">
                <option value="0">0</option>

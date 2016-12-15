@@ -84,7 +84,7 @@ h2{
 						<td id="qna_contd5"><button class="btn btn-default" onclick="location.href='qna_List_admin.do?qna_kind=${qdto.qna_kind}'">목록으로</button></td>
 						<td align="right" id="qna_contd5">
 							<button class="btn btn-default" type="submit">수정</button> 
-							<button class="btn btn-default" type="submit" onclick="this.form.action='qna_Delete.do?qna_idx=${qdto.qna_idx}'">삭제</button>    
+							<button class="btn btn-default" type="button" onclick="location.href='qna_Delete.do?qna_idx=${qdto.qna_idx}&qna_kind=${qdto.qna_kind}'">삭제</button>    
 						</td>
 					<tr>
 				</tr>
@@ -112,7 +112,7 @@ h2{
 					</td>
 				</tr>
 				<tr>
-					<td id="qna_retd1"><input type="submit" value="답변등록"></td>
+					<td id="qna_retd1"><button class="btn btn-default" type="submit">답변등록</button> </td>
 				</tr>
 			</table>
 		</form>
