@@ -13,6 +13,16 @@
 	<div class="navbar-header">
 	    <a class="col-lg-12" href="index.do"><img src="img/logo.png" height="40px"></a>
 	</div>
+	<ul class="nav navbar-right top-nav">
+	<li><div id="google_translate_element"></div></li>
+	<script type="text/javascript">function googleTranslateElementInit() {
+       new google.translate.TranslateElement({pageLanguage: 'ko',
+    	   includedLanguages: 'en,ja,ko,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 
+    	   'google_translate_element');
+		}
+	</script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	</ul>
 	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav side-nav">

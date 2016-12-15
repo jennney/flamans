@@ -24,7 +24,7 @@
 			<c:param name="e_idx">${dto.e_idx}</c:param>
 			</c:url>
 				<tr>   		
-					<td colspan="4">${dto.e_subject}</td>
+					<td colspan="4"  style="padding-top: 60px;">${dto.e_subject}</td>
 				<tr>
 					<td>이벤트 기간 : </td>
 					<td>${dto.e_start} ~ ${dto.e_end}</td>
