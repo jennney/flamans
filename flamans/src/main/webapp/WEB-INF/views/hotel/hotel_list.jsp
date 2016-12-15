@@ -226,33 +226,33 @@ input[type=range]:focus::-ms-fill-upper {
 				
 				
 				if(star[0].checked){
-					starimg1.innerHTML = '<img alt="등급1" src="img/select_grade1.jpg" width="50" height="50">';
+					starimg1.innerHTML = '<img alt="등급1" src="img/select_star1.jpg" width="50" height="50">';
 				}else{
-					starimg1.innerHTML = '<img alt="등급1" src="img/1.jpg" width="50" height="50">';
+					starimg1.innerHTML = '<img alt="등급1" src="img/star1.jpg" width="50" height="50">';
 				}
 				
 				if(star[1].checked){
-					starimg2.innerHTML = '<img alt="등급1" src="img/select_grade2.jpg" width="50" height="50">';
+					starimg2.innerHTML = '<img alt="등급1" src="img/select_star2.jpg" width="50" height="50">';
 				}else{
-					starimg2.innerHTML = '<img alt="등급1" src="img/2.jpg" width="50" height="50">';
+					starimg2.innerHTML = '<img alt="등급1" src="img/star2.jpg" width="50" height="50">';
 				}
 				
 				if(star[2].checked){
-					starimg3.innerHTML = '<img alt="등급1" src="img/select_grade3.jpg" width="50" height="50">';
+					starimg3.innerHTML = '<img alt="등급1" src="img/select_star3.jpg" width="50" height="50">';
 				}else{
-					starimg3.innerHTML = '<img alt="등급1" src="img/3.jpg" width="50" height="50">';
+					starimg3.innerHTML = '<img alt="등급1" src="img/star3.jpg" width="50" height="50">';
 				}
 				
 				if(star[3].checked){
-					starimg4.innerHTML = '<img alt="등급1" src="img/select_grade4.jpg" width="50" height="50">';
+					starimg4.innerHTML = '<img alt="등급1" src="img/select_star4.jpg" width="50" height="50">';
 				}else{
-					starimg4.innerHTML = '<img alt="등급1" src="img/4.jpg" width="50" height="50">';
+					starimg4.innerHTML = '<img alt="등급1" src="img/star4.jpg" width="50" height="50">';
 				}
 				
 				if(star[4].checked){
-					starimg5.innerHTML = '<img alt="등급1" src="img/select_grade5.jpg" width="50" height="50">';
+					starimg5.innerHTML = '<img alt="등급1" src="img/star5.jpg" width="50" height="50">';
 				}else{
-					starimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
+					starimg5.innerHTML = '<img alt="등급1" src="img/star5.jpg" width="50" height="50">';
 				}
 				
 				// http://localhost:9090/myweb/img/1.jpg;
@@ -576,27 +576,27 @@ input[type=range]:focus::-ms-fill-upper {
 						
 						<tr>
 							<td onclick="hot_grade_search('star1')">
-								<div id=starimg1><img alt="평점1" src="img/1.jpg" width="50" height="50"></div>
+								<div id=starimg1><img alt="평점1" src="img/star1.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="1">
 							</td>
 							
 							<td onclick="hot_grade_search('star2')">
-								<div id=starimg2><img alt="평점2" src="img/2.jpg" width="50" height="50"></div>
+								<div id=starimg2><img alt="평점2" src="img/star2.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="2">
 							</td>
 							
 							<td onclick="hot_grade_search('star3')">
-								<div id=starimg3><img alt="평점3" src="img/3.jpg" width="50" height="50"></div>
+								<div id=starimg3><img alt="평점3" src="img/star3.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="3">
 							</td>
 							
 							<td onclick="hot_grade_search('star4')">
-								<div id=starimg4><img alt="평점4" src="img/4.jpg" width="50" height="50"></div>
+								<div id=starimg4><img alt="평점4" src="img/star4.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="4">
 							</td>
 							
 							<td onclick="hot_grade_search('star5')">
-								<div id=starimg5><img alt="평점5" src="img/5.jpg" width="50" height="50"></div>
+								<div id=starimg5><img alt="평점5" src="img/star5.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="5">
 							</td>
 							
@@ -622,12 +622,12 @@ input[type=range]:focus::-ms-fill-upper {
 							</td>
 							
 							<td onclick="hot_grade_search('bath')">
-								<div id=optionimg2><img alt="옵션2" src="img/bath.jpg" width="50" height="50">&nbsp;</div>
+								<div id=optionimg2><img alt="옵션2" src="img/bath.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="2">
 							</td>
 							
 							<td onclick="hot_grade_search('breakfast')">
-								<div id=optionimg3><img alt="옵션3" src="img/breakfast.jpg" width="50" height="50">&nbsp;</div>
+								<div id=optionimg3><img alt="옵션3" src="img/breakfast.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="3">
 							</td>
 							

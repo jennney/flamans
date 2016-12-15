@@ -95,7 +95,7 @@ public class HosFindController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/hospital_sub_search.do")
 	public ModelAndView hospital_sub_search(
-			@RequestParam(value="option1",defaultValue="옵션1")String option1,@RequestParam(value="option2",defaultValue="")String option2,@RequestParam(value="option3",defaultValue="")String option3,@RequestParam(value="option4",defaultValue="")String option4,@RequestParam(value="option5",defaultValue="")String option5,
+			@RequestParam(value="option1",defaultValue="")String option1,@RequestParam(value="option2",defaultValue="")String option2,@RequestParam(value="option3",defaultValue="")String option3,@RequestParam(value="option4",defaultValue="")String option4,@RequestParam(value="option5",defaultValue="")String option5,
 			@RequestParam(value="findname", defaultValue="")String findname,
 			
 			@RequestParam(value="cp",defaultValue="1")int cp,
