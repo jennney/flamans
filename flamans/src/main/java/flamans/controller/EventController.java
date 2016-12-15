@@ -7,6 +7,8 @@ import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,28 +91,24 @@ public class EventController {
 		return "event/event_add";
 	}
 
-	// 사이트관리자페이지-파일업로드
-	private void copyInto(MultipartFile uploadimg) {
-
+	// 사이트관리자페이지-글쓰기
+	@RequestMapping(value = "/event_add.do", method = RequestMethod.POST)
+	public ModelAndView event_add(EventDTO dto, @RequestParam("uploadimg") MultipartFile uploadimg,HttpServletRequest request, HttpServletResponse response) {
+		String path = request.getRealPath("img/img");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset-utf-8");
 		try {
 			byte bytes[] = uploadimg.getBytes();
-			File newFile = new File(
-					"C:/Users/지나/git/flamans/flamans/src/main/webapp/img/" + uploadimg.getOriginalFilename());
+			File newFile = new File(path+"/"+uploadimg.getOriginalFilename());
 
 			FileOutputStream fos = new FileOutputStream(newFile);
 			fos.write(bytes);
 			fos.close();
+			dto.setE_img(uploadimg.getOriginalFilename());
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	// 사이트관리자페이지-글쓰기
-	@RequestMapping(value = "/event_add.do", method = RequestMethod.POST)
-	public ModelAndView event_add(EventDTO dto, @RequestParam("uploadimg") MultipartFile uploadimg) {
-		copyInto(uploadimg);
-		dto.setE_img(uploadimg.getOriginalFilename());
 		int result = eventDao.event_add(dto);
 		String msg = result > 0 ? "이벤트 성공" : "이벤트 실패";
 		System.out.println(dto.getE_name());
@@ -161,8 +159,21 @@ public class EventController {
 	@RequestMapping(value = "/event_update.do", method = RequestMethod.POST)
 	public ModelAndView event_update(@RequestParam("e_idx") int e_idx, @RequestParam("e_subject") String e_subject,
 			@RequestParam("e_start") String e_start, @RequestParam("e_end") String e_end,
-			@RequestParam("uploadimg") MultipartFile uploadimg) {
-		copyInto(uploadimg);
+			@RequestParam("uploadimg") MultipartFile uploadimg,HttpServletRequest request, HttpServletResponse response) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset-utf-8");
+		String path = request.getRealPath("img/img");
+		try {
+			byte bytes[] = uploadimg.getBytes();
+			File newFile = new File(path+"/"+uploadimg.getOriginalFilename());
+
+			FileOutputStream fos = new FileOutputStream(newFile);
+			fos.write(bytes);
+			fos.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		String e_img = uploadimg.getOriginalFilename();
 
 		int result = eventDao.event_update(e_idx, e_subject, e_start, e_end, e_img);
@@ -229,8 +240,20 @@ public class EventController {
 	@RequestMapping(value = "/event_co_update.do", method = RequestMethod.POST)
 	public ModelAndView event_co_update(@RequestParam("e_idx") int e_idx, @RequestParam("e_subject") String e_subject,
 			@RequestParam("e_start") String e_start, @RequestParam("e_end") String e_end,
-			@RequestParam("uploadimg") MultipartFile uploadimg,@RequestParam("e_name")String e_name) {
-		copyInto(uploadimg);
+			@RequestParam("uploadimg") MultipartFile uploadimg,@RequestParam("e_name")String e_name,HttpServletRequest request, HttpServletResponse response) {
+		String path = request.getRealPath("img/img");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset-utf-8");
+		try {
+			byte bytes[] = uploadimg.getBytes();
+			File newFile = new File(path+"/"+uploadimg.getOriginalFilename());
+
+			FileOutputStream fos = new FileOutputStream(newFile);
+			fos.write(bytes);
+			fos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		String e_img = uploadimg.getOriginalFilename();
 
 		int result = eventDao.event_co_update(e_idx, e_subject, e_start, e_end, e_img);

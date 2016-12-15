@@ -27,12 +27,23 @@
 			<td colspan="4" style="padding-top: 60px;">${dto.e_subject}</td>
 		<tr>
 			<td>이벤트 기간 : </td>
-			<td>${dto.e_start} ~ ${dto.e_end}</td>
-			<td>등록 날짜 : </td>
+			<td id="${dto.e_idx}"></td>
+<!-- 			<script>
+				var temp=document.getElementById('${dto.e_idx}')
+				var temp1='${dto.e_start}';
+				var temp2=temp1.split(' ');
+				var temp3='${dto.e_end}';
+				temp2+='~'+temp3.split(' ');
+				alert(temp.innerHTML);
+				alert(temp2[0]);
+				temp.innerHTML=temp2[0];
+			</script> -->
+			<td>등록 날짜 : ${dto.e_start} ~ ${dto.e_end}</td>
 			<td>${dto.e_date}</td>
+			
 		</tr>
 		<tr>
-			<td colspan="4"><a href="event_co_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}" width="800px" height="400px"></a></td>
+			<td colspan="4"><a href="event_co_content.do?e_idx=${dto.e_idx}"><img src="img/img/${dto.e_img}" width="800px" height="400px"></a></td>
 		</tr>
 		
 	</c:forEach>
