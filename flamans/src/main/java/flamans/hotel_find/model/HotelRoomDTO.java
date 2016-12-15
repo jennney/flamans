@@ -9,12 +9,13 @@ public class HotelRoomDTO {
 	private int room_idx;
 	private String room_option;
 	private int people_num;
+	private int maxroom;
 	
 	public HotelRoomDTO() {
 		super();
 	}
 
-	public HotelRoomDTO(String hot_num, String roomname, int roomprice, int roomnum, int room_idx, String room_option, int people_num) {
+	public HotelRoomDTO(String hot_num, String roomname, int roomprice, int roomnum, int room_idx, String room_option, int people_num, int maxroom) {
 		super();
 		this.hot_num = hot_num;
 		this.roomname = roomname;
@@ -23,6 +24,7 @@ public class HotelRoomDTO {
 		this.room_idx = room_idx;
 		this.room_option = room_option;
 		this.people_num = people_num;
+		this.maxroom = maxroom;
 	}
 
 	public String getHot_num() {
@@ -79,6 +81,14 @@ public class HotelRoomDTO {
 
 	public void setPeople_num(int people_num) {
 		this.people_num = people_num;
+	}
+
+	public int getMaxroom() {
+		return maxroom;
+	}
+
+	public void setMaxroom(int maxroom) {
+		this.maxroom = maxroom;
 	}
 	
 	

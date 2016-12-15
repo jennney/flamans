@@ -17,7 +17,8 @@
 		방 이름 : ${dto.roomname }<br>
 		최대 인원 : ${dto.people_num}<br>
 		방 가격 : ${dto.roomprice }<br>
-		방 개수 : ${dto.roomnum }<br>
+		현재 객실수 : ${dto.roomnum }<br>
+		총 객실수 : ${dto.maxroom }<br>
 		옵션 : ${options }<br>
 		<c:url var="hotelRoomUpdateUrl" value="hotelRoomUpdate.do">
 			<c:param name="room_idx">${dto.room_idx }</c:param>
@@ -27,6 +28,7 @@
 			<c:param name="room_idx">${dto.room_idx }</c:param>
 		</c:url>
 		<a href="${hotelRoomDeleteUrl }">삭제 하기</a>
+		<a href="hotelRoomList.do">목록보기</a>
 		</c:forEach>
 	</div>
 </div>

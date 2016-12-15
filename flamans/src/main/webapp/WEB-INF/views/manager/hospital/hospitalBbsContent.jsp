@@ -31,7 +31,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<a href="hospitalBbsList.do">목록으로</a>
-						<c:url var="hospialBbsDeleteUrl" value="hospitalBbsDelete.do">
+						<c:url var="hospitalBbsDeleteUrl" value="hospitalBbsDelete.do">
 							<c:param name="qna_idx">${dto.qna_idx }</c:param>
 						</c:url>
 						<a href="${hospitalBbsDeleteUrl }">삭제하기</a>

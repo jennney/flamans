@@ -42,8 +42,8 @@
 	
 	
 	<update parameterType="Map" id="updateSun">
-		update fm_qna set sunbun=sunbun+1 whree ref=${ref} and sunbun
-		-<![CDATA[>=]]>#{sunbun} 
+		update fm_qna set sunbun=sunbun+1 where ref=#{ref} and sunbun
+		<![CDATA[>=]]>#{sunbun} 
 	</update>
 	
 	<update parameterType="Integer" id="readnum"> 
@@ -91,7 +91,8 @@
 			#{roomnum},
 			fm_hotroom_idx.nextval,
 			#{room_option},
-			#{people_num}
+			#{people_num},
+			#{maxroom}
 		)
 	</insert>
 	
@@ -106,6 +107,7 @@
 			roomname=#{roomname},
 			roomprice=#{roomprice},
 			roomnum=#{roomnum},
+			maxroom=#{maxroom},
 			room_option=#{room_option},
 			people_num=#{people_num}
 		where
@@ -115,4 +117,9 @@
 	<delete id="hotelRoomDelete" parameterType="Integer">
 		delete from fm_hotroom where room_idx=#{room_idx}
 	</delete>
+	
+	<select id="getMaxRef" resultType="Integer">
+		select nvl(max(ref),0) from fm_qna
+	</select>
+	
 </mapper>

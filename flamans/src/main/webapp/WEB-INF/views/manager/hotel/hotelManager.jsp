@@ -16,6 +16,7 @@
 			<li><a href="hotelBbsList.do">고객 센터 내역 보기</a></li>
 			<li><a href="hotelContent.do">호텔 정보 등록 하기</a></li>
 			<li><a href="hotelRoomList.do">호텔 객실 정보 보기</a></li>
+			<li><a href="Hbook_list.do">호텔 예약 관리</a></li>
 			<li><a href="event_co_list.do?e_name=${sessionScope.userHid}">호텔 이벤트 리스트</a></li>
 		</ul>
 	</div>

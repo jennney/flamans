@@ -23,7 +23,8 @@
 			</select>
 			<br>
 			방 가격 : <input type="text" name="roomprice"><br>
-			방 개수 : <input type="text" name="roomnum"><br>
+			현재 객실수 : <input type="text" name="roomnum"><br>
+			전체 객실수 : <input type="text" name="maxroom"><br>
 			방 옵션 
 			<input type="checkbox" name="room_option" value="breakfast"> 조식
 			<input type="checkbox" name="room_option" value="minibar"> 미니바

@@ -16,6 +16,10 @@ public interface Hotel_ManagerDAO {
 	
 	public int hotelBbsDelete(int qna_idx);
 	
+	public int getMaxRef();
+	
+	public int updateSun(int ref,int sunbun);
+	
 	public QnaDTO hotelBbsReWriteForm(int qna_idx);
 	
 	public int hotelBbsReWrite(QnaDTO dto);

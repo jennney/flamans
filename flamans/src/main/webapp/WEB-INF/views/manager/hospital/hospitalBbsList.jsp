@@ -6,46 +6,96 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#list_table {
+	width: 700px;
+	margin: 0px auto;
+	border-spacing: 0px;
+}
+
+#list_th1, #list_th2, #list_th3, #list_th4, #list_th5, #list_th6 {
+	border-top: 3px solid #BDBDBD;
+	border-bottom: 3px solid #BDBDBD;
+	height: 50px;
+	text-align: center;
+}
+
+#list_th1 {
+	width: 50px;
+}
+
+#list_th2 {
+	width: 100px;
+}
+
+#list_th3 {
+	width: 400px;
+}
+
+#list_th4 {
+	width: 50px;
+}
+#list_th5 {
+	width: 50px;
+}
+#list_th6 {
+	width: 50px;
+}
+#list_td {
+	border-bottom: 1px solid #BDBDBD;
+	height: 40px;
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+#list_page{
+	height: 50px;
+}
+
+</style>
 </head>
 <body>
 <div id="wrapper">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
 		<h2> 해당 병원 문의 내역 보기</h2>
-		<table border="1" cellspacing="0" width="600">
+		<table id="list_table">
 			<thead>
 				<tr>
-					<th> 번호 </th>
-					<th> 구분 </th>
-					<th> 제목 </th>
-					<th> 작성자 </th>
-					<th> 작성 일자 </th>
-					<th> 조회수 </th>
+					<th id="list_th1"> 번호 </th>
+					<th id="list_th2"> 구분 </th>
+					<th id="list_th3"> 제목 </th>
+					<th id="list_th4"> 작성자 </th>
+					<th id="list_th5"> 작성 일자 </th>
+					<th id="list_th6"> 조회수 </th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<td colspan="6" align="center"> ${hosBbsPage } </td>
+					<td colspan="6" align="center" id="list_page"> ${hosBbsPage } </td>
 				</tr>
 			</tfoot>
 			<tbody>
 				<c:if test="${empty list }">
 					<tr>
-						<td colspan="6" align="center"> 작성된 게시물이 없습니다.</td>
+						<td colspan="6" align="center" id="list_td"> 작성된 게시물이 없습니다.</td>
 					</tr>
 				</c:if>
 				<c:if test="${!empty list }">
 					<c:forEach var="dto" items="${list }">
 						<tr>
-							<td>${dto.qna_idx }</td>
-							<td>${dto.qna_item }</td>
+							<td id="list_td">${dto.qna_idx }</td>
+							<td id="list_td">${dto.qna_item }</td>
 							<c:url var="hospitalBbsContentUrl" value="hospitalBbsContent.do">
 								<c:param name="qna_idx">${dto.qna_idx }</c:param>
 							</c:url>
-							<td><a href="${hospitalBbsContentUrl }">${dto.qna_subject }</a></td>
-							<td>${dto.qna_writer }</td>
-							<td>${dto.qna_writedate }</td>
-							<td>${dto.readnum }</td>
+							<td id="list_td"><a href="${hospitalBbsContentUrl }">${dto.qna_subject }</a></td>
+							<td id="list_td">${dto.qna_writer }</td>
+							<td id="list_td">${dto.qna_writedate }</td>
+							<td id="list_td">${dto.readnum }</td>
 						</tr>
 					</c:forEach>
 				</c:if>

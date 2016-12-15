@@ -20,7 +20,7 @@ public class Hospital_ManagerDAOImple implements Hospital_ManagerDAO {
 	
 	public int hospitalBbsCnt(String cm_number) {
 		int count=sqlMap.selectOne("companyBbsCnt", cm_number);
-		return count;
+		return count==0?1:count;
 	}
 
 	public List<QnaDTO> hospitalBbsList(String cm_number, int cp, int listSize) {
@@ -41,13 +41,21 @@ public class Hospital_ManagerDAOImple implements Hospital_ManagerDAO {
 	}
 	
 	public int hospitalBbsDelete(int qna_idx) {
-		int count=sqlMap.delete("hospitalBbsContent", qna_idx);
+		int count=sqlMap.delete("hospitalBbsDelete", qna_idx);
 		return count;
 	}
 
 	public QnaDTO hospitalBbsReWriteForm(int qna_idx) {
 		QnaDTO dto=sqlMap.selectOne("hospitalBbsContent", qna_idx);
 		return dto;
+	}
+	
+	public int updateSun(int ref, int sunbun) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("ref", ref);
+		map.put("sunbun", sunbun);
+		int count=sqlMap.update("updateSun", map);
+		return count;
 	}
 	
 	public int hospitalBbsReWrite(QnaDTO dto) {

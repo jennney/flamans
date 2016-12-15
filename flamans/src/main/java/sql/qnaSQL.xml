@@ -210,6 +210,7 @@
 		fm_qna 
 			where qna_idx = 
 		#{qna_idx} 
+		
 	</delete>
 	
 	<insert parameterType="flamans.qna.model.QnaDTO" id="hospitalBbsReWrite"> 
@@ -226,7 +227,8 @@
 		#{qna_findname},
 			0,
 		#{ref},
-			0,0,
+			#{lev}+1,
+			#{sunbun}+1,
 		fm_qna_idx.nextval,
 			#{qna_kind})
 	</insert>
@@ -238,8 +240,9 @@
 	<select id="companyBbsList" parameterType="Map" resultType="flamans.qna.model.QnaDTO">
 		select * from
 		(select rownum as rnum,a.* from
-		(select * from fm_qna where qna_findname = #{qna_findname} order by ref desc, sunbun asc) a) b
+		(select * from fm_qna where qna_findname=#{qna_findname} order by ref desc,sunbun asc) a) b
 		where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+		
 	</select>
 	
 	<select id="search_Hotel" resultType="flamans.hotel_find.model.HotelDTO" parameterType="String">

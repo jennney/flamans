@@ -22,7 +22,7 @@
 					<tr>
 						<th>WRITER</th>
 						<td>${sessionScope.cm_name} 관리자
-						<input type="hidden" name="qna_writer" value="${sessionScope.userBid}"></td>
+						<input type="hidden" name="qna_writer" value="${sessionScope.savecoId}"></td>
 					</tr>
 					<tr>
 						<th>ITEM</th>
@@ -38,6 +38,8 @@
 			<input type="hidden" name="qna_kind" value="${dto.qna_kind }">
 			<input type="hidden" name="qna_findname" value="${sessionScope.cm_number }">
 			<input type="hidden" name="ref" value="${dto.ref }">
+			<input type="hidden" name="lev" value="${dto.lev }">
+			<input type="hidden" name="sunbun" value="${dto.sunbun }">
 			<input type="submit" value="등록">
 			<input type="reset" value="다시 작성">
 		</form>
