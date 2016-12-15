@@ -19,19 +19,20 @@
 					<th>방 이름</th>
 					<th>최대 인원</th>
 					<th>방 가격</th>
-					<th>방 개수</th>
+					<th>현재 객실수</th>
+					<th>전체 객실수</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<td colspan="4" align="center">${hotelRoomPage }</td>
+					<td colspan="5" align="center">${hotelRoomPage }</td>
 					<td align="center"><a href="hotelRoomAdd.do">방등록하기</a></td>
 				</tr>
 			</tfoot>
 			<tbody>
 			<c:if test="${empty list }">
 				<tr>
-					<td colspan="5" align="center">등록된 방이 없습니다.</td>
+					<td colspan="6" align="center">등록된 방이 없습니다.</td>
 				</tr>
 			</c:if>
 			<c:if test="${!empty list }">
@@ -45,6 +46,7 @@
 					<td>${dto.people_num }</td>
 					<td>${dto.roomprice }</td>
 					<td>${dto.roomnum }</td>
+					<td>${dto.maxroom }</td>
 				</tr>
 				</c:forEach>
 			</c:if>

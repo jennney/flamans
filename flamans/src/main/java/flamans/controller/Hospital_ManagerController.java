@@ -55,16 +55,17 @@ public class Hospital_ManagerController {
 			mav.addObject("url","hospitalBbsList.do");
 			mav.setViewName("manager/Msg");
 		}else{
+			list.get(0).setQna_content(list.get(0).getQna_content().replaceAll("\n", "<br>"));
 			mav.addObject("list", list);
 			mav.setViewName("manager/hospital/hospitalBbsContent");
 		}
 		return mav;
 	}
 	
-	@RequestMapping("/hospitalBbsDelete")
+	@RequestMapping("/hospitalBbsDelete.do")
 	public ModelAndView hospitalBbsDelete(int qna_idx){
 		int result=hosmDao.hospitalBbsDelete(qna_idx);
-		String msg=result>0?"삭제 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
+		String msg=result>0?"삭제 성공":"삭제 실패";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "hospitalBbsList.do");
@@ -83,8 +84,9 @@ public class Hospital_ManagerController {
 	
 	@RequestMapping(value="/hospitalBbsReWrite.do",method=RequestMethod.POST)
 	public ModelAndView hospitalBbsReWrite(QnaDTO dto){
+		hosmDao.updateSun(dto.getRef(), dto.getSunbun()+1);
 		int result=hosmDao.hospitalBbsReWrite(dto);
-		String msg=result>0?"일단 등록 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
+		String msg=result>0?"등록 성공":"등록 실패";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "hospitalBbsList.do");
@@ -98,6 +100,7 @@ public class Hospital_ManagerController {
 		List<HospitalDTO> list=hosmDao.hospitalContent((String)session.getAttribute("cm_number"));
 		ModelAndView mav=new ModelAndView();
 		if(list!=null&&list.size()!=0){
+			list.get(0).setHos_content(list.get(0).getHos_content().replaceAll("\n", "<br>"));
 			HashMap<String, Object> map=new HashMap<String, Object>();
 			map.put("face", "안면윤곽");
 			map.put("bimaxillary", "양약수술");
@@ -150,7 +153,7 @@ public class Hospital_ManagerController {
 		copyinto(dto.getHos_num(), upload,1,path);
 		dto.setHos_img(upload.getOriginalFilename());
 		int result=hosmDao.hospitalAdd(dto);
-		String msg=result>0?"등록 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
+		String msg=result>0?"등록 성공":"등록 실패";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "hospitalContent.do");
@@ -271,6 +274,7 @@ public class Hospital_ManagerController {
 			mav.addObject("url", "doctorList.do");
 			mav.setViewName("manager/Msg");
 		}else{
+			list.get(0).setDoc_career(list.get(0).getDoc_career().replaceAll("\n", "<br>"));
 			mav.addObject("list", list);
 			mav.setViewName("manager/hospital/doctorContent");
 		}

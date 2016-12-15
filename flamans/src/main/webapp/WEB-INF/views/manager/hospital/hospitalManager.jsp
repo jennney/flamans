@@ -16,7 +16,9 @@
 			<li><a href="hospitalBbsList.do">문의 내역 보기</a></li>
 			<li><a href="hospitalContent.do">병원 상세 정보 보기</a></li>
 			<li><a href="doctorList.do">의료진 목록 보기</a></li>
+			<li><a href="bBook_list.do">병원 예약 관리</a></li>
 			<li><a href="event_co_list.do?e_name=${sessionScope.savecoId}">병원 이벤트 리스트</a></li>
+			
 		</ul>
 	</div>
 </div>

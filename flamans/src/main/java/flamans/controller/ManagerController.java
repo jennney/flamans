@@ -25,7 +25,11 @@ public class ManagerController {
 		System.out.println(session.getAttribute("savecoId"));
 		CompanyDTO dto=cDao.companyInfo(cm_id);
 		ModelAndView mav=new ModelAndView();
-		if(cm_id.equals("admin")){  
+		if(cm_id==null){
+			mav.addObject("msg", "로그인이 필요한 메뉴입니다.");
+			mav.addObject("url", "index.do");
+			mav.setViewName("manager/Msg");
+		}else if(cm_id.equals("admin")){  
 			mav.setViewName("manager/site/siteManager");
 		}else if(cm_number.equals("B")){
 			if(dto.getCm_permit().equals("0")){

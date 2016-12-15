@@ -19,7 +19,8 @@
 			방 이름 : <input type="text" name="roomname" value="${dtos.roomname }"><br>
 			최대 인원 : ${num }<br>
 			방 가격 : <input type="text" name="roomprice" value="${dtos.roomprice }"><br>
-			방 개수 : <input type="text" name="roomnum" value="${dtos.roomnum }"><br>
+			현재 객실수 : <input type="text" name="roomnum" value="${dtos.roomnum }"><br>
+			전체 객실수 : <input type="text" name="maxroom" value="${dtos.maxroom }"><br>
 			방 옵션 
 			${options }
 			<br>

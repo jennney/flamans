@@ -18,6 +18,8 @@ public interface Hospital_ManagerDAO {
 	
 	public QnaDTO hospitalBbsReWriteForm(int qna_idx);
 	
+	public int updateSun(int ref,int sunbun);
+	
 	public int hospitalBbsReWrite(QnaDTO dto);
 	
 	public List<HospitalDTO> hospitalContent(String cm_number);

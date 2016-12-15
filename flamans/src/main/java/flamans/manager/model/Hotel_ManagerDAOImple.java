@@ -20,7 +20,7 @@ public class Hotel_ManagerDAOImple implements Hotel_ManagerDAO {
 	
 	public int hotelBbsCnt(String cm_number) {
 		int count=sqlMap.selectOne("companyBbsCnt", cm_number);
-		return count;
+		return count==0?1:count;
 	}
 
 	public List<QnaDTO> hotelBbsList(String qna_findname,int cp,int listSize) {
@@ -35,14 +35,27 @@ public class Hotel_ManagerDAOImple implements Hotel_ManagerDAO {
 	}
 
 	public List<QnaDTO> hotelBbsContent(int qna_idx) {
-		List<QnaDTO> list=sqlMap.selectList("hotelBbsContent", qna_idx);
 		sqlMap.update("qna_Readnum",qna_idx);
+		List<QnaDTO> list=sqlMap.selectList("hotelBbsContent", qna_idx);
 		return list;
 	}
 	
 	public int hotelBbsDelete(int qna_idx) {
 		int count=sqlMap.delete("hotelBbsDelete", qna_idx);
 		return count;
+	}
+	
+	public int getMaxRef() {
+		int ref=sqlMap.selectOne("getMaxRef");
+		return ref;
+	}
+	
+	public int updateSun(int ref, int sunbun) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("ref", ref);
+		map.put("sunbun", sunbun);
+		int result=sqlMap.update("updateSun", map);
+		return result;
 	}
 	
 	public QnaDTO hotelBbsReWriteForm(int qna_idx) {

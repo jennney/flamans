@@ -46,6 +46,7 @@ public class Hotel_ManagerController {
 	@RequestMapping("/hotelBbsContent.do")
 	public ModelAndView hotelBbsContent(@RequestParam("qna_idx") int qna_idx){
 		List<QnaDTO> list=hotmDao.hotelBbsContent(qna_idx);
+		list.get(0).setQna_content(list.get(0).getQna_content().replaceAll("\n", "<br>"));
 		ModelAndView mav=new ModelAndView();
 		if(list==null||list.size()==0){
 			mav.addObject("msg", "삭제된 게시글이거나 잘못된 접근입니다.");
@@ -80,6 +81,7 @@ public class Hotel_ManagerController {
 	
 	@RequestMapping(value="/hotelBbsReWrite.do",method=RequestMethod.POST)
 	public ModelAndView hotelBbsReWrite(QnaDTO dto){
+		hotmDao.updateSun(dto.getRef(), dto.getSunbun()+1);
 		int result=hotmDao.hotelBbsReWrite(dto);
 		String msg=result>0?"등록 성공":"등록 실패 ㅠ";
 		ModelAndView mav=new ModelAndView();
@@ -93,6 +95,7 @@ public class Hotel_ManagerController {
 		List<HotelDTO> list=hotmDao.hotelContent((String)session.getAttribute("cm_number"));
 		ModelAndView mav=new ModelAndView();
 		if(list!=null&&list.size()!=0){
+			list.get(0).setHot_content(list.get(0).getHot_content().replaceAll("\n", "<br>"));
 			String etc[]={"wifi","parking","restaurant","pool","fitness","laundry"};
 			String result[]=list.get(0).getHot_etc().split(",");
 			StringBuffer sb1=new StringBuffer();
