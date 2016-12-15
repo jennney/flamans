@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>호텔 예약 수정</title>
 </head>
 <body>
 <html>
@@ -308,11 +308,22 @@ a#booking_pop:hover {
          document.getElementById("checkout").value = checkout;
       }
    }
+function HreWrite(){
+	document.getElementById("datepicker1").value='${Hdto.checkin}';
+	document.getElementById("datepicker2").value='${Hdto.checkout}';
+	var adult='${Hdto.people}'.split('/');
+	document.getElementById("adult").value=adult[0];
+	document.getElementById("child").value=adult[1];
+	document.getElementById('${Hdto.room_idx }').value='${Hdto.room_idx }';
+	document.getElementById("datepicker1").value='${Hdto.checkin}';
+	document.getElementById("datepicker1").value='${Hdto.checkin}';
+	document.getElementById("datepicker1").value='${Hdto.checkin}';
+	document.getElementById("datepicker1").value='${Hdto.checkin}';
+}   
 </script>
 </head>
-<body>
-<%@ include file="/WEB-INF/views/header.jsp"%>	
-<section>
+<body onload="HreWrite()">
+
 <div class="center">
    <h2>예약하기</h2>
 </div>
@@ -360,7 +371,7 @@ a#booking_pop:hover {
       <c:forEach var="dto" items="${hotelroom}">   
       <tr>
          <td id="roomname"> ${dto.roomname}</td>
-         <td>2명</td>
+         <td>${dto.people_num}</td>
          <td>${dto.roomprice }</td>
          <td>${dto.room_option }</td>
          <td>
@@ -370,7 +381,7 @@ a#booking_pop:hover {
             </c:forEach>
             </select>
          </td>
-         <th><input type="button" value="예약하기" id="booking_pop" onclick="javascript:check(${dto.room_idx})"></th>
+         <th><input type="button" value="수정하기" id="booking_pop" onclick="javascript:check(${dto.room_idx})"></th>
       </tr>
     </c:forEach>
    </table>
@@ -399,7 +410,7 @@ a#booking_pop:hover {
        <hr>
         [예약자 정보 입력]
         <div></div>
-        <form name="booking_hot" action="booking_hot.do" method="post">
+        <form name="booking_hot" action="HBook_reWrite.do" method="post">
         <input type="hidden" name="hot_num" value="${hot_num}">
         <input type="hidden" name="name" value="${mdto.m_id}">
         <input type="hidden" name="sex" value="${mdto.m_sex}">
@@ -428,6 +439,7 @@ a#booking_pop:hover {
             <option value="Visa">비자</option>
             <option value="Samsung">삼성</option>
             <option value="Sinhan">신한</option>
+            <option value="NH">농협</option>
             </select>&nbsp;
             <input type="text" name="cardnum">
       </div>
