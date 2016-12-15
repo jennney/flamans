@@ -108,9 +108,9 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 		return result;
 	}
 
-	public int HBook_reWrite(Hot_bookDTO bdto, String hot_num) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int HreWrite(Hot_bookDTO bdto) {
+		int result=sqlMap.update("HreWrite", bdto);
+		return result;
 	}
 
 

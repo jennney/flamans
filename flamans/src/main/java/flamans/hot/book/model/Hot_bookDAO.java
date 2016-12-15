@@ -33,7 +33,7 @@ public interface Hot_bookDAO {
 	
 	public int checkout(int room_idx);
 	
-	public int HBook_reWrite(Hot_bookDTO bdto, String hot_num);
+	public int HreWrite(Hot_bookDTO bdto);
 	
 	/*
 	

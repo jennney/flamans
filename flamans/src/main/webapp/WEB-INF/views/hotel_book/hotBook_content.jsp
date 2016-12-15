@@ -7,25 +7,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/flamans/js/jquery-3.1.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 function HbookreWrite(bookingnum, name){
 	var addr='HBook_reWrite.do?bookingnum='+bookingnum+'&name='+name;
-	window.open(addr, 'HbookreWrite', 'width=820px, height=550px, left=100, top=30');
+	window.open(addr, 'HbookreWrite', 'width=820px, height=450px, left=100, top=30');
 	window.self.close();
 }
 function closeCon(){
 	window.self.close();
 }
+$(document).ready(function dddate(){
+	var ddate=document.getElementById("ddate");
+	var checkin='${Hdto.checkin }';
+	var checkout='${Hdto.checkout }';
+	checkin=checkin.split(' ');
+	checkout=checkout.split(' ');
+	alert(checkin[0]+'~'+checkout[0]);
+	ddate.text=checkin[0]+'~'+checkout[0];
+});
 </script>
 </head>
 <body>
 <section>
 	<fieldset>
 	<br>
-	<div id="b">
-		<c:set var="Hdto" value='${Hdto}'/>
+	<div class="col-sm-6">
+	<c:set var="Hdto" value='${Hdto}'/>
 			<table class="table">
 				<tr>
 					<th>호텔 명</th>
@@ -33,7 +42,7 @@ function closeCon(){
 				</tr>
 				<tr>
 					<th>체크인 / 체크아웃</th>
-					<td>${Hdto.checkin }~${Hdto.checkout }</td>
+					<td id="ddate"></td>
 				</tr>
 				<tr>
 					<th>예약자명</th>

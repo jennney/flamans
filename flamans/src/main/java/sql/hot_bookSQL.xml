@@ -78,4 +78,17 @@
 		where 
 			room_idx=#{room_idx} and roomnum <![CDATA[< maxroom]]>
 	</update>
+	<update id="HreWrite" parameterType="flamans.hot.book.model.Hot_bookDTO">
+		update
+	      	fm_hot_book
+	    set	        
+	        checkin=#{checkin},        
+	        checkout=#{checkout},
+	        card=#{card},
+	        people=#{people},
+	        roomselect=#{roomselect},
+			room_idx=#{room_idx}
+		where 
+			bookingnum=#{bookingnum}	
+	</update>
 </mapper>  
