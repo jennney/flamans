@@ -96,7 +96,7 @@
 	</update>
 	
 	<select id="calendar"  parameterType="Map" resultType="flamans.Bbook.model.BbookDTO">
-		select bookingdate
+		select bookingdate, doc_num
 		from
 			fm_hos_book
 		where 
