@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 
 <body>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 <h2>이벤트</h2>
 <table>
 	<c:if test="${empty list}">
@@ -31,7 +32,7 @@
 			<td>${dto.e_date}</td>
 		</tr>
 		<tr>
-			<td colspan="4"><a href="event_user_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}" width="700px" height="250px"></a></td>
+			<td colspan="4"><a href="event_user_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}" width="800px" height="400px"></a></td>
 		</tr>
 	</c:forEach>
 	<tr>
@@ -41,5 +42,6 @@
 	</tr>
 	
 </table>	
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

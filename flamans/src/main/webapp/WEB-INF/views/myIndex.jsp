@@ -41,7 +41,7 @@
 	        <li><a href="hospitalBbsList.do">  HospitalCommunity</a></li>
 	        <li><a href="hospitalContent.do">  HospitalInfo</a></li>
 	        <li><a href="doctorList.do">  DoctorInfo</a></li>
-	        <li><a href="#"> HospitalEvent</a></li>
+	        <li><a href="event_co_list.do?e_name=${sessionScope.savecoId}"> HospitalEvent</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
 	     </c:if>
    	     <c:if test="${sessionScope.permit eq 1 and sessionScope.cm_kind eq 'H'}">
@@ -49,7 +49,7 @@
 	        <li><a href="hotelBbsList.do">  HotelCommunity</a></li>
 	        <li><a href="hotelContent.do">  HotelInfo</a></li>
 	        <li><a href="hotelRoomList.do">  HotelRoomInfo</a></li>
-	        <li><a href="event_co_list.do?e_name=${sessionScope.userHid}"> HotelEvent</a></li>
+	        <li><a href="event_co_list.do?e_name=${sessionScope.savecoId}"> HotelEvent</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
 	     </c:if>
    	     <c:if test="${sessionScope.savecoId eq 'admin'}">
@@ -68,9 +68,14 @@
             </li>
 	        <li><a href="#">  1:1</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
+	        
 	     </c:if>
+	     
 	    </ul>
+	    
 	</div>
+	
 </nav>
+
 <script src="js/js/jquery.js"></script>
 <script src="js/js/bootstrap.min.js"></script>
