@@ -116,7 +116,7 @@ a:LINK {
 				<c:forEach begin="1" end="${qnaList.lev}" step="1">
 					&nbsp;&nbsp;<img src="img/ico_re.gif" alt="답변">
 				</c:forEach>
-				<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
+				<a href="qna_Content_admin.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
 				</td>
 				<td id="qna_listtd">${qnaList.qna_writer}</td>
 				<td id="qna_listtd">${qnaList.qna_writedate}</td>
