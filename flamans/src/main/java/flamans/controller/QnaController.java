@@ -30,6 +30,22 @@ public class QnaController {
 
 	@Autowired
 	private QnaDAO qnaDao;
+	
+	public static String decode(String arg, String compare, String replace, String delimiter)
+	{	
+		String[] sp_compare = compare.split("["+delimiter+"]");
+		String[] sp_replace = replace.split("["+delimiter+"]");
+		
+		for(int inx = 0, max = sp_compare.length; inx < max; inx++)
+		{
+			if(arg.equals(sp_compare[inx]))
+			{
+				return sp_replace[inx];
+			}
+		}
+		
+		return arg;
+	}
 
 	@RequestMapping("/qna_List.do")
 	public ModelAndView qnaList(@RequestParam("qna_kind") String qna_kind,
@@ -42,6 +58,9 @@ public class QnaController {
 		int pageSize = 5;
 		String qna_page = paging1.makePage("qna_List.do", totalCnt, listSize, pageSize, cp, findKey, findValue,qna_kind);
 		List<QnaDTO> qnaList = qnaDao.qnaList(qna_kind, cp, listSize, qna_item,findKey, findValue);
+		for(int i=0;i<qnaList.size();i++){
+			qnaList.get(i).setQna_item(decode(qnaList.get(i).getQna_item(), "meminfo|memgroup|tieup|cosmetic|hosbooking|hotbooking|room|etc","회원정보|단체회원|제휴문의|성형문의|예약문의|예약문의|룸문의|기타","|"));
+		}
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("qnaList", qnaList);
 		mav.addObject("qna_kind", qna_kind);
@@ -227,7 +246,7 @@ public class QnaController {
 		String msg = result > 0 ? "질문이 삭제되었습니다." : "질문삭제가 실패하였습니다";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url", "qna_List.do?qna_kind=" + qna_kind);
+		mav.addObject("url", "qna_List_admin.do?qna_kind=" + qna_kind);
 		mav.setViewName("service/QNA/qna_Msg");
 		return mav;
 	}

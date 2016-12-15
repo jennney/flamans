@@ -134,7 +134,7 @@ public class MemberDAOImple implements MemberDAO {
 
 	public List<Hot_bookDTO> Hcalendar(String name, String date) {
 		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("name","윤두준"); //이름으로 저장되서 바꿔야 됨
+		map.put("name", name); //이름으로 저장되서 바꿔야 됨
 		map.put("date", date);
 		List<Hot_bookDTO> calH=sqlMap.selectList("m_Hcalendar", map);
 		return calH;

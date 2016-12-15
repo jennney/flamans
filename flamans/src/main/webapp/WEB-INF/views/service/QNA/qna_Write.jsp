@@ -14,11 +14,13 @@
 	margin: 0px auto;
 	border-spacing: 0px;
 }
-
+#qna_wrth1,#qna_wrth2,#qna_wrth3,#qna_wrth4,#qna_wrth5,#qna_wrth6,#qna_wrth7,#qna_wrth8,#qna_wrth61,#wr_th1{
+	text-align: center;
+}
 #qna_wrth1, #qna_wrtd1 {
 	border-top: 3px solid #BDBDBD;
 	border-bottom: 3px solid #BDBDBD;
-	height: 30px;
+	
 }
 
 #qna_wrth1 {
@@ -85,7 +87,7 @@
 }
 
 #qna_wrtd4 {
-	height: 30px;
+	height: 50px;
 	text-align: right;
 }
 
@@ -210,21 +212,29 @@ h2 {
 		<table id="qna_wr">
 			<tr>
 				<th id="qna_wrth1">SUBJECT</th>
-				<td id="qna_wrtd1"><input type="text" name="qna_subject"
-					size="50"></td>
+				<td id="qna_wrtd1"><input type="text" name="qna_subject" class="form-control"></td>
 			</tr>
 			<tr>
 				<th id="qna_wrth5">WRITER</th>
-				<td id="qna_wrtd5">${sessionScope.username}<input type="hidden" name="qna_writer" value="${sessionScope.userid}"></td>
+				<td id="qna_wrtd5">
+					<c:if test="${empty sessionScope.userid }">
+						${sessionScope.cm_name}
+						<input type="hidden" name="qna_writer" value="${sessionScope.cm_name}">
+					</c:if>
+					<c:if test="${empty sessionScope.savecoId}">
+						${sessionScope.username}
+						<input type="hidden" name="qna_writer" value="${sessionScope.username}">
+					</c:if>
+				</td>
 			</tr>
 			<tr>
 				<th id="qna_wrth6">ITEM</th>
 				<td id="qna_wrtd6"><c:choose>
 						<c:when test="${qna_kind eq 'site'}">
-							<select name="qna_item" onchange="qna_select()" id="qna_item">
+							<select name="qna_item" onchange="qna_select()" id="qna_item" class="form-control" style="width: 150px;">
 								<option value="all">- 전체 -</option>
-								<option value="meminfo">회원정보문의</option>
-								<option value="memgroup">단체회원이용</option>
+								<option value="meminfo">회원정보</option>
+								<option value="memgroup">단체회원</option>
 								<option value="tieup">제휴문의</option>
 								<option value="etc">기타문의</option>
 							</select>
@@ -232,36 +242,37 @@ h2 {
 								value="site">
 						</c:when>
 						<c:when test="${qna_kind eq 'hospital'}">
-							<select name="qna_item" onchange="qna_select()" id="qna_item">
+						<div class="form-group">
+							<select name="qna_item" onchange="qna_select()" id="qna_item" class="form-control col-xs-3" style="width: 150px;">
 								<option value="all">- 전체 -</option>
 								<option value="cosmetic">성형문의</option>
 								<option value="hosbooking">예약문의</option>
 								<option value="etc">기타문의</option>
 							</select>
 							<input type="hidden" name="qna_findname" id="hos_num">
-							<input type="button" value="검색하기" onclick="javascript:window.open('search.do?kind=hospital','search','width=450 ,height=150,top=300,left=300')">
+							<button class="btn btn-default" type="button" onclick="javascript:window.open('search.do?kind=hospital','search','width=450 ,height=150,top=300,left=300')">병원검색<i class="fa fa-search"></i></button>
 							<span id="hos_span"></span>
+						</div>
 						</c:when>
 						<c:when test="${qna_kind eq 'hotel'}">
-							<select name="qna_item" onchange="qna_select()" id="qna_item">
+							<select name="qna_item" onchange="qna_select()" id="qna_item" class="form-control col-xs-3" style="width: 150px;">
 								<option value="all">- 전체 -</option>
 								<option value="hotbooking">예약문의</option>
-								<option value="room">방문의</option>
+								<option value="room">룸 문의</option>
 								<option value="etc">기타문의</option>
 							</select>
 							<input type="hidden" name="qna_findname" id="hot_num">
-							<input type="button" value="검색하기" onclick="javascript:window.open('search.do?kind=hotel','search','width=450 ,height=150,top=300,left=300')">
+							<button class="btn btn-default" type="button" onclick="javascript:window.open('search.do?kind=hotel','search','width=450 ,height=150,top=300,left=300')">호텔검색<i class="fa fa-search"></i></button>
 							<span id="hot_span"></span>
 						</c:when>
 					</c:choose></td>
 			</tr>
 			<tr>
-				<td colspan="2" id="no_wrtx"><textarea name="qna_content"
-						id="qna_content"></textarea></td>
+				<td colspan="2" id="no_wrtx"><textarea name="qna_content" id="qna_content"></textarea></td>
 			</tr>
 			<tr>
 				<th id="qna_wrth61">비밀번호</th>
-				<td id="qna_wrtd61"><input type="password" name="qna_pwd"></td>
+				<td id="qna_wrtd61"><input type="password" name="qna_pwd" class="form-control"></td>
 			</tr>
 			<tr>
 				<th id="qna_wrth6">비밀글설정</th>
@@ -289,9 +300,11 @@ h2 {
 				</td>
 			</tr>
 			<tr>
-				<input type="hidden" name="qna_kind" value="${qna_kind}">
-				<td id="qna_wrtd4" colspan="2"><input type="submit" value="작성">
-					<input type="reset" value="다시작성"></td>
+				<td id="qna_wrtd4" colspan="2">
+					<input type="hidden" name="qna_kind" value="${qna_kind}">
+					<button type="submit" class="btn btn-default">작성</button>
+					<button type="submit" class="btn btn-default">다시작성</button>
+				</td>
 			</tr>
 		</table>
 	</form>

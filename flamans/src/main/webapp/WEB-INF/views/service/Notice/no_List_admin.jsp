@@ -83,16 +83,19 @@ list-style: none;
 			<thead>
 				<tr>
 					<td colspan="4" align="right">
-						<form name="no_find" action="no_List_admin.do" method="post" onsubmit="return check()">
-							<select name="findKey">
-								<option value="all" ${findKey eq 'all'?"selected":""}>- 전체
-									-</option>
-								<option value="no_content" ${findKey eq 'no_content'?"selected":""}>
-									내용</option>
-								<option value="no_subject" ${findKey eq 'no_subject'?"selected":""}>
-									제목</option>
-							</select> <input type="text" name="findValue" value="${findValue}" >
-							<input type="submit" value="검색">
+						<form name="no_find" action="no_List_admin.do" onsubmit="return check()" method="post">
+							<div class="form-group input-group">
+								<select name="findKey" class="form-control" style="width: 100px;">
+									<option value="all" ${findKey eq 'all'?"selected":""}>- 전체
+										-</option>
+									<option value="no_content" ${findKey eq 'no_content'?"selected":""}>
+										내용</option>
+									<option value="no_subject" ${findKey eq 'no_subject'?"selected":""}>
+										제목</option>
+								</select>
+								<input type="text" class="form-control" style="width: 200px; float: right;"name="findValue" value="${findValue}">
+						    	<span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+						    </div>
 						</form>
 					</td>
 				</tr>
@@ -122,7 +125,7 @@ list-style: none;
 					</tr>
 				</c:if>
 				<c:forEach var="noList" items="${noList}">
-					<c:url var="noticeURL" value="no_Content.do">
+					<c:url var="noticeURL" value="no_Content_admin.do">
 						<c:param name="idx">${noList.no_idx}</c:param>
 					</c:url>
 					<tr>

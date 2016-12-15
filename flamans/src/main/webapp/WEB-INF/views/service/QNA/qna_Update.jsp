@@ -163,7 +163,16 @@ h2{
 		</tr>
 		<tr>
 			<th id="qna_wrth5">WRITER</th>
-			<td id="qna_wrtd5">${sessionScope.username}</td>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							
+			<td id="qna_wrtd5">
+				<c:if test="${empty sessionScope.userid }">
+					${sessionScope.cm_name}
+					<input type="hidden" name="qna_writer" value="${sessionScope.cm_name}">
+				</c:if>
+				<c:if test="${empty sessionScope.savecoId}">
+					${sessionScope.username}
+					<input type="hidden" name="qna_writer" value="${sessionScope.username}">
+				</c:if>
+			</td>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							
 		</tr>
 		<tr>
 			<th id="qna_wrth6">ITEM</th>

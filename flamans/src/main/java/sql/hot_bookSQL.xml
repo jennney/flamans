@@ -36,22 +36,12 @@
 			checkin
 	</select>   
    <select id="fm_myhot_book" resultType="flamans.hot.book.model.Hot_bookDTO">
-      select hot_num,
-         name,
-            sex,
-         nationality,
-         TO_CHAR(checkin,'YYYY-MM-DD') checkin
-     , TO_CHAR(checkout,'YYYY-MM-DD') checkout,
-        card           
-     , TO_CHAR(bookingdate,'YYYY-MM-DD') bookingdate,
-         people,
-        roomselect,
-        permit,
-        bookingnum
-      from fm_hot_book where name = #{m_id}
-   </select>
-   <select id="fm_hotname" resultType="flamans.company.model.CompanyDTO">
-      select cm_name from fm_company where cm_number = #{hot_num}   
+		select 
+			c.cm_name,h.checkin,h.checkout,h.bookingdate,h.permit
+		from 
+			fm_hot_book h,fm_company c
+		where 
+			h.hot_num=c.cm_number and h.name = #{m_id}
    </select>
    <update id="HBook_request" parameterType="Map">
 		update 
@@ -73,5 +63,32 @@
 		set roomnum=roomnum-#{roomselect}
 		where room_idx = #{room_idx}
    </update>
-
+	<select id="HBook_content" parameterType="int" resultType="flamans.hot.book.model.Hot_bookDTO">
+		select h.*, roomname, cm_name
+		from
+			 fm_hot_book h, fm_hotroom r, fm_company
+		where 
+			bookingnum=#{bookingnum} and r.room_idx=h.room_idx and cm_number=h.hot_num
+	</select>
+	<update id="checkout" parameterType="int">
+		update 
+			fm_hotroom 
+		set 
+			roomnum=roomnum+1
+		where 
+			room_idx=#{room_idx} and roomnum <![CDATA[< maxroom]]>
+	</update>
+	<update id="HreWrite" parameterType="flamans.hot.book.model.Hot_bookDTO">
+		update
+	      	fm_hot_book
+	    set	        
+	        checkin=#{checkin},        
+	        checkout=#{checkout},
+	        card=#{card},
+	        people=#{people},
+	        roomselect=#{roomselect},
+			room_idx=#{room_idx}
+		where 
+			bookingnum=#{bookingnum}	
+	</update>
 </mapper>  

@@ -235,6 +235,7 @@ function updateResult(){
    display: none;
    width: 700px;
    height: 350px;
+   background-color: white;
 }
 
 #del, #update, #pwd_update, #member_myqna {
@@ -269,7 +270,7 @@ function updateResult(){
 <div id="wrapper">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
-	<div class="container-fluid">
+	<div class="container-fluid" style="height: 700px;">
 		<h2>My Page</h2>
 		 <div id="member_myqna">내 문의 리스트</div>
          <div id="member_myqna1">

@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-   <%@ include file="/WEB-INF/views/header.jsp"%>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>호텔 예약 수정</title>
 </head>
 <body>
 <html>
@@ -27,21 +26,21 @@ a:active, a:hover {
    color: #bd5a35;
    text-decoration: underline;
 }
-#bt a:link {
+table a:link {
    color: #666;
    font-weight: bold;
    text-decoration: none;
 }
-#bt a:visited {
+table a:visited {
    color: #999999;
    font-weight: bold;
    text-decoration: none;
 }
-#bt a:active,#bt a:hover {
+table a:active, table a:hover {
    color: #bd5a35;
    text-decoration: underline;
 }
-#bt {
+table {
    font-family: Arial, Helvetica, sans-serif;
    color: #666;
    font-size: 12px;
@@ -56,7 +55,7 @@ a:active, a:hover {
    -webkit-box-shadow: 0 1px 2px #d1d1d1;
    box-shadow: 0 1px 2px #d1d1d1;
 }
-#bt th {
+table th {
    padding: 15px;
    border-top: 1px solid #fafafa;
    border-bottom: 1px solid #e0e0e0;
@@ -65,30 +64,30 @@ a:active, a:hover {
       to(#ebebeb));
    background: -moz-linear-gradient(top, #ededed, #ebebeb);
 }
-#bt th:first-child {
+table th:first-child {
    text-align: left;
    padding-left: 20px;
 }
-#bt tr:first-child th:first-child {
+table tr:first-child th:first-child {
    -moz-border-radius-topleft: 3px;
    -webkit-border-top-left-radius: 3px;
    border-top-left-radius: 3px;
 }
-#bt tr:first-child th:last-child {
+table tr:first-child th:last-child {
    -moz-border-radius-topright: 3px;
    -webkit-border-top-right-radius: 3px;
    border-top-right-radius: 3px;
 }
-#bt tr {
+table tr {
    text-align: center;
    padding-left: 20px;
 }
-#bt tr td:first-child {
+table tr td:first-child {
    text-align: left;
    padding-left: 20px;
    border-left: 0;
 }
-#bt tr td {
+table tr td {
    padding: 12px;
    border-top: 1px solid #ffffff;
    border-bottom: 1px solid #e0e0e0;
@@ -98,26 +97,26 @@ a:active, a:hover {
       to(#fafafa));
    background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
 }
-#bt tr.even td {
+table tr.even td {
    background: #f6f6f6;
    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8),
       to(#f6f6f6));
    background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
 }
-#bt tr:last-child td {
+table tr:last-child td {
    border-bottom: 0;
 }
-#bt tr:last-child td:first-child {
+table tr:last-child td:first-child {
    -moz-border-radius-bottomleft: 3px;
    -webkit-border-bottom-left-radius: 3px;
    border-bottom-left-radius: 3px;
 }
-#bt tr:last-child td:last-child {
+table tr:last-child td:last-child {
    -moz-border-radius-bottomright: 3px;
    -webkit-border-bottom-right-radius: 3px;
    border-bottom-right-radius: 3px;
 }
-#bt tr:hover td {
+table tr:hover td {
    background: #f2f2f2;
    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2),
       to(#f0f0f0));
@@ -251,7 +250,7 @@ a#booking_pop:hover {
          minDate: 0,
           closeText : '닫기',
          onSelect: function(selected) {
-         	$("#datepicker2").datepicker("option","minDate", selected)
+         $("#datepicker2").datepicker("option","minDate", selected)
          }
          });
          $("#datepicker2").datepicker({
@@ -260,7 +259,7 @@ a#booking_pop:hover {
          minDate: 0,
           closeText : '닫기',
          onSelect: function(selected) {
-        	 $("#datepicker1").datepicker("option","maxDate", selected)
+         $("#datepicker1").datepicker("option","maxDate", selected)
          }
          })
    });
@@ -283,41 +282,68 @@ a#booking_pop:hover {
       var checkout = document.getElementById('datepicker2').value;
       if(room==0){
          window.alert('객실을 선택하세요');
-         location.href='booking_hot.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }else if(adult==0 && child==0){
          window.alert('인원수를 체크 해주세요');
-         location.href='booking_hot.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }else if(adult==0 && child>0){
          window.alert('어린이만 예약할 수 없습니다.');
-         location.href='booking_hot.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }else if(checkin=="" || checkin==null){
          window.alert('체크인 날짜를 선택하세요');
-         location.href='booking_hot.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }else if(checkout=="" || checkout==null){
          window.alert('체크아웃 날짜를 선택하세요');
-         location.href='booking_hot.do?hot_num=${hot_num}#close';
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#close';
       }
       else{
-         location.href='booking_hot.do?hot_num=${hot_num}#booking_form';
-         document.getElementById("txt").innerHTML = checkin;
-         document.getElementById("txt1").innerHTML = checkout;
-         document.getElementById("txt8").innerHTML = adult;
-         document.getElementById("txt9").innerHTML = child;
+         location.href='HBook_reWrite.do?hot_num=${hot_num}&bookingnum=${Hdto.bookingnum}#booking_form';
+         alert(checkin);
+         document.getElementById("txt").value = checkin;
+         document.getElementById("txt1").value = checkout;
+         document.getElementById("txt8").value = adult;
+         document.getElementById("txt9").value = child;
          var people = '어른 : '+adult+'/ 어린이 : '+child;
          document.getElementById("people").value = people;
          document.getElementById("checkin").value = checkin;
          document.getElementById("checkout").value = checkout;
       }
    }
+function HreWrite(){
+	var checkin='${Hdto.checkin}';
+	checkin=checkin.split(' ');
+	var checkout='${Hdto.checkout}'
+	checkout=checkout.split(' ');
+	document.getElementById("datepicker1").value=checkin[0];
+	document.getElementById("datepicker2").value=checkout[0];
+	var adult='${Hdto.people}'
+	adult=adult.split('/');
+	adult=adult[0].split(':');
+	child=adult[1].split(':');
+	adult=adult[1].trim();
+	child=child[1];
+	if(child==null){
+		child=0;
+	}
+	document.getElementById("adult").value=adult;
+	document.getElementById("child").value=child;
+	document.getElementById('${Hdto.room_idx }').value='${Hdto.room_idx }';
+	document.getElementById("child").value=child;
+	document.getElementById("child").value=child;
+	document.getElementById("child").value=child;
+	var cardnum='${Hdto.card}';
+	cardnum=cardnum.split(' ');
+	document.getElementById("cardco").value=cardnum[0];
+	document.getElementById("text").value=cardnum[1];
+}   
 </script>
 </head>
-<body>
+<body onload="HreWrite()">
 
-<section>
 <div class="center">
    <h2>예약하기</h2>
 </div>
-   <table cellspacing='0' border="0" id="bt">
+   <table cellspacing='0' border="0">
       <tr>
          <th colspan="2">체크인</th>
          <td><input type="text" id="datepicker1" name="checkin" placeholder="체크인"></td>
@@ -325,7 +351,10 @@ a#booking_pop:hover {
          <td><input type="text" id="datepicker2" name="checkout" placeholder="체크아웃"></td>
       </tr>
       <tr>
-         <th colspan="2">성인</th>
+         <th>객실 </th>
+         <td>
+         </td>
+         <th>성인</th>
          <td>
          <select name="adult" id="adult">
                <option value="0">0</option>
@@ -335,7 +364,7 @@ a#booking_pop:hover {
                <option value="4">4</option>
          </select>
          </td>
-         <th colspan="2">어린이</th>
+         <th>어린이</th>
          <td>
          <select name="child" id="child">
                <option value="0">0</option>
@@ -358,7 +387,7 @@ a#booking_pop:hover {
       <c:forEach var="dto" items="${hotelroom}">   
       <tr>
          <td id="roomname"> ${dto.roomname}</td>
-         <td>2명</td>
+         <td>${dto.people_num}</td>
          <td>${dto.roomprice }</td>
          <td>${dto.room_option }</td>
          <td>
@@ -368,7 +397,7 @@ a#booking_pop:hover {
             </c:forEach>
             </select>
          </td>
-         <th><input type="button" value="예약하기" id="booking_pop" onclick="javascript:check(${dto.room_idx})"></th>
+         <th><input type="button" value="수정하기" id="booking_pop" onclick="javascript:check(${dto.room_idx},${Hdto.bookingnum})"></th>
       </tr>
     </c:forEach>
    </table>
@@ -397,9 +426,10 @@ a#booking_pop:hover {
        <hr>
         [예약자 정보 입력]
         <div></div>
-        <form name="booking_hot" action="booking_hot.do" method="post">
+        
+        <form name="booking_hot" action="HBook_reWrite.do" method="post">
         <input type="hidden" name="hot_num" value="${hot_num}">
-        <input type="hidden" name="name" value="${mdto.m_id}">
+        <input type="hidden" name="name" value="${Hdto.name}">
         <input type="hidden" name="sex" value="${mdto.m_sex}">
       <input type="hidden" name="nationality" value="${mdto.m_nationality}">
       <input type="hidden" name="checkin" id="checkin">     
@@ -408,6 +438,7 @@ a#booking_pop:hover {
       <input type="hidden" name="roomselect" id="roomselect">   
       <input type="hidden" name="permit" value="0">
       <input type="hidden" name="room_idx" id="room_idx">
+      <input type="hidden" name="bookingnum" value="${Hdto.bookingnum}">
       <div>
       예약자명: ${mdto.m_name}
       </div>
@@ -426,6 +457,7 @@ a#booking_pop:hover {
             <option value="Visa">비자</option>
             <option value="Samsung">삼성</option>
             <option value="Sinhan">신한</option>
+            <option value="NH">농협</option>
             </select>&nbsp;
             <input type="text" name="cardnum">
       </div>
@@ -435,7 +467,6 @@ a#booking_pop:hover {
    </form>
       <a class="close" href="#close"></a>   
 </div>
-</section>
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+
 </body>
 </html>

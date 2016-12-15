@@ -78,8 +78,7 @@
 		if(no_subject==""){
 			window.alert('제목을 입력하세요');
 			return false;
-		}
-		if(no_content=="" || no_content==null){
+		}else if(no_content=="" || no_content==null){
 			window.alert('내용을 입력하세요');
 			return false;
 		}
@@ -103,10 +102,6 @@
 				<tr>	
 					<th id="no_wrth2">첨부파일1</th>
 					<td id="no_wrtd2"><input type="file" name="upload"></td>
-				</tr>
-				<tr>	
-					<th id="no_wrth3">첨부파일2</th>
-					<td id="no_wrtd3"><input type="file" name="upload"></td>
 				</tr>
 				<tr>
 					<td><button type="button" class="btn btn-default" onclick="location.href='no_List.do'">목록으로</button></td>

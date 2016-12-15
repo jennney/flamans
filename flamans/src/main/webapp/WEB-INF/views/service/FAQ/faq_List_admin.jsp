@@ -113,9 +113,10 @@
 <div id="wrapper">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
-		<form name="faq_List" action="faq_Find.do" >
+		<form name="faq_List_admin" action="faq_Find_admin.do" >
 		<div>
-			<label><h2>FAQ</h2></label><input type="text" class="form-control" name="findValue" style="width: 100px;"><button type="submit" class="btn btn-default" style="float: center;">검색</button>
+			<input type="text" class="form-control" style="width: 200px;"name="findValue">
+			<span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
 		</div>
 		</form>
 		<label>자주하는 질문 BEST 5</label>

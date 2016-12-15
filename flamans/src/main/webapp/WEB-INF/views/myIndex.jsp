@@ -51,7 +51,7 @@
 	        <li><a href="hospitalBbsList.do">  HospitalCommunity</a></li>
 	        <li><a href="hospitalContent.do">  HospitalInfo</a></li>
 	        <li><a href="doctorList.do">  DoctorInfo</a></li>
-	        <li><a href="bBook_list.do">  HospitalReservation</a></li>
+	        <li><a href="bBbook_list.do">  HospitalReservation</a></li>
 	        <li><a href="event_co_list.do?e_name=${sessionScope.savecoId}"> HospitalEvent</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
 	     </c:if>
@@ -76,11 +76,10 @@
                     <li><a href="no_List_admin.do">Notice</a></li>
                     <li><a href="faq_List_admin.do">FAQ</a></li>
                     <li><a href="qna_List_admin.do?qna_kind=site">Q&amp;A</a></li>
+                    <li><a href="page_Write.do">PageManager</a></li>
                 </ul>
             </li>
-	        <li><a href="#">  1:1</a></li>
 	        <li><a href="logout.do">  Logout</a></li>
-	        
 	     </c:if>
 	     
 	    </ul>

@@ -29,11 +29,14 @@ public interface Hot_bookDAO {
 	
 	public int fm_hotroomnum(int room_idx,int roomselect);
 	
+	public Hot_bookDTO HBook_content(int bookingnum);
+	
+	public int checkout(int room_idx);
+	
+	public int HreWrite(Hot_bookDTO bdto);
+	
 	/*
 	
-	public BbookDTO bBook_content(int bookingnum);
-	
-	public int bBook_reWrite(BbookDTO dto, String hos_num);
 	
 	public List<BbookDTO> calendar(String hos_num, String date);*/
 	

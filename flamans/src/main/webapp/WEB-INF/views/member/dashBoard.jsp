@@ -193,7 +193,7 @@ th{	text-align: center;}
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<h4>내 대시보드</h4>
-		<div id="dash_img"><img src="/myweb/img/dashboard.JPG" id="dashimg"><div style="height: 20px;"></div><span id="white">반갑습니다! </span><br><br><br><br>
+		<div id="dash_img"><img src="/flamans/img/dashboard.JPG" id="dashimg"><div style="height: 20px;"></div><span id="white">반갑습니다! </span><br><br><br><br>
 		<c:if test="${!empty sessionScope.username }">
 			<div id="name">${sessionScope.username}님 계정입니다.</div>
 		</c:if>
