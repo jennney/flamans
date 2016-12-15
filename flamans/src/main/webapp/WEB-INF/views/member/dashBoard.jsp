@@ -51,30 +51,29 @@ function cm_calendarResult(){
 				HH=document.getElementById(calH[j]);
 				if(calH[j].checkin!=null){
 					var checkin=calH[j].checkin.split(' ');
-					alert(checkin);
 					var HH=document.getElementById(checkin[0]);
-					HH.innerHTML='checkin';
+					HH.innerHTML='in';
 				}
 				if(calH[j].checkout!=null){ 
 					var checkout=calH[j].checkout.split(' ');
-					alert(checkout);
 					var HH=document.getElementById(checkout[0]);
-					HH.innerHTML='checkout';
+					HH.innerHTML='out';
 				}
 				for(i=0; i<cal.length; i++){
-					alert('안들어옴?');
 					var caltemp=cal[i].bookingdate.split('/');
 					var calId=document.getElementById(caltemp[0]);
 					calHtemp=calId.innerHTML;
 					calHtemp+='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
 					calId.innerHTML=calHtemp;
 				}
-
 			} 
 			
 		
 		}
 	}
+}
+function bookDate(currentYear, currentMonth, dateNum){
+	window.location.href='booking.do';
 }
 </script>
 <style>

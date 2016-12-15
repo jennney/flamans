@@ -390,7 +390,6 @@ public class MemberController {
    public ModelAndView calendar(HttpSession session, @RequestParam("date")String date){
       
       String userid=(String)session.getAttribute("userid");
-      System.out.println("컨트롤러"+userid+"/"+date);
       List<BbookDTO> cal=memberDao.mcalendar(userid, date);
       List<Hot_bookDTO> calH=memberDao.Hcalendar(userid, date);
       ModelAndView mav=new ModelAndView("flamansJson", "cal", cal);
