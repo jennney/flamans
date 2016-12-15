@@ -195,7 +195,7 @@ public class EventController {
 		int totalCnt = eventDao.getTotalCnt(e_name, 0);
 		int listSize = 5;
 		int pageSize = 5;
-		String pageStr = PageModule.makePage("event_co_list.do", totalCnt, listSize, pageSize, cp);
+		String pageStr = PageModule.makePage("event_co_list.do?e_name="+session.getAttribute("savecoId"), totalCnt, listSize, pageSize, cp);
 		List<EventDTO> list = eventDao.event_co_list(cp, listSize, e_name);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);

@@ -13,11 +13,11 @@
 <h2>호텔 예약 정보</h2>
     <table>
        <tr>
-       <th>호텔 명</th>
-       <th>예약 날짜</th>
-       <th>체크인</th>
-       <th>체크아웃</th>
-       <th>예약여부</th>
+       <th width="250px;">호텔 명</th>
+       <th width="250px;">예약 날짜</th>
+       <th width="250px;">체크인</th>
+       <th width="250px;">체크아웃</th>
+       <th width="250px;">예약여부</th>
     </tr>
       <c:if test="${empty mdto}">
     <tr>
@@ -48,9 +48,9 @@
 	<h2>병원 예약 정보</h2>
        <table>
                <tr>
-               <th>병원 명</th>
-               <th>예약 날짜</th>
-               <th>예약여부</th>
+               <th width="230px;">병원 명</th>
+               <th width="230px;">예약 날짜</th>
+               <th width="230px;">예약여부</th>
             </tr>
               <c:if test="${empty bdto}">
             <tr>

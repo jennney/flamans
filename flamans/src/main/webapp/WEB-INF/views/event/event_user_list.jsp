@@ -10,7 +10,8 @@
 
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<h2>이벤트</h2>
+<h2 align="center">이벤트</h2>
+<div align="center">
 <table>
 	<c:if test="${empty list}">
 		<tr>
@@ -24,7 +25,7 @@
 	<c:param name="e_idx">${dto.e_idx}</c:param>
 	</c:url>
 		<tr>   		
-			<td colspan="4">${dto.e_subject}</td>
+			<td colspan="4" style="padding-bottom: 15px;"><font size="5">${dto.e_subject}</font></td>
 		<tr>
 			<td>이벤트 기간 : </td>
 			<td>${dto.e_start} ~ ${dto.e_end}</td>
@@ -42,6 +43,7 @@
 	</tr>
 	
 </table>	
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

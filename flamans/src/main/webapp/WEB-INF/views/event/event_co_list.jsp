@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <body>
-<div id="wrapper">
+<div id="wrapper" align="center">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
 <table>
@@ -22,8 +22,9 @@
 	<c:url var="contentURL" value="event_hot_Content.do">
 	<c:param name="e_idx">${dto.e_idx}</c:param>
 	</c:url>
+		
 		<tr>   		
-			<td colspan="4">${dto.e_subject}</td>
+			<td colspan="4" style="padding-top: 60px;">${dto.e_subject}</td>
 		<tr>
 			<td>이벤트 기간 : </td>
 			<td>${dto.e_start} ~ ${dto.e_end}</td>
@@ -33,9 +34,10 @@
 		<tr>
 			<td colspan="4"><a href="event_co_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}" width="800px" height="400px"></a></td>
 		</tr>
+		
 	</c:forEach>
 	<tr>
-		<td><input type="button" value="등록" onclick="location.href='event_add.do'"></td>
+		<td align="right" colspan="4"><input type="button" value="등록" onclick="location.href='event_add.do'"></td>
 	</tr>
 	<tr>
 		<td colspan="4" align="center">
