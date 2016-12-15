@@ -111,6 +111,8 @@
 			<ref bean="sqlSessionTemplate"/>
 		</constructor-arg>
 	</bean>
+	
+	<bean class="flamans.paging.PageModule2" id="paging2"/>
 
    <!-- controller -->
    <bean id="down" class="flamans.view.DownloadView"/>
