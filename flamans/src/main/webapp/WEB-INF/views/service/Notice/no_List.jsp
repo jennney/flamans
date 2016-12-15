@@ -79,16 +79,19 @@ h2 {
 		<thead>
 			<tr>
 				<td colspan="4" align="right">
-					<form name="no_find" action="no_List.do" method="post" onsubmit="return check()">
-						<select name="findKey">
-							<option value="all" ${findKey eq 'all'?"selected":""}>- 전체
-								-</option>
-							<option value="no_content" ${findKey eq 'no_content'?"selected":""}>
-								내용</option>
-							<option value="no_subject" ${findKey eq 'no_subject'?"selected":""}>
-								제목</option>
-						</select> <input type="text" name="findValue" value="${findValue}">
-						<input type="submit" value="검색">
+					<form name="no_find" action="no_List.do" method="post" onsubmit="return check()" role="form">
+							<div class="form-group input-group">
+								<select name="findKey" class="form-control" style="width: 100px;">
+									<option value="all" ${findKey eq 'all'?"selected":""}>- 전체
+										-</option>
+									<option value="no_content" ${findKey eq 'no_content'?"selected":""}>
+										내용</option>
+									<option value="no_subject" ${findKey eq 'no_subject'?"selected":""}>
+										제목</option>
+								</select>
+								<input type="text" class="form-control" style="width: 200px; float: right;"name="findValue" value="${findValue}">
+						    	<span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+						    </div>
 					</form>
 				</td>
 			</tr>
@@ -128,67 +131,6 @@ h2 {
 		</tbody>
 	</table>
 </section>
-
-
-
-
-
-
-
-
-<section style="border: 1px solid red;">
-	
-	
-		  <form action="" id = "fo">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <ul id="mess">
-    
-	</ul>
-
-
-</section>
-
-
-
-<!-- ========================================================================================7 -->
-<script>
-
-var socket = io('https://192.168.20.18:8080');
-
-$('form').submit(function(){
-    socket.emit('chat_message', $('#m').val());
-    $('#m').val('');
-    return false;
-  });
-
-
-socket.on('chat_message', function(msg){
-	
-console.log(msg)
-	//document.getElementById("li_4").innerHTML = ""+msg+"";
-	   $('#mess').append($('<li>').text(msg));
-	
-});
-
-send  = function(){
-	
-	
-	var msg = document.getElementById("m").value;
-	//window.alert(msg);
-	socket.emit('chat_message',msg);
-	
-}
-
-
-
-
-
-
-
-</script>
-<!-- ========================================================================================7 -->
-
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

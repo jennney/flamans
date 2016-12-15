@@ -95,7 +95,7 @@ h2{
 			<table id="no_up">
 				<tr>
 					<td id="no_upth1">SUBJECT</td>
-					<td id="no_uptd1"><input type="text" name="no_subject" value="${ndto.no_subject}"></td>
+					<td id="no_uptd1"><input type="text" name="no_subject" class="form-control" value="${ndto.no_subject}"></td></td>
 				</tr>
 				<tr>
 					<td colspan="2"><textarea name="no_content" id="no_content">${ndto.no_content}</textarea></td>
@@ -103,10 +103,6 @@ h2{
 				<tr>	
 					<td id="no_uptd2">첨부파일1</td>
 					<td id="no_uptd2"><input type="file" name="upload"  value="${ndto.no_file1}"></td>
-				</tr>
-				<tr>	
-					<td id="no_uptd3">첨부파일2</td>
-					<td id="no_uptd3"><input type="file" name="upload" value="${ndto.no_file2}"></td>
 				</tr>
 				<tr>
 					<tr>
@@ -118,6 +114,5 @@ h2{
 		</form>
 	</div>
 </div>
-<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

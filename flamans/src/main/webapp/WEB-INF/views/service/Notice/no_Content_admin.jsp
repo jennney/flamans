@@ -15,14 +15,17 @@
 #no_conth1,#no_contd1{
 	border-top: 3px solid #BDBDBD;
 	border-bottom: 3px solid #BDBDBD;
-	height: 30px;
+	height: 50px;
+	text-align: center;
 }   
 #no_conth2,#no_contd2{
 	border-bottom: 3px solid #BDBDBD;
-	height: 30px;
+	height: 50px;
+	text-align: center;
 }
 #no_conth1,#no_conth2{
 	width: 200px;
+	text-align: center;
 }
 #no_contd1,#no_contd2{
 	width: 500px;
@@ -37,7 +40,7 @@
 	height: 30px;
 }
 #no_contd5{
-	height: 30px;
+	height: 50px;
 }
 h2{
 	text-align: center;
@@ -45,11 +48,11 @@ h2{
 </style>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-<div class="center">
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
    <h2>공지사항</h2>
-</div>
+
 <table id="no_con">
 	<tr>
 		<th id="no_conth1">SUBJECT</th>
@@ -66,26 +69,20 @@ h2{
 		<td colspan="2" align="center">${ndto.no_content}</td>
 	</tr>
 	<tr>
-		<td align="center" id="no_contd3">첨부 파일 1 : </td>
+		<th align="center" id="no_contd3">첨부 파일 1 : </th>
 		<td align="left" id="no_contd3"><a href="no_down.do?no_file=${ndto.no_file1}">${ndto.no_file1}</a></td>
 	</tr>
 	<tr>
-		<td align="center" id="no_contd4">첨부 파일 2 : </td>
-		<td align="left" id="no_contd4"><a href="no_down.do?no_file=${ndto.no_file2}">${ndto.no_file2}</a></td>
-	</tr>
-	<tr>
 		<tr>
-			<td id="no_contd5"><input type="button" value="목록으로" onclick="location.href='no_List.do'"></td>
-			<c:if test="${sessionScope.permit eq 1}">
+			<td id="no_contd5"><input type="button" value="목록으로" onclick="location.href='no_List_admin.do'" class="btn btn-default"></td>
 			<td align="right" id="no_contd5">
-				<input type="button" value="수정하기" onclick="location.href='no_Update.do?idx=${ndto.no_idx}'">     
-				<input type="button" value="삭제하기" onclick="location.href='no_Delete.do?idx=${ndto.no_idx}'">
+				<input type="button" value="수정하기" onclick="location.href='no_Update.do?idx=${ndto.no_idx}'" class="btn btn-default">     
+				<input type="button" value="삭제하기" onclick="location.href='no_Delete.do?idx=${ndto.no_idx}'" class="btn btn-default">
 			</td>
-			</c:if>
 		<tr>
 	</tr>
 </table>
-</section>
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+</div>
+</div>
 </body>
 </html>

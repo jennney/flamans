@@ -17,6 +17,7 @@ public class Hot_bookDTO {
    private String bookingnum;
    private int room_idx;
    private String roomname;
+   private String cm_name;
    
 	public Hot_bookDTO() {
 	super();
@@ -24,7 +25,7 @@ public class Hot_bookDTO {
 
 	public Hot_bookDTO(String hot_num, String name, String sex, String nationality, String checkin, String checkout,
 			String card, Date bookingdate, String people, int roomselect, String permit, String bookingnum, int room_idx,
-			String roomname) {
+			String roomname,String cm_name) {
 		super();
 		this.hot_num = hot_num;
 		this.name = name;
@@ -40,6 +41,7 @@ public class Hot_bookDTO {
 		this.bookingnum = bookingnum;
 		this.room_idx = room_idx;
 		this.roomname = roomname;
+		this.cm_name = cm_name;
 	}
 	
 	public String getHot_num() {
@@ -125,6 +127,14 @@ public class Hot_bookDTO {
 	}
 	public void setRoomname(String roomname) {
 		this.roomname = roomname;
+	}
+
+	public String getCm_name() {
+		return cm_name;
+	}
+
+	public void setCm_name(String cm_name) {
+		this.cm_name = cm_name;
 	}
 	                    
    

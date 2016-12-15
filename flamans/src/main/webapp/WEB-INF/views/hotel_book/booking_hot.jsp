@@ -311,7 +311,8 @@ a#booking_pop:hover {
 </script>
 </head>
 <body>
-
+<%@ include file="/WEB-INF/views/header.jsp"%>	
+<section>
 <div class="center">
    <h2>예약하기</h2>
 </div>
@@ -432,6 +433,7 @@ a#booking_pop:hover {
    </form>
       <a class="close" href="#close"></a>   
 </div>
-
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

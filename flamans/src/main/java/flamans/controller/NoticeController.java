@@ -99,23 +99,19 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "/no_Write.do", method = RequestMethod.POST)
-	public ModelAndView noWrite(NoticeDTO ndto, @RequestParam("upload") List<MultipartFile> upload,
+	public ModelAndView noWrite(NoticeDTO ndto, @RequestParam("upload")MultipartFile upload,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset-utf-8");
 		String filePath = request.getRealPath("service_upload/notice_upload");
 		try {
-			if (!upload.isEmpty()) {
-				for (int i = 0; i < upload.size(); i++) {
-					byte bytes[] = upload.get(i).getBytes();
-					File newFile = new File(filePath + "/" + upload.get(i).getOriginalFilename());
-					FileOutputStream fos = new FileOutputStream(newFile);
-					fos.write(bytes);
-					fos.close();
-				}
-				ndto.setNo_file1(upload.get(0).getOriginalFilename());
-				ndto.setNo_file2(upload.get(1).getOriginalFilename());
-			}
+				byte bytes[] = upload.getBytes();
+				File newFile = new File(filePath + "/" + upload.getOriginalFilename());
+	
+				FileOutputStream fos = new FileOutputStream(newFile);
+				fos.write(bytes);
+				fos.close();
+				ndto.setNo_file1(upload.getOriginalFilename());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -123,7 +119,7 @@ public class NoticeController {
 		String msg = result > 0 ? "글쓰기가 완료되었습니다." : "글쓰기가 실패하였습니다.";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url", "no_List.do");
+		mav.addObject("url", "no_List_admin.do");
 		mav.setViewName("/service/Notice/no_Msg");
 		return mav;
 	}
@@ -170,7 +166,7 @@ public class NoticeController {
 		String msg = result > 0 ? "삭제가 완료되었습니다." : "삭제가 실패하였습니다.";
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
-		mav.addObject("url", "no_List.do");
+		mav.addObject("url", "no_List_admin.do");
 		mav.setViewName("service/Notice/no_Msg");
 		return mav;
 	}
@@ -185,31 +181,23 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "/no_Update.do", method = RequestMethod.POST)
-	public ModelAndView noUpdate(NoticeDTO ndto, @RequestParam("upload") List<MultipartFile> upload,
+	public ModelAndView noUpdate(NoticeDTO ndto, @RequestParam("upload")MultipartFile upload,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset-utf-8");
 		String filePath = request.getRealPath("service_upload/notice_upload");
 		try {
-			if (!upload.isEmpty()) {
-				for (int i = 0; i < upload.size(); i++) {
-					byte bytes[] = upload.get(i).getBytes();
-					File newFile = new File(filePath + "/" + upload.get(i).getOriginalFilename());
-					FileOutputStream fos = new FileOutputStream(newFile);
-					fos.write(bytes);
-					fos.close();
-				}
-				ndto.setNo_file1(upload.get(0).getOriginalFilename());
-				ndto.setNo_file2(upload.get(1).getOriginalFilename());
-			}else{
-				ndto.setNo_file1(upload.get(0).getOriginalFilename());
-				ndto.setNo_file2(upload.get(1).getOriginalFilename());
-			}
+				byte bytes[] = upload.getBytes();
+				File newFile = new File(filePath + "/" + upload.getOriginalFilename());
+	
+				FileOutputStream fos = new FileOutputStream(newFile);
+				fos.write(bytes);
+				fos.close();
+				ndto.setNo_file1(upload.getOriginalFilename());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		int result = noticeDao.noUpdate(ndto);
 		String msg = result > 0 ? "수정이 완료되었습니다." : "수정이 실패되었습니다.";
 		ModelAndView mav = new ModelAndView();

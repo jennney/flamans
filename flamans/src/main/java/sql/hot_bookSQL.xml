@@ -36,22 +36,12 @@
 			checkin
 	</select>   
    <select id="fm_myhot_book" resultType="flamans.hot.book.model.Hot_bookDTO">
-      select hot_num,
-         name,
-            sex,
-         nationality,
-         TO_CHAR(checkin,'YYYY-MM-DD') checkin
-     , TO_CHAR(checkout,'YYYY-MM-DD') checkout,
-        card           
-     , TO_CHAR(bookingdate,'YYYY-MM-DD') bookingdate,
-         people,
-        roomselect,
-        permit,
-        bookingnum
-      from fm_hot_book where name = #{m_id}
-   </select>
-   <select id="fm_hotname" resultType="flamans.company.model.CompanyDTO">
-      select cm_name from fm_company where cm_number = #{hot_num}   
+		select 
+			c.cm_name,h.checkin,h.checkout,h.bookingdate,h.permit
+		from 
+			fm_hot_book h,fm_company c
+		where 
+			h.hot_num=c.cm_number and h.name = #{m_id}
    </select>
    <update id="HBook_request" parameterType="Map">
 		update 

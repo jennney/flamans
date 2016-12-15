@@ -11,7 +11,6 @@ public class NoticeDTO {
 	private String no_content;
 	private Date no_writedate;
 	private String no_file1;
-	private String no_file2;
 	private int no_idx;
 	private int no_readnum;
 	
@@ -19,14 +18,13 @@ public class NoticeDTO {
 		super();
 	}
 
-	public NoticeDTO(String no_subject, String no_content, Date no_writedate, String no_file1, String no_file2,
+	public NoticeDTO(String no_subject, String no_content, Date no_writedate, String no_file1,
 			int no_idx, int no_readnum) {
 		super();
 		this.no_subject = no_subject;
 		this.no_content = no_content;
 		this.no_writedate = no_writedate;
 		this.no_file1 = no_file1;
-		this.no_file2 = no_file2;
 		this.no_idx = no_idx;
 		this.no_readnum = no_readnum;
 	}
@@ -61,14 +59,6 @@ public class NoticeDTO {
 
 	public void setNo_file1(String no_file1) {
 		this.no_file1 = no_file1;
-	}
-
-	public String getNo_file2() {
-		return no_file2;
-	}
-
-	public void setNo_file2(String no_file2) {
-		this.no_file2 = no_file2;
 	}
 
 	public int getNo_idx() {
