@@ -125,38 +125,38 @@ public class hosController {
 		return mav;
 	}
 	
-	/*	
-	@RequestMapping(value="/bBbook_list.do", method=RequestMethod.GET)
-	public ModelAndView bBbook_CList(HttpSession session){
-	
-		String hos_num=(String)session.getAttribute("cm_number");
-		ModelAndView mav=new ModelAndView();
-		List<BbookDTO> cal=Bdao.calendar(hos_num);
-		if(cal!=null){
-			mav.addObject("cal", cal);
-			mav.setViewName("hos_book/admin_confirm");
-		}else{
-			mav.addObject("msg", "잘못된 접근입니다.");
-			mav.addObject("url", "company_Blogin.do");
-			mav.setViewName("member/memberMsg");
-		}
-		return mav;
-	}*/
-	
 	/**관리자계정-병원예약요청*/
 	@RequestMapping(value="/bBbook_list.do", method=RequestMethod.GET)
-	public String bBbook_CList(){
-		return "hos_book/admin_confirm";
+	public ModelAndView bBbook_CList(HttpSession session){
+		String cm_number=(String)session.getAttribute("cm_number");
+		ModelAndView mav= new ModelAndView();
+		if(cm_number==null||cm_number.equals("")){		
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");
+			return mav;
+			
+		}else{
+			mav.setViewName("hos_book/admin_confirm");
+			return mav;
+		}
 	}
-	
 	
 	/**관리자계정-병원예약리스트*/
 	@RequestMapping(value="/bBbook_list.do", method=RequestMethod.POST)
 	public ModelAndView bBbook_AList(HttpSession session, @RequestParam("bookingdate")String bookingdate){
 		String cm_number=(String)session.getAttribute("cm_number");
-		List<BbookDTO> list = Bdao.bBbook_List(cm_number, bookingdate);
-		ModelAndView mav=new ModelAndView("flamansJson", "list", list);
-		return mav;
+		if(cm_number==null||cm_number.equals("")){		
+			ModelAndView mav= new ModelAndView();
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");
+			return mav;		
+		}else{
+			List<BbookDTO> list = Bdao.bBbook_List(cm_number, bookingdate);
+			ModelAndView mav=new ModelAndView("flamansJson", "list", list);
+			return mav;
+		}
 	}
 	
 	/**관리자계정-병원예약 삭제*/
@@ -164,11 +164,18 @@ public class hosController {
 	public ModelAndView bBbook_refuse(HttpSession session, @RequestParam("bookingnum")int bookingnum){
 		
 		String hos_number=(String)session.getAttribute("cm_number");
-
-		int result=Bdao.bBbook_refuse(hos_number, bookingnum);
-		String msg=result>0?"예약이 삭제되었습니다.":"예약 삭제 실패했습니다.";
-		ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
-		return mav;
+		if(hos_number==null||hos_number.equals("")){		
+			ModelAndView mav= new ModelAndView();
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");
+			return mav;		
+		}else{
+			int result=Bdao.bBbook_refuse(hos_number, bookingnum);
+			String msg=result>0?"예약이 삭제되었습니다.":"예약 삭제 실패했습니다.";
+			ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
+			return mav;
+		}
 	}
 	
 	/**관리자계정-예약수락*/
@@ -176,11 +183,19 @@ public class hosController {
 	public ModelAndView bBbook_permit(HttpSession session, @RequestParam("bookingnum")int bookingnum){
 		
 		String hos_num=(String)session.getAttribute("cm_number");
-		int result=Bdao.bBbook_permit(hos_num, bookingnum);
-		String msg=result>0?"예약요청을 수락하셨습니다.":"예약요청을 수락하지 못하였습니다.";
-		ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
+		if(hos_num==null||hos_num.equals("")){		
+			ModelAndView mav= new ModelAndView();
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");
+			return mav;		
+		}else{
+			int result=Bdao.bBbook_permit(hos_num, bookingnum);
+			String msg=result>0?"예약요청을 수락하셨습니다.":"예약요청을 수락하지 못하였습니다.";
+			ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
 		
-		return mav;		
+			return mav;		
+		}
 				
 	}	
 	
@@ -264,17 +279,25 @@ public class hosController {
 	public ModelAndView Bbook_reWrite(HttpSession session, BbookDTO dto, @RequestParam("B_time")String B_time){
 		
 		String hos_num=(String)session.getAttribute("cm_number");
-		dto.setHos_num(hos_num);
-		
-		String temp= String.valueOf(dto.getBookingdate())+"/"+B_time;
-		dto.setBookingdate(temp);
-		
 		ModelAndView mav= new ModelAndView();
-		int result=Bdao.bBook_reWrite(dto, hos_num);
-		String msg=result>0?"예약 변경되었습니다.":"예약 변경 실패했습니다";
-		mav.addObject("msg", msg);
-		mav.setViewName("hos_book/hos_bookMsg");
-		return mav;
+		if(hos_num==null||hos_num.equals("")){			
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");
+			return mav;		
+		}else{
+		
+			dto.setHos_num(hos_num);
+			
+			String temp= String.valueOf(dto.getBookingdate())+"/"+B_time;
+			dto.setBookingdate(temp);
+
+			int result=Bdao.bBook_reWrite(dto, hos_num);
+			String msg=result>0?"예약 변경되었습니다.":"예약 변경 실패했습니다";
+			mav.addObject("msg", msg);
+			mav.setViewName("hos_book/hos_bookMsg");
+			return mav;
+		}
 	}
 	
 	/**병원관계자 - 달력표시*/

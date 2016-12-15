@@ -231,83 +231,18 @@ a#booking_pop:hover {
    background-color: rgba(64, 128, 128, 0.8);
 }
 .popup p, .popup div {
-	margin-bottom: 10px;
+   margin-bottom: 10px;
 }
 .popup label {
-	display: inline-block;
-	text-align: left;
-	width: 120px;
+   display: inline-block;
+   text-align: left;
+   width: 120px;
 }
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script>
-	$(document).ready(function() {
-		$("#datepicker1").datepicker({
-			numberOfMonths: 1,
-			dateFormat : 'yy-mm-dd',
-			minDate: 0,
-			 closeText : '닫기',
-			onSelect: function(selected) {
-			$("#datepicker2").datepicker("option","minDate", selected)
-			}
-			});
-			$("#datepicker2").datepicker({
-			numberOfMonths: 1,
-			dateFormat : 'yy-mm-dd',
-			minDate: 0,
-			 closeText : '닫기',
-			onSelect: function(selected) {
-			$("#datepicker1").datepicker("option","maxDate", selected)
-			}
-			})
-	});
-	function change(idx,name){
-		var target = document.getElementById(idx);
-		var room = target.options[target.selectedIndex].text;
-		var txt = name+" "+room+"객실";
-		if(room==0){
-			window.alert('객실을 선택하세요');	
-		}
-		document.getElementById("spantxt").innerHTML = txt;
-		document.getElementById("roomselect").value = room;
-		document.getElementById("room_idx").value = idx;
-	}
-	function check(idx){
-		var adult = document.getElementById('adult').value;
-		var child = document.getElementById('child').value;
-		var room = document.getElementById(idx).value;
-		var checkin = document.getElementById('datepicker1').value;
-		var checkout = document.getElementById('datepicker2').value;
-		if(room==0){
-			window.alert('객실을 선택하세요');
-			location.href='booking_hot.do?hot_num=${hot_num}#close';
-		}else if(adult==0 && child==0){
-			window.alert('인원수를 체크 해주세요');
-			location.href='booking_hot.do?hot_num=${hot_num}#close';
-		}else if(adult==0 && child>0){
-			window.alert('어린이만 예약할 수 없습니다.');
-			location.href='booking_hot.do?hot_num=${hot_num}#close';
-		}else if(checkin=="" || checkin==null){
-			window.alert('체크인 날짜를 선택하세요');
-			location.href='booking_hot.do?hot_num=${hot_num}#close';
-		}else if(checkout=="" || checkout==null){
-			window.alert('체크아웃 날짜를 선택하세요');
-			location.href='booking_hot.do?hot_num=${hot_num}#close';
-		}
-		else{
-			location.href='booking_hot.do?hot_num=${hot_num}#booking_form';
-			document.getElementById("txt").innerHTML = checkin;
-			document.getElementById("txt1").innerHTML = checkout;
-			document.getElementById("txt8").innerHTML = adult;
-			document.getElementById("txt9").innerHTML = child;
-			var people = '어른 : '+adult+'/ 어린이 : '+child;
-			document.getElementById("people").value = people;
-			document.getElementById("checkin").value = checkin;
-			document.getElementById("checkout").value = checkout;
-		}
-	}
    $(document).ready(function() {
       $("#datepicker1").datepicker({
          numberOfMonths: 1,
@@ -413,89 +348,6 @@ a#booking_pop:hover {
          </td>
       </tr>
 
-		<tr>
-			<th>객실유형</th>
-			<th>정 원</th>
-			<th>객실요금</th>
-			<th>조 건</th>
-			<th>객실 선택</th>
-			<th>선택한 객실</th>
-		</tr>
-		<c:forEach var="dto" items="${hotelroom}">	
-		<tr>
-			<td id="roomname"> ${dto.roomname}</td>
-			<td>2명</td>
-			<td>${dto.roomprice }</td>
-			<td>${dto.room_option }</td>
-			<td>
-				<select name="room" onchange="javascript:change('${dto.room_idx}','${dto.roomname}')" id="${dto.room_idx }">
-				<c:forEach begin="0" end="${dto.roomnum}" step="1" var="i">
-					<option value="${i}">${i}</option>
-				</c:forEach>
-				</select>
-			</td>
-			<th><input type="button" value="예약하기" id="booking_pop" onclick="javascript:check(${dto.room_idx})"></th>
-		</tr>
-	 </c:forEach>
-	</table>
-	<a href="#x" class="overlay" id="booking_form"></a>
-	<div class="popup">
-		<div>
-			<label for="checkin">체크인:</label>
-			<span id="txt"></span>
-		</div>
-		<div>
-			<label for="checkout">체크아웃:</label>
-			<span id="txt1"></span>
-		</div>
-		<div>
-			<label for="adult">성인:</label>
-			<span id="txt8"></span>
-		</div>
-		<div>
-			<label for="child">어린이:</label>
-			<span id="txt9"></span>
-		</div>
-		<div>
-			<label for="roomtype">객실 타입:</label>
-			<span id="spantxt"></span>
-		</div>
-	    <hr>
-	  	[예약자 정보 입력]
-	  	<div></div>
-	  	<form name="booking_hot" action="booking_hot.do" method="post">
-	  	<input type="hidden" name="hot_num" value="${hot_num}">
-	  	<input type="hidden" name="name" value="${mdto.m_id}">
-	  	<input type="hidden" name="sex" value="${mdto.m_sex}">
-		<input type="hidden" name="nationality" value="${mdto.m_nationality}">
-		<input type="hidden" name="checkin" id="checkin">  	
-		<input type="hidden" name="checkout" id="checkout">  	 		
-		<input type="hidden" name="people" id="people">  	
-		<input type="hidden" name="roomselect" id="roomselect">	
-		<input type="hidden" name="permit" value="0">
-		<input type="hidden" name="room_idx" id="room_idx">
-		<div>
-		예약자명: ${mdto.m_name}
-		</div>
-		<div>
-		성 별: ${mdto.m_sex }
-		</div>
-		<div>
-		국적:${mdto.m_nationality}
-		</div>
-		<div>카드 번호: 
-			<select name="cardco">
-				<option value="Lotte">롯데</option>
-				<option value="BC">비씨</option>
-				<option value="Master">마스터</option>
-				</select>&nbsp;
-				<input type="text" name="cardnum">
-		</div>
-	<div>
-		<label><input type="submit" value="예약"></label>
-	</div>
-	</form>
-		<a class="close" href="#close"></a>	
       <tr>
          <th>객실유형</th>
          <th>정 원</th>

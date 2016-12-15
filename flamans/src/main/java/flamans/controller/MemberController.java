@@ -390,11 +390,10 @@ public class MemberController {
    public ModelAndView calendar(HttpSession session, @RequestParam("date")String date){
       
       String userid=(String)session.getAttribute("userid");
-   
-      List<BbookDTO> cal=memberDao.mcalendar(userid, date);//병원
-      //List<BbookDTO> calH=memberDao.hcalendar(userid, date);
-      //호텔정보 가져올것
+      List<BbookDTO> cal=memberDao.mcalendar(userid, date);
+      List<Hot_bookDTO> calH=memberDao.Hcalendar(userid, date);
       ModelAndView mav=new ModelAndView("flamansJson", "cal", cal);
+      mav.addObject("calH", calH);
       return mav;
       
    }
@@ -411,6 +410,9 @@ public class MemberController {
       mav.setViewName("hotel_book/bookingInfo");
       return mav;
    }
-
-
+   
+   @RequestMapping("/joinMain.do")
+   public String joinMain(){
+	   return "member/joinMain";
+   }
 }

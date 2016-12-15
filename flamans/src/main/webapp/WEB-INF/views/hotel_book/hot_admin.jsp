@@ -36,7 +36,7 @@ function HBookCheckResult(){
 				for(var i=0;i<HbookList.length;i++){						
 					var Hbook=HbookList[i];
 					var checkin=Hbook.checkin.split(' ');
-					var checkout=Hbook.checkin.split(' ');
+					var checkout=Hbook.checkout.split(' ');
 					if(Hbook.permit=='0'){	
 						
 						msg+='<tr><td><span>'+checkin[0]+'</span></td>';

@@ -115,6 +115,14 @@
 
 <script>
 	
+	function number_check(num){
+		var m_star = document.getElementById("m_star");
+		if(!(num>0 && num<6)){
+			alert('( 평점 ) 1~5사이의 숫자를 넣어주세요');
+			document.comment_write.m_star.value='';
+		}
+	}
+	
 	function hospital_sub_search(param){
 		sendRequest('hospital_sub_search.do', param, hospital_result_search, 'POST');
 	}
@@ -452,27 +460,22 @@
 					<table class="table">
 
 						<tr>
-							<td><textarea class="form-control" cols="85" rows="4" cols="90" name="c_comment"
+							<td><textarea style="resize:none;" class="form-control" cols="85" rows="4" cols="85" name="c_comment"
 									placeholder="로그인 후 체크아웃시 작성 가능합니다."></textarea></td>
 						</tr>
 
 					</table>
 
 					<table class="table">
-							<tr>
-								<td width="110">평점</td>
-								<td width="200"><input type="text" class="form-control" name="c_grade"></td>
-								<td></td>
-							</tr>
 							
-							<tr>
-								<td width="110">작성자</td><td>
-								<input type="text" class="form-control" name="c_writer"></td>
-								<td><input type="submit" class="btn btn-default" value="작성"></td>
-							</tr>
+						<tr>
+							<td width="50">평점:</td>
+							<td width="200"><input type="text" id="m_star" size="50" class="form-control" name="c_grade" onkeyup="number_check(this.value)"></td>
+							<td><input type="submit" class="btn btn-default" value="작성"></td>
+						</tr>
 							
 					</table>
-
+					
 					<hr>
 					<c:forEach var="hospital_info" items="${hospital_info }">
 
@@ -488,7 +491,7 @@
 
 				<c:forEach var="hospital_comment" items="${hospital_comment }">
 					<div class="container" style="width: 700px;">
-						<table class="table table-hover" style="float: left;">
+						<table class="table" style="float: left;">
 							<thead>
 								<tr>
 									<th width="100">[작성자]</th>

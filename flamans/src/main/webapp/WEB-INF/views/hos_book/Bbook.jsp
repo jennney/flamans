@@ -83,7 +83,11 @@ function BooktimeCheckResult(){
 						var timetemp=BtimeList[j].bookingdate.split('/');
 						var time=timetemp[1]; //		disable 
 						if(time==btimetable.options[i].value){
-							   btimetable.options[i].disabled = true;
+							var doc_time=document.bBook.doc_num.value;
+							if(doc_time==btimetable.doc_num[i]){
+								btimetable.options[i].disabled = true;
+							}
+							   
 							 /*   $('#B_time').options[i].attr('onclick', 'already()'); */
 							   
 						 }

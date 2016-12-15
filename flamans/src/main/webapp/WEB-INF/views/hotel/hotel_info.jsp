@@ -185,7 +185,6 @@ function number_check(num){
 	}
 }
 
-
 function hotel_sub_search(param){
 	sendRequest('hotel_sub_search.do', param, hotel_result_search, 'POST');
 }
@@ -363,6 +362,7 @@ function hot_grade_search(search_option){
  	var checkin  = document.hotel_main_search.checkin.value;
  	var checkout = document.hotel_main_search.checkout.value;
  	var roomprice = document.hot_option_select.price_hotel.value;
+ 	
  	/////////////////////////■ 등급 ■ ////////////////////////
  	
 	if(search_option == 'grade1'){
@@ -507,7 +507,7 @@ function hot_grade_search(search_option){
 		}
 	}
 	
-	if(roomprice>=10000 && roomprice<=100000){
+	if(roomprice>=10000 && roomprice<=200000){
 		i=0;
  		if(z==1){
  			params+='&';
@@ -608,7 +608,7 @@ function toggleMap(active) {
 				<td><form name="hotel_main_search" action="hotel_search_name.do">
 		
 					<table>
-					
+							
 							<tr>
 								<td align="center" colspan="2">
 								<input type="text" class="form-control" id="findname" size="84" onkeypress="if(event.keyCode==13) {hot_grade_search(); return false;}">
@@ -616,7 +616,7 @@ function toggleMap(active) {
 								
 								</td>
 							</tr>
-					
+							
 							<tr>
 								<br>
 								<td>CheckIn &nbsp;<input type="date" class="form-control" id="checkin" value="2016-12-23"></td>
@@ -795,12 +795,12 @@ function toggleMap(active) {
 						</tr>
 						
 						<tr>
-							<td colspan="5" align="center">[10000원]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[100000원]</td>
+							<td colspan="5" align="center">[10000원]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[200000원]</td>
 						</tr>
 						
 						<tr>
 							<td colspan="5" align="center">
-							<input type="range" name="price_hotel" min="10000" max="100000" step="10000" onkeydown="hot_grade_search(this.value)"></td>
+							<input type="range" name="price_hotel" min="10000" max="200000" value="200000" step="10000" onchange="hot_grade_search(this.value)"></td>
 						</tr>
 						
 						<tr>
@@ -891,7 +891,7 @@ function toggleMap(active) {
 					<table class="table">
 						<tr>
 							<td><img alt="호텔사진영역" src="${hotel_info.hot_img }" width="200" height="200"></td>
-							<td width="500" rowspan="2">■호텔 상세정보 입력란(1)■ ${hotel_info.hot_content }</td>
+							<td width="500" rowspan="2">${hotel_info.hot_content }</td>
 						</tr>
 						
 						<tr>

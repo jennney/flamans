@@ -66,8 +66,18 @@ public class HotController {
 	
 	/**관리자계정-호텔예약 관리 페이지*/
 	@RequestMapping(value="/Hbook_list.do", method=RequestMethod.GET)
-	public String bBbook_CList(){
-		return "hotel_book/hot_admin";
+	public ModelAndView bBbook_CList(HttpSession session){
+		String hot_num=(String)session.getAttribute("cm_number");
+		ModelAndView mav= new ModelAndView();
+		if(hot_num==null||hot_num.equals("")){
+			
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");			
+		}else{
+			mav.setViewName("hotel_book/hot_admin");
+		}
+		return mav;
 	}
 	
 	
@@ -75,33 +85,60 @@ public class HotController {
 	@RequestMapping(value="/Hbook_list.do", method=RequestMethod.POST)
 	public ModelAndView HBbook_AList(HttpSession session, @RequestParam("checkin")String checkin){
 		String hot_num=(String)session.getAttribute("cm_number");
-		List<HotelRoomDTO> Hlist = Hot_bookDao.Hbook_List(hot_num, checkin);
-		ModelAndView mav=new ModelAndView("flamansJson", "Hlist", Hlist);
-		return mav;
+		if(hot_num==null||hot_num.equals("")){
+			ModelAndView mav= new ModelAndView();
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");
+			return mav;
+			
+		}else{
+			List<HotelRoomDTO> Hlist = Hot_bookDao.Hbook_List(hot_num, checkin);
+			ModelAndView mav=new ModelAndView("flamansJson", "Hlist", Hlist);
+			return mav;
+		}
+		
 	}
 	
-	/**관리자계정-병원예약 삭제*/
+	/**관리자계정-호텔예약 삭제*/
 	@RequestMapping(value="/HBbook_refuse.do", method=RequestMethod.POST)
 	public ModelAndView bBbook_refuse(HttpSession session, @RequestParam("bookingnum")int bookingnum){
 		
 		String hot_num=(String)session.getAttribute("cm_number");
-		int result=Hot_bookDao.Hbook_refuse(hot_num, bookingnum);
-		String msg=result>0?"예약이 삭제되었습니다.":"예약 삭제 실패했습니다.";
-		ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
-		return mav;
+		if(hot_num==null||hot_num.equals("")){
+			ModelAndView mav= new ModelAndView();
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");
+			return mav;
+			
+		}else{
+			int result=Hot_bookDao.Hbook_refuse(hot_num, bookingnum);
+			String msg=result>0?"예약이 삭제되었습니다.":"예약 삭제 실패했습니다.";
+			ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
+			return mav;
+		}
 	}
 	
-	/**관리자계정-예약수락*/
+	/**관리자계정-호텔예약수락*/
 	@RequestMapping(value="/HBook_permit.do", method=RequestMethod.POST)
 	public ModelAndView bBbook_permit(HttpSession session, @RequestParam("bookingnum")int bookingnum){
 		
 		String hot_num=(String)session.getAttribute("cm_number");
-		int result=Hot_bookDao.Hbook_permit(hot_num, bookingnum);
-		String msg=result>0?"예약요청을 수락하셨습니다.":"예약요청을 수락하지 못하였습니다.";
-		ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
-		
-		return mav;		
-				
+		if(hot_num==null||hot_num.equals("")){
+			ModelAndView mav= new ModelAndView();
+			mav.addObject("msg", "로그인 후 이용 가능합니다. ");
+			mav.addObject("url",  "member_login.do");
+			mav.setViewName("hotel_book/booking_msg");
+			return mav;
+			
+		}else{
+			int result=Hot_bookDao.Hbook_permit(hot_num, bookingnum);
+			String msg=result>0?"예약요청을 수락하셨습니다.":"예약요청을 수락하지 못하였습니다.";
+			ModelAndView mav=new ModelAndView("flamansJson", "msg", msg);
+			
+			return mav;		
+		}		
 	}	
 	
 	/**관계자 - 예약내용수정 폼
@@ -164,20 +201,6 @@ public class HotController {
 		mav.addObject("msg", msg);
 		mav.setViewName("hos_book/hos_bookMsg");
 		return mav;
-	}
-	
-	*//**병원관계자 - 달력표시*//*
-	@RequestMapping(value="/companyCal.do", method=RequestMethod.POST)
-	public ModelAndView calendar(HttpSession session, @RequestParam("date")String date,
-			@RequestParam(value="hos_num", required=false)String hos_num){
-		
-		if(hos_num==null){
-			hos_num=(String)session.getAttribute("cm_number");
-		}		
-		List<BbookDTO> cal=Bdao.calendar(hos_num, date);
-		ModelAndView mav=new ModelAndView("flamansJson", "cal", cal);
-		return mav;
-		
 	}
 	*/
 	
