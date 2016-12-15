@@ -423,6 +423,10 @@ a#booking_pop:hover {
             <option value="Lotte">롯데</option>
             <option value="BC">비씨</option>
             <option value="Master">마스터</option>
+            <option value="City">씨티</option>
+            <option value="Visa">비자</option>
+            <option value="Samsung">삼성</option>
+            <option value="Sinhan">신한</option>
             </select>&nbsp;
             <input type="text" name="cardnum">
       </div>

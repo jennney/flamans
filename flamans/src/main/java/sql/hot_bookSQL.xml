@@ -73,5 +73,19 @@
 		set roomnum=roomnum-#{roomselect}
 		where room_idx = #{room_idx}
    </update>
-
+	<select id="HBook_content" parameterType="int" resultType="flamans.hot.book.model.Hot_bookDTO">
+		select h.*, roomname, cm_name
+		from
+			 fm_hot_book h, fm_hotroom r, fm_company
+		where 
+			bookingnum=#{bookingnum} and r.room_idx=h.room_idx and cm_number=h.hot_num
+	</select>
+	<update id="checkout" parameterType="int">
+		update 
+			fm_hotroom 
+		set 
+			roomnum=roomnum+1
+		where 
+			room_idx=#{room_idx} and roomnum <![CDATA[< maxroom]]>
+	</update>
 </mapper>  

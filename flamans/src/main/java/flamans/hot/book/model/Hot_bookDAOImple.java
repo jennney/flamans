@@ -96,6 +96,23 @@ public class Hot_bookDAOImple implements Hot_bookDAO {
 			return count;
 		}
 
+	public Hot_bookDTO HBook_content(int bookingnum) {
+		
+		Hot_bookDTO Hdto=sqlMap.selectOne("HBook_content", bookingnum);
+		return Hdto;
+
+	}
+
+	public int checkout(int room_idx) {
+		int result=sqlMap.update("checkout", room_idx);
+		return result;
+	}
+
+	public int HBook_reWrite(Hot_bookDTO bdto, String hot_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }	
   
