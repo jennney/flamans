@@ -448,33 +448,6 @@ public class HotFindController{
 		return mav;
 	}
 	
-	@RequestMapping("/member_find_list.do")
-	public ModelAndView member_find_list(
-			HttpSession session
-			) throws ParseException{
-		
-		ModelAndView mav = new ModelAndView();
-		String id = (String)session.getAttribute("userid");
-		
-		if(id==null || id.equals("")){
-			mav.addObject("msg","로그인이 필요합니다!");
-			mav.addObject("url","index.do");
-			mav.setViewName("hotel/hotel_msg");
-			return mav;
-		}
-		
-		MemberDTO memberdto = memberdao.memberLogin(id);
-		String member_find_list = memberdto.getM_history();
-		
-		if(member_find_list == null || member_find_list.equals("")){
-			member_find_list ="";
-		}
-		
-		ModelAndView mav1 = new ModelAndView("flamansJson","list", member_find_list);
-		
-		return mav1;
-	}
-	
 	@RequestMapping("/member_wish_hlist.do")
 	public ModelAndView member_wish_hlist(
 			HttpSession session
@@ -542,6 +515,110 @@ public class HotFindController{
 		mav.addObject("url","hotel_get_info.do?hot_num="+c_number);
 		mav.setViewName("hotel/hotel_msg");
 		return mav;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/member_find_list.do")
+	public ModelAndView member_find_list(
+			@RequestParam(value="write_date", defaultValue="", required=false)String write_date,
+			@RequestParam(value="kind", defaultValue="", required=false)String kind,
+			HttpSession session
+			) throws ParseException{
+		
+
+		ModelAndView mav = new ModelAndView();
+		
+		if(write_date.equals("")){
+			
+			String id = (String)session.getAttribute("userid");
+			
+			if(id==null || id.equals("")){
+				mav.addObject("msg","로그인이 필요합니다!");
+				mav.addObject("url","index.do");
+				mav.setViewName("hotel/hotel_msg");
+				return mav;
+			}
+			
+			MemberDTO memberdto = memberdao.memberLogin(id);
+			String member_find_list = memberdto.getM_history();
+			ModelAndView mav1 = new ModelAndView("flamansJson","list", member_find_list);
+			return mav1;
+		}
+		
+		/** 선언부분 */
+		//파서 JSON 해독
+		JSONParser parser = new JSONParser();
+		
+		//위시리스트 객체 { [위시리스트 목록] }
+		JSONObject hotsearchObject = new JSONObject();
+		JSONObject hotsearchObject1 = new JSONObject();
+		
+		JSONArray hotsearchArray1 = new JSONArray();
+		
+		
+		String id = (String)session.getAttribute("userid");
+		
+		System.out.println("write_date="+write_date);
+		if(id==null || id.equals("")){
+			mav.addObject("msg","로그인이 필요합니다!");
+			mav.addObject("url","index.do");
+			mav.setViewName("hotel/hotel_msg");
+			return mav;
+		}
+		
+		MemberDTO memberdto = memberdao.memberLogin(id);
+		String member_find_list = memberdto.getM_history();
+		
+		if(member_find_list == null){
+			member_find_list ="";
+		}
+		
+			
+		if(!(member_find_list == null || member_find_list.equals("") )){
+			//2 hot와 hos를 분리하기위해서 parser를통해 Object로 변환한다.
+			hotsearchObject = (JSONObject)parser.parse(member_find_list);
+			//hos가 아닌 hot만을 분리하겠다.
+			if(kind.equals("hot")){
+				hotsearchArray1 = (JSONArray)hotsearchObject.get("hot");
+			}else if(kind.equals("hos")){
+				hotsearchArray1 = (JSONArray)hotsearchObject.get("hos");
+			}
+		}
+		
+		//위시리스트 널값 오류 처리
+		if(hotsearchArray1 == null || hotsearchArray1.equals("")){
+			hotsearchArray1 = new JSONArray();
+		}
+		
+		//중복 플래그 변수 z
+		int z = 1;
+		for(int i = 0; i<hotsearchArray1.size(); i++){
+			
+			// 문자를 쪼개어 번호비교에 임시방편으로 사용 ( hot_num을 비교할수 있는 다른방법을 생각해보자. )
+			String[] Array = hotsearchArray1.get(i).toString().split("\"");
+			
+			for(int j=0; j<Array.length; j++){
+				if(write_date.equals(Array[j])){
+					hotsearchArray1.remove(i);
+					z=2;
+				}
+			}
+		}
+		
+		// 중복검사가되어 삭제되었을때.
+		if(z==2){
+			if(kind.equals("hot")){
+				hotsearchObject.put("hot", hotsearchArray1);
+			}else if(kind.equals("hos")){
+				hotsearchObject.put("hos", hotsearchArray1);
+			}
+			int count = hotel_info.add_memberFind(hotsearchObject.toString(), id);
+			System.out.println("삭제되었니? = "+count);
+		}
+		
+		ModelAndView mav1 = new ModelAndView("flamansJson","list", hotsearchObject.toString());
+		mav1.setViewName("hotel/member_find");
+		return mav1;
 	}
 	
 	@SuppressWarnings("unchecked")

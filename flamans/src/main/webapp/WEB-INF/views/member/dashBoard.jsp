@@ -14,11 +14,12 @@
 <script>
 $(document).ready(function() {
 
+
 	   //Default Action
 	      $(".tab_content").hide(); //Hide all content
 	      $("ul.tabs li:first").addClass("active").show(); //Activate first tab
 	      $(".tab_content:first").show(); //Show first tab content
-	   
+	      wishlist();
 	   //On Click Event
 	   $("ul.tabs li").click(function() {
 	      $("ul.tabs li").removeClass("active"); //Remove any "active" class
@@ -47,18 +48,28 @@ function cm_calendarResult(){
 			data=eval('('+data+')');		
 			var cal=data.cal;
 			var calH=data.calH;
-			for(j=0; j<calH.length; j++){
-				HH=document.getElementById(calH[j]);
-				if(calH[j].checkin!=null){
-					var checkin=calH[j].checkin.split(' ');
-					var HH=document.getElementById(checkin[0]);
-					HH.innerHTML='in';
-				}
-				if(calH[j].checkout!=null){ 
-					var checkout=calH[j].checkout.split(' ');
-					var HH=document.getElementById(checkout[0]);
-					HH.innerHTML='out';
-				}
+			if(calH!=null){
+				for(j=0; j<calH.length; j++){
+					HH=document.getElementById(calH[j]);
+					if(calH[j].checkin!=null){
+						var checkin=calH[j].checkin.split(' ');
+						var HH=document.getElementById(checkin[0]);
+						HH.innerHTML='in';
+					}
+					if(calH[j].checkout!=null){ 
+						var checkout=calH[j].checkout.split(' ');
+						var HH=document.getElementById(checkout[0]);
+						HH.innerHTML='out';
+					}
+					for(i=0; i<cal.length; i++){
+						var caltemp=cal[i].bookingdate.split('/');
+						var calId=document.getElementById(caltemp[0]);
+						calHtemp=calId.innerHTML;
+						calHtemp+='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
+						calId.innerHTML=calHtemp;
+					}
+				} 
+			}else if(calH==null && cal !=null){
 				for(i=0; i<cal.length; i++){
 					var caltemp=cal[i].bookingdate.split('/');
 					var calId=document.getElementById(caltemp[0]);
@@ -66,8 +77,7 @@ function cm_calendarResult(){
 					calHtemp+='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
 					calId.innerHTML=calHtemp;
 				}
-			} 
-			
+			}
 		
 		}
 	}
@@ -75,6 +85,62 @@ function cm_calendarResult(){
 function bookDate(currentYear, currentMonth, dateNum){
 	window.location.href='booking.do';
 }
+
+function wishlist(){
+	sendRequest('member_wish_hlist.do', null, wishlistresult, 'GET');
+}
+
+function wishlistresult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var data = XHR.responseText;
+			// eval : 서버로부터 넘어온문자열들을 실제 객체로 바꾸어주는 녀석. 
+			// 실제 소괄호 안에 있는것을 라벨로 인식해서 data를 번역한다..
+			// yong=+data
+			
+			if('${not empty sessionScope.userid}'=='true'){
+				data = eval('('+data+')');
+				data = data.list;
+				var data_hos = '';
+				var data_hot = '';
+				data = eval('('+data+')');
+				// 병원 비교 추가
+				
+				for( var i=data.hos.length-1; i>=0; i-- ){
+					data_hos += '<table class="table table-hover" style="border: 3px solid teal;" border="0" height="30" cellspacing="0"><tr align="center">';
+					data_hos += '<td width="100" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+'<img src="img/'+data.hos[i].hos_img+'" width=100 height=90></a></td>';
+					data_hos += '<td><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_name+'<br><br><br>'+data.hos[i].hos_wishdate+'</a></td></tr>';
+					data_hos += '</table>';
+				}
+				
+				// 호텔 비교 추가
+				for( var i=data.hot.length-1; i>=0; i-- ){
+					data_hot += '<table class="table table-hover" style="border: 3px solid teal;" border="0" height="30" cellspacing="0"><tr align="center">';
+					data_hot += '<td width="100" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+'<img src="img/'+data.hot[i].hot_img+'" width=100 height=90></a></td>';
+					data_hot += '<td><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_name+'<br><br><br>'+data.hot[i].hot_wishdate+'</a></td></tr>';
+					data_hot += '</table>';
+				}
+				
+				var hot_wishlist = data_hot;
+				var hos_wishlist = data_hos;
+				
+			}else{
+				var wishlist = data;
+				
+				var header_wishlist = document.getElementById('hos_wishlist');
+				header_wishlist.innerHTML = wishlist;
+			}
+			
+			var hos_wishlist_area = document.getElementById('hos_wishlist');
+			hos_wishlist_area.innerHTML = hos_wishlist;
+			
+			var hot_wishlist_area = document.getElementById('hot_wishlist');
+			hot_wishlist_area.innerHTML = hot_wishlist;
+			
+		}
+	}
+}
+
 </script>
 <style>
 #dash_img{width:860px;height:150px; }

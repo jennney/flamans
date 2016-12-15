@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-			<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -250,9 +250,9 @@ input[type=range]:focus::-ms-fill-upper {
 				}
 				
 				if(star[4].checked){
-					starimg5.innerHTML = '<img alt="등급1" src="img/star5.jpg" width="50" height="50">';
+					starimg5.innerHTML = '<img alt="등급1" src="img/select_star5.jpg" width="50" height="50">';
 				}else{
-					starimg5.innerHTML = '<img alt="등급1" src="img/star5.jpg" width="50" height="50">';
+					starimg5.innerHTML = '<img alt="등급1" src="img/star4.jpg" width="50" height="50">';
 				}
 				
 				// http://localhost:9090/myweb/img/1.jpg;
@@ -265,7 +265,7 @@ input[type=range]:focus::-ms-fill-upper {
 					hotel_list += '';
 					hotel_list +='<a href="hotel_get_info.do?hot_num='+data[i].hot_num+'"><h2 align="left">'+data[i].hot_name+'</h2></a>';
 					hotel_list +='<table class="table table-hover"><tr>';
-					hotel_list +='<td width="200"><img alt="호텔사진영역" src="'+data[i].hot_img+'"width="200" height="200"></td>';
+					hotel_list +='<td width="200"><img alt="호텔사진영역" src="img/'+data[i].hot_img+'"width="200" height="200"></td>';
 					hotel_list +='<td width="400">'+data[i].hot_content+'</td>';
 					hotel_list +='<td width="100"><a href="hot_wishlist.do?hot_num='+data[i].hot_num+'&hotel_link=hotel_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					hotel_list +='<a href="booking_hot.do?hot_num='+data[i].hot_num+'"><input type="button" class="btn btn-default" value="예약"></a></td>';
@@ -596,7 +596,7 @@ input[type=range]:focus::-ms-fill-upper {
 							</td>
 							
 							<td onclick="hot_grade_search('star5')">
-								<div id=starimg5><img alt="평점5" src="img/star5.jpg" width="50" height="50"></div>
+								<div id=starimg5><img alt="평점5" src="img/star4.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="5">
 							</td>
 							

@@ -51,33 +51,33 @@
 				
 			
 				if(option[0].checked){
-					optionimg1.innerHTML = '<img alt="등급1" src="img/select_grade1.jpg" width="50" height="50">';
+					optionimg1.innerHTML = '<img alt="안면윤곽" src="img/select_face.jpg" width="50" height="50">';
 				}else{
-					optionimg1.innerHTML = '<img alt="등급1" src="img/1.jpg" width="50" height="50">';
+					optionimg1.innerHTML = '<img alt="등급1" src="img/face.jpg" width="50" height="50">';
 				}
 				
 				if(option[1].checked){
-					optionimg2.innerHTML = '<img alt="등급1" src="img/select_grade2.jpg" width="50" height="50">';
+					optionimg2.innerHTML = '<img alt="등급1" src="img/select_bimaxillary.jpg" width="50" height="50">';
 				}else{
-					optionimg2.innerHTML = '<img alt="등급1" src="img/2.jpg" width="50" height="50">';
+					optionimg2.innerHTML = '<img alt="등급1" src="img/bimaxillary.jpg" width="50" height="50">';
 				}
 				
 				if(option[2].checked){
-					optionimg3.innerHTML = '<img alt="등급1" src="img/select_grade3.jpg" width="50" height="50">';
+					optionimg3.innerHTML = '<img alt="등급1" src="img/select_eyes.jpg" width="50" height="50">';
 				}else{
-					optionimg3.innerHTML = '<img alt="등급1" src="img/3.jpg" width="50" height="50">';
+					optionimg3.innerHTML = '<img alt="등급1" src="img/eyes.jpg" width="50" height="50">';
 				}
 				
 				if(option[3].checked){
-					optionimg4.innerHTML = '<img alt="등급1" src="img/select_grade4.jpg" width="50" height="50">';
+					optionimg4.innerHTML = '<img alt="등급1" src="img/select_nose.jpg" width="50" height="50">';
 				}else{
-					optionimg4.innerHTML = '<img alt="등급1" src="img/4.jpg" width="50" height="50">';
+					optionimg4.innerHTML = '<img alt="등급1" src="img/nose.jpg" width="50" height="50">';
 				}
 				
 				if(option[4].checked){
-					optionimg5.innerHTML = '<img alt="등급1" src="img/select_grade5.jpg" width="50" height="50">';
+					optionimg5.innerHTML = '<img alt="등급1" src="img/select_man.jpg" width="50" height="50">';
 				}else{
-					optionimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
+					optionimg5.innerHTML = '<img alt="등급1" src="img/man.jpg" width="50" height="50">';
 				}
 
 				// http://localhost:9090/myweb/img/1.jpg;
@@ -155,10 +155,20 @@
 					params+='&';
 				}
 				if(i==1){
-					params += 'option1=man';
+					params += 'option1=face';
 					z=1;
 				}else if(i==2){
-					
+					params += 'option2=bimaxillary';
+					z=1;
+				}else if(i==3){
+					params += 'option3=eyes';
+					z=1;
+				}else if(i==4){
+					params += 'option4=nose';
+					z=1;
+				}else if(i==5){
+					params += 'option5=man';
+					z=1;
 				}
 			}
 		}
@@ -216,27 +226,27 @@
 						
 						<tr>
 							<td onclick="hos_grade_search('face')">
-								<div id=optionimg1><img alt="옵션1" src="img/1.jpg" width="50" height="50"></div>
+								<div id=optionimg1><img alt="옵션1" src="img/face.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="1">
 							</td>
 							
 							<td onclick="hos_grade_search('bimaxillary')">
-								<div id=optionimg2><img alt="옵션2" src="img/2.jpg" width="50" height="50"></div>
+								<div id=optionimg2><img alt="옵션2" src="img/bimaxillary.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="2">
 							</td>
 							
 							<td onclick="hos_grade_search('eyes')">
-								<div id=optionimg3><img alt="옵션3" src="img/3.jpg" width="50" height="50"></div>
+								<div id=optionimg3><img alt="옵션3" src="img/eyes.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="3">
 							</td>
 							
 							<td onclick="hos_grade_search('nose')">
-								<div id=optionimg4><img alt="옵션4" src="img/4.jpg" width="50" height="50"></div>
+								<div id=optionimg4><img alt="옵션4" src="img/nose.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="4">
 							</td>
 							
 							<td onclick="hos_grade_search('man')">
-								<div id=optionimg5><img alt="옵션5" src="img/5.jpg" width="50" height="50"></div>
+								<div id=optionimg5><img alt="옵션5" src="img/man.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="5">
 							</td>
 						</tr>
@@ -300,5 +310,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>
