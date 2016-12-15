@@ -17,6 +17,7 @@
    border-top: 3px solid #BDBDBD;
    border-bottom: 3px solid #BDBDBD;
    height: 50px;
+   text-align: center;
 }
 #qna_listth1{
    width: 350px;
@@ -83,18 +84,20 @@ a:LINK {
 	<table id="qn_list">
 		<thead>
 			<tr>
-		   		<td colspan="4" align="right">
+		   		<td colspan="5" align="right">
 		   		<form name="qna_FindList" action="qna_List.do">
-		      		<select name="findKey">
+		   		<div class="form-group input-group">
+		      		<select name="findKey" class="form-control" style="width: 100px;">
 		         		<option value="all"${findKey eq 'all'?"selected":""}> - 전체 - </option>
 		         		<option value="qna_content" ${findKey eq 'qna_content'?"selected":""}>  내용     </option>
 		         		<option value="qna_subject" ${findKey eq 'qna_subject'?"selected":""}>  제목    </option>
 		         		<option value="qna_writer" ${findKey eq 'qna_writer'?"selected":""}>  작성자   </option>
 		      		</select>
-		      		<input type="text" name="findValue"  value="${findValue}">
 		      		<input type="hidden" name="qna_item" value="${qna_item}">
 		      		<input type="hidden" name="qna_kind" value="${qna_kind}">
-		      		<input type="submit" value="검색">
+		      		<input type="text" class="form-control" style="width: 200px; float: right;"name="findValue" value="${findValue}">
+					<span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+				</div>
 		   		</form>
 		   		</td>
 			</tr>

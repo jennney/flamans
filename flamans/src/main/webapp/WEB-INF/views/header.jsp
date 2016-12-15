@@ -85,54 +85,40 @@ function hoswishresult(){
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/title.png">
+<link href="css/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/css/sb-admin.css" rel="stylesheet">
 <header id="header">
 <div class="top-bar">
-	<div class="container">
-	   <div class="row">
-	       <div class="col-sm-6 col-xs-4"></div>
-
-		       	<div class="col-sm-6 col-xs-8">
-					
-      	 <nav class="navbar navbar-inverse" role="banner">
-					   <div class="collapse navbar-collapse navbar-right">
-					   <ul class="nav navbar-nav">
-					   				 <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<button class="dropbtn" style="background: black;" onmouseover="wishlist()">
-									<img alt="heart" src="img/heart.png" width="30">
-									</button><i class="fa fa-angle-down"></i></a>
-							<ul class="dropdown-menu">
-								<li><p id=header_wishlist></p></li>
-							</ul>
-						</li>
-							<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">MY PAGE<i class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu">
-									<c:if test="${empty sessionScope.username}">
-										<c:if test="${empty sessionScope.cm_name}">
-											<li><a href="member_login.do">Login</a></li>
-											<li><a href="joinMain.do">Join</a></li>
-										</c:if>
-									</c:if>
-									<c:if test="${!empty sessionScope.username }">
-										<li><a href="member_dashBoard.do">Profile</a></li>
-										<li><a href="logout.do">Logout</a><li>
-									</c:if>
-									<c:if test="${!empty sessionScope.cm_name }">
-										<li><a href="manager.do">AdminPage</a></li>
-										<li><a href="logout.do">Logout</a></li>
-									</c:if>
-								</ul>
-							</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-	        </div>
-	    </div>
-	</div><!--/.container-->
-
-
+   <div class="container">
+		<ul class="nav navbar-right top-nav">
+		    <li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-heart"></i> <b class="caret"></b></a>
+		        <ul class="dropdown-menu message-dropdown">
+					<li><p id=header_wishlist></p>재웅아 여기에 위시리스트 넣어줘</li>
+		        </ul>
+		    </li>
+		    <li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> MyPage <b class="caret"></b></a>
+		        <ul class="dropdown-menu">
+					<c:if test="${empty sessionScope.username}">
+                       <c:if test="${empty sessionScope.cm_name}">
+                          <li><a href="member_login.do">Login</a></li>
+                          <li><a href="joinMain.do">Join</a></li>
+                       </c:if>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.username }">
+                       <li><a href="member_dashBoard.do">Profile</a></li>
+                       <li><a href="logout.do">Logout</a><li>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.cm_name }">
+                       <li><a href="manager.do">AdminPage</a></li>
+                       <li><a href="logout.do">Logout</a></li>
+                    </c:if>
+		        </ul>
+		    </li>
+		</ul>
+	</div>
+</div>
 <nav class="navbar navbar-inverse" role="banner">
     <div class="container">
         <div class="navbar-header">

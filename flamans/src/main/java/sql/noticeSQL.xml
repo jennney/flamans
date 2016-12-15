@@ -30,7 +30,6 @@
 		#{no_content},
 			sysdate,
 		#{no_file1},
-			#{no_file2},
 		fm_notice_idx.nextval,
 			0)
 	</insert>
@@ -64,8 +63,7 @@
 		set
 			no_subject = #{no_subject},
 		no_content = #{no_content},
-			no_file1 = #{no_file1},
-		no_file2 = #{no_file1}
+			no_file1 = #{no_file1}
 			where no_idx = 
 		#{no_idx}		
 	</update>

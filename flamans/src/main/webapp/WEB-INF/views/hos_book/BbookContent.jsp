@@ -137,7 +137,9 @@ textarea{
 			<tr>
 				<td colspan="2" style="text-align: center;">
 				<button type="button" class="btn btn-default" onclick="closeCon()">확인</button>
-				<button type="button" class="btn btn-default" onclick="BbookreWrite('${dto.bookingnum}')">수정</button></td>
+				<c:if test="${!empty sessionScope.cm_name }">
+               		<button type="button" class="btn btn-default" onclick="BbookreWrite('${dto.bookingnum}')">수정</button>
+            	</c:if>
 			</tr>
 		</table>
 		</div>

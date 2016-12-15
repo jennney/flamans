@@ -16,6 +16,9 @@
 	border-bottom: 3px solid #BDBDBD;
 	height: 30px;
 }
+#no_upth1,#no_up2{
+	text-align: center;
+}
 #no_wrup1{
 	width: 200px;
 }
@@ -40,11 +43,11 @@
 	height: 30px;
 }
 #no_uptd4{
-	height: 30px;
+	height: 50px;
 	text-align: right;
 }
 #no_uptd5{
-	height: 30px;
+	height: 50px;
 	text-align: left;
 }
 h2{
@@ -94,30 +97,30 @@ h2{
 		<form name="no_Update" action="no_Update.do" method="post">
 			<table id="no_up">
 				<tr>
-					<td id="no_upth1">SUBJECT</td>
-					<td id="no_uptd1"><input type="text" name="no_subject" value="${ndto.no_subject}"></td>
+					<th id="no_upth1">SUBJECT</th>
+					<td id="no_uptd1"><input type="text" name="no_subject" class="form-control" value="${ndto.no_subject}"></td></td>
 				</tr>
 				<tr>
 					<td colspan="2"><textarea name="no_content" id="no_content">${ndto.no_content}</textarea></td>
 				</tr>
 				<tr>	
-					<td id="no_uptd2">첨부파일1</td>
+					<th id="no_uptd2">첨부파일1</th>
 					<td id="no_uptd2"><input type="file" name="upload"  value="${ndto.no_file1}"></td>
-				</tr>
-				<tr>	
-					<td id="no_uptd3">첨부파일2</td>
-					<td id="no_uptd3"><input type="file" name="upload" value="${ndto.no_file2}"></td>
 				</tr>
 				<tr>
 					<tr>
-						<td id="no_uptd5"><input type="button" value="목록으로" onclick="location.href='no_List.do'"></td>
-						<td id="no_uptd4"><input type="hidden" name="no_idx" value="${ndto.no_idx}"><input type="submit" value="수정하기"></td>
+						<td id="no_uptd5">
+							<button type="button" onclick="location.href='no_List.do'" class="btn btn-default">목록으로</button>
+						</td>
+						<td id="no_uptd4">
+							<input type="hidden" name="no_idx" value="${ndto.no_idx}">
+							<button type="submit" class="btn btn-default">수정하기</button>
+						</td>
 					<tr>
 				</tr>
 			</table>
 		</form>
 	</div>
 </div>
-<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

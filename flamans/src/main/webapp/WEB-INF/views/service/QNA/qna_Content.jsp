@@ -34,9 +34,11 @@
 	border-bottom: 2px solid #BDBDBD;
 	height: 30px;
 }
-
+#qna_conth1,#qna_conth2,#qna_conth3,#qna_conth5{
+	text-align: center;
+}
 #qna_contd5{
-	height: 30px;
+	height: 50px;
 }
 h2{
 	text-align: center;
@@ -75,7 +77,7 @@ function check(){
 	}
 }
 
-
+document.getElementById(id)
 function submit(form,url){
 	
 }
@@ -107,48 +109,26 @@ function submit(form,url){
 	
 		<tr>
 			<th id="qna_conth3">비밀번호</th>
-			<input type="hidden" name="qna_idx" value="${qdto.qna_idx}">
-			<input type="hidden" name="qna_savepwd" value="${qdto.qna_pwd}">
-			<input type="hidden" name="qna_kind" value="${qdto.qna_kind}">
-			<td id="qna_contd3"><input type="password" name="qna_pwd" id="pwd"> <span id="red">!</span> 수정 및 삭제하려면 비밀번호를 입력하세요.</td> 
+			<td id="qna_contd3">
+				<input type="hidden" name="qna_idx" value="${qdto.qna_idx}">
+				<input type="hidden" name="qna_savepwd" value="${qdto.qna_pwd}">
+				<input type="hidden" name="qna_kind" value="${qdto.qna_kind}">
+				<input type="password" name="qna_pwd" id="pwd" class="form-control"> <span id="red">!</span> 수정 및 삭제하려면 비밀번호를 입력하세요.
+			</td> 
 		</tr>
 		<tr>
 			<tr>
-				<td id="qna_contd5"><input type="button" value="목록으로" onclick="location.href='qna_List.do?qna_kind=${qdto.qna_kind}'"></td>
+				<td id="qna_contd5">
+					<button type="button" class="btn btn-default" onclick="location.href='qna_List.do?qna_kind=${qdto.qna_kind}'">목록으로</button>
+				</td>
 				<td align="right" id="qna_contd5">
-					<input type="submit" value="수정하기">     
-					<input type="submit" value="삭제하기" onclick="this.form.action='qna_Delete.do?qna_idx=${qdto.qna_idx}'">
+					<button type="submit" class="btn btn-default">수정하기</button>
+					<button type="submit" class="btn btn-default" onclick="this.form.action='qna_Delete.do?qna_idx=${qdto.qna_idx}'">삭제하기</button>
 				</td>
 			<tr>
 		</tr>
 	</table>
 </form>
-
-<c:if test="${sessionScope.permit eq 1}">
-<form name="qna_ReWrite" action="qna_ReWrite.do">	
-	<table id="qna_re">
-		<tr>
-			<td id="qna_retd"></td>
-		</tr>
-		<tr>
-			<input type="hidden" name="ref" value="${qdto.ref}">
-			<input type="hidden" name="lev" value="${qdto.lev}">
-			<input type="hidden" name="sunbun" value="${qdto.sunbun}">
-			<input type="hidden" name="qna_subject" value="${qdto.qna_subject}">
-			<input type="hidden" name="qna_writer" value="${qdto.qna_writer}"> 
-			<input type="hidden" name="qna_item" value="${qdto.qna_item}">
-			<input type="hidden" name="qna_kind" value="${qdto.qna_kind}">
-			<input type="hidden" name="qna_pwd" value="${qdto.qna_pwd}">
-			<input type="hidden" name="qna_secret" value="${qdto.qna_secret}">
-			<input type="hidden" name="qna_findname" value="${qdto.qna_findname}">
-			<td><textarea name="qna_content" id="qna_retx"></textarea></td>
-		</tr>
-		<tr>
-			<td id="qna_retd1"><input type="submit" value="답변등록"></td>
-		</tr>
-	</table>
-</form>
-</c:if>
 </section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>

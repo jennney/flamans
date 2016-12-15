@@ -135,7 +135,7 @@ public class FaqController {
 		int totalCnt = faqDao.faqTotal(findValue);
 		int listSize = 5;
 		int pageSize = 5;
-		String faq_page = paging1.makePage("faq_Find.do", totalCnt, listSize, pageSize, cp,"all", findValue,"");
+		String faq_page = paging1.makePage("faq_Find_admin.do", totalCnt, listSize, pageSize, cp,"all", findValue,"");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("count",totalCnt);

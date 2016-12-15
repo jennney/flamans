@@ -4,7 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예약보기</title>
+<script>
+function BbookContent(bookingnum){
+	   
+	   var bookingnum=bookingnum;
+	   var addr='bBook_content.do?bookingnum='+bookingnum;
+	   window.open(addr, 'docInfo', 'width=820px, height=650px, left=100, top=30');
+	   
+	}
+</script>
 </head>
 <body>
 <div id="wrapper">
@@ -27,7 +36,7 @@
    
    <c:forEach var="mdto" items="${mdto}">
     <tr>
-       <td>${mdto.hot_num}</td>
+       <td>${mdto.cm_name}</td>
        <td>${mdto.bookingdate}</td>
        <td>${mdto.checkin}</td>
        <td>${mdto.checkout}</td>
@@ -60,7 +69,7 @@
            
            <c:forEach var="bdto" items="${bdto}">
             <tr>
-               <td>${bdto.hos_num}</td>
+               <td><a href="javascript:BbookContent(${bdto.bookingnum})">${bdto.hos_num}</a></td>
                <td>${bdto.bookingdate}</td>
                <td>
                    <c:choose>

@@ -437,6 +437,7 @@ a#booking_pop:hover {
    </form>
       <a class="close" href="#close"></a>   
 </div>
-
+</section>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

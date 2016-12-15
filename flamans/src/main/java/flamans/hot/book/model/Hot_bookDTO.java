@@ -26,6 +26,7 @@ public class Hot_bookDTO {
 	public Hot_bookDTO(String hot_num, String name, String sex, String nationality, String checkin, String checkout,
 			String card, Date bookingdate, String people, int roomselect, String permit, String bookingnum,
 			int room_idx, String roomname, String cm_name) {
+		
 		super();
 		this.hot_num = hot_num;
 		this.name = name;
@@ -164,6 +165,4 @@ public class Hot_bookDTO {
 		this.cm_name = cm_name;
 	}
 
-	
-   
 }
