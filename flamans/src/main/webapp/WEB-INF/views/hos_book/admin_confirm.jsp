@@ -35,7 +35,7 @@ function BookCheckResult(){
 			
 			var BbookList=data.list;
 			
-			var msg='<table border="0" cellspacing="0" width="300"><tr><th> 예약시간 </th><th> 이름 </th><th> 상태 </th>';
+			var msg='<table border="0" cellspacing="0" width="300" id="dudu"><tr><th id="no_listth1"> 예약시간 </th><th id="no_listth2"> 이름 </th><th id="no_listth3"> 상태 </th><th id="no_listth4"> 관리 </th>';
 			
 			if(BbookList.length==0){
 				msg+='<tr><td colspan="3" align="center"><br> 요청날짜에 예약이 없습니다. </td></tr></table>';	
@@ -129,11 +129,11 @@ function cm_calendarResult(){
 }
 </Script>
 <style>
-#b{ width:850px; height:450px;  margin-top: 30px;   border-color: green;}
+#b{ width:850px; height:620px;  margin-top: 30px;   border-color: green;}
 #c{ float:left; width:450px;  height:450px;  margin:0px center;}
-#d{	width:360px;height:450px;float: left;margin-left:15px;margin-right:15px;overflow-y:scroll; white-space:nowrap;}
+#d{	width:360px;height:450px;float: left;margin-left:15px;margin-right:15px;overflow-y:scroll; white-space:nowrap; background-color: white;}
 #kCalendar{  width:450px;  height:450px;  border : 1px solid #EAEAEA;  font:15px/1.0 맑은 고딕;}
-#Bookdate{text-align: center;font:20px/1.0 맑은 고딕;}
+#Bookdate{text-align: center;font:20px/1.0 맑은 고딕; padding-top: 8px;}
 th{	text-align: center;}
 #call{	padding-right:10px;	color: blue;}
 #accept{	padding-right:5px;	color: red;}
@@ -152,18 +152,30 @@ th{	text-align: center;}
 #kCalendar .fri {text-align: center;}
 #kCalendar .sat {text-align: center; color: deepskyblue;}
 #cc{width:45px;  height:35px;} 
+#dudu{margin: 0px auto;}
+#no_listth1, #no_listth2, #no_listth3, #no_listth4{
+	border-top: 3px solid #BDBDBD;
+	border-bottom: 3px solid #BDBDBD;
+	height: 45px;
+	text-align: center;
+}
 </Style>
 </head>
 <body onload="kCalendar('kCalendar');cm_calendar()">
-<c:set var="cal" value='${cal}'/>
-	<div id="b" >
-		<div id="c">
-			<div id="kCalendar" class="form-control"></div>
-		</div>
-		<div id="d" class="well well-lg">
-		  <div id="Bookdate"></div><br>
-		  <div id="table"></div>
-		</div>
-	</div> 
+<div id="wrapper">
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+	<div id="page-wrapper">
+	<c:set var="cal" value='${cal}'/>
+		<div id="b" >
+			<div id="c">
+				<div id="kCalendar" class="form-control"></div>
+			</div>
+			<div id="d">
+			  <div id="Bookdate"></div><br>
+			  <div id="table"></div>
+			</div>
+		</div> 
+	</div>
+</div>
 </body>
 </html>

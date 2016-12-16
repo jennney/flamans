@@ -29,7 +29,9 @@ public class hosController {
 		
 		String userid=(String)session.getAttribute("userid");
 		DoctorDTO Ddto=Bdao.doctorView(hos_num, doc_num, userid);
+		System.out.println("hos_num"+hos_num+"doc_num="+doc_num+"userid"+userid+"Ddto="+Ddto);
 		List<DoctorDTO> doc=Bdao.docAll(hos_num);
+		System.out.println("hos_num"+hos_num+"doc="+doc);
 
 		if(Ddto==null){
 			mav.addObject("msg", "잘못된 접근입니다.");

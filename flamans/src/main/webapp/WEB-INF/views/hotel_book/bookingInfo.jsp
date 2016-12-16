@@ -13,6 +13,12 @@ function BbookContent(bookingnum){
 	   window.open(addr, 'docInfo', 'width=820px, height=650px, left=100, top=30');
 	   
 	}
+function HbookContent(bookingnum){
+	var bookingnum=bookingnum;
+	var addr='Hbookcontent.do?bookingnum='+bookingnum;
+	window.open(addr, 'Hcontent', 'width=480, height=450, left=100, top=30');
+}	
+	
 </script>
 </head>
 <body>
@@ -36,7 +42,7 @@ function BbookContent(bookingnum){
    
    <c:forEach var="mdto" items="${mdto}">
     <tr>
-       <td>${mdto.cm_name}</td>
+       <td><a href="#" onclick="HbookContent(${mdto.bookingnum})">'${mdto.cm_name}</a></td>
        <td>${mdto.bookingdate}</td>
        <td>${mdto.checkin}</td>
        <td>${mdto.checkout}</td>

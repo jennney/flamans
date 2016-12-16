@@ -42,6 +42,7 @@
 				var hospital_list = '';
 				
 				option = document.getElementsByName("option");
+				star = document.getElementsByName("star");
 				
 				optionimg1 = document.getElementById("optionimg1");
 				optionimg2 = document.getElementById("optionimg2");
@@ -49,35 +50,70 @@
 				optionimg4 = document.getElementById("optionimg4");
 				optionimg5 = document.getElementById("optionimg5");
 				
+				starimg1 = document.getElementById("starimg1");
+				starimg2 = document.getElementById("starimg2");
+				starimg3 = document.getElementById("starimg3");
+				starimg4 = document.getElementById("starimg4");
+				starimg5 = document.getElementById("starimg5");
 			
 				if(option[0].checked){
-					optionimg1.innerHTML = '<img alt="등급1" src="img/select_grade1.jpg" width="50" height="50">';
+					optionimg1.innerHTML = '<img alt="안면윤곽" src="img/select_face.jpg" width="50" height="50">';
 				}else{
-					optionimg1.innerHTML = '<img alt="등급1" src="img/1.jpg" width="50" height="50">';
+					optionimg1.innerHTML = '<img alt="등급1" src="img/face.jpg" width="50" height="50">';
 				}
 				
 				if(option[1].checked){
-					optionimg2.innerHTML = '<img alt="등급1" src="img/select_grade2.jpg" width="50" height="50">';
+					optionimg2.innerHTML = '<img alt="등급1" src="img/select_bimaxillary.jpg" width="50" height="50">';
 				}else{
-					optionimg2.innerHTML = '<img alt="등급1" src="img/2.jpg" width="50" height="50">';
+					optionimg2.innerHTML = '<img alt="등급1" src="img/bimaxillary.jpg" width="50" height="50">';
 				}
 				
 				if(option[2].checked){
-					optionimg3.innerHTML = '<img alt="등급1" src="img/select_grade3.jpg" width="50" height="50">';
+					optionimg3.innerHTML = '<img alt="등급1" src="img/select_eyes.jpg" width="50" height="50">';
 				}else{
-					optionimg3.innerHTML = '<img alt="등급1" src="img/3.jpg" width="50" height="50">';
+					optionimg3.innerHTML = '<img alt="등급1" src="img/eyes.jpg" width="50" height="50">';
 				}
 				
 				if(option[3].checked){
-					optionimg4.innerHTML = '<img alt="등급1" src="img/select_grade4.jpg" width="50" height="50">';
+					optionimg4.innerHTML = '<img alt="등급1" src="img/select_nose.jpg" width="50" height="50">';
 				}else{
-					optionimg4.innerHTML = '<img alt="등급1" src="img/4.jpg" width="50" height="50">';
+					optionimg4.innerHTML = '<img alt="등급1" src="img/nose.jpg" width="50" height="50">';
 				}
 				
 				if(option[4].checked){
-					optionimg5.innerHTML = '<img alt="등급1" src="img/select_grade5.jpg" width="50" height="50">';
+					optionimg5.innerHTML = '<img alt="등급1" src="img/select_man.jpg" width="50" height="50">';
 				}else{
-					optionimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
+					optionimg5.innerHTML = '<img alt="등급1" src="img/man.jpg" width="50" height="50">';
+				}
+				
+				if(star[0].checked){
+					starimg1.innerHTML = '<img alt="등급1" src="img/select_star1.jpg" width="50" height="50">';
+				}else{
+					starimg1.innerHTML = '<img alt="등급1" src="img/star1.jpg" width="50" height="50">';
+				}
+				
+				if(star[1].checked){
+					starimg2.innerHTML = '<img alt="등급1" src="img/select_star2.jpg" width="50" height="50">';
+				}else{
+					starimg2.innerHTML = '<img alt="등급1" src="img/star2.jpg" width="50" height="50">';
+				}
+				
+				if(star[2].checked){
+					starimg3.innerHTML = '<img alt="등급1" src="img/select_star3.jpg" width="50" height="50">';
+				}else{
+					starimg3.innerHTML = '<img alt="등급1" src="img/star3.jpg" width="50" height="50">';
+				}
+				
+				if(star[3].checked){
+					starimg4.innerHTML = '<img alt="등급1" src="img/select_star4.jpg" width="50" height="50">';
+				}else{
+					starimg4.innerHTML = '<img alt="등급1" src="img/star4.jpg" width="50" height="50">';
+				}
+				
+				if(star[4].checked){
+					starimg5.innerHTML = '<img alt="등급1" src="img/select_star5.jpg" width="50" height="50">';
+				}else{
+					starimg5.innerHTML = '<img alt="등급1" src="img/star4.jpg" width="50" height="50">';
 				}
 
 				// http://localhost:9090/myweb/img/1.jpg;
@@ -89,7 +125,7 @@
 					hospital_list += '';
 					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a>';
 					hospital_list +='<table class="table table-hover"><tr>';
-					hospital_list +='<td width="200"><img alt="병원사진영역" src="'+data[i].hos_img+'"width="200" height="200"></td>';
+					hospital_list +='<td width="200"><img alt="병원사진영역" src="img/'+data[i].hos_img+'"width="200" height="200"></td>';
 					hospital_list +='<td width="400">'+data[i].hos_content+'</td>';
 					hospital_list +='<td width="100"><a href="hos_wishlist.do?hos_num='+data[i].hos_num+'&hospital_link=hospital_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					//<a href="booking_hos.do?hos_num='+data[i].hos_num+'"><input type="button" value="예약"></a>
@@ -104,13 +140,13 @@
 				}
 				var hospitals = document.getElementById('hospitallistarea');
 				hospitals.innerHTML=hospital_list;
-				
 			}
 		}
 	}
 
 	function hos_grade_search(search_option){
 	 	option = document.getElementsByName("option");
+		star = document.getElementsByName("star");
 	 	
 	 	var findname = document.hospital_main_search.findname.value;
 		var params='';
@@ -149,17 +185,69 @@
 			}
 		}
 		
+		if(search_option == 'star1'){
+			if(star[0].checked){
+				star[0].checked = false;
+			}else{
+				star[0].checked = true;
+			}
+		}else if(search_option == 'star2'){
+			if(star[1].checked){
+				star[1].checked = false;
+			}else{
+				star[1].checked = true;
+			}
+		}else if(search_option == 'star3'){
+			if(star[2].checked){
+				star[2].checked = false;
+			}else{
+				star[2].checked = true;
+			}
+		}else if(search_option == 'star4'){
+			if(star[3].checked){
+				star[3].checked = false;
+			}else{
+				star[3].checked = true;
+			}
+		}else if(search_option == 'star5'){
+			if(star[4].checked){
+				star[4].checked = false;
+			}else{
+				star[4].checked = true;
+			}
+		}
+		
 		for(var i=1; i<6; i++){	
 			if(option[i-1].checked){
 				if(z==1){
 					params+='&';
 				}
 				if(i==1){
-					params += 'option1=man';
+					params += 'option1=face';
 					z=1;
 				}else if(i==2){
-					
+					params += 'option2=bimaxillary';
+					z=1;
+				}else if(i==3){
+					params += 'option3=eyes';
+					z=1;
+				}else if(i==4){
+					params += 'option4=nose';
+					z=1;
+				}else if(i==5){
+					params += 'option5=man';
+					z=1;
 				}
+			}
+		}
+		
+		for(var i=1; i<6; i++){	
+			if(star[i-1].checked){
+				if(z==1){
+					params+='&';
+				}
+				params += 'star'+i+'='+i;
+				z=1;
 			}
 		}
 		
@@ -211,34 +299,73 @@
 					<table border="0" class="hospital_sub_search" cellspacing="0" width="150">
 						
 						<tr>
-							<th colspan="5" align="center">TOP 옵션</th>
+							<th colspan="5" align="center">평점</th>
+						</tr>
+						
+						<tr>
+							<td onclick="hos_grade_search('star1')">
+								<div id=starimg1><img alt="평점1" src="img/star1.jpg" width="50" height="50"></div>
+								<input type="checkbox" name="star" class="grade" value="1">
+							</td>
+							
+							<td onclick="hos_grade_search('star2')">
+								<div id=starimg2><img alt="평점2" src="img/star2.jpg" width="50" height="50"></div>
+								<input type="checkbox" name="star" class="grade" value="2">
+							</td>
+							
+							<td onclick="hos_grade_search('star3')">
+								<div id=starimg3><img alt="평점3" src="img/star3.jpg" width="50" height="50"></div>
+								<input type="checkbox" name="star" class="grade" value="3">
+							</td>
+							
+							<td onclick="hos_grade_search('star4')">
+								<div id=starimg4><img alt="평점4" src="img/star4.jpg" width="50" height="50"></div>
+								<input type="checkbox" name="star" class="grade" value="4">
+							</td>
+							
+							<td onclick="hos_grade_search('star5')">
+								<div id=starimg5><img alt="평점5" src="img/star4.jpg" width="50" height="50"></div>
+								<input type="checkbox" name="star" class="grade" value="5">
+							</td>
+						</tr>
+						
+						<tr>
+							<th colspan="5" align="center"><hr></th>
+						</tr>
+						
+						<tr>
+							<th colspan="5" align="center">부위별 전문병원</th>
 						</tr>
 						
 						<tr>
 							<td onclick="hos_grade_search('face')">
-								<div id=optionimg1><img alt="옵션1" src="img/1.jpg" width="50" height="50"></div>
+								<div id=optionimg1><img alt="옵션1" src="img/face.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="1">
 							</td>
 							
 							<td onclick="hos_grade_search('bimaxillary')">
-								<div id=optionimg2><img alt="옵션2" src="img/2.jpg" width="50" height="50"></div>
+								<div id=optionimg2><img alt="옵션2" src="img/bimaxillary.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="2">
 							</td>
 							
 							<td onclick="hos_grade_search('eyes')">
-								<div id=optionimg3><img alt="옵션3" src="img/3.jpg" width="50" height="50"></div>
+								<div id=optionimg3><img alt="옵션3" src="img/eyes.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="3">
 							</td>
 							
 							<td onclick="hos_grade_search('nose')">
-								<div id=optionimg4><img alt="옵션4" src="img/4.jpg" width="50" height="50"></div>
+								<div id=optionimg4><img alt="옵션4" src="img/nose.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="4">
 							</td>
 							
 							<td onclick="hos_grade_search('man')">
-								<div id=optionimg5><img alt="옵션5" src="img/5.jpg" width="50" height="50"></div>
+								<div id=optionimg5><img alt="옵션5" src="img/man.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="5">
 							</td>
+						</tr>
+						
+						<tr>
+							<th colspan="5"><h6>얼굴윤곽 양악수술 눈 성형 &nbsp;&nbsp;코 성형 &nbsp;&nbsp;남성성형</h6></th>
 						</tr>
 						
 						<tr>
@@ -300,5 +427,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

@@ -106,9 +106,9 @@ function findlistresult(){
 					
 					for(var i=data.hos.length-1; i>=0; i--){
 						data_hos+='<table class="table table-hover" border="1" width="900" height="200" cellspacing="0"><tr align="center">'
-						+'<td width="200" rowspan="3"><img src="'+data.hos[i].hos_img+'" width="200" height="200"></td>'
-						+'<td width="520" height="30">검색어 : '+data.hos[i].find_name+'</td>'
-						+'<td width="100">휴지통</td>'
+						+'<td width="200" rowspan="3"><img src="img/'+data.hos[i].hos_img+'" width="200" height="200"></td>'
+						+'<td width="520" height="30">검색어 :'+data.hos[i].find_name+'</td>'
+						+'<td width="100"><a href="member_find_list.do?write_date='+data.hos[i].write_date+'&kind=hos">휴지통</a></td>'
 						+'<tr>'
 						+'<td colspan="2" height="100"></td>'
 						+'</tr>'
@@ -125,9 +125,9 @@ function findlistresult(){
 					var data_hot = '';
 					for(var i=data.hot.length-1; i>=0; i--){
 						data_hot+='<table class="table table-hover" border="1" width="900" height="200" cellspacing="0"><tr align="left">'
-						+'<td width="200" rowspan="3"><img src="'+data.hot[i].hot_img+'" width="200" height="200"></td>'
-						+'<td width="520" height="30">검색어 : '+data.hot[i].find_name+'</td>'
-						+'<td width="100">휴지통</td>'
+						+'<td width="200" rowspan="3"><img src="img/'+data.hot[i].hot_img+'" width="200" height="200"></td>'
+						+'<td width="520" height="30" onclick="findlist(\"write_date='+data.hot[i].write_date+'&kind=hot\")">검색어 : '+data.hot[i].find_name+'</td>'
+						+'<td width="100"><a href="member_find_list.do?write_date='+data.hot[i].write_date+'&kind=hot">휴지통</a></td>'
 						+'<tr>'
 						+'<td colspan="2" height="100">체크인 : '+data.hot[i].checkin+'&nbsp;~&nbsp; 체크아웃 :'+data.hot[i].checkout+'<br>'
 						+'방정보 : '+data.hot[i].room_info+'</td>'

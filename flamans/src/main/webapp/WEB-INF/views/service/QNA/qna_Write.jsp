@@ -233,8 +233,8 @@ h2 {
 						<c:when test="${qna_kind eq 'site'}">
 							<select name="qna_item" onchange="qna_select()" id="qna_item" class="form-control" style="width: 150px;">
 								<option value="all">- 전체 -</option>
-								<option value="meminfo">회원정보문의</option>
-								<option value="memgroup">단체회원이용</option>
+								<option value="meminfo">회원정보</option>
+								<option value="memgroup">단체회원</option>
 								<option value="tieup">제휴문의</option>
 								<option value="etc">기타문의</option>
 							</select>
@@ -258,7 +258,7 @@ h2 {
 							<select name="qna_item" onchange="qna_select()" id="qna_item" class="form-control col-xs-3" style="width: 150px;">
 								<option value="all">- 전체 -</option>
 								<option value="hotbooking">예약문의</option>
-								<option value="room">방문의</option>
+								<option value="room">룸 문의</option>
 								<option value="etc">기타문의</option>
 							</select>
 							<input type="hidden" name="qna_findname" id="hot_num">

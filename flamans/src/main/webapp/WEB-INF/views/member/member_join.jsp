@@ -3,6 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>     
 <!DOCTYPE html>
 <html>
+<style >
+table {
+   margin: 0px auto;
+   border-spacing: 10px;
+}
+h2{
+   text-align: center;
+}
+.all{
+	border-bottom: 1.5px solid black;
+	border-top : 0px;
+	border-left : 0px;
+	border-right: 0px;
+}
+.star{
+	color: #FF0000;
+}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -214,31 +232,31 @@ function yearmonth(){
 <form name="member_join" action="member_join.do" method="post">
 <table>
    <tr>
-      <td>ID</td>
-      <td><input type="text" name="m_id" onkeyup="idCheck()" onkeydown="fn_press_han(this);">
+      <td>ID<span class="star">*</span></td>
+      <td style="padding-left: 50px;"><input type="text" name="m_id" onkeyup="idCheck()" onkeydown="fn_press_han(this);" class="all">
       <span id="idMsg"></span>
       <input type="hidden" name="m_id_check">
       </td>
    </tr>
    <tr>
-      <td>Password</td>
-      <td><input type="password" name="m_pwd" onkeyup="pwdCheck()">
+      <td style="padding-top: 20px;">Password<span class="star">*</span></td>
+      <td style="padding-left: 50px;"><input type="password" name="m_pwd" onkeyup="pwdCheck()" class="all">
       <span id="pwdMsg"></span>
-      <input type="hidden" name="m_pwd_check">
+      <input type="hidden" name="m_pwd_check" class="all">
       </td>
    </tr>
    <tr>
-      <td>이름</td>
-      <td><input type="text" name="m_name"></td>
+      <td style="padding-top: 20px;">이름<span class="star">*</span></td>
+      <td style="padding-left: 50px;"><input type="text" name="m_name" class="all"></td>
    </tr>
    <tr>
-      <td>성별</td>
-      <td><input type="radio" name="m_sex" value="남" checked>남
+      <td style="padding-top: 20px;">성별<span class="star">*</span></td>
+      <td style="padding-left: 50px;"><input type="radio" name="m_sex" value="남" checked>남
          <input type="radio" name="m_sex" value="여">여</td>
    </tr>
    <tr>
-      <td>생년 월 일</td>
-      <td><SELECT name="Year" onchange="ChangeOptionDays('FirstSelect')" id="Year">
+      <td style="padding-top: 20px;">생년 월 일<span class="star">*</span></td>
+      <td style="padding-left: 50px;"><SELECT name="Year" onchange="ChangeOptionDays('FirstSelect')" id="Year">
            <script>
                    document.write(WriteYearOptions());
             </script>
@@ -294,8 +312,8 @@ function yearmonth(){
       </td>
    </tr>
    <tr>
-      <td>국적</td>
-      <td><select name="m_nationality">
+      <td style="padding-top: 20px;">국적<span class="star">*</span></td>
+      <td style="padding-left: 50px;"><select name="m_nationality">
       	 <option value="한국">한국</option>
          <option value="미국">미국</option>
          <option value="호주">호주</option>
@@ -310,8 +328,8 @@ function yearmonth(){
          </select></td>
    </tr>
    <tr>
-      <td>E-mail</td>
-      <td><input type="text" name="email1" onclick="yearmonth()">@<input type="text" name="email2">
+      <td style="padding-top: 20px;">E-mail<span class="star">*</span></td>
+      <td style="padding-left: 50px;"><input type="text" name="email1" onclick="yearmonth()" class="all">@<input type="text" name="email2" class="all">
          <select name="selEmail" onchange="email3(this.form)" >
          <option value="" selected>직접입력</option>
          <option value="naver.com">naver.com</option>
@@ -321,32 +339,32 @@ function yearmonth(){
          <option value="google.com">google.com</option>
          </select>
          <input type="hidden" name="m_email">
-         <input type="button" onclick="openEmail()" value="인증메일 보내기">
+   	     <button class="btn btn-default" value="인증메일 보내기" onclick="openEmail()">인증메일 보내기</button>
       </td>
    </tr>   
    <tr>
       <td></td>
-      <td><input id="emailCheck" type="text" name="numberCheck" placeholder="인증번호 7자리입력">
+      <td style="padding-left: 50px;"><input id="emailCheck" type="text" name="numberCheck" placeholder="인증번호 7자리입력" class="all">
       <input type="hidden" name="email_check">
-      <input type="button" value="인증확인" onclick="emailCheckOk()">
+      <button class="btn btn-default" value="인증확인" onclick="emailCheckOk()" >인증확인</button>
       </td>
    </tr>
    <tr>
-      <td>전화번호</td>
-      <td><select name="kind">
+      <td style="padding-top: 20px;">전화번호<span class="star">*</span></td>
+      <td style="padding-left: 50px;"><select name="kind">
          <option value="010">010</option>
          <option value="011">011</option>
          <option value="018">018</option>
          <option value="019">019</option>
          </select>-
-         <input type="text" name="number1" size="4" required onkeypress="return fn_press(event, 'numbers');" onkeydown="fn_press_han(this);" style="ime-mode:disabled;" >-
-         <input type="text" name="number2" size="4" required onkeypress="return fn_press(event, 'numbers');" onkeydown="fn_press_han(this);" style="ime-mode:disabled;" >
+         <input type="text" name="number1" size="4" required onkeypress="return fn_press(event, 'numbers');" onkeydown="fn_press_han(this);" style="ime-mode:disabled;" class="all">-
+         <input type="text" name="number2" size="4" required onkeypress="return fn_press(event, 'numbers');" onkeydown="fn_press_han(this);" style="ime-mode:disabled;" class="all">
          </td>
    </tr>
    <tr>
-      <td colspan="2">
-      <input type="reset" value="다시작성">
-      <input type="submit" value="회원가입"></td>
+      <td colspan="2" align="center">
+      <button class="btn btn-default" type="reset" value="다시 작성">다시 작성</button>
+      <button class="btn btn-default" type="submit" value="회원 가입">회원 가입</button>	
    </tr>
 </table>
 </form>

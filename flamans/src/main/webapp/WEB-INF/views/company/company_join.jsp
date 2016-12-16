@@ -2,6 +2,25 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
+<link rel = "stylesheet" type = "text/css" href="css/mainLayout.css">
+<style >
+table {
+   margin: 0px auto;
+   border-spacing: 10px;
+}
+h2{
+   text-align: center;
+}
+.all{
+	border-bottom: 1.5px solid black;
+	border-top : 0px;
+	border-left : 0px;
+	border-right: 0px;
+}
+.star{
+	color: #FF0000;
+}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -111,42 +130,42 @@
 	<div class="center">
 	   <h2>회원가입</h2>
 	</div>
-</div>
+
 	<form name="company_join" action="company_join.do" method="post">
 		<table>
 			<tr>
-				<th>업체명</th>
-				<td><input type="text" name="cm_name"></td>
+				<th>업체명 <span class="star">*</span></th>
+				<td style="padding-left: 50px;"><input type="text" name="cm_name" class="all"></td>
 			</tr>
-			<tr>
-				<th>업종</th>
-				<td><select name="kind">
+			<tr>			    
+				<th style="padding-top: 20px;">업종 <span class="star">*</span></th>
+				<td style="padding-left: 50px; padding-top: 20px;"><select name="kind">
 						<option value="병원">병원</option>
 						<option value="호텔">호텔</option>
-				</select></td>
+				</select></td>				
+			</tr>		
+			<tr>			    
+				<th style="padding-top: 20px;">사업자 번호 <span class="star">*</span></th>
+				<td style="padding-left: 50px; padding-top: 20px;"><input type="text" name="number1" class="all">-<input
+					type="text" name="number2" class="all">-<input type="text"
+					name="number3" class="all"></td>			    
 			</tr>
 			<tr>
-				<th>사업자 번호</th>
-				<td><input type="text" name="number1">-<input
-					type="text" name="number2">-<input type="text"
-					name="number3"></td>
-			</tr>
-			<tr>
-				<th>ID</th>
-				<td><input type="hidden" name="joinCheck" value="N"> <input
-					type="text" name="cm_id" onkeyup="id_check()"> <span
+				<th style="padding-top: 20px;">ID <span class="star">*</span></th>
+				<td style="padding-left: 50px; padding-top: 20px;"><input type="hidden" name="joinCheck" value="N"> <input
+					type="text" name="cm_id" onkeyup="id_check()" class="all"> <span
 					id="companyMsg"></span></td>
 			</tr>
 			<tr>
-				<th>Password</th>
-				<td><input type="password" name="cm_pwd" onkeyup="pwdCheck()">
-					<span id="pwdMsg"></span> <input type="hidden" name="cm_pwd_check">
+				<th style="padding-top: 20px;">Password <span class="star">*</span></th>
+				<td style="padding-left: 50px; padding-top: 20px;"><input type="password" name="cm_pwd" onkeyup="pwdCheck()" class="all">
+					<span id="pwdMsg"></span> <input type="hidden" name="cm_pwd_check" class="all">
 				</td>
 			</tr>
 			<tr>
-				<th>E-Mail</th>
-				<td><input type="text" name="email1" onclick="yearmonth()">@<input
-					type="text" name="email2"> <select name="selEmail"
+				<th style="padding-top: 20px;">E-Mail <span class="star">*</span></th>
+				<td style="padding-left: 50px; padding-top: 20px;"><input type="text" name="email1" onclick="yearmonth()" class="all">@<input
+					type="text" name="email2" class="all"> <select name="selEmail"
 					onchange="email3(this.form)">
 						<option value="선택">선택</option>
 						<option value="직접입력">직접입력</option>
@@ -155,25 +174,26 @@
 						<option value="hotmail.com">hotmail.com</option>
 						<option value="hanmail.com">hanmail.com</option>
 						<option value="google.com">google.com</option>
-				</select> <input type="hidden" name="cm_email"> <input type="button"
-					onclick="openEmail()" value="인증메일 보내기"></td>
+				</select> <input type="hidden" name="cm_email"> 
+				<button class="btn btn-default" value="인증메일 보내기" onclick="openEmail()">인증메일 보내기</button></td>
+			</tr>
+			<tr >
+				<td style="padding-left: 149px; padding-top: 20px;" colspan="4"><input id="emailCheck" type="text" name="numberCheck"
+					placeholder="인증번호 7자리입력" class="all">
+					<input type="hidden"
+					name="email_check" > 
+				<button class="btn btn-default" value="인증확인" onclick="emailCheckOk()" >인증확인</button>
 			</tr>
 			<tr>
-				<td><input id="emailCheck" type="text" name="numberCheck"
-					placeholder="인증번호 7자리입력"> <input type="hidden"
-					name="email_check"> <input type="button" value="인증확인"
-					onclick="emailCheckOk()"></td>
-			</tr>
-			<tr>
-				<th>전화번호</th>
-				<td><input type="text" name="cm_tel"></td>
+				<th style="padding-top: 20px;">전화번호 <span class="star">*</span></th>
+				<td style="padding-top: 20px; padding-left: 50px;"><input type="text" name="cm_tel" class="all"></td>
 			</tr>
 		</table>
-		<p>
-			<input type="reset" value="다시 작성"> <input type="submit"
-				value="가입">
+		<p align="center" style="padding-top: 20px;">
+		<button class="btn btn-default" type="reset" value="다시 작성">다시 작성</button> <button class="btn btn-default" type="submit" value="회원 가입">회원 가입</button>
 		</p>
 	</form>
+	</div>
 </section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
