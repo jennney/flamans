@@ -307,6 +307,9 @@ a#booking_pop:hover {
          document.getElementById("people").value = people;
          document.getElementById("checkin").value = checkin;
          document.getElementById("checkout").value = checkout;
+         
+         
+         
       }
    }
 function HreWrite(){
@@ -427,10 +430,10 @@ function HreWrite(){
         [예약자 정보 입력]
         <div></div>
         
-        <form name="booking_hot" action="HBook_reWrite.do" method="post">
-        <input type="hidden" name="hot_num" value="${hot_num}">
-        <input type="hidden" name="name" value="${Hdto.name}">
-        <input type="hidden" name="sex" value="${mdto.m_sex}">
+       <form name="booking_hot" action="HBook_reWrite.do" method="post">
+      <input type="hidden" name="hot_num" value="${hot_num}">
+      <input type="hidden" name="name" value="${Hdto.name}">
+      <input type="hidden" name="sex" value="${mdto.m_sex}">
       <input type="hidden" name="nationality" value="${mdto.m_nationality}">
       <input type="hidden" name="checkin" id="checkin">     
       <input type="hidden" name="checkout" id="checkout">            

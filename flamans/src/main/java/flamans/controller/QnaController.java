@@ -204,22 +204,29 @@ public class QnaController {
 	}
 
 	@RequestMapping(value = "/search.do", method = RequestMethod.GET)
-	public String qna_SearchForm(@RequestParam("kind")String kind,Model model) {
-		model.addAttribute("kind",kind);
+	public String qna_SearchForm() {
 		return "service/QNA/qna_search";
 	}
 	
 	@RequestMapping(value = "/search.do", method = RequestMethod.POST)
-	public ModelAndView qna_Search(@RequestParam("name")String name,@RequestParam("kind")String kind) {
+	public ModelAndView qna_Search(@RequestParam("name")String name) {
 		ModelAndView mav = new ModelAndView();
-		if(kind.equals("hotel")){
-			List<HotelDTO> list = qnaDao.hot_Search(name);
-			mav.addObject("hot_list",list);
-		}else{
-			List<HospitalDTO> list = qnaDao.hos_Search(name);
-			mav.addObject("hos_list",list);
-		}
+		List<HotelDTO> list = qnaDao.hot_Search(name);
+		mav.addObject("hot_list",list);
 		mav.setViewName("service/QNA/qna_search");
+		return mav;
+	}
+	@RequestMapping(value = "/search_hos.do", method = RequestMethod.GET)
+	public String qna_Search_hosForm() {
+		return "service/QNA/qna_search_hos";
+	}
+	
+	@RequestMapping(value = "/search_hos.do", method = RequestMethod.POST)
+	public ModelAndView qna_Searchhos(@RequestParam("name")String name) {
+		ModelAndView mav = new ModelAndView();
+		List<HospitalDTO> list = qnaDao.hos_Search(name);
+		mav.addObject("hos_list",list);
+		mav.setViewName("service/QNA/qna_search_hos");
 		return mav;
 	}
 

@@ -250,7 +250,7 @@ h2 {
 								<option value="etc">기타문의</option>
 							</select>
 							<input type="hidden" name="qna_findname" id="hos_num">
-							<button class="btn btn-default" type="button" onclick="javascript:window.open('search.do?kind=hospital','search','width=450 ,height=150,top=300,left=300')">병원검색<i class="fa fa-search"></i></button>
+							<button class="btn btn-default" type="button" onclick="javascript:window.open('search_hos.do','search','width=700 ,height=300,top=300,left=300')">병원검색<i class="fa fa-search"></i></button>
 							<span id="hos_span"></span>
 						</div>
 						</c:when>
@@ -262,7 +262,7 @@ h2 {
 								<option value="etc">기타문의</option>
 							</select>
 							<input type="hidden" name="qna_findname" id="hot_num">
-							<button class="btn btn-default" type="button" onclick="javascript:window.open('search.do?kind=hotel','search','width=450 ,height=150,top=300,left=300')">호텔검색<i class="fa fa-search"></i></button>
+							<button class="btn btn-default" type="button" onclick="javascript:window.open('search.do','search','width=700 ,height=300,top=300,left=300')">호텔검색<i class="fa fa-search"></i></button>
 							<span id="hot_span"></span>
 						</c:when>
 					</c:choose></td>
