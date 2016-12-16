@@ -20,6 +20,18 @@ function fileCheck(){
 	   
 	}
 </script>
+<style>
+#ta_ca{
+	width: 75%;
+}
+input[type=text]{
+	width: 75%;
+}
+#button_list{
+	width: 75%;
+	text-align: center;
+}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -30,13 +42,15 @@ function fileCheck(){
 			<fieldset>
 				<legend>의사 등록</legend>
 				<input type="hidden" name="hos_num" value="${sessionScope.cm_number }">
-				<label>이름 : </label> <input type="text" name="doc_name"><br>
+				<label>이름 : </label> <input type="text" name="doc_name" class="form-control"><br>
 				<label>이미지 : </label> <input type="file" id="file" name="upload" onchange="fileCheck()" class="btn btn-default"><br>
-				<label>학력 :</label> <input type="text" name="doc_level"><br>
-				<label>경력 </label><textarea rows="4" cols="300" name="doc_career"></textarea><br>
-				<label>기타사항 : </label><input type="text" name="doc_etc"><br>
-				<label>진료 과목 : </label><input type="text" name="doc_kind"><br>
+				<label>학력 :</label> <input type="text" name="doc_level" class="form-control"><br>
+				<label>경력 </label><textarea rows="4" cols="300" name="doc_career" class="form-control" id="ta_ca"></textarea><br>
+				<label>기타사항 : </label><input type="text" name="doc_etc" class="form-control"><br>
+				<label>진료 과목 : </label><input type="text" name="doc_kind" class="form-control"><br>
+				<div id="button_list">
 				<input type="submit" value="등록" class="btn btn-default"> <input type="reset" value="다시작성" class="btn btn-default">
+				</div>
 			</fieldset>
 		</form>
 	</div>

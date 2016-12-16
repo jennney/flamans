@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="/flamans/js/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 #list_table {
 	width: 700px;
@@ -59,7 +61,7 @@ h2 {
 			<tfoot>
 				<tr>
 					<td colspan="3" id="list_td">
-						<a href="doctorAdd.do">의사 등록 하기</a>
+						<a class="btn btn-default" href="doctorAdd.do">의사 등록 하기</a>
 					</td>
 				</tr>
 			</tfoot>
