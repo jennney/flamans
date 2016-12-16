@@ -84,8 +84,6 @@ function BooktimeCheckResult(){
 						var time=timetemp[1]; //		disable 
 						if(time==btimetable.options[i].value){	
 							var doc_time=document.bBook.doc_num.value;
-							alert(doc_time);
-							alert(doc_num);
 							if(doc_time==doc_num){
 								btimetable.options[i].disabled = true;
 							}

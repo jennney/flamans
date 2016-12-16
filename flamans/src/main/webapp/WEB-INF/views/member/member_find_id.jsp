@@ -14,18 +14,27 @@ label{
 	float: left;
 	width: 180px;
 }
+#kk{
+	margin: 100px auto;
+}
+#kkk{
+	width:1200px;
+  	height:450px;
+  	margin: 0px auto;
+}
 </style>
 </head>
 <body>
-<div class="container">
- 
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<div id="kkk"> 
   <c:set var="content" value="${dto}"/>
-  <div class="well well-lg" style="width:500px; height:300px;">
+  <div class="well well-lg" style="width:500px; height:300px;" id="kk">
    <h3>ID 찾기</h3><br>
 	  <h4>${dto.m_name }님의 ID는<br><br>
 	  <label></label>${dto.m_id }&nbsp;&nbsp;입니다.</h4><br><br>
 	   &nbsp;&nbsp;▶<a href="member_find_pwd.do" id="pp">&nbsp;비밀번호를 잊으셨나요?</a>
    </div>
 </div>
+<%@ include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>

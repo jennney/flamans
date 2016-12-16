@@ -13,16 +13,25 @@ label{
 	float: left;
 	width: 80px;
 }
-.container{
+#kkk{
+	width:1200px;
+  	height:450px;
+  	margin: 0px auto;
+	text-align: center;
+  	
+}
+#kk{
  	width:500px;
   	height:300px;
-  	margin-top: 30px;
-   	border-color: green;
+	margin: 100px auto;
+	text-align: center;
 }
 </style>
 </head>
 <body>
-<div class="container" >
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<div id="kkk">
+	<div id="kk"  class="well well-lg">
 	  <h3>ID 찾기</h3><br><br>
 	  <form class="form-inline" name="id" action="member_find_id.do" method="post">
 	      <label for="Name">Name:</label>
@@ -31,6 +40,8 @@ label{
 	      <input type="text" class="form-control" name="m_email" placeholder="Enter Email"><br><br>
 	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
 	  </form>
-</div>
+	 </div>
+</div>	  
+<%@ include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>

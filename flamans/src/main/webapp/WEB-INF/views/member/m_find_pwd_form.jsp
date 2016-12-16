@@ -60,16 +60,17 @@ label{
 	float: left;
 	width: 80px;
 }
-.container{
+#kk{
  	width:500px;
-  	height:300px;
-  	margin-top: 30px;
+  	height:350px;
    	border-color: green;
+   	margin: 80px auto;
 }
 </style>
 </head>
 <body>
-<div class="container">
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<div id="kk">
 	<h3>Password 찾기</h3><br><br>
 	  <form class="form-inline" name="pwd" action="member_find_pwd.do" method="post">
 	      <label for="id">id:</label>
@@ -83,7 +84,8 @@ label{
 	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
 
 	    
-	  </form>
+	</form>
 </div>
+<%@ include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>
