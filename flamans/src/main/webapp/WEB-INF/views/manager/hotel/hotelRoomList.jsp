@@ -14,7 +14,7 @@
 	margin: 0px auto;
 	border-spacing: 0px;
 }
-#list_th1, #list_th2, #list_th3,#list_th4, #list_th5, #list_th6s {
+#list_th1, #list_th2, #list_th3,#list_th4, #list_th5, #list_th6 {
 	border-top: 3px solid #BDBDBD;
 	border-bottom: 3px solid #BDBDBD;
 	height: 50px;
