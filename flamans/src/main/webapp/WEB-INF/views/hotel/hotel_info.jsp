@@ -595,8 +595,9 @@ function toggleMap(active) {
 </script>
 </head>
 <body>
+
+	<%@ include file="../header.jsp" %>
 	<div align="center" style="height: 2100px;">
-		<%@ include file="../header.jsp" %>
 		
 		<table style="margin: 0px auto;">
 			<tr>
@@ -976,6 +977,8 @@ function toggleMap(active) {
 			</div>
 		</div>
 	</div>
+	
+	
 	<%@ include file="../footer.jsp" %>
 </body>
 </html>
