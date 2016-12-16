@@ -73,23 +73,27 @@ function BooktimeCheckResult(){
 		if(XHR.status==200){
 			var data=XHR.responseText;
 			data=eval('('+data+')');
-			
 			var BtimeList=data.cal;
 			var btimetable=document.getElementById("B_time");
 
 			for(var i=0; i<btimetable.length; i++){
 				 btimetable.options[i].disabled = false;
-				 	for(var j=0;j<BtimeList.length;j++){						
+				 	for(var j=0;j<BtimeList.length;j++){	
+				 		var doc_num=BtimeList[j].doc_num;
 						var timetemp=BtimeList[j].bookingdate.split('/');
 						var time=timetemp[1]; //		disable 
-						if(time==btimetable.options[i].value){
+						if(time==btimetable.options[i].value){	
 							var doc_time=document.bBook.doc_num.value;
-							if(doc_time==btimetable.doc_num[i]){
+							alert(doc_time);
+							alert(doc_num);
+							if(doc_time==doc_num){
 								btimetable.options[i].disabled = true;
 							}
 							   
-							 /*   $('#B_time').options[i].attr('onclick', 'already()'); */
-							   
+							 /*   $('#B_time').options[i].attr('onclick', 'already()');
+							 	btimetable.options[i].disabled = true;
+							 */
+							    
 						 }
 				 	}
 				}
