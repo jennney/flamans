@@ -42,7 +42,7 @@ function HbookContent(bookingnum){
    
    <c:forEach var="mdto" items="${mdto}">
     <tr>
-       <td><a href="#" onclick="HbookContent(${Hbook.bookingnum})">'${mdto.cm_name}</a></td>
+       <td><a href="#" onclick="HbookContent(${mdto.bookingnum})">'${mdto.cm_name}</a></td>
        <td>${mdto.bookingdate}</td>
        <td>${mdto.checkin}</td>
        <td>${mdto.checkout}</td>
