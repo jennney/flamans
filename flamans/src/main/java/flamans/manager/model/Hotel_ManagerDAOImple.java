@@ -95,7 +95,7 @@ public class Hotel_ManagerDAOImple implements Hotel_ManagerDAO {
 	
 	public int hotelRoomCnt(String cm_number) {
 		int count=sqlMap.selectOne("hotelRoomCnt", cm_number);
-		return count;
+		return count==0?1:count;
 	}
 	
 	public List<HotelRoomDTO> hotelRoomList(String cm_number, int cp, int listSize) {

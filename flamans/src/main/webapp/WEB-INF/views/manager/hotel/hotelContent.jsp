@@ -29,7 +29,6 @@ fieldset{
 <div id="wrapper">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
-		<h2>호텔 정보 보기</h2>
 		<c:if test="${empty list }">
 			<h4>등록된 정보가 없습니다.</h4>
 			<a class="btn btn-default" href="hotelAdd.do">호텔 정보 등록 하러 가기</a>
