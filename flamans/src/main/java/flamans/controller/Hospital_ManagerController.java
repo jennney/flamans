@@ -274,7 +274,9 @@ public class Hospital_ManagerController {
 			mav.addObject("url", "doctorList.do");
 			mav.setViewName("manager/Msg");
 		}else{
-			list.get(0).setDoc_career(list.get(0).getDoc_career().replaceAll("\n", "<br>"));
+			if(list.get(0).getDoc_career()!=null){
+				list.get(0).setDoc_career(list.get(0).getDoc_career().replaceAll("\n", "<br>"));
+			}
 			mav.addObject("list", list);
 			mav.setViewName("manager/hospital/doctorContent");
 		}

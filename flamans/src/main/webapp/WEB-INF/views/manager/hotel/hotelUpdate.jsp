@@ -11,7 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 function addrFind(){
-	window.open('hotAddrFind.do', '주소검색', 'width="500",height="400",top="200",left="200"');
+	window.open('hotAddrFind.do', '주소검색', 'width=400,height=400,top=100,left=200');
 }
 function fileCheck(){
 	   var fileext = document.getElementById('file').value; //input type="file" id="file"
