@@ -126,6 +126,7 @@ public class BbookDAOImple implements BbookDAO {
 		map.put("hos_num", hos_num);
 		map.put("date", date);
 		List<BbookDTO> cal=sqlMap.selectList("calendar", map);
+		System.out.println(cal.size());
 		return cal;
 	}
 	
