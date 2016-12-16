@@ -527,7 +527,7 @@
 							<td width="600" style="padding-top: 30px;"><h1 style="color:black; font: bold; ">【 ${hospital_info.hos_name } 】</h1><br></td>
 							<td width="100" style="vertical-align: middle;">
 							<a href="${wishlistUrl}"><input type="button" class="btn btn-default" value=" ♥ "></a>
-								<input type="submit" class="btn btn-default" value="예약"></td>
+							<input type="submit" class="btn btn-default" value="예약"></td>
 						</tr>
 					</table>
 
