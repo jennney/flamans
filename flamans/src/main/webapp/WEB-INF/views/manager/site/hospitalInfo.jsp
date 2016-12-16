@@ -95,7 +95,7 @@ h2 {
 }
 </style>
 </head>
-<body>
+<body onload="show(1);">
 <div id="wrapper">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
