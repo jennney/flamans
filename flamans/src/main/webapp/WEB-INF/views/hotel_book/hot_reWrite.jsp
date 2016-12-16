@@ -274,7 +274,7 @@ a#booking_pop:hover {
       document.getElementById("roomselect").value = room;
       document.getElementById("room_idx").value = idx;
    }
-   function check(idx){
+   function check(idx,bookingnum){
       var adult = document.getElementById('adult').value;
       var child = document.getElementById('child').value;
       var room = document.getElementById(idx).value;
