@@ -157,7 +157,7 @@ public class Hotel_ManagerController {
 		String img=upload.getOriginalFilename();
 		dto.setHot_img(img);
 		int result=hotmDao.hotelAdd(dto);
-		String msg=result>0?"등록 성공":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
+		String msg=result>0?"등록 성공":"등록 실패";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "hotelContent.do");
@@ -170,7 +170,7 @@ public class Hotel_ManagerController {
 		HotelDTO dto=hotmDao.hotelUpdateForm(hot_num);
 		
 		StringBuffer sb=new StringBuffer();
-		sb.append("<select name='hot_grade'>");
+		sb.append("<select name='hot_grade' class='form-control'>");
 		for(int i=1;i<6;i++){
 			sb.append("<option value='");
 			sb.append(i);
@@ -223,7 +223,7 @@ public class Hotel_ManagerController {
 			dto.setHot_img(upload.getOriginalFilename());
 		}
 		int result=hotmDao.hotelUpdate(dto);
-		String msg=result>0?"수정 성공ㅋ":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
+		String msg=result>0?"수정 성공":"수정 실패";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "hotelContent.do");
@@ -234,7 +234,7 @@ public class Hotel_ManagerController {
 	@RequestMapping("/hotelDelete.do")
 	public ModelAndView hotelDelet(@RequestParam("hot_num") String hot_num,HttpSession session){
 		int result=hotmDao.hotelDelete(hot_num);
-		String msg=result>0?"삭제성공ㅋ":"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ";
+		String msg=result>0?"삭제성공":"삭제 실패";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.addObject("url", "hotelContent.do?cm_number="+session.getAttribute("cm_number"));
@@ -322,7 +322,7 @@ public class Hotel_ManagerController {
 		StringBuffer num=new StringBuffer();
 		int cnum[]={1,2,4,6};
 		int pnum=dto.getPeople_num();
-		num.append("<select name='people_num'>");
+		num.append("<select name='people_num' class='form-control'>");
 		for(int i=0;i<cnum.length;i++){
 			num.append("<option value='");
 			num.append(cnum[i]);

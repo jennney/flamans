@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="/flamans/js/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 function fileCheck(){
 	   var fileext = document.getElementById('file').value; //input type="file" id="file"
@@ -29,12 +31,12 @@ function fileCheck(){
 				<legend>의사 등록</legend>
 				<input type="hidden" name="hos_num" value="${sessionScope.cm_number }">
 				<label>이름 : </label> <input type="text" name="doc_name"><br>
-				<label>이미지 : </label> <input type="file" id="file" name="upload" onchange="fileCheck()"><br>
+				<label>이미지 : </label> <input type="file" id="file" name="upload" onchange="fileCheck()" class="btn btn-default"><br>
 				<label>학력 :</label> <input type="text" name="doc_level"><br>
 				<label>경력 </label><textarea rows="4" cols="300" name="doc_career"></textarea><br>
 				<label>기타사항 : </label><input type="text" name="doc_etc"><br>
 				<label>진료 과목 : </label><input type="text" name="doc_kind"><br>
-				<input type="submit" value="등록"> <input type="reset" value="다시작성">
+				<input type="submit" value="등록" class="btn btn-default"> <input type="reset" value="다시작성" class="btn btn-default">
 			</fieldset>
 		</form>
 	</div>

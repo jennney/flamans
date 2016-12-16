@@ -44,7 +44,7 @@ body{
 			 이미지 : <input type="file" name="upload" class="form-control" id="file" onchange="fileCheck()"><br>
 			 상세내용 : <textarea rows="4" cols="200" name="hot_content" class="form-control"></textarea><br>
 			 찾아오는길 : <textarea rows="2" cols="200" name="hot_mapinfo" class="form-control"></textarea><br>
-			 등급 : <select name="hot_grade">
+			 등급 : <select name="hot_grade" class="form-control">
 			 				<option value="1">1성</option>
 			 				<option value="2">2성</option>
 			 				<option value="3">3성</option>

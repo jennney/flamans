@@ -29,7 +29,7 @@
 				<c:url var="hospitalDeleteUrl" value="hospitalDelete.do">
 					<c:param name="hos_num">${dto.hos_num }</c:param>
 				</c:url>
-				<a href="${hospitalUpdateUrl }">수정하기</a>&nbsp;<a href="${hospitalDeleteUrl }">삭제하기</a>
+				<a class="btn btn-default" href="${hospitalUpdateUrl }">수정하기</a>&nbsp;<a class="btn btn-default" href="${hospitalDeleteUrl }">삭제하기</a>
 			</c:forEach>
 		</c:if>
 	</div>

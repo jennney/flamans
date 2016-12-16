@@ -35,7 +35,7 @@ function fileCheck(){
 			<input type="hidden" name="hos_num" value="${sessionScope.cm_number }">
 			 이름 : <input type="text" name="hos_name" class="form-control" value="${sessionScope.cm_name }" readonly><br>
 			 전문기술 :
-			 <select name="hos_special">
+			 <select name="hos_special" class="form-control">
 			 	<option  value="face"> 안면윤곽
 			 	<option  value="bimaxillary"> 양악수술
 			 	<option  value="eyes"> 눈 성형

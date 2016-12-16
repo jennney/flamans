@@ -174,7 +174,7 @@ public class Hospital_ManagerController {
 		map.put("nose", "코 성형");
 		map.put("man", "남성 성형");
 		String sp=dto.getHos_special();
-		sb.append("<select name='hos_special'>");
+		sb.append("<select name='hos_special' class='form-control'>");
 		for(int i=0;i<special.length;i++){
 			sb.append("<option value='");
 			sb.append(special[i]);
