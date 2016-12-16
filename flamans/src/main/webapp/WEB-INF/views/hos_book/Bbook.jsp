@@ -161,14 +161,13 @@ function docInfo(doc_num){
    height:650px;
    margin-top: 30px;
    border : 1px solid green;
+   margin: auto;
    
 }
 #d{
 	float: right;  
    	width:260px;
    	height:600px;
-   	border : 1px solid red;
-
 }
 #doc{
 	width:260px;
@@ -194,7 +193,8 @@ textarea{
 </head>
 
 <body onload="Bbook2();kCalendar('kCalendar');">
-<h2>병원 예약</h2>
+<%@ include file="/WEB-INF/views/header.jsp"%>	
+<h2 style="text-align: center;">병원 예약</h2>
 	<div id="b" class="well well-lg">
 	<form class="form-inline" name="bBook" action="bBook.do" method="post">
 	<div id="a">
@@ -308,6 +308,6 @@ textarea{
     
 	</div>
 
-
+<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
