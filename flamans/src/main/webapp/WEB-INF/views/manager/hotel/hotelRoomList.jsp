@@ -80,7 +80,7 @@ h2 {
 			<tbody>
 			<c:if test="${empty list }">
 				<tr>
-					<td colspan="6" align="center">등록된 방이 없습니다.</td>
+					<td colspan="6" id="list_td">등록된 방이 없습니다.</td>
 				</tr>
 			</c:if>
 			<c:if test="${!empty list }">

@@ -95,7 +95,12 @@ public class Hotel_ManagerController {
 		List<HotelDTO> list=hotmDao.hotelContent((String)session.getAttribute("cm_number"));
 		ModelAndView mav=new ModelAndView();
 		if(list!=null&&list.size()!=0){
-			list.get(0).setHot_content(list.get(0).getHot_content().replaceAll("\n", "<br>"));
+			if(list.get(0).getHot_content()!=null){
+				list.get(0).setHot_content(list.get(0).getHot_content().replaceAll("\n", "<br>"));
+			}
+			if(list.get(0).getHot_mapinfo()!=null){
+				list.get(0).setHot_mapinfo(list.get(0).getHot_mapinfo().replaceAll("\n", "<br>"));
+			}
 			String etc[]={"wifi","parking","restaurant","pool","fitness","laundry"};
 			String result[]=list.get(0).getHot_etc().split(",");
 			StringBuffer sb1=new StringBuffer();
@@ -156,6 +161,9 @@ public class Hotel_ManagerController {
 		copyinto(dto.getHot_num(),upload,path);
 		String img=upload.getOriginalFilename();
 		dto.setHot_img(img);
+		if(dto.getHot_etc()==null){
+			dto.setHot_etc("none");
+		}
 		int result=hotmDao.hotelAdd(dto);
 		String msg=result>0?"등록 성공":"등록 실패";
 		ModelAndView mav=new ModelAndView();
@@ -222,6 +230,9 @@ public class Hotel_ManagerController {
 			copyinto(dto.getHot_num(), upload,path);
 			dto.setHot_img(upload.getOriginalFilename());
 		}
+		if(dto.getHot_etc()==null){
+			dto.setHot_etc("none");
+		}
 		int result=hotmDao.hotelUpdate(dto);
 		String msg=result>0?"수정 성공":"수정 실패";
 		ModelAndView mav=new ModelAndView();
@@ -269,6 +280,9 @@ public class Hotel_ManagerController {
 	
 	@RequestMapping(value="/hotelRoomAdd.do",method=RequestMethod.POST)
 	public ModelAndView hotelRoomAdd(HotelRoomDTO dto){
+		if(dto.getRoom_option()==null){
+			dto.setRoom_option("none");
+		}
 		int result=hotmDao.hotelRoomAdd(dto);
 		String msg=result>0?"등록 성공":"등록 실패";
 		ModelAndView mav=new ModelAndView();
@@ -367,6 +381,9 @@ public class Hotel_ManagerController {
 	
 	@RequestMapping(value="/hotelRoomUpdate.do",method=RequestMethod.POST)
 	public ModelAndView hotelRoomUpdate(HotelRoomDTO dto){
+		if(dto.getRoom_option()==null){
+			dto.setRoom_option("none");
+		}
 		int result=hotmDao.hotelRoomUpdate(dto);
 		String msg=result>0?"수정 성공":"수정 실패";
 		ModelAndView mav=new ModelAndView();

@@ -100,7 +100,12 @@ public class Hospital_ManagerController {
 		List<HospitalDTO> list=hosmDao.hospitalContent((String)session.getAttribute("cm_number"));
 		ModelAndView mav=new ModelAndView();
 		if(list!=null&&list.size()!=0){
-			list.get(0).setHos_content(list.get(0).getHos_content().replaceAll("\n", "<br>"));
+			if(list.get(0).getHos_content()!=null){
+				list.get(0).setHos_content(list.get(0).getHos_content().replaceAll("\n", "<br>"));
+			}
+			if(list.get(0).getHos_mapinfo()!=null){
+				list.get(0).setHos_mapinfo(list.get(0).getHos_mapinfo().replaceAll("\n", "<br>"));
+			}
 			HashMap<String, Object> map=new HashMap<String, Object>();
 			map.put("face", "안면윤곽");
 			map.put("bimaxillary", "양약수술");

@@ -29,17 +29,17 @@
 }
 
 #list_th3 {
-	width: 400px;
+	width: 250px;
 }
 
 #list_th4 {
-	width: 50px;
+	width: 100px;
 }
 #list_th5 {
-	width: 50px;
+	width: 100px;
 }
 #list_th6 {
-	width: 50px;
+	width: 100px;
 }
 #list_td {
 	border-bottom: 1px solid #BDBDBD;
