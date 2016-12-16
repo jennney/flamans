@@ -30,14 +30,16 @@ public class ManagerController {
 			mav.addObject("url", "index.do");
 			mav.setViewName("manager/Msg");
 		}else if(cm_id.equals("admin")){  
-			mav.setViewName("manager/site/memberList");
+			mav.addObject("url", "memberList.do");
+			mav.setViewName("manager/ManagerMsg");
 		}else if(cm_number.equals("B")){
 			if(dto.getCm_permit().equals("0")){
 				mav.addObject("msg", "승인이 필요합니다.");
 				mav.addObject("url","index.do");
 				mav.setViewName("manager/Msg");
 			}else{
-				mav.setViewName("manager/hospital/hospitalBbsList");
+				mav.addObject("url", "hospitalBbsList.do");
+				mav.setViewName("manager/ManagerMsg");
 			}
 		}else if(cm_number.equals("H")){
 			if(dto.getCm_permit().equals("0")){
@@ -45,7 +47,8 @@ public class ManagerController {
 				mav.addObject("url","index.do");
 				mav.setViewName("manager/Msg");
 			}else{
-				mav.setViewName("manager/hotel/hotelBbsList");
+				mav.addObject("url", "hotelBbsList.do");
+				mav.setViewName("manager/ManagerMsg");
 			}
 		}else{
 			mav.addObject("msg", "관리자로그인이 필요한 메뉴입니다.");
