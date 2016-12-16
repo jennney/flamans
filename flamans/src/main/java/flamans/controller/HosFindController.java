@@ -96,6 +96,7 @@ public class HosFindController {
 	@RequestMapping("/hospital_sub_search.do")
 	public ModelAndView hospital_sub_search(
 			@RequestParam(value="option1",defaultValue="")String option1,@RequestParam(value="option2",defaultValue="")String option2,@RequestParam(value="option3",defaultValue="")String option3,@RequestParam(value="option4",defaultValue="")String option4,@RequestParam(value="option5",defaultValue="")String option5,
+			@RequestParam(value="star1",defaultValue="0")int star1,@RequestParam(value="star2",defaultValue="0")int star2,@RequestParam(value="star3",defaultValue="0")int star3,@RequestParam(value="star4",defaultValue="0")int star4,@RequestParam(value="star5",defaultValue="0")int star5,
 			@RequestParam(value="findname", defaultValue="")String findname,
 			
 			@RequestParam(value="cp",defaultValue="1")int cp,
@@ -166,6 +167,8 @@ public class HosFindController {
 		String hospital_name_find = findname.toLowerCase();
 		
 		String option[] = {option1,option2,option3,option4,option5};
+		int star[] = {star1,star2,star3,star4,star5};
+		
 		StringBuffer sb= new StringBuffer();
 		
 		//플래그 변수들. where_con & z
@@ -200,6 +203,28 @@ public class HosFindController {
 			sb.append("))");
 			and_flag=1;
 		}
+		
+		//세번째조건이 들어갈때
+		z=0;
+		for(int i=0; i<star.length; i++){
+			if(star[i]!=0 && z==0){
+				
+				if(and_flag==1){
+					sb.append(" and ");
+				}
+				
+				sb.append("hos_star in ("+star[i]);
+				z=1;
+				
+			}else if(star[i]!=0 && z==1){
+				sb.append(", "+star[i]);
+			}
+		}
+		if(z==1){
+			sb.append(")");
+			and_flag=1;
+		}
+		
 		System.out.println("hospital_name_find="+hospital_name_find);
 		System.out.println("sb.toString()="+sb.toString());
 		int totalCnt = hospital_info.getSubTotalCnt(sb.toString(), hospital_name_find);

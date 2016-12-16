@@ -8,7 +8,7 @@
 <style type="text/css">
 
 .container {
-	width: 1000px; margin: 10px auto;
+	width: 900px; margin: 10px auto;
 }
 
 ul.tabs {
@@ -227,29 +227,32 @@ $(document).ready(function() {
 </head>
 
 <body onload = "wishlist()">
-<div class="container">
-    <ul class="tabs">
-        <li onclick="wishlist()"><a href="#tab1">호텔비교</a></li>
-        <li onclick="wishlist()"><a href="#tab2">병원비교</a></li>
-    </ul>
-    
-    <div class="tab_container">
-        <div id="tab1" class="tab_content">
-        	<form name="page1_Write" action="page1_Write.do" method="post" enctype="multipart/form-data">
-        		
-        			<p id="hot_wishlist"></p>
-        		
-        	</form>
-        </div>
-        
-        <div id="tab2" class="tab_content">
-           	<form name="page2_Write" action="page2_Write.do" method="post" enctype="multipart/form-data">
-           		
-           			<p id="hos_wishlist"></p>
-           		
-        	</form>
-        </div>
-    </div>
+<%@ include file="/WEB-INF/views/myIndex.jsp"%>
+<div id="page-wrapper">
+	<div class="container">
+	    <ul class="tabs">
+	        <li onclick="wishlist()"><a href="#tab1">호텔비교</a></li>
+	        <li onclick="wishlist()"><a href="#tab2">병원비교</a></li>
+	    </ul>
+	    
+	    <div class="tab_container">
+	        <div id="tab1" class="tab_content">
+	        	<form name="page1_Write" action="page1_Write.do" method="post" enctype="multipart/form-data">
+	        		
+	        			<p id="hot_wishlist"></p>
+	        		
+	        	</form>
+	        </div>
+	        
+	        <div id="tab2" class="tab_content">
+	           	<form name="page2_Write" action="page2_Write.do" method="post" enctype="multipart/form-data">
+	           		
+	           			<p id="hos_wishlist"></p>
+	           		
+	        	</form>
+	        </div>
+	    </div>
+	</div>
 </div>
 </body>
 </html>

@@ -221,96 +221,95 @@ function hotel_result_search(){
 			if(grade[0].checked){
 				gradeimg1.innerHTML = '<img alt="등급1" src="img/select_grade1.jpg" width="50" height="50">';
 			}else{
-				gradeimg1.innerHTML = '<img alt="등급1" src="img/1.jpg" width="50" height="50">';
+				gradeimg1.innerHTML = '<img alt="등급1" src="img/grade1.jpg" width="50" height="50">';
 			}
 			
 			if(grade[1].checked){
 				gradeimg2.innerHTML = '<img alt="등급1" src="img/select_grade2.jpg" width="50" height="50">';
 			}else{
-				gradeimg2.innerHTML = '<img alt="등급1" src="img/2.jpg" width="50" height="50">';
+				gradeimg2.innerHTML = '<img alt="등급1" src="img/grade2.jpg" width="50" height="50">';
 			}
 			
 			if(grade[2].checked){
 				gradeimg3.innerHTML = '<img alt="등급1" src="img/select_grade3.jpg" width="50" height="50">';
 			}else{
-				gradeimg3.innerHTML = '<img alt="등급1" src="img/3.jpg" width="50" height="50">';
+				gradeimg3.innerHTML = '<img alt="등급1" src="img/grade3.jpg" width="50" height="50">';
 			}
 			
 			if(grade[3].checked){
 				gradeimg4.innerHTML = '<img alt="등급1" src="img/select_grade4.jpg" width="50" height="50">';
 			}else{
-				gradeimg4.innerHTML = '<img alt="등급1" src="img/4.jpg" width="50" height="50">';
+				gradeimg4.innerHTML = '<img alt="등급1" src="img/grade4.jpg" width="50" height="50">';
 			}
 			
 			if(grade[4].checked){
 				gradeimg5.innerHTML = '<img alt="등급1" src="img/select_grade5.jpg" width="50" height="50">';
 			}else{
-				gradeimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
+				gradeimg5.innerHTML = '<img alt="등급1" src="img/grade5.jpg" width="50" height="50">';
 			}
 			
 			if(option[0].checked){
-				optionimg1.innerHTML = '<img alt="등급1" src="img/select_grade1.jpg" width="50" height="50">';
+				optionimg1.innerHTML = '<img alt="등급1" src="img/select_alarm.jpg" width="50" height="50">';
 			}else{
-				optionimg1.innerHTML = '<img alt="등급1" src="img/1.jpg" width="50" height="50">';
+				optionimg1.innerHTML = '<img alt="등급1" src="img/alarm.jpg" width="50" height="50">';
 			}
 			
 			if(option[1].checked){
-				optionimg2.innerHTML = '<img alt="등급1" src="img/select_grade2.jpg" width="50" height="50">';
+				optionimg2.innerHTML = '<img alt="등급1" src="img/select_bath.jpg" width="50" height="50">';
 			}else{
-				optionimg2.innerHTML = '<img alt="등급1" src="img/2.jpg" width="50" height="50">';
+				optionimg2.innerHTML = '<img alt="등급1" src="img/bath.jpg" width="50" height="50">';
 			}
 			
 			if(option[2].checked){
-				optionimg3.innerHTML = '<img alt="등급1" src="img/select_grade3.jpg" width="50" height="50">';
+				optionimg3.innerHTML = '<img alt="등급1" src="img/select_breakfast.jpg" width="50" height="50">';
 			}else{
-				optionimg3.innerHTML = '<img alt="등급1" src="img/3.jpg" width="50" height="50">';
+				optionimg3.innerHTML = '<img alt="등급1" src="img/breakfast.jpg" width="50" height="50">';
 			}
 			
 			if(option[3].checked){
-				optionimg4.innerHTML = '<img alt="등급1" src="img/select_grade4.jpg" width="50" height="50">';
+				optionimg4.innerHTML = '<img alt="등급1" src="img/select_minibar.jpg" width="50" height="50">';
 			}else{
-				optionimg4.innerHTML = '<img alt="등급1" src="img/4.jpg" width="50" height="50">';
+				optionimg4.innerHTML = '<img alt="등급1" src="img/minibar.jpg" width="50" height="50">';
 			}
 			
 			if(option[4].checked){
-				optionimg5.innerHTML = '<img alt="등급1" src="img/select_grade5.jpg" width="50" height="50">';
+				optionimg5.innerHTML = '<img alt="등급1" src="img/select_safebox.jpg" width="50" height="50">';
 			}else{
-				optionimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
+				optionimg5.innerHTML = '<img alt="등급1" src="img/safebox.jpg" width="50" height="50">';
 			}
 			
 			
 			
 			
 			if(star[0].checked){
-				starimg1.innerHTML = '<img alt="등급1" src="img/select_grade1.jpg" width="50" height="50">';
+				starimg1.innerHTML = '<img alt="등급1" src="img/select_star1.jpg" width="50" height="50">';
 			}else{
-				starimg1.innerHTML = '<img alt="등급1" src="img/1.jpg" width="50" height="50">';
+				starimg1.innerHTML = '<img alt="등급1" src="img/star1.jpg" width="50" height="50">';
 			}
 			
 			if(star[1].checked){
-				starimg2.innerHTML = '<img alt="등급1" src="img/select_grade2.jpg" width="50" height="50">';
+				starimg2.innerHTML = '<img alt="등급1" src="img/select_star2.jpg" width="50" height="50">';
 			}else{
-				starimg2.innerHTML = '<img alt="등급1" src="img/2.jpg" width="50" height="50">';
+				starimg2.innerHTML = '<img alt="등급1" src="img/star2.jpg" width="50" height="50">';
 			}
 			
 			if(star[2].checked){
-				starimg3.innerHTML = '<img alt="등급1" src="img/select_grade3.jpg" width="50" height="50">';
+				starimg3.innerHTML = '<img alt="등급1" src="img/select_star3.jpg" width="50" height="50">';
 			}else{
-				starimg3.innerHTML = '<img alt="등급1" src="img/3.jpg" width="50" height="50">';
+				starimg3.innerHTML = '<img alt="등급1" src="img/star3.jpg" width="50" height="50">';
 			}
 			
 			if(star[3].checked){
-				starimg4.innerHTML = '<img alt="등급1" src="img/select_grade4.jpg" width="50" height="50">';
+				starimg4.innerHTML = '<img alt="등급1" src="img/select_star4.jpg" width="50" height="50">';
 			}else{
-				starimg4.innerHTML = '<img alt="등급1" src="img/4.jpg" width="50" height="50">';
+				starimg4.innerHTML = '<img alt="등급1" src="img/star4.jpg" width="50" height="50">';
 			}
 			
 			if(star[4].checked){
-				starimg5.innerHTML = '<img alt="등급1" src="img/select_grade5.jpg" width="50" height="50">';
+				starimg5.innerHTML = '<img alt="등급1" src="img/select_star5.jpg" width="50" height="50">';
 			}else{
-				starimg5.innerHTML = '<img alt="등급1" src="img/5.jpg" width="50" height="50">';
+				starimg5.innerHTML = '<img alt="등급1" src="img/star4.jpg" width="50" height="50">';
 			}
-
 			
 			// http://localhost:9090/myweb/img/1.jpg;
 			data = eval('('+data+')');
@@ -596,7 +595,7 @@ function toggleMap(active) {
 </script>
 </head>
 <body>
-	<div align="center" style="border: 7px solid maroon; height: 2100px;">
+	<div align="center" style="height: 2100px;">
 		<%@ include file="../header.jsp" %>
 		
 		<table style="margin: 0px auto;">
@@ -640,7 +639,7 @@ function toggleMap(active) {
 		
 		<div style="width: 1000px;">
 		
-			<div style="border: 5px solid teal; width: 270px; float: left; white-space:nowrap; margin:0px center;">
+				<div style="border: 5px solid teal; width: 270px; float: left; white-space:nowrap; margin:0px center;">
 				<form name="hot_option_select">
 	
 					<table border="0" class="hotel_grade_search" cellspacing="0" width="150">
@@ -651,27 +650,27 @@ function toggleMap(active) {
 						
 						<tr>
 							<td onclick="hot_grade_search('grade1')">
-								<div id=gradeimg1><img alt="등급1" src="img/1.jpg" width="50" height="50"></div>
+								<div id=gradeimg1><img alt="등급1" src="img/grade1.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="1">
 							</td>
 							
 							<td onclick="hot_grade_search('grade2')">
-								<div id=gradeimg2><img alt="등급2" src="img/2.jpg" width="50" height="50"></div>
+								<div id=gradeimg2><img alt="등급2" src="img/grade2.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="2">
 							</td>
 							
 							<td onclick="hot_grade_search('grade3')">
-								<div id=gradeimg3><img alt="등급3" src="img/3.jpg" width="50" height="50"></div>
+								<div id=gradeimg3><img alt="등급3" src="img/grade3.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="3">
 							</td>
 							
 							<td onclick="hot_grade_search('grade4')">
-								<div id=gradeimg4><img alt="등급4" src="img/4.jpg" width="50" height="50"></div>
+								<div id=gradeimg4><img alt="등급4" src="img/grade4.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="4">
 							</td>
 							
 							<td onclick="hot_grade_search('grade5')">
-								<div id=gradeimg5><img alt="등급4" src="img/5.jpg" width="50" height="50"></div>
+								<div id=gradeimg5><img alt="등급4" src="img/grade5.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="5">
 							</td>
 							
@@ -687,27 +686,27 @@ function toggleMap(active) {
 						
 						<tr>
 							<td onclick="hot_grade_search('star1')">
-								<div id=starimg1><img alt="평점1" src="img/1.jpg" width="50" height="50"></div>
+								<div id=starimg1><img alt="평점1" src="img/star1.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="1">
 							</td>
 							
 							<td onclick="hot_grade_search('star2')">
-								<div id=starimg2><img alt="평점2" src="img/2.jpg" width="50" height="50"></div>
+								<div id=starimg2><img alt="평점2" src="img/star2.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="2">
 							</td>
 							
 							<td onclick="hot_grade_search('star3')">
-								<div id=starimg3><img alt="평점3" src="img/3.jpg" width="50" height="50"></div>
+								<div id=starimg3><img alt="평점3" src="img/star3.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="3">
 							</td>
 							
 							<td onclick="hot_grade_search('star4')">
-								<div id=starimg4><img alt="평점4" src="img/4.jpg" width="50" height="50"></div>
+								<div id=starimg4><img alt="평점4" src="img/star4.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="4">
 							</td>
 							
 							<td onclick="hot_grade_search('star5')">
-								<div id=starimg5><img alt="평점5" src="img/5.jpg" width="50" height="50"></div>
+								<div id=starimg5><img alt="평점5" src="img/star4.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="star" class="grade" value="5">
 							</td>
 							
@@ -727,28 +726,28 @@ function toggleMap(active) {
 						
 						<tr>
 						
-							<td onclick="hot_grade_search('wifi')">
-								<div id=optionimg1><img alt="옵션1" src="img/1.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('alarm')">
+								<div id=optionimg1><img alt="옵션1" src="img/alarm.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="1">
 							</td>
 							
-							<td onclick="hot_grade_search('swim')">
-								<div id=optionimg2><img alt="옵션2" src="img/2.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('bath')">
+								<div id=optionimg2><img alt="옵션2" src="img/bath.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="2">
 							</td>
 							
-							<td onclick="hot_grade_search('fit')">
-								<div id=optionimg3><img alt="옵션3" src="img/3.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('breakfast')">
+								<div id=optionimg3><img alt="옵션3" src="img/breakfast.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="3">
 							</td>
 							
-							<td onclick="hot_grade_search('brunch')">
-								<div id=optionimg4><img alt="옵션4" src="img/4.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('minibar')">
+								<div id=optionimg4><img alt="옵션4" src="img/minibar.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="4">
 							</td>
 							
-							<td onclick="hot_grade_search('tub')">
-								<div id=optionimg5><img alt="옵션5" src="img/5.jpg" width="50" height="50"></div>
+							<td onclick="hot_grade_search('safebox')">
+								<div id=optionimg5><img alt="옵션5" src="img/safebox.jpg" width="50" height="50"></div>
 								<input type="checkbox" name="option" class="grade" value="5">
 							</td>
 							
@@ -800,53 +799,54 @@ function toggleMap(active) {
 						
 						<tr>
 							<td colspan="5" align="center">
-							<input type="range" name="price_hotel" min="10000" max="200000" value="200000" step="10000" onchange="hot_grade_search(this.value)"></td>
+							<input type="range" name="price_hotel" min="10000" max="200000" step="10000" value="200000" onchange="hot_grade_search(this.value)"></td>
+						</tr>
+						
+						<tr>
+						
+							<td colspan="5"><hr></td>
+						</tr>
+						
+						<!--
+						
+						<tr>
+							<td colspan="5"><hr></td>
+						</tr>
+						
+						<tr>
+							<td colspan="5" align="center"><input type="checkbox" name="available_hotel">예약가능 호텔만</td>
+						</tr>
+						
+						<tr>
+							<td colspan="5" align="center"><input type="checkbox" name="event_hotel">특가상품보기</td>
 						</tr>
 						
 						<tr>
 							<td colspan="5"><hr></td>
 						</tr>
 						
-							<!--
-							
-								<tr>
-									<td colspan="5"><hr></td>
-								</tr>
-								
-								<tr>
-									<td colspan="5" align="center"><input type="checkbox" name="available_hotel">예약가능 호텔만</td>
-								</tr>
-								
-								<tr>
-									<td colspan="5" align="center"><input type="checkbox" name="event_hotel">특가상품보기</td>
-								</tr>
-								
-								<tr>
-									<td colspan="5"><hr></td>
-								</tr>
-								
-								<tr>
-									<th colspan="5" align="center">거리</th>
-								</tr>
-								
-								<tr>
-									<td colspan="5" align="center">현재거리 표시</td>
-								</tr>
-								
-								<tr>
-									<td colspan="5" align="center">[최저거리] [최고거리]</td>
-								</tr>
-								
-								<tr>
-									<td colspan="5" align="center"><input type="range" name="distance_hotel" min="1" max="50"></td>
-								</tr>
-								
-								<tr>
-									<td colspan="5"><hr></td>
-								</tr>
-							
-							-->
-							
+						<tr>
+							<th colspan="5" align="center">거리</th>
+						</tr>
+						
+						<tr>
+							<td colspan="5" align="center">현재거리 표시</td>
+						</tr>
+						
+						<tr>
+							<td colspan="5" align="center">[최저거리] [최고거리]</td>
+						</tr>
+						
+						<tr>
+							<td colspan="5" align="center"><input type="range" name="distance_hotel" min="1" max="50"></td>
+						</tr>
+						
+						<tr>
+							<td colspan="5"><hr></td>
+						</tr>
+						
+						-->
+						
 						<tr>
 							<td colspan="5" align="center"><input type="button" class="btn btn-default" value="모든 검색 초기화"></td>
 						</tr>
@@ -856,7 +856,8 @@ function toggleMap(active) {
 						</tr>
 					
 					</table>
-				</form>
+					
+			</form>
 			</div>
 			
 			<p id="hotellistarea">
@@ -889,19 +890,19 @@ function toggleMap(active) {
 					</table>
 					
 					<table class="table">
-						<tr>
-							<td><img alt="호텔사진영역" src="${hotel_info.hot_img }" width="200" height="200"></td>
-							<td width="500" rowspan="2">${hotel_info.hot_content }</td>
+						<tr style="border-bottom: none;">
+							<td><img alt="호텔사진영역" src="img/${hotel_info.hot_img }" width="300" height="300"></td>
+							<td width="400" rowspan="2">${hotel_info.hot_content }</td>
 						</tr>
 						
 						<tr>
 							<td><input type="hidden" name="hot_addr" value="${hotel_info.hot_addr}" id="hot_addr">
 								<div id="container" class="view_map">
-								    <div id="mapWrapper" style="width:200px;height:200px;position:relative;">
-								        <div id="map" style="width:200px;height:100%"></div>
+								    <div id="mapWrapper" style="width:300px;height:300px;position:relative;">
+								        <div id="map" style="width:300px;height:100%"></div>
 								        <input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰">
 								    </div>
-								    <div id="rvWrapper" style="width:200px;height:200px;position:absolute;top:0;left:0;">
+								    <div id="rvWrapper" style="width:300px;height:300px;position:absolute;top:0;left:0;">
 								        <div id="roadview" style="height:100%"></div>
 								        <input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도">
 								    </div>
@@ -955,6 +956,7 @@ function toggleMap(active) {
 									<th width="100">[평점]</th>
 									<th width="400">[내용]</th>
 									<th width="100">[작성일]</th>
+									<th><input type="button" name="" value=""></th>
 								</tr>
 							</thead>
 							
@@ -974,5 +976,6 @@ function toggleMap(active) {
 			</div>
 		</div>
 	</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>
