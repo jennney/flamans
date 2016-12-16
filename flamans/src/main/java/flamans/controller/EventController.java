@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import flamans.paging.PageModule;
+import flamans.paging.PageModule2;
 import flamans.user.event.model.EventDAO;
 import flamans.user.event.model.EventDTO;
 
@@ -27,7 +28,7 @@ import flamans.user.event.model.EventDTO;
 public class EventController {
 
 	@Autowired
-	private PageModule paging;
+	private PageModule2 paging2;
 
 	@Autowired
 	private EventDAO eventDao;
@@ -206,13 +207,13 @@ public class EventController {
 		int totalCnt = eventDao.getTotalCnt(e_name, 0);
 		int listSize = 5;
 		int pageSize = 5;
-		String pageStr = PageModule.makePage("event_co_list.do?e_name="+session.getAttribute("savecoId"), totalCnt, listSize, pageSize, cp);
+		String pageStr = PageModule2.makePage("event_co_list.do", totalCnt, listSize, pageSize, cp,e_name);
 		List<EventDTO> list = eventDao.event_co_list(cp, listSize, e_name);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
 		mav.addObject("pageStr", pageStr);
 		mav.setViewName("event/event_co_list");
-		return mav;
+		return mav; 
 	}
 
 	// 호텔,병원관리자-상세보기
