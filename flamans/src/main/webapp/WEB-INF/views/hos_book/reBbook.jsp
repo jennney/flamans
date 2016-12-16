@@ -122,6 +122,7 @@ textarea{	resize:none;}
 			<tr>
 				<td id="td">국 적</td>
 				<td><select name="nationality" class="form-control">
+				 <option value="한국">한국</option>
 		         <option value="미국">미국</option>
 		         <option value="호주">호주</option>
 		         <option value="영국">영국</option>

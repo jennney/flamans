@@ -9,7 +9,10 @@
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>	
 <section>
-	<h1>인덱스</h1>
+	<div>
+		<h2 style="text-align: center; height: 300px;">준비 중</h2><!-- img src="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<img src=""> -->
+	</div>
 </section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>	
 </body>
