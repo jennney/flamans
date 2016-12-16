@@ -86,7 +86,7 @@ function BooktimeCheckResult(){
 							var doc_time=document.bBook.doc_num.value;
 							if(doc_time==doc_num){
 								btimetable.options[i].disabled = true;
-							}
+				          		}
 							   
 							 /*   $('#B_time').options[i].attr('onclick', 'already()');
 							 	btimetable.options[i].disabled = true;
