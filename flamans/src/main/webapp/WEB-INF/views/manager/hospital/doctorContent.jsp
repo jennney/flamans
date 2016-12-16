@@ -33,7 +33,7 @@ h2{
 		
 		<fieldset>
 			<div><h3 style="text-align: center;">${dto.doc_name }</h3><br>
-				<img src="img/hospital/${sessionScope.cm_number }/doctor/${dto.doc_img }" id="docimg"><br>
+				<img src="img/hospital/doctor/${dto.doc_img }" id="docimg"><br>
 				<span id="level">${dto.doc_level }</span>
 			</div>
 		</fieldset><br>

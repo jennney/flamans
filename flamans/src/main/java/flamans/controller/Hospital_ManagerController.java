@@ -124,20 +124,20 @@ public class Hospital_ManagerController {
 	public void copyinto(String writer,MultipartFile upload,int i,String path){
 		try {
 			byte bytes[]=upload.getBytes();
-			File newFile=new File(path+"/"+writer);
+			File newFile=new File(path);
 			if(!newFile.exists()){
 				newFile.mkdirs();
 			}
 			
 			if(i==1){
-				newFile=new File(path+"/"+writer+"/"+upload.getOriginalFilename());
+				newFile=new File(path+"/"+upload.getOriginalFilename());
 			}else if(i==2){
 			
-				newFile=new File(path+"/"+writer+"/doctor/");
+				newFile=new File(path+"/doctor/");
 				if(!newFile.exists()){
 					newFile.mkdirs();
 				}
-				newFile=new File(path+"/"+writer+"/doctor/"+upload.getOriginalFilename());
+				newFile=new File(path+"/doctor/"+upload.getOriginalFilename());
 			}
 			FileOutputStream fos=new FileOutputStream(newFile);
 			fos.write(bytes);
