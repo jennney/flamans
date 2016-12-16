@@ -38,7 +38,7 @@ fieldset{
 			<fieldset>
 				<div id="imgtag">
 					<h3 style="text-align: center;">${dto.hos_name }</h3>
-					<img src="img/hospital/${sessionScope.cm_number }/${dto.hos_img }"><br>
+					<img src="img/hospital/${dto.hos_img }"><br>
 				</div>
 			</fieldset>
 			<br>

@@ -15,6 +15,7 @@ function fileCheck(){
 	   
 	   if(fileext != "jpg" && fileext !="png" && fileext != "gif" && fileext != "bmp"){
 	      alert('이미지 파일만 등록이 가능합니다.');
+	      document.getElementById('file').value=null;
 	      return false;
 	   }
 	   

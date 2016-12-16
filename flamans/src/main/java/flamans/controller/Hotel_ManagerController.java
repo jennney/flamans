@@ -136,11 +136,11 @@ public class Hotel_ManagerController {
 		try {
 			
 			byte bytes[]=upload.getBytes();
-			File newFile=new File(path+"/"+writer);
+			File newFile=new File(path);
 			if(!newFile.exists()){
 				newFile.mkdirs();
 			}
-			newFile=new File(path+"/"+writer+"/"+upload.getOriginalFilename());
+			newFile=new File(path+"/"+upload.getOriginalFilename());
 			FileOutputStream fos=new FileOutputStream(newFile);
 			fos.write(bytes);
 			fos.close();

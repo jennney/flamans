@@ -80,7 +80,7 @@ h2 {
 					<c:url var="memberKickUrl" value="memberKick.do">
 						<c:param name="m_id">${dto.m_id }</c:param>
 					</c:url>
-					<td id="list_td"><a href="${memberKickUrl }">추방</a></td>
+					<td id="list_td"><a href="${memberKickUrl }">탈퇴</a></td>
 				</tr>
 				</c:forEach>
 			</c:if>
