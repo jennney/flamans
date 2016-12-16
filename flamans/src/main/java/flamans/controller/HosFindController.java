@@ -476,6 +476,7 @@ public class HosFindController {
 			hossearchObject1.put("hos_img",list.get(0).getHos_img());
 			hossearchObject1.put("hos_content",list.get(0).getHos_content());
 			hossearchObject1.put("hos_map_info",list.get(0).getHos_mapinfo());
+			hossearchObject1.put("hos_special",list.get(0).getHos_special());
 			hossearchObject1.put("hos_wishdate",wishdate);
 			
 			if(hossearchArray1.size()>2){
