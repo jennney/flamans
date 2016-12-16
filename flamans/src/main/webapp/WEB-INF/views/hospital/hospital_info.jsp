@@ -373,9 +373,10 @@
 
 <body>
 
-	<div align="center">
-
-		<%@ include file="../header.jsp"%>
+	<%@ include file="../header.jsp"%>
+	
+	<section>
+	<div align="center" style="height: 2100px;">
 		<table style="margin: 0px auto;">
 
 			<tr>
@@ -651,6 +652,7 @@
 			</div>
 		</div>
 	</div>
+	</section>
 <%@ include file="../footer.jsp" %>
 </body>
 </html>
