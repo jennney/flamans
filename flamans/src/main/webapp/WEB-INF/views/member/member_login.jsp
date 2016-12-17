@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -65,10 +65,10 @@ label{
    	font-size: 10px;
 }
 </style>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>	
-<section>
+<div class="container">
 <div id="b" >
 	<div id="c">
 	<div style="padding-left: 8px;">
@@ -101,7 +101,7 @@ label{
 	  </form>
 	</div>
 </div>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>

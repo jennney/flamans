@@ -113,111 +113,37 @@
 <div id="wrapper">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
-		<form name="faq_List_admin" action="faq_Find_admin.do" >
-		<div>
-			<input type="text" class="form-control" style="width: 200px;"name="findValue">
-			<span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
-		</div>
-		</form>
-		<label>자주하는 질문 BEST 5</label>
-		<div class="accordion_banner">
-			<c:if test="${empty bestList}">
-				등록된 글이 없습니다.
-			</c:if>
-			<c:forEach var="bestList" items="${bestList}">
-				<div class="accordion_title">${bestList.faq_subject}</div>
-				<div class="accordion_sub">${bestList.faq_content}</div>
-			</c:forEach>
-		</div>
-		<c:if test="${sessionScope.permit eq 3}">
-			<p><a href="faq_Write.do"><img alt="작성" src="img/write.png"></a></p>
-		</c:if>
-		<div class="seaTabs">
-			<div class="seaTabs_switch">
-				<div class="seaTabs_tab">전체</div>
-				<div class="seaTabs_tab">병원</div>
-				<div class="seaTabs_tab">호텔</div>
-				<div class="seaTabs_tab">회원</div>
-				<div class="seaTabs_tab">기타</div>
-			</div>
-		
-			<div class="seaTabs_content">
-				<div class="seaTabs_item seaTabs_content_active">
-					<div class="accordion_banner">
-						<c:if test="${empty list}">
-							등록된 글이 없습니다.
-						</c:if>
-						<c:forEach var="list" items="${list}">
-							<div class="accordion_title">${list.faq_subject}
-								<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</div>
-							<div class="accordion_sub">${list.faq_content}</div>
-						</c:forEach>
-					</div>
-				</div>
-		
-				<div class="seaTabs_item">
-					<div class="accordion_banner">
-						<c:if test="${empty hosList}">
-							등록된 글이 없습니다.
-						</c:if>
-						<c:forEach var="hosList" items="${hosList}">
-							<div class="accordion_title">${hosList.faq_subject}
-								<a href="faq_Delete.do?faq_idx=${hosList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx${hosList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</div>
-							<div class="accordion_sub">${hosList.faq_content}</div>
-						</c:forEach>
-					</div>
-				</div>
-		
-				<div class="seaTabs_item">
-					<div class="accordion_banner">
-						<c:if test="${empty hotList}">
-							등록된 글이 없습니다.
-						</c:if>
-						<c:forEach var="hotList" items="${hotList}">
-							<div class="accordion_title">${hotList.faq_subject}
-								<a href="faq_Delete.do?faq_idx=${hotList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${hotList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</div>
-							<div class="accordion_sub">${hotList.faq_content}</div>
-						</c:forEach>
-					</div>
-				</div>
-		
-				<div class="seaTabs_item">
-					<div class="accordion_banner">
-						<c:if test="${empty memList}">
-							등록된 글이 없습니다.
-						</c:if>
-						<c:forEach var="memList" items="${memList}">
-							<div class="accordion_title">${memList.faq_subject}
-								<a href="faq_Delete.do?faq_idx=${memList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${memList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</div>
-							<div class="accordion_sub">${memList.faq_content}</div>
-						</c:forEach>
-					</div>
-				</div>
-		
-				<div class="seaTabs_item">
-					<div class="accordion_banner">
-						<c:if test="${empty etcList}">
-							등록된 글이 없습니다.
-						</c:if>
-						<c:forEach var="etcList" items="${etcList}">
-							<div class="accordion_title">${etcList.faq_subject}
-								<a href="faq_Delete.do?faq_idx=${etcList.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-								<a href="faq_Update.do?faq_idx=${etcList.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-							</div>
-							<div class="accordion_sub">${etcList.faq_content}</div>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="panel panel-default">
+       <div class="panel-heading">
+           Collapsible Accordion Panel Group
+       </div>
+       <div class="panel-body">
+           <div class="panel-group" id="accordion">
+               <div class="panel panel-default">
+                   <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">리스트</a>
+                       </h4>
+                   </div>
+                   <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                       <div class="panel-body">
+                       </div>
+                   </div>
+               </div>
+               <div class="panel panel-default">
+                   <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">리스트</a>
+                       </h4>
+                   </div>
+                   <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                       <div class="panel-body">
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
 	</div>
 </div>
 </body>

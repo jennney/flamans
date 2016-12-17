@@ -49,10 +49,18 @@ h2{
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-<div class="center">
-   <h2>공지사항</h2>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Notice</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="container">
 <table id="no_con">
 	<tr>
 		<th id="no_conth1">SUBJECT</th>
@@ -78,7 +86,7 @@ h2{
 		<tr>
 	</tr>
 </table>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
