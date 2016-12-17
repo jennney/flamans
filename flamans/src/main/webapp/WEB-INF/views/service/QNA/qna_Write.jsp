@@ -202,12 +202,18 @@ h2 {
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-
-	<div class="center">
-	   <h2>Q&amp;A</h2>
-	</div>
-
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Q&amp;A</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
 	<form name="qna_Write" action="qna_Write.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
 		<table id="qna_wr">
 			<tr>
@@ -308,7 +314,7 @@ h2 {
 			</tr>
 		</table>
 	</form>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

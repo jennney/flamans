@@ -61,12 +61,18 @@ a:LINK {
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-<div class="container">
-	<div class="center">
-	   <h2>Q&amp;A</h2>
-	</div>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Q&amp;A</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="container">
 <c:if test="${qna_kind eq 'site'}">
 <p id="p"><a href="qna_List.do?qna_kind=site">전체 보기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=meminfo">회원정보문의</a>&nbsp;&nbsp;
 |&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=memgroup">단체회원문의</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=tieup">제휴문의</a>
@@ -154,7 +160,7 @@ a:LINK {
 		</c:forEach>
 		</tbody>
 	</table>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

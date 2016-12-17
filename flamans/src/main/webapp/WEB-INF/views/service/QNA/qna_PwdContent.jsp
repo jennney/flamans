@@ -32,10 +32,18 @@ function check(){
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Q&amp;A</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
-	<div class="center">
-	   <h2>Q&amp;A</h2>
 	   <div>
 			<form name="qna_Pwd" action="qna_PwdContent.do" method="post" onsubmit="return check()">
 				<input type="hidden" name="qna_idx" value="${qna_idx}">
@@ -51,8 +59,6 @@ function check(){
 			</form>
 		</div>
 	</div>
-</div>
-</section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

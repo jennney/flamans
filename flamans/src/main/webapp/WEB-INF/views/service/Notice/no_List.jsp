@@ -5,9 +5,6 @@
 <!DOCTYPE>
 <html>
 <head>
-
-	<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <meta charset="UTF-8">
 <title>Notice</title>
 <style>
@@ -45,11 +42,6 @@
 	height: 40px;
 	text-align: center;
 }
-
-h2 {
-	text-align: center;
-}
-
 #no_listtdd{
 	height: 50px;
 }
@@ -66,15 +58,21 @@ h2 {
 		}
 	}
 </script>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-
-<div class="center">
-   <h2>공지사항</h2>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Notice</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
+ <div class="container">
 	<table id="no_list">
 		<thead>
 			<tr>
@@ -90,7 +88,7 @@ h2 {
 										제목</option>
 								</select>
 								<input type="text" class="form-control" style="width: 200px; float: right;"name="findValue" value="${findValue}">
-						    	<span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+						    	<span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button></span>
 						    </div>
 					</form>
 				</td>
@@ -105,7 +103,7 @@ h2 {
 		<tfoot>
 			<tr>
 				<td colspan="4" align="center" id="no_listtdd">
-					<ul  class="pagination pagination-lg">
+					<ul class="pagination">
 						<li>${no_page}</li>
 					</ul>
 				</td>
@@ -130,7 +128,7 @@ h2 {
 			</c:forEach>
 		</tbody>
 	</table>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

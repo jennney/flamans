@@ -37,7 +37,18 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>FAQ</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
 	${findValue}에 대해 총 ${count}건의 FAQ가 검색되었습니다.
 	<div class="accordion_banner">
 	<c:forEach var="list" items="${list}">
@@ -51,7 +62,7 @@
 	</c:forEach>
 	${page}
 	</div>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

@@ -86,10 +86,18 @@ function submit(form,url){
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-	<div class="center">
-	   <h2>Q&amp;A</h2>
-	</div>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Q&amp;A</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
 <form name="qna_Update" action="qna_Update.do" onsubmit="return check()">
 	<table id="qna_con">
 		<tr>
@@ -129,7 +137,7 @@ function submit(form,url){
 		</tr>
 	</table>
 </form>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
