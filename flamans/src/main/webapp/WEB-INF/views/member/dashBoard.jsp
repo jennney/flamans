@@ -16,7 +16,6 @@ $(document).ready(function() {
 	      $(".tab_content").hide(); //Hide all content
 	      $("ul.tabs li:first").addClass("active").show(); //Activate first tab
 	      $(".tab_content:first").show(); //Show first tab content
-	      wishlist();
 	      
 	   //On Click Event
 	   $("ul.tabs li").click(function() {
@@ -31,6 +30,7 @@ $(document).ready(function() {
 $(document).ready(function kkkkk(){
 	var id='kCalendar';
 	kCalendar(id);
+    wishlist();
 });
 function kCalendar(id, date) {
 	
@@ -138,7 +138,7 @@ function kCalendar(id, date) {
 }
 
 	
-$(document).ready(function cm_calendar(){
+function cm_calendar(){
 	var tem=document.getElementById("date");
 	var tem2=tem.innerHTML;
 	var yyear=tem2.substring(0,4);
@@ -147,7 +147,7 @@ $(document).ready(function cm_calendar(){
 	var ttem=yyear+'-'+mmonth;  
 	var params='date='+ttem;
 	sendRequest('memberCal.do', params, cm_calendarResult, 'POST');
-});
+}
 function cm_calendarResult(){
 	if(XHR.readyState==4){
 		if(XHR.status==200){
@@ -193,9 +193,9 @@ function bookDate(currentYear, currentMonth, dateNum){
 	window.location.href='booking.do';
 }
 
-function wishlist(){
+$(document).ready(function wishlist(){
 	sendRequest('member_wish_hlist.do', null, wishlistresult, 'GET');
-}
+});
 
 function wishlistresult(){
 	if(XHR.readyState==4){
@@ -245,6 +245,8 @@ function wishlistresult(){
 			hot_wishlist_area.innerHTML = hot_wishlist;
 			
 		}
+		
+		cm_calendar();
 	}
 }
 
@@ -317,7 +319,7 @@ th{	text-align: center;}
 			        <div id="tab1" class="tab_content">
 			           <form name="page1_Write" action="page1_Write.do" method="post" enctype="multipart/form-data">
 			              
-			                 <p id="hot_wishlist">여기 내용</p>
+			                 <p id="hot_wishlist"></p>
 			              
 			           </form>
 			        </div>
@@ -325,7 +327,7 @@ th{	text-align: center;}
 			        <div id="tab2" class="tab_content" style="height:370px;">
 			              <form name="page2_Write" action="page2_Write.do" method="post" enctype="multipart/form-data">
 			                 
-			                    <p id="hos_wishlist">여기 병원 내용</p>
+			                    <p id="hos_wishlist"></p>
 			                 
 			           </form>
 			        </div>
