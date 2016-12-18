@@ -36,8 +36,8 @@ function click(name,num){
 <body>
 <form name="search" action="search_hos.do" method="post">
 <input type="text" name="name">
-<input type="hidden" name="kind" value="${kind}">
-<input type="submit" value="검색">
+	<input type="text" name="name" class="form-control col-xs-3" style="width: 200px;">
+	<button class="btn btn-default" type="submit">병원검색<i class="fa fa-search"></i></button>
 </form>
 <table id="hospital">
 	<tr>

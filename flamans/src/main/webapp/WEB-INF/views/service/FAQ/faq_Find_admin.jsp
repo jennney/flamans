@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FAQ검색</title>
 <style>
 #title1{
 	color: red;
@@ -28,7 +28,7 @@
         </div>
         <div class="panel-body">
         	<c:if test="${empty list}">
-			등록된 글이 없습니다.
+			검색된 결과가 없습니다.
 			</c:if>
 	        <div class="panel-group" id="accordion">
 	        <c:forEach var="list" items="${list}">

@@ -31,6 +31,7 @@ public class FaqController {
 		List<FaqDTO> hotList = faqDao.faqhotList();
 		List<FaqDTO> etcList = faqDao.faqetc();
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("shap","#");
 		mav.addObject("list", list);
 		mav.addObject("bestList", bestList);
 		mav.addObject("memList", memList);

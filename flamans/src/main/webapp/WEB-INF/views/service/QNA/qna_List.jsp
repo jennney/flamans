@@ -57,6 +57,39 @@ a:LINK {
 #p{
 	text-align: center;
 }
+.b{
+	border-bottom: 1px solid #ff432f;
+	border-top : 1px solid #ff432f;
+	border-left : 1px solid #ff432f;
+	border-right: 1px solid #ff432f;
+	height: 34px;
+	width: 300px;
+}
+.a{
+	padding: 50px;
+}
+
+.my-lnb {
+	background: #f9f9f9;
+	border: 1px solid #e1e4e6;
+	color: #111;
+	padding: 10px 0;
+}
+
+.my-area-left {
+	width: 180px;
+	float: left;
+}
+
+.my-lnb__unit {
+	padding: 15px 17px;
+}
+
+.my-shape--divide-lnb {
+	height: 0;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e1e4e6;
+}
 </style>
 </head>
 <body>
@@ -73,6 +106,46 @@ a:LINK {
     </div>
 </div>
 <div class="container">
+<div class="my-area-left">
+			<div class="my-lnb">
+				<nav>
+					<div class="my-lnb__unit">
+						<div class="my-lnb__unit-body">
+							<a href="no_List.do" class="my-lnb__link">Notice</a>
+						</div>
+					</div>
+					<div class="my-shape--divide-lnb"></div>
+					<div class="my-lnb__unit">
+						<a href="faq_List.do"class="my-lnb__unit-title">FAQ</a>
+					</div>
+					<div class="my-shape--divide-lnb"></div>
+					<div class="my-lnb__unit">
+						<div class="my-lnb__unit-body">
+							<ul class="my-lnb__list">
+								<li class="my-lnb__item ">
+									<a href="qna_List.do?qna_kind=site" class="my-lnb__link">사이트Q&amp;A</a>
+								</li>
+								<li class="my-lnb__item ">
+									<a href="qna_List.do?qna_kind=hospital" class="my-lnb__link">병원Q&amp;A</a>
+								</li>
+								<li class="my-lnb__item ">
+									<a href="qna_List.do?qna_kind=hotel" class="my-lnb__link">호텔Q&amp;A</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="my-shape--divide-lnb"></div>
+					<div class="my-lnb__unit">
+						<a href="page_List.do?pm_item=page1"class="my-lnb__unit-title">의료사고대처요령</a>
+					</div>
+					<div class="my-shape--divide-lnb"></div>
+					<div class="my-lnb__unit">
+						<a href="page_List.do?pm_item=page2"class="my-lnb__unit-title">출입국관련절차</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+<div class="a">
 <c:if test="${qna_kind eq 'site'}">
 <p id="p"><a href="qna_List.do?qna_kind=site">전체 보기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=meminfo">회원정보문의</a>&nbsp;&nbsp;
 |&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=memgroup">단체회원문의</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="qna_List.do?qna_kind=site&qna_item=tieup">제휴문의</a>
@@ -93,7 +166,7 @@ a:LINK {
 		   		<td colspan="5" align="right">
 		   		<form name="qna_FindList" action="qna_List.do">
 		   		<div class="form-group input-group">
-		      		<select name="findKey" class="form-control" style="width: 100px;">
+		      		<select name="findKey" style="width: 100px; height: 34px;">
 		         		<option value="all"${findKey eq 'all'?"selected":""}> - 전체 - </option>
 		         		<option value="qna_content" ${findKey eq 'qna_content'?"selected":""}>  내용     </option>
 		         		<option value="qna_subject" ${findKey eq 'qna_subject'?"selected":""}>  제목    </option>
@@ -101,8 +174,8 @@ a:LINK {
 		      		</select>
 		      		<input type="hidden" name="qna_item" value="${qna_item}">
 		      		<input type="hidden" name="qna_kind" value="${qna_kind}">
-		      		<input type="text" class="form-control" style="width: 200px; float: right;"name="findValue" value="${findValue}">
-					<span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+					<input type="text" name="findValue" value="${findValue}" placeholder="검색어를 입력하세요" class="b">
+			    	<span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button></span>
 				</div>
 		   		</form>
 		   		</td>
@@ -138,18 +211,15 @@ a:LINK {
 				<td id="qna_listtd">${qnaList.qna_item}</td>
 				<td id="qna_listtd1">
 				<c:forEach begin="1" end="${qnaList.lev}" step="1">
-					&nbsp;&nbsp;<img src="img/ico_re.gif" alt="답변" width="20px" height="20px">
+					&nbsp;&nbsp;<img src="img/ico_re.gif" alt="답변" width="10px" height="12px">
 				</c:forEach>
 				<c:choose>
 					<c:when test="${qnaList.qna_secret eq 'open'}">
 						<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
 					</c:when>
 					<c:when test="${qnaList.qna_secret eq 'secret'}">
-						<img src="img/neo_lock.gif" alt="자물쇠" width="20px" height="20px"> 
+						<img src="img/icon_lock.gif" alt="자물쇠" height="12px"> 
 						<a href="qna_PwdContent.do?qna_idx=${qnaList.qna_idx}&qna_kind=${qnaList.qna_kind}">${qnaList.qna_subject}</a>
-					</c:when>
-					<c:when test="${sessionScope.permit eq 1}">
-						<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
 					</c:when>
 				</c:choose>
 				</td>
@@ -160,6 +230,7 @@ a:LINK {
 		</c:forEach>
 		</tbody>
 	</table>
+</div>
 </div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>

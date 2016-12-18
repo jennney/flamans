@@ -57,6 +57,35 @@ h2{
 #qna_retd{
 	border-top: 2px solid #BDBDBD;
 }
+.my-lnb {
+	background: #f9f9f9;
+	border: 1px solid #e1e4e6;
+	color: #111;
+	padding: 10px 0;
+}
+
+.my-area-left {
+	width: 180px;
+	float: left;
+}
+
+.my-lnb__unit {
+	padding: 15px 17px;
+}
+
+.my-shape--divide-lnb {
+	height: 0;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e1e4e6;
+}
+.all{
+	border-bottom: 0px;
+	border-top : 0px;
+	border-left : 0px;
+	border-right: 0px;
+	width: 500px;
+	background: #F6F6F6;
+}
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script>
@@ -98,6 +127,45 @@ function submit(form,url){
     </div>
 </div>
 <div class="container">
+<div class="my-area-left">
+			<div class="my-lnb">
+				<nav>
+					<div class="my-lnb__unit">
+						<div class="my-lnb__unit-body">
+							<a href="no_List.do" class="my-lnb__link">Notice</a>
+						</div>
+					</div>
+					<div class="my-shape--divide-lnb"></div>
+					<div class="my-lnb__unit">
+						<a href="faq_List.do"class="my-lnb__unit-title">FAQ</a>
+					</div>
+					<div class="my-shape--divide-lnb"></div>
+					<div class="my-lnb__unit">
+						<div class="my-lnb__unit-body">
+							<ul class="my-lnb__list">
+								<li class="my-lnb__item ">
+									<a href="qna_List.do?qna_kind=site" class="my-lnb__link">사이트Q&amp;A</a>
+								</li>
+								<li class="my-lnb__item ">
+									<a href="qna_List.do?qna_kind=hospital" class="my-lnb__link">병원Q&amp;A</a>
+								</li>
+								<li class="my-lnb__item ">
+									<a href="qna_List.do?qna_kind=hotel" class="my-lnb__link">호텔Q&amp;A</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="my-shape--divide-lnb"></div>
+					<div class="my-lnb__unit">
+						<a href="page_List.do?pm_item=page1"class="my-lnb__unit-title">의료사고대처요령</a>
+					</div>
+					<div class="my-shape--divide-lnb"></div>
+					<div class="my-lnb__unit">
+						<a href="page_List.do?pm_item=page2"class="my-lnb__unit-title">출입국관련절차</a>
+					</div>
+				</nav>
+			</div>
+		</div>
 <form name="qna_Update" action="qna_Update.do" onsubmit="return check()">
 	<table id="qna_con">
 		<tr>
@@ -121,7 +189,7 @@ function submit(form,url){
 				<input type="hidden" name="qna_idx" value="${qdto.qna_idx}">
 				<input type="hidden" name="qna_savepwd" value="${qdto.qna_pwd}">
 				<input type="hidden" name="qna_kind" value="${qdto.qna_kind}">
-				<input type="password" name="qna_pwd" id="pwd" class="form-control"> <span id="red">!</span> 수정 및 삭제하려면 비밀번호를 입력하세요.
+				<input type="password" name="qna_pwd" id="pwd" class="all"> <span id="red">!</span> 수정 및 삭제하려면 비밀번호를 입력하세요.
 			</td> 
 		</tr>
 		<tr>

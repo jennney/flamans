@@ -154,7 +154,7 @@
 				        <c:forEach var="hosList" items="${hosList}">
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
-				                    <h4 class="panel-title co col-lg-6"">
+				                    <h4 class="panel-title co col-lg-6">
 				                    <c:set var="hos" value="2"/>
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${hos}${hosList.faq_idx}" class="collapsed">${hosList.faq_subject}</a>
 				                    </h4>
@@ -181,7 +181,7 @@
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
 								<c:set var="hot" value="3"/>
-				                    <h4 class="panel-title co col-lg-6"">
+				                    <h4 class="panel-title co col-lg-6">
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${hot}${hotList.faq_idx}" class="collapsed">${hotList.faq_subject}</a>
 				                    </h4>
 				                    <a href="faq_Delete.do?faq_idx=${hotList.faq_idx}"><img src="img/trash-can.png" alt="삭제"></a>
@@ -207,7 +207,7 @@
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
 				                <c:set var="mem" value="4"/>
-				                    <h4 class="panel-title co col-lg-6"">
+				                    <h4 class="panel-title co col-lg-6">
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${mem}${memList.faq_idx}" class="collapsed">${memList.faq_subject}</a>
 				                    </h4>
 				                    <a href="faq_Delete.do?faq_idx=${memList.faq_idx}"><img src="img/trash-can.png" alt="삭제"></a>
@@ -233,7 +233,7 @@
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
 				                <c:set var="etc" value="5"/>
-				                    <h4 class="panel-title co col-lg-6"">
+				                    <h4 class="panel-title co col-lg-6">
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${etc}${etcList.faq_idx}" class="collapsed">${etcList.faq_subject}</a>
 				                    </h4>
 				                    <a href="faq_Delete.do?faq_idx=${etcList.faq_idx}"><img src="img/trash-can.png" alt="삭제"></a>
