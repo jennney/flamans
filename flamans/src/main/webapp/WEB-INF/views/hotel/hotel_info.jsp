@@ -20,96 +20,96 @@
 	<style>
 		
 		<!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
-		
-	input[type=range] {
-		-webkit-appearance: none;
-		margin: 18px 0;
-		width: 100%;
-	}
-	input[type=range]:focus {
-	  outline: none;
-	}
-	input[type=range]::-webkit-slider-runnable-track {
-	  width: 100%;
-	  height: 8.4px;
-	  cursor: pointer;
-	  animate: 0.2s;
-	  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-	  background: #3071a9;
-	  border-radius: 1.3px;
-	  border: 0.2px solid #010101;
-	}
-	input[type=range]::-webkit-slider-thumb {
-	  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-	  border: 1px solid #000000;
-	  height: 36px;
-	  width: 16px;
-	  border-radius: 3px;
-	  background: #ffffff;
-	  cursor: pointer;
-	  -webkit-appearance: none;
-	  margin-top: -14px;
-	}
-	input[type=range]:focus::-webkit-slider-runnable-track {
-	  background: #367ebd;
-	}
-	input[type=range]::-moz-range-track {
-	  width: 100%;
-	  height: 8.4px;
-	  cursor: pointer;
-	  animate: 0.2s;
-	  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-	  background: #3071a9;
-	  border-radius: 1.3px;
-	  border: 0.2px solid #010101;
-	}
-	input[type=range]::-moz-range-thumb {
-	  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-	  border: 1px solid #000000;
-	  height: 36px;
-	  width: 16px;
-	  border-radius: 3px;
-	  background: #ffffff;
-	  cursor: pointer;
-	}
-	input[type=range]::-ms-track {
-	  width: 100%;
-	  height: 8.4px;
-	  cursor: pointer;
-	  animate: 0.2s;
-	  background: transparent;
-	  border-color: transparent;
-	  border-width: 16px 0;
-	  color: transparent;
-	}
-	input[type=range]::-ms-fill-lower {
-	  background: #2a6495;
-	  border: 0.2px solid #010101;
-	  border-radius: 2.6px;
-	  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-	}
-	input[type=range]::-ms-fill-upper {
-	  background: #3071a9;
-	  border: 0.2px solid #010101;
-	  border-radius: 2.6px;
-	  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-	}
-	input[type=range]::-ms-thumb {
-	  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-	  border: 1px solid #000000;
-	  height: 36px;
-	  width: 16px;
-	  border-radius: 3px;
-	  background: #ffffff;
-	  cursor: pointer;
-	}
-	input[type=range]:focus::-ms-fill-lower {
-	  background: #3071a9;
-	}
-	input[type=range]:focus::-ms-fill-upper {
-	  background: #367ebd;
-	}
-	<!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+input[type=range] {
+	-webkit-appearance: none;
+	margin: 18px 0;
+	width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #FFA7A7;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 30px;
+  background: white;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #FFA7A7;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #FFA7A7;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #FFA7A7;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #FFA7A7;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #FFA7A7;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #FFA7A7;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #FFA7A7;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #FFA7A7;
+}
+<!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
+
 	#wrapper
 	{
 		width:800px;
@@ -249,66 +249,66 @@ function hotel_result_search(){
 			}
 			
 			if(option[0].checked){
-				optionimg1.innerHTML = '<img alt="등급1" src="img/select_alarm.jpg" width="50" height="50">';
+				optionimg1.innerHTML = '<img alt="옵션1" src="img/select_alarm.jpg" width="50" height="50">';
 			}else{
-				optionimg1.innerHTML = '<img alt="등급1" src="img/alarm.jpg" width="50" height="50">';
+				optionimg1.innerHTML = '<img alt="옵션1" src="img/alarm.jpg" width="50" height="50">';
 			}
 			
 			if(option[1].checked){
-				optionimg2.innerHTML = '<img alt="등급1" src="img/select_bath.jpg" width="50" height="50">';
+				optionimg2.innerHTML = '<img alt="옵션1" src="img/select_bath.jpg" width="50" height="50">';
 			}else{
-				optionimg2.innerHTML = '<img alt="등급1" src="img/bath.jpg" width="50" height="50">';
+				optionimg2.innerHTML = '<img alt="옵션1" src="img/bath.jpg" width="50" height="50">';
 			}
 			
 			if(option[2].checked){
-				optionimg3.innerHTML = '<img alt="등급1" src="img/select_breakfast.jpg" width="50" height="50">';
+				optionimg3.innerHTML = '<img alt="옵션1" src="img/select_breakfast.jpg" width="50" height="50">';
 			}else{
-				optionimg3.innerHTML = '<img alt="등급1" src="img/breakfast.jpg" width="50" height="50">';
+				optionimg3.innerHTML = '<img alt="옵션1" src="img/breakfast.jpg" width="50" height="50">';
 			}
 			
 			if(option[3].checked){
-				optionimg4.innerHTML = '<img alt="등급1" src="img/select_minibar.jpg" width="50" height="50">';
+				optionimg4.innerHTML = '<img alt="옵션1" src="img/select_minibar.jpg" width="50" height="50">';
 			}else{
-				optionimg4.innerHTML = '<img alt="등급1" src="img/minibar.jpg" width="50" height="50">';
+				optionimg4.innerHTML = '<img alt="옵션1" src="img/minibar.jpg" width="50" height="50">';
 			}
 			
 			if(option[4].checked){
-				optionimg5.innerHTML = '<img alt="등급1" src="img/select_safebox.jpg" width="50" height="50">';
+				optionimg5.innerHTML = '<img alt="옵션1" src="img/select_safebox.jpg" width="50" height="50">';
 			}else{
-				optionimg5.innerHTML = '<img alt="등급1" src="img/safebox.jpg" width="50" height="50">';
+				optionimg5.innerHTML = '<img alt="옵션1" src="img/safebox.jpg" width="50" height="50">';
 			}
 			
 			
 			
 			
 			if(star[0].checked){
-				starimg1.innerHTML = '<img alt="등급1" src="img/select_star1.jpg" width="50" height="50">';
+				starimg1.innerHTML = '<img alt="평점1" src="img/select_star1.jpg" width="50" height="50">';
 			}else{
-				starimg1.innerHTML = '<img alt="등급1" src="img/star1.jpg" width="50" height="50">';
+				starimg1.innerHTML = '<img alt="평점1" src="img/star1.jpg" width="50" height="50">';
 			}
 			
 			if(star[1].checked){
-				starimg2.innerHTML = '<img alt="등급1" src="img/select_star2.jpg" width="50" height="50">';
+				starimg2.innerHTML = '<img alt="평점1" src="img/select_star2.jpg" width="50" height="50">';
 			}else{
-				starimg2.innerHTML = '<img alt="등급1" src="img/star2.jpg" width="50" height="50">';
+				starimg2.innerHTML = '<img alt="평점1" src="img/star2.jpg" width="50" height="50">';
 			}
 			
 			if(star[2].checked){
-				starimg3.innerHTML = '<img alt="등급1" src="img/select_star3.jpg" width="50" height="50">';
+				starimg3.innerHTML = '<img alt="평점1" src="img/select_star3.jpg" width="50" height="50">';
 			}else{
-				starimg3.innerHTML = '<img alt="등급1" src="img/star3.jpg" width="50" height="50">';
+				starimg3.innerHTML = '<img alt="평점1" src="img/star3.jpg" width="50" height="50">';
 			}
 			
 			if(star[3].checked){
-				starimg4.innerHTML = '<img alt="등급1" src="img/select_star4.jpg" width="50" height="50">';
+				starimg4.innerHTML = '<img alt="평점1" src="img/select_star4.jpg" width="50" height="50">';
 			}else{
-				starimg4.innerHTML = '<img alt="등급1" src="img/star4.jpg" width="50" height="50">';
+				starimg4.innerHTML = '<img alt="평점1" src="img/star4.jpg" width="50" height="50">';
 			}
 			
 			if(star[4].checked){
-				starimg5.innerHTML = '<img alt="등급1" src="img/select_star5.jpg" width="50" height="50">';
+				starimg5.innerHTML = '<img alt="평점1" src="img/select_star5.jpg" width="50" height="50">';
 			}else{
-				starimg5.innerHTML = '<img alt="등급1" src="img/star4.jpg" width="50" height="50">';
+				starimg5.innerHTML = '<img alt="평점1" src="img/star4.jpg" width="50" height="50">';
 			}
 			
 			// http://localhost:9090/myweb/img/1.jpg;
@@ -318,10 +318,9 @@ function hotel_result_search(){
 			data = data.list;
 			
 			for(var i in data){
-				hotel_list += '';
-				hotel_list +='<a href="hotel_get_info.do?hot_num='+data[i].hot_num+'"><h2 align="left">'+data[i].hot_name+'</h2></a>';
+				hotel_list +='<a href="hotel_get_info.do?hot_num='+data[i].hot_num+'"><h2 align="left">'+data[i].hot_name+'</h2></a><br/>';
 				hotel_list +='<table class="table table-hover"><tr>';
-				hotel_list +='<td width="200"><img alt="호텔사진영역" src="'+data[i].hot_img+'"width="200" height="200"></td>';
+				hotel_list +='<td width="200"><img alt="호텔사진영역" src="img/'+data[i].hot_img+'"width="200" height="200"></td>';
 				hotel_list +='<td width="400">'+data[i].hot_content+'</td>';
 				hotel_list +='<td width="100"><a href="hot_wishlist.do?hot_num='+data[i].hot_num+'&hotel_link=hotel_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 				hotel_list +='<a href="booking_hot.do?hot_num='+data[i].hot_num+'"><input type="button" class="btn btn-default" value="예약"></a></td>';
@@ -338,14 +337,13 @@ function hotel_result_search(){
 			var hotelinfo = document.getElementById('hotelinfoarea');
 			var hot_pagename = document.getElementById('hot_pagename');
 			
-			var hotel_list2 = '<div id="hotelinfoarea" style="border: 5px solid teal; width: 700px; float: right; margin-left: 0px auto;">';
+			var hotel_list2 = '<div id="hotelinfoarea" style="border: 3px solid #B75F5F; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">';
 			hotel_list2 += hotel_list;
 			hotel_list2 += '</div>';
 								
 			hotelinfo.innerHTML='';
 			hot_pagename.innerHTML = '<h2>검색된 호텔 리스트</h2>';
 			hotels.innerHTML=hotel_list2;
-			
 		}
 	}
 }
@@ -398,31 +396,31 @@ function hot_grade_search(search_option){
  	
  	
 	//////////////////■top옵션 ■/////////////////
-	if(search_option == 'wifi'){
+	if(search_option == 'alarm'){
 		if(option[0].checked){
 			option[0].checked = false;
 		}else{
 			option[0].checked = true;
 		}
-	}else if(search_option == 'swim'){
+	}else if(search_option == 'bath'){
 		if(option[1].checked){
 			option[1].checked = false;
 		}else{
 			option[1].checked = true;
 		}
-	}else if(search_option == 'fit'){
+	}else if(search_option == 'breakfast'){
 		if(option[2].checked){
 			option[2].checked = false;
 		}else{
 			option[2].checked = true;
 		}
-	}else if(search_option == 'brunch'){
+	}else if(search_option == 'minibar'){
 		if(option[3].checked){
 			option[3].checked = false;
 		}else{
 			option[3].checked = true;
 		}
-	}else if(search_option == 'tub'){
+	}else if(search_option == 'safebox'){
 		if(option[4].checked){
 			option[4].checked = false;
 		}else{
@@ -482,15 +480,15 @@ function hot_grade_search(search_option){
 			}
 			
 			if(i==1){
-				params += 'option'+i+'=wifi';
+				params += 'option'+i+'=alarm';
 			}else if (i==2){
-				params += 'option'+i+'=swim';
+				params += 'option'+i+'=bath';
 			}else if (i==3){
-				params += 'option'+i+'=fit';
+				params += 'option'+i+'=breakfast';
 			}else if (i==4){
-				params += 'option'+i+'=brunch';
-			}else if (i==4){
-				params += 'option'+i+'=tub';
+				params += 'option'+i+'=minibar';
+			}else if (i==5){
+				params += 'option'+i+'=safebox';
 			}
 			z=1;
 		}
@@ -544,7 +542,7 @@ function hot_grade_search(search_option){
 	hotel_sub_search(params);
 }
 
-window.onload=function(){	
+$(document).ready(function(){
 	var hot_addr = document.getElementById('hot_addr').value;
 	var geocoder = new daum.maps.services.Geocoder();
 	geocoder.addr2coord(hot_addr, function(status, result) {
@@ -584,7 +582,7 @@ window.onload=function(){
        		map.setCenter(placePosition);
 	    } 
 	}); 
-}
+});
 function toggleMap(active) {
     if (active) {
         container.className = "view_map";
@@ -597,7 +595,7 @@ function toggleMap(active) {
 <body>
 
 	<%@ include file="../header.jsp" %>
-	<div align="center" style="height: 2100px;">
+	<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
 		
 		<table style="margin: 0px auto;">
 			<tr>
@@ -608,28 +606,28 @@ function toggleMap(active) {
 				<td><form name="hotel_main_search" action="hotel_search_name.do">
 		
 					<table>
+						
+						<tr>
+							<td align="center" colspan="2">
+							<input type="text" class="form-control" style="border: 1px solid black;" id="findname" size="84" onkeypress="if(event.keyCode==13) {hot_grade_search(); return false;}">
+							</td><td><input type="button" class="btn btn-default" style="border: 1px solid black; width: 120px;" value="검색" onclick="hot_grade_search()">
 							
-							<tr>
-								<td align="center" colspan="2">
-								<input type="text" class="form-control" id="findname" size="84" onkeypress="if(event.keyCode==13) {hot_grade_search(); return false;}">
-								</td><td><input type="button" class="btn btn-default" style="width: 120px;" value="검색" onclick="hot_grade_search()">
-								
-								</td>
-							</tr>
-							
-							<tr>
-								<br>
-								<td>CheckIn &nbsp;<input type="date" class="form-control" id="checkin" value="2016-12-23"></td>
-								<td>CheckOut &nbsp;<input type="date" class="form-control" id="checkout" value="2016-12-24"></td>
-								<td>방 정보 &nbsp;<select name="room_info" class="form-control">
-										<option value="싱글룸">싱글룸</option>
-										<option value="더블룸">더블룸</option>
-										<option value="패밀리룸">패밀리룸</option>
-										<option value="다인실">다인실</option>
-								</select></td>
-							</tr>
-							
-					</table>
+							</td>
+						</tr>
+						
+						<tr>
+							<br>
+							<td>CheckIn &nbsp;<input type="date" style="border: 1px solid black;" class="form-control" id="checkin" value="2016-12-23"></td>
+							<td>CheckOut &nbsp;<input type="date" style="border: 1px solid black;" class="form-control" id="checkout" value="2016-12-24"></td>
+							<td>방 정보 &nbsp;<select name="room_info" style="border: 1px solid black;" class="form-control">
+									<option value="싱글룸">싱글룸</option>
+									<option value="더블룸">더블룸</option>
+									<option value="패밀리룸">패밀리룸</option>
+									<option value="다인실">다인실</option>
+							</select></td>
+						</tr>
+						
+				</table>
 	
 				</form>
 				
@@ -640,10 +638,10 @@ function toggleMap(active) {
 		
 		<div style="width: 1000px;">
 		
-				<div style="border: 5px solid teal; width: 270px; float: left; white-space:nowrap; margin:0px center;">
+				<div style="border: 3px solid #B75F5F; border-radius: 3%; background: white; width: 270px; float: left; white-space:nowrap; margin:0px center;">
 				<form name="hot_option_select">
 	
-					<table border="0" class="hotel_grade_search" cellspacing="0" width="150">
+					<table border="0" class="hotel_grade_search" cellspacing="0" width="250">
 					
 						<tr>
 							<th colspan="5">호텔등급</th>
@@ -715,7 +713,7 @@ function toggleMap(active) {
 					
 					</table>
 					
-					<table border="0" class="hotel_grade_search" cellspacing="0" width="150">
+					<table border="0" class="hotel_grade_search" cellspacing="0" width="250">
 					
 						<tr>
 							<td colspan="5"><hr></td>
@@ -866,7 +864,7 @@ function toggleMap(active) {
 			</p>
 			
 			<div id="hotelinfoarea">
-			<div style="border: 5px solid teal; width: 700px; float: right; margin-left: 0px auto;">
+			<div style="border: 3px solid #B75F5F; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">
 				
 				
 				<c:if test="${empty hotel_info }">
@@ -882,7 +880,7 @@ function toggleMap(active) {
 					
 					<table class="table">
 						<tr>
-							<td colspan="4" width="600" style="padding-top: 30px;"><h1 style="color:black; font: bold; ">[ ${hotel_info.hot_name } ]</h1></td>
+							<td colspan="4" width="600" style="padding-top: 30px;"><h1 style="color:black; font: bold; ">${hotel_info.hot_name }</h1></td>
 							<td width="100" style="vertical-align: middle;">
 								<a href="${ wishlistUrl}"><input type="button" class="btn btn-default" value="♥"></a>
 								<a href="booking_hot.do?hot_num=${hotel_info.hot_num}"><input type="button" class="btn btn-default" value="예약"></a>
@@ -912,25 +910,59 @@ function toggleMap(active) {
 						</tr>
 					</table>
 				</c:forEach>
+				
+				<hr>
+				
+				<h4 align="left">&nbsp;&nbsp; </h4>
+				
+				
+					<table class="table">
+						<thead>
+							<tr>
+								<th>방종류</th>
+								<th>방가격</th>
+								<th>방옵션</th>
+								<th>방갯수</th>
+								<th>기준인원</th>
+							</tr>
+						</thead>
+						
+				<c:forEach var="hotroom_info" items="${hotroom_info}">
+				
+						<tbody>
+							<tr>
+								<td>${hotroom_info.roomname}</td>
+								<td>${hotroom_info.roomprice}</td>
+								<td>${hotroom_info.room_option }</td>
+								<td>${hotroom_info.roomnum }</td>
+								<td>${hotroom_info.people_num }</td>
+							</tr>
+						</tbody>
+						
+				</c:forEach>
+				
+				</table>
+				
+			
 			
 				<hr>
 				
 				
-				<h4>[ 평점/후기 작성 ]</h4>
+				<h4 align="left">&nbsp;&nbsp;평점 및 후기 작성 </h4>
 				
 				<form name="comment_write" action="hotel_input_comment_grade.do">
 					
 					<table class="table">
 						<tr>
-							<td><textarea style="resize:none;" class="form-control" rows="4" cols="85" name="c_comment" placeholder="로그인 후 작성 가능합니다."></textarea></td>
+							<td><textarea style="resize:none; border: 1px solid black;" class="form-control" rows="4" cols="85" name="c_comment" placeholder="로그인 후 작성 가능합니다."></textarea></td>
 						</tr>
 					</table>
 					
 					<table class="table">
 					
 						<tr>
-							<td width="50">평점:</td>
-							<td width="200"><input type="text" size="50" id="m_star" class="form-control" name="c_grade" onkeyup="number_check(this.value)"></td>
+							<td width="60"><h4>평점:</h4></td>
+							<td width="200"><input type="text" size="30" id="m_star" style=" border: 1px solid black;" class="form-control" name="c_grade" onkeyup="number_check(this.value)"></td>
 							<td><input type="submit" class="btn btn-default" value="작성"></td>
 						</tr>
 					
@@ -977,8 +1009,6 @@ function toggleMap(active) {
 			</div>
 		</div>
 	</div>
-	
-	
 	<%@ include file="../footer.jsp" %>
 </body>
 </html>

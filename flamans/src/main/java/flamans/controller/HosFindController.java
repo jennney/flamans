@@ -357,16 +357,8 @@ public class HosFindController {
 			mav.setViewName("hotel/hotel_msg");
 			return mav;
 		}
-		
+
 		String username = (String)session.getAttribute("username");
-		int c_grade1 = Integer.parseInt(c_grade);
-		
-		HotCommentGradeDTO commentDTO = null;
-		commentDTO.setC_comment(c_comment);
-		commentDTO.setC_grade(c_grade1);
-		commentDTO.setC_number(c_number);
-		commentDTO.setC_writer(username);
-		
 		if(username==null || username.equals("")){
 			mav.addObject("msg","로그인이 필요합니다!");
 			mav.addObject("url","hospital_get_info.do?hos_num="+c_number);
@@ -374,7 +366,9 @@ public class HosFindController {
 			return mav;
 		}
 		
-		int count = hospital_comment.hotel_input_comment_grade(commentDTO);
+		int c_grade1 = Integer.parseInt(c_grade);
+		
+		int count = hospital_comment.hotel_input_comment_grade(c_number, c_grade, c_comment, username);
 		
 		String result = count > 0? "후기 등록 성공!" : "후기 등록 실패!";
 		mav.addObject("msg",result);

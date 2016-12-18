@@ -24,6 +24,10 @@
     		select * from fm_hotel where hot_num = #{num}
     	</select>
     	
+    	<select id="hotroom_info" resultType="flamans.hotel_find.model.HotelRoomDTO">
+    		select * from fm_hotroom where hot_num = #{num}
+    	</select>
+    	
     	<select id="hotel_get_info_list" resultType="flamans.hotel_find.model.HotelDTO">
     		select * from fm_hotel
     	</select>

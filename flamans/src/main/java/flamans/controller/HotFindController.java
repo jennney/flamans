@@ -27,6 +27,7 @@ import flamans.hot_comment_grade.model.HotCommentGradeDTO;
 import flamans.hotel_find.model.HotelDAO;
 import flamans.hotel_find.model.HotelDTO;
 import flamans.hotel_find.model.HotelPageModule;
+import flamans.hotel_find.model.HotelRoomDTO;
 import flamans.member.model.MemberDAO;
 import flamans.member.model.MemberDTO;
 import flamans.paging.PageModule;
@@ -64,10 +65,14 @@ public class HotFindController{
 		ModelAndView mav = new ModelAndView();
 		
 		List<HotelDTO> list = null;
+		List<HotelRoomDTO> list1 = null;
 		List<HotCommentGradeDTO> list2 = null;
 		
 		list = hotel_info.hotel_get_info(num);
 		mav.addObject("hotel_info",list);
+		
+		list1 = hotel_info.hotroom_info(num);
+		mav.addObject("hotroom_info",list1);
 		
 		list2 = hotel_comment.hotel_get_opnion(num);
 		mav.addObject("hotel_comment",list2);
@@ -481,6 +486,7 @@ public class HotFindController{
 			@RequestParam(value="c_number",defaultValue="")String c_number,
 			@RequestParam(value="c_grade",defaultValue="")String c_grade,
 			@RequestParam(value="c_comment",defaultValue="")String c_comment,
+			HotCommentGradeDTO commentdto,
 			HttpSession session){
 		
 		ModelAndView mav = new ModelAndView();
@@ -495,20 +501,19 @@ public class HotFindController{
 		String username = (String)session.getAttribute("username");
 		int c_grade1 = Integer.parseInt(c_grade);
 		
-		HotCommentGradeDTO commentDTO = null;
-		commentDTO.setC_comment(c_comment);
-		commentDTO.setC_grade(c_grade1);
-		commentDTO.setC_number(c_number);
-		commentDTO.setC_writer(username);
+		commentdto.setC_comment(c_comment);
+		commentdto.setC_grade(c_grade1);
+		commentdto.setC_number(c_number);
+		commentdto.setC_writer(username);
 		
 		if(username==null || username.equals("")){
 			mav.addObject("msg","로그인이 필요합니다!");
-			mav.addObject("url","hotel_get_info.do?hot_num="+commentDTO.getC_number());
+			mav.addObject("url","hotel_get_info.do?hot_num="+commentdto.getC_number());
 			mav.setViewName("hotel/hotel_msg");
 			return mav;
 		}
 		
-		int count = hotel_comment.hotel_input_comment_grade(commentDTO);
+		int count = hotel_comment.hotel_input_comment_grade(c_number, c_grade, c_comment, username);
 		
 		String result = count > 0 ? "후기 등록 성공!":"후기 등록 실패!";
 		mav.addObject("msg",result);

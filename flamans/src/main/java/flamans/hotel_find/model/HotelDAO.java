@@ -10,6 +10,8 @@ public interface HotelDAO {
 	
 	public List<HotelDTO> hotel_list(int cp, int listSize);
 	public List<HotelDTO> hotel_get_info(String num);
+	public List<HotelRoomDTO> hotroom_info(String num);
+	
 	public List<HotelDTO> hotel_get_info();
 	
 	public String get_date();

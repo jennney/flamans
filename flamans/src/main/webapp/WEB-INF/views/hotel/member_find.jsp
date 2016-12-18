@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>페이지관리</title>
 <style type="text/css">
+
 .container {
 	width: 900px; margin: 10px auto;
 }

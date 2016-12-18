@@ -121,11 +121,12 @@
 				
 				pagedata = data.pageStr1;
 				data = data.list;
+				
+				hospital_list += '<div style="border: 3px solid #FFA7A7; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">';
 				for(var i in data){
-					hospital_list += '';
-					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a>';
+					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a><br>';
 					hospital_list +='<table class="table table-hover"><tr>';
-					hospital_list +='<td width="200"><img alt="병원사진영역" src="img/'+data[i].hos_img+'"width="200" height="200"></td>';
+					hospital_list +='<td width="200"><img alt="병원사진영역" style="border-radius: 10%;" src="img/'+data[i].hos_img+'"width="200" height="200"></td>';
 					hospital_list +='<td width="400">'+data[i].hos_content+'</td>';
 					hospital_list +='<td width="100"><a href="hos_wishlist.do?hos_num='+data[i].hos_num+'&hospital_link=hospital_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					//<a href="booking_hos.do?hos_num='+data[i].hos_num+'"><input type="button" value="예약"></a>
@@ -138,11 +139,16 @@
 				if(data.length==0){
 					hospital_list +='<table><tr><td>검색조건에 맞는 병원이 없습니다.</td></tr></table>';
 				}
+				hospital_list +='</div>';
 				var hospitals = document.getElementById('hospitallistarea');
 				hospitals.innerHTML=hospital_list;
 			}
 		}
 	}
+	
+	$(document).ready(function() { 
+		hos_grade_search();
+	});
 
 	function hos_grade_search(search_option){
 	 	option = document.getElementsByName("option");
@@ -264,24 +270,25 @@
 </script>
 
 </head>
-<body onload="hos_grade_search('abc');">
-<div align="center" style="height: 2100px;">
+<body>
+<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
 
 		<%@ include file="../header.jsp" %>
 		
 		<table style="margin: 0px auto;">
 			<tr>
-				<td align="center"><h2>검색된 병원 리스트</h2></td>
+				<td align="center"><h2>검색된 병원 리스트</h2><br/></td>
 			</tr>
-			
 			<tr>
 				<td>
 					<form name="hospital_main_search">
 						<table>
 								<tr>
 									<td align="center">
-										<input type="text" id="findname" size="84" onkeypress="if(event.keyCode==13) {hos_grade_search(); return false;}">
-										<input type="button" value="검색" class="btn btn-default" onclick="hos_grade_search()">
+										<input type="text"  class="form-control" style=" border: 1px solid black;" id="findname" size="84" onkeypress="if(event.keyCode==13) {hos_grade_search(); return false;}">
+									</td>
+									<td>
+										<input type="button" value="검색" style=" border: 1px solid black;" class="btn btn-default" onclick="hos_grade_search()">
 									</td>
 								</tr>
 						</table>
@@ -293,7 +300,7 @@
 		
 		<div style="width: 1000px;">
 		
-			<div style="border: 5px solid teal; width: 270px; float: left; white-space:nowrap; margin:0px center;">
+			<div style="border: 3px solid #FFA7A7; border-radius: 5%; width: 270px; float: left; white-space:nowrap; margin:0px center; background: white;">
 				<form name="hos_option_select" action="hotel_sub_search.do">
 
 					<table border="0" class="hospital_sub_search" cellspacing="0" width="150">
@@ -386,7 +393,6 @@
 				</form>
 			</div>
 			
-			<div style="border: 5px solid teal;  width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">
 			
 				<%--<c:if test="${empty hospital_info }">
 					<li> ---- 검색된 병원이 없습니다 ---- </li>
@@ -424,7 +430,6 @@
 				<p id="hospitallistarea">
 					
 				</p>
-			</div>
 		</div>
 	</div>
 	<%@ include file="../footer.jsp" %>

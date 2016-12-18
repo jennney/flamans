@@ -10,14 +10,14 @@
     		where c_number = #{num}
     	</select>
   
-    	<insert id="hotel_input_comment_grade" parameterType="flamans.hot_comment_grade.model.HotCommentGradeDTO">
+    	<insert id="hotel_input_comment_grade" parameterType="Map">
     		insert into
     			fm_comment
     		values(
     			#{c_number},
     			#{c_grade},
     			#{c_comment},
-    			#{c_writer},
+    			#{username},
     			SYSDATE)
     	</insert>
     </mapper>

@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 <style>
 .seaTabs * {
 	box-sizing: border-box;
@@ -111,7 +110,18 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>FAQ</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
 <form name="faq_List" action="faq_Find.do" >
 <div>
 	<label>FAQ</label> <input type="text" name="findValue"><input type="submit" value="검색">
@@ -198,7 +208,7 @@
 		</div>
 	</div>
 </div>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

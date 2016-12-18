@@ -11,15 +11,6 @@
 #im{width:400px; height: 300px;}
 </style>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>	
-<section>
-	<!-- <div style="text-align: center; height: 500px; ">
-		<h2>Do you wanna beauty and vacation ?</h2><br><br>
-		<img src="img/beauty.png" id="im">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<img src="img/hotell.png" id="im">
-	</div> -->
-</section>
-<%@ include file="/WEB-INF/views/footer.jsp"%>	
 <div class="banner">
     <div class="overlay">
         <div class="container">

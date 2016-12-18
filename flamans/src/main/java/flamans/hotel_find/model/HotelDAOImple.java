@@ -50,6 +50,11 @@ public class HotelDAOImple implements HotelDAO {
 		return list;
 	}
 	
+	public List<HotelRoomDTO> hotroom_info(String num) {
+		List<HotelRoomDTO> list = sqlMap.selectList("hotroom_info", num);
+		return list;
+	}
+	
 	public List<HotelDTO> hotel_get_info() {
 		List<HotelDTO> list = sqlMap.selectList("hotel_get_info_list");
 		return list;
@@ -80,15 +85,15 @@ public class HotelDAOImple implements HotelDAO {
 		map.put("m_wishlist", wishlist);
 		
 		int count=sqlMap.update("member_update_wishlist", map);
-				
 		return count;
 	}
-	
+
 	//서브서치
 	public List<HotelDTO> hotel_sub_search(String m_sb, String hotel_name_find, int cp, int listsize){
 		int start = (cp-1)*listsize+1;
 		int end = cp*listsize;
 		Map<String, Object> map = new HashedMap();
+		
 		map.put("m_sb",	m_sb);
 		map.put("start", start);
 		map.put("end", end);

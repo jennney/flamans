@@ -63,7 +63,7 @@
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=ebe809a3005bdc67543fbb052162f94d&libraries=services"></script>
 <script>
-	window.onload = function() {
+$(document).ready(function(){
 		var hos_addr = document.getElementById('hos_addr').value;
 		var geocoder = new daum.maps.services.Geocoder();
 		geocoder.addr2coord(hos_addr, function(status, result) {
@@ -103,7 +103,7 @@
 				map.setCenter(placePosition);
 			}
 		});
-	}
+	});
 	function toggleMap(active) {
 		if (active) {
 			container.className = "view_map";
@@ -217,9 +217,9 @@
 				data = data.list;
 				for(var i in data){
 					hospital_list += '';
-					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a>';
+					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a><br/>';
 					hospital_list +='<table class="table table-hover"><tr>';
-					hospital_list +='<td width="200"><img alt="병원사진영역" src="'+data[i].hos_img+'"width="200" height="200"></td>';
+					hospital_list +='<td width="200"><img alt="병원사진영역" src="img/'+data[i].hos_img+'"width="200" height="200"></td>';
 					hospital_list +='<td width="400">'+data[i].hos_content+'</td>';
 					hospital_list +='<td width="100"><a href="hos_wishlist.do?hos_num='+data[i].hos_num+'&hospital_link=hospital_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					//<a href="booking_hos.do?hos_num='+data[i].hos_num+'"><input type="button" value="예약"></a>
@@ -236,7 +236,7 @@
 				var hos_infoarea = document.getElementById('hospitalinfoarea');
 				var hos_pagename = document.getElementById('hos_pagename');
 				
-				var hospital_list2  = '<div style="border: 5px solid teal; width: 700px; float: right; margin-left: 0px auto;">';
+				var hospital_list2  = '<div style="border: 3px solid #FFA7A7; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">';
 					hospital_list2 += hospital_list;
 					hospital_list2 += '</div>';
 					
@@ -376,27 +376,29 @@
 	<%@ include file="../header.jsp"%>
 	
 	<section>
-	<div align="center" style="height: 2100px;">
+	<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
 		<table style="margin: 0px auto;">
 
 			<tr>
-				<td align="center"><div id="hos_pagename"><h2>병원의 상세정보</h2></div></td>
+				<td align="center"><div id="hos_pagename"><h2>병원의 상세정보</h2><br/></div></td>
 			</tr>
 
 			<tr>
 				<td>
 
 					<form name="hospital_main_search">
-					
 		
 						<table>
 								<tr>
 									<td align="center">
-										<input type="text" id="findname" size="84" onkeypress="if(event.keyCode==13) {hos_grade_search(); return false;}">
-										<input type="button" value="검색" class="btn btn-default" onclick="hos_grade_search()">
+										<input type="text"  class="form-control" style=" border: 1px solid black;" id="findname" size="84" onkeypress="if(event.keyCode==13) {hos_grade_search(); return false;}">
+									</td>
+									<td>
+										<input type="button" value="검색" style=" border: 1px solid black;" class="btn btn-default" onclick="hos_grade_search()">
 									</td>
 								</tr>
 						</table>
+						
 						<br/>
 					</form>
 	
@@ -407,7 +409,7 @@
 
 		<div style="width: 1000px;">
 
-			<div style="border: 5px solid teal; width: 270px; float: left; white-space: nowrap; margin: 0px center;">
+			<div style="border: 3px solid #FFA7A7; border-radius: 5%; width: 270px; float: left; white-space: nowrap; margin: 0px center;">
 				<form name="hos_option_select" action="hotel_sub_search.do">
 
 					<table border="0" class="hospital_sub_search" cellspacing="0" width="150">
@@ -504,7 +506,7 @@
 			</div>
 			
 			<div id="hospitalinfoarea">
-			<div style="border: 5px solid teal; width: 700px; float: right; margin-left: 0px auto;">
+			<div style="border: 3px solid #FFA7A7; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">
 
 				<c:if test="${empty hospital_info }">
 					<li>---- 병원이 없습니다. ----</li>
@@ -524,17 +526,17 @@
 					<table border="0" width="700" class="table">
 
 						<tr>
-							<td width="600" style="padding-top: 30px;"><h1 style="color:black; font: bold; ">【 ${hospital_info.hos_name } 】</h1><br></td>
+							<td width="600" style="padding-top: 30px;"><h1 style="color:black; font: bold;">${hospital_info.hos_name }</h1><br></td>
 							<td width="100" style="vertical-align: middle;">
 							<a href="${wishlistUrl}"><input type="button" class="btn btn-default" value=" ♥ "></a>
-								<input type="submit" class="btn btn-default" value="예약"></td>
+							<input type="submit" class="btn btn-default" value="예약"></td>
 						</tr>
 					</table>
 
 					<table border="0" width="700" class="table">
 						<tr>
 							<td width="300"><img alt="병원사진영역" src="img/${hospital_info.hos_img }" width="300" height="300"></td>
-							<td width="400" valign="top" rowspan="2">■병원 상세정보 입력란■ ${hospital_info.hos_content }</td>
+							<td width="400" valign="top" rowspan="2">${hospital_info.hos_content }</td>
 						</tr>
 
 						<tr>
@@ -586,25 +588,23 @@
 
 				<hr>
 
-				<h4>[ 평점/후기 작성 ]</h4>
+				<h4 align="left">&nbsp;&nbsp;평점 및 후기 작성 </h4>
 
 				<c:set var="hospital_info" value="${hospital_info}" />
 
 				<form name="comment_write" action="hospital_input_comment_grade.do">
+				
 					<table class="table">
-
 						<tr>
-							<td><textarea style="resize:none;" class="form-control" cols="85" rows="4" cols="85" name="c_comment"
-									placeholder="로그인 후 체크아웃시 작성 가능합니다."></textarea></td>
+							<td><textarea style="resize:none; border: 1px solid black;" class="form-control" rows="4" cols="85" name="c_comment" placeholder="로그인 후 작성 가능합니다."></textarea></td>
 						</tr>
-
 					</table>
 
 					<table class="table">
 							
 						<tr>
-							<td width="50">평점:</td>
-							<td width="200"><input type="text" id="m_star" size="50" class="form-control" name="c_grade" onkeyup="number_check(this.value)"></td>
+							<td width="60"><h4>평점:</h4></td>
+							<td width="200"><input type="text" size="30" id="m_star" style=" border: 1px solid black;" class="form-control" name="c_grade" onkeyup="number_check(this.value)"></td>
 							<td><input type="submit" class="btn btn-default" value="작성"></td>
 						</tr>
 							
