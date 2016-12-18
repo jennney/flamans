@@ -199,9 +199,9 @@ h2 {
 	}
 	
 </script>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>
 <div class="page-header">
     <div class="overlay">
         <div class="container">

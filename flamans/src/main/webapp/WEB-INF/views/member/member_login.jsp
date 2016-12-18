@@ -8,14 +8,14 @@
 <title>회원가입</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 #b{
    width:730px;
-   height:300px;
+   height:550px;
    margin-top: 30px;
    	border-color: green;
    	margin: auto;
+   	padding-top: 60px;
 }
 
  #c{ 

@@ -45,6 +45,9 @@
 #no_listtdd{
 	height: 50px;
 }
+.a{
+	padding: 50px;
+}
 
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
@@ -73,6 +76,7 @@
     </div>
 </div>
  <div class="container">
+ 	<div class="a">
 	<table id="no_list">
 		<thead>
 			<tr>
@@ -128,6 +132,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
 </div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>

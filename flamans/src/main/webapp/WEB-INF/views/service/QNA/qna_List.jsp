@@ -138,14 +138,14 @@ a:LINK {
 				<td id="qna_listtd">${qnaList.qna_item}</td>
 				<td id="qna_listtd1">
 				<c:forEach begin="1" end="${qnaList.lev}" step="1">
-					&nbsp;&nbsp;<img src="img/ico_re.gif" alt="답변">
+					&nbsp;&nbsp;<img src="img/ico_re.gif" alt="답변" width="20px" height="20px">
 				</c:forEach>
 				<c:choose>
 					<c:when test="${qnaList.qna_secret eq 'open'}">
 						<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
 					</c:when>
 					<c:when test="${qnaList.qna_secret eq 'secret'}">
-						<img src="img/neo_lock.gif" alt="자물쇠"> 
+						<img src="img/neo_lock.gif" alt="자물쇠" width="20px" height="20px"> 
 						<a href="qna_PwdContent.do?qna_idx=${qnaList.qna_idx}&qna_kind=${qnaList.qna_kind}">${qnaList.qna_subject}</a>
 					</c:when>
 					<c:when test="${sessionScope.permit eq 1}">

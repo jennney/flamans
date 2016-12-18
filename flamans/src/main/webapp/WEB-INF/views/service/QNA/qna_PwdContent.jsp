@@ -9,6 +9,11 @@
 #red{
 	color: red;
 }
+.pwd{
+	padding-top:100px;
+	text-align:center;
+	height: 500px;
+}
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script>
@@ -44,7 +49,7 @@ function check(){
     </div>
 </div>
 <div class="container">
-	   <div>
+	   <div class="pwd">
 			<form name="qna_Pwd" action="qna_PwdContent.do" method="post" onsubmit="return check()">
 				<input type="hidden" name="qna_idx" value="${qna_idx}">
 				<input type="hidden" name="qna_kind" value="${qna_kind}">

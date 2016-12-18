@@ -17,6 +17,7 @@
    border-top: 3px solid #BDBDBD;
    border-bottom: 3px solid #BDBDBD;
    height: 50px;
+   text-align: center;
 }
 #qna_listth1{
    width: 350px;

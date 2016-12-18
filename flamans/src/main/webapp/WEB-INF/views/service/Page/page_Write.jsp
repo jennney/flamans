@@ -150,30 +150,36 @@ function fileUpload2(fileValue){
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
 		<div class="container">
-		    <ul class="tabs">
-		        <li><a href="#tab1">의료사고대처요령</a></li>
-		        <li><a href="#tab2">출입국절차리스트</a></li>
-		    </ul>
-		    <div class="tab_container">
-		        <div id="tab1" class="tab_content">
-		        	<form name="page1_Write" action="page1_Write.do" method="post" enctype="multipart/form-data">
+		<div class="panel panel-default">
+           <div class="panel-heading">
+               	페이지 관리
+           </div>
+           <div class="panel-body">
+               <ul class="nav nav-tabs">
+                   <li class="active"><a href="#home" data-toggle="tab">의료사고대처요령</a></li>
+                   <li class=""><a href="#profile" data-toggle="tab">출입국절차리스트</a></li>
+               </ul>
+               <div class="tab-content">
+                   <div class="tab-pane fade active in" id="home">
+                    <form name="page1_Write" action="page1_Write.do" method="post" enctype="multipart/form-data">
 		        		<input type="hidden" name="pm_item" value="page1">
-		        		<input type="file" name="upload" id="page1" onchange="fileUpload1(this)">
-		        		<input type="submit" value="파일올리기">
+		        		<span><input type="file" name="upload" id="page1" onchange="fileUpload1(this)">
+		        		<input type="submit" value="파일올리기"></span>
 		        	</form>
-		        	<img src="service_upload/page_upload/${pdto1.pm_img}" id="page1Img" width="100" height="100">
-		        </div>
-		        
-		        <div id="tab2" class="tab_content">
-		           	<form name="page2_Write" action="page2_Write.do" method="post" enctype="multipart/form-data">
+		        	<img src="service_upload/page_upload/${pdto1.pm_img}" id="page1Img" width="800">
+                   </div>
+                   <div class="tab-pane fade" id="profile">
+                   <form name="page2_Write" action="page2_Write.do" method="post" enctype="multipart/form-data">
 		           		<input type="hidden" name="pm_item" value="page2">
 		        		<input type="file" name="upload" id="page2" onchange="fileUpload2(this)">
 		        		<input type="submit" value="파일올리기">
 		        	</form>
-					<img src="service_upload/page_upload/${pdto2.pm_img}" id="page2Img" width="100" height="100">
+					<img src="service_upload/page_upload/${pdto2.pm_img}" id="page2Img" width="800">
 		        </div>
-		    </div>
-		</div>
+                   </div>
+               </div>
+           </div>
+       </div>
 	</div>
 </div>
 </body>
