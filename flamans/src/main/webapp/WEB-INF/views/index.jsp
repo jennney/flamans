@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <%@ include file="/WEB-INF/views/header.jsp"%>
 </head>
+<style>
+#im{width:400px; height: 300px;}
+</style>
 <body>
 <div class="banner">
     <div class="overlay">
