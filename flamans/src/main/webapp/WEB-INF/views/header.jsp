@@ -152,7 +152,7 @@ function hoswishresult(){
 	                    <ul class="dropdown">
 	                        <li><a href="no_List.do">Notice</a></li>
 	                        <li><a href="faq_List.do">FAQ</a></li>
-	                        <li><a href="qna_List.do">Q&amp;A</a></li>
+	                        <li><a href="qna_List.do?qna_kind=site">Q&amp;A</a></li>
 	                    </ul>
 	                </li>
 	            </ul>

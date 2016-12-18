@@ -122,6 +122,7 @@
     </div>
 </div>
 <div class="container">
+
 <form name="faq_List" action="faq_Find.do" >
 <div>
 	<label>FAQ</label> <input type="text" name="findValue"><input type="submit" value="검색">
