@@ -261,11 +261,11 @@ input[type=range]:focus::-ms-fill-upper {
 				pagedata = data.pageStr1;
 				data = data.list;
 				
-				hotel_list += '<div style="border: 3px solid #B75F5F; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">';
+				hotel_list += '<div style="border: 3px solid #4C4C4C; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">';
 				for(var i in data){
 					hotel_list +='<a href="hotel_get_info.do?hot_num='+data[i].hot_num+'"><h2 align="left">'+data[i].hot_name+'</h2></a><br/>';
 					hotel_list +='<table class="table table-hover"><tr>';
-					hotel_list +='<td width="200"><img alt="호텔사진영역" style="border-radius: 10%;" src="img/'+data[i].hot_img+'"width="200" height="200"></td>';
+					hotel_list +='<td width="200"><img alt="호텔사진영역" style="border-radius: 10%;" src="img/hotel/'+data[i].hot_img+'"width="200" height="200"></td>';
 					hotel_list +='<td width="400">'+data[i].hot_content+'</td>';
 					hotel_list +='<td width="100"><a href="hot_wishlist.do?hot_num='+data[i].hot_num+'&hotel_link=hotel_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					hotel_list +='<a href="booking_hot.do?hot_num='+data[i].hot_num+'"><input type="button" class="btn btn-default" value="예약"></a></td>';
@@ -485,9 +485,9 @@ input[type=range]:focus::-ms-fill-upper {
 <meta charset="UTF-8">
 <title>[name] 호텔 리스트</title>
 </head>
-<body>
 <%@ include file="../header.jsp" %>
-	<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
+<body>
+<div class="container" align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
 		
 		<table style="margin: 0px auto;">
 		
@@ -531,7 +531,7 @@ input[type=range]:focus::-ms-fill-upper {
 		
 		<div style="width: 1000px;">
 		
-			<div style="border: 3px solid #B75F5F; border-radius: 3%; width: 270px; background: white; float: left; white-space:nowrap; margin:0px center;">
+			<div style="border: 3px solid #4C4C4C; border-radius: 3%; width: 270px; background: white; float: left; white-space:nowrap; margin:0px center;">
 				<form name="hot_option_select">
 		
 					<table border="0" class="hotel_sub_search" cellspacing="0" width="250">

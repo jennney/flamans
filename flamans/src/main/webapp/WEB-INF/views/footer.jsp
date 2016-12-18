@@ -49,8 +49,6 @@
         <script src="asset/js/jquery.nicescroll.min.js"></script>
         <script src="asset/js/lightbox.min.js"></script>
         <script src="asset/js/count-to.js"></script>
-        <script src="asset/js/styleswitcher.js"></script>
-        
         <script src="asset/js/map.js"></script>
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
         <script src="asset/js/script.js"></script> 

@@ -122,7 +122,7 @@
 				pagedata = data.pageStr1;
 				data = data.list;
 				
-				hospital_list += '<div style="border: 3px solid #FFA7A7; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">';
+				hospital_list += '<div style="border: 3px solid #4C4C4C; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">';
 				for(var i in data){
 					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a><br>';
 					hospital_list +='<table class="table table-hover"><tr>';
@@ -268,13 +268,11 @@
 	}
 	
 </script>
-
+<%@ include file="../header.jsp" %>
 </head>
 <body>
-<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
+<div class="container" align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
 
-		<%@ include file="../header.jsp" %>
-		
 		<table style="margin: 0px auto;">
 			<tr>
 				<td align="center"><h2>검색된 병원 리스트</h2><br/></td>
@@ -300,7 +298,7 @@
 		
 		<div style="width: 1000px;">
 		
-			<div style="border: 3px solid #FFA7A7; border-radius: 5%; width: 270px; float: left; white-space:nowrap; margin:0px center; background: white;">
+			<div style="border: 3px solid #4C4C4C; border-radius: 5%; width: 270px; float: left; white-space:nowrap; margin:0px center; background: white;">
 				<form name="hos_option_select" action="hotel_sub_search.do">
 
 					<table border="0" class="hospital_sub_search" cellspacing="0" width="150">
