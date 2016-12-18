@@ -594,9 +594,9 @@ function toggleMap(active) {
 </head>
 <body>
 
-	<%@ include file="../header.jsp" %>
 	<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
 		
+	<%@ include file="../header.jsp" %>
 		<table style="margin: 0px auto;">
 			<tr>
 				<td align="center"><div id="hot_pagename"><h2>호텔의 상세정보</h2></div></td>

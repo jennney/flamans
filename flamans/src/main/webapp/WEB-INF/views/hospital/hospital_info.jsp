@@ -15,6 +15,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.tmpl.js"></script>
 <script type="text/javascript" src="/flamans/js/httpRequest.js"></script>
 <style>
 .grade{display: none;}
@@ -373,10 +376,11 @@ $(document).ready(function(){
 
 <body>
 
-	<%@ include file="../header.jsp"%>
-	
 	<section>
 	<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
+	
+	<%@ include file="../header.jsp"%>
+	
 		<table style="margin: 0px auto;">
 
 			<tr>

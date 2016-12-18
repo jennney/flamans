@@ -11,8 +11,8 @@
 <link rel="stylesheet" type="text/css" href="asset/css/style.css">
 <link rel="stylesheet" type="text/css" href="asset/css/responsive.css">
 <script src="asset/js/modernizrr.js"></script>
-<script type="text/javascript" src="/myweb/js/httpRequest.js"></script>
-<script type="text/javascript" src="/myweb/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/flamans/js/httpRequest.js"></script>
+<script type="text/javascript" src="/flamans/js/jquery-3.1.1.min.js"></script>
 <script>
 function wishlist(){
    sendRequest('wishlist_view.do', null, wishlistresult, 'GET');
