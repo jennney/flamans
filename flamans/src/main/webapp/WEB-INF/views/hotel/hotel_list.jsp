@@ -30,7 +30,7 @@ input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #3071a9;
+  background: #FFA7A7;
   border-radius: 1.3px;
   border: 0.2px solid #010101;
 }
@@ -39,14 +39,14 @@ input[type=range]::-webkit-slider-thumb {
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
+  border-radius: 30px;
+  background: white;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -14px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #367ebd;
+  background: #FFA7A7;
 }
 input[type=range]::-moz-range-track {
   width: 100%;
@@ -54,7 +54,7 @@ input[type=range]::-moz-range-track {
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #3071a9;
+  background: #FFA7A7;
   border-radius: 1.3px;
   border: 0.2px solid #010101;
 }
@@ -64,7 +64,7 @@ input[type=range]::-moz-range-thumb {
   height: 36px;
   width: 16px;
   border-radius: 3px;
-  background: #ffffff;
+  background: #FFA7A7;
   cursor: pointer;
 }
 input[type=range]::-ms-track {
@@ -78,13 +78,13 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-  background: #2a6495;
+  background: #FFA7A7;
   border: 0.2px solid #010101;
   border-radius: 2.6px;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 input[type=range]::-ms-fill-upper {
-  background: #3071a9;
+  background: #FFA7A7;
   border: 0.2px solid #010101;
   border-radius: 2.6px;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -95,14 +95,14 @@ input[type=range]::-ms-thumb {
   height: 36px;
   width: 16px;
   border-radius: 3px;
-  background: #ffffff;
+  background: #FFA7A7;
   cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {
-  background: #3071a9;
+  background: #FFA7A7;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #367ebd;
+  background: #FFA7A7;
 }
 <!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- -->
 			
@@ -261,11 +261,11 @@ input[type=range]:focus::-ms-fill-upper {
 				pagedata = data.pageStr1;
 				data = data.list;
 				
+				hotel_list += '<div style="border: 3px solid #B75F5F; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">';
 				for(var i in data){
-					hotel_list += '';
-					hotel_list +='<a href="hotel_get_info.do?hot_num='+data[i].hot_num+'"><h2 align="left">'+data[i].hot_name+'</h2></a>';
+					hotel_list +='<a href="hotel_get_info.do?hot_num='+data[i].hot_num+'"><h2 align="left">'+data[i].hot_name+'</h2></a><br/>';
 					hotel_list +='<table class="table table-hover"><tr>';
-					hotel_list +='<td width="200"><img alt="호텔사진영역" src="img/'+data[i].hot_img+'"width="200" height="200"></td>';
+					hotel_list +='<td width="200"><img alt="호텔사진영역" style="border-radius: 10%;" src="img/'+data[i].hot_img+'"width="200" height="200"></td>';
 					hotel_list +='<td width="400">'+data[i].hot_content+'</td>';
 					hotel_list +='<td width="100"><a href="hot_wishlist.do?hot_num='+data[i].hot_num+'&hotel_link=hotel_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					hotel_list +='<a href="booking_hot.do?hot_num='+data[i].hot_num+'"><input type="button" class="btn btn-default" value="예약"></a></td>';
@@ -275,18 +275,21 @@ input[type=range]:focus::-ms-fill-upper {
 						hotel_list +='<table><tr><td>'+pagedata+'</td></tr></table>';	
 					}
 				}
-				
 				if(data.length==0){
 					hotel_list +='<table><tr><td>검색조건에 맞는 호텔이 없습니다.</td></tr></table>';
 				}
+				hotel_list +='</div>';	
 				var hotels = document.getElementById('hotellistarea');
 				hotels.innerHTML=hotel_list;
 				
 			}
 		}
 	}
-
+	$(document).ready(function() { 
+		hot_grade_search();
+	});
 	function hot_grade_search(search_option){
+		
 		grade = document.getElementsByName("grade");
 	 	option = document.getElementsByName("option");
 		star = document.getElementsByName("star");
@@ -482,13 +485,12 @@ input[type=range]:focus::-ms-fill-upper {
 <meta charset="UTF-8">
 <title>[name] 호텔 리스트</title>
 </head>
-<body onload="hot_grade_search();">
+<body>
 <%@ include file="../header.jsp" %>
-	<div align="center" style="border: 7px solid maroon; height: 2100px;">
-
-		
+	<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
 		
 		<table style="margin: 0px auto;">
+		
 			<tr>
 				<td align="center"><h2>검색된 호텔 리스트</h2></td>
 			</tr>
@@ -500,17 +502,17 @@ input[type=range]:focus::-ms-fill-upper {
 						
 								<tr>
 									<td align="center" colspan="2">
-									<input type="text" class="form-control" id="findname" size="84" onkeypress="if(event.keyCode==13) {hot_grade_search(); return false;}">
-									</td><td><input type="button" class="btn btn-default" style="width: 120px;" value="검색" onclick="hot_grade_search()">
+									<input type="text" class="form-control" style="border: 1px solid black;" id="findname" size="84" onkeypress="if(event.keyCode==13) {hot_grade_search(); return false;}">
+									</td><td><input type="button" class="btn btn-default" style="border: 1px solid black; width: 120px;" value="검색" onclick="hot_grade_search()">
 									
 									</td>
 								</tr>
 								
 								<tr>
 									<br>
-									<td>CheckIn &nbsp;<input type="date" class="form-control" id="checkin" value="2016-12-23"></td>
-									<td>CheckOut &nbsp;<input type="date" class="form-control" id="checkout" value="2016-12-24"></td>
-									<td>방 정보 &nbsp;<select name="room_info" class="form-control">
+									<td>CheckIn &nbsp;<input type="date" style="border: 1px solid black;" class="form-control" id="checkin" value="2016-12-23"></td>
+									<td>CheckOut &nbsp;<input type="date" style="border: 1px solid black;" class="form-control" id="checkout" value="2016-12-24"></td>
+									<td>방 정보 &nbsp;<select name="room_info" style="border: 1px solid black;" class="form-control">
 											<option value="싱글룸">싱글룸</option>
 											<option value="더블룸">더블룸</option>
 											<option value="패밀리룸">패밀리룸</option>
@@ -529,10 +531,10 @@ input[type=range]:focus::-ms-fill-upper {
 		
 		<div style="width: 1000px;">
 		
-			<div style="border: 5px solid teal; width: 270px; float: left; white-space:nowrap; margin:0px center;">
+			<div style="border: 3px solid #B75F5F; border-radius: 3%; width: 270px; background: white; float: left; white-space:nowrap; margin:0px center;">
 				<form name="hot_option_select">
-	
-					<table border="0" class="hotel_grade_search" cellspacing="0" width="150">
+		
+					<table border="0" class="hotel_sub_search" cellspacing="0" width="250">
 					
 						<tr>
 							<th colspan="5">호텔등급</th>
@@ -540,7 +542,7 @@ input[type=range]:focus::-ms-fill-upper {
 						
 						<tr>
 							<td onclick="hot_grade_search('grade1')">
-								<div id=gradeimg1><img alt="등급1" src="img/grade1.jpg" width="50" height="50"></div>
+								<div id=gradeimg1><img alt="등급1" src="img/grade1.jpg" width=50 height="50"></div>
 								<input type="checkbox" name="grade" class="grade" value="1">
 							</td>
 							
@@ -604,7 +606,7 @@ input[type=range]:focus::-ms-fill-upper {
 					
 					</table>
 					
-					<table border="0" class="hotel_grade_search" cellspacing="0" width="150">
+					<table border="0" class="hotel_grade_search" cellspacing="0" width="250">
 					
 						<tr>
 							<td colspan="5"><hr></td>
@@ -749,7 +751,6 @@ input[type=range]:focus::-ms-fill-upper {
 				</form>
 			</div>
 			
-			<div style="border: 5px solid teal;  width: 700px; float: right; margin-left: 0px auto;">
 				<p id="hotellistarea">
 				
 				
@@ -783,6 +784,7 @@ input[type=range]:focus::-ms-fill-upper {
 						<br/>
 						
 				</c:forEach>-->
+				
 				</p>
 				
 				<table>
@@ -794,7 +796,6 @@ input[type=range]:focus::-ms-fill-upper {
 				</table>
 			</div>
 		</div>
-	</div>
 	<%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
