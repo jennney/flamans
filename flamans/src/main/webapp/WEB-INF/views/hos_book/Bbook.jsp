@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -227,6 +227,7 @@ function docInfo(doc_num){
 }
 
 </script>
+<%@ include file="/WEB-INF/views/header.jsp"%>    
 <style>
 #cc:LINK{
 	color:black;
@@ -299,11 +300,21 @@ textarea{
 	float: right;
 }
 </style>
-</head>
 
+</head>	
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>	
-<h2 style="text-align: center;">병원 예약</h2>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Hospital</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 50px;">
 	<div id="b" class="well well-lg">
 	<form class="form-inline" name="bBook" action="bBook.do" method="post">
 	<div id="a">
@@ -416,7 +427,7 @@ textarea{
 		</form>	
     
 	</div>
-
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

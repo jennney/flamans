@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Notice</title>
+<link href="mypage/assets/css/bootstrap.css" rel="stylesheet" />
 <style>
 #no_list {
 	width: 700px;
@@ -91,7 +92,7 @@
 									<option value="no_subject" ${findKey eq 'no_subject'?"selected":""}>
 										제목</option>
 								</select>
-								<input type="text" class="form-control" style="width: 200px; float: right;"name="findValue" value="${findValue}">
+								<input type="text" class="form-control" style="width: 200px; float: right;"name="findValue" value="${findValue}" placeholder="검색어를 입력하세요">
 						    	<span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button></span>
 						    </div>
 					</form>

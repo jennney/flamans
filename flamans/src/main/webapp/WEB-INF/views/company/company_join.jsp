@@ -125,11 +125,18 @@ h2{
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-<div class="container">
-	<div class="center">
-	   <h2>회원가입</h2>
-	</div>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>개인회원</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 50px;">
 
 	<form name="company_join" action="company_join.do" method="post">
 		<table>
@@ -194,7 +201,6 @@ h2{
 		</p>
 	</form>
 	</div>
-</section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

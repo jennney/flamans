@@ -4,84 +4,50 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <style type="text/css">
+img{
+	width: 200px;
+}
 #a{
-	height: 500px;;
-}
-ul {
-    display: inline;
-    list-style-type: disc;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 40px;
-}
-.joinMain ul li {
-    position: relative;
-    height: 240px;
-    padding: 24px;
-   	margin-right: 50px;
-    background: #fff;
-    border: 1px solid #d7d7d7;
-}
-
-.joinMain ul li {
-    float: left;
-    width: 240px;
-    height: 350px;
-}
-.btnAction {
-    margin-top: 12px;
-    padding: 0;
-    font-size: 15px;
-    text-align: center;
-}
-.joinMain{
-	margin-top: 50px;
-	text-align: center;
+	margin-left: 200px;
 }
 </style>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>	
-<div class="container">
-	<div id="a">
-	 	<section>
-	 		<article id="Contents" class="joinMain">
-	 		<ul>
-				<li class="person">
-					<div class="guide">
-						<em><img src="img/people-2.png" alt="개인회원"></em>
-						<strong></strong>
-					</div>
-					<div class="btnAction">
-					<a href="company_join.do">
-						<img src="https://contents.albamon.kr/monimg/login/btn_gg_1_n.png" alt="개인회원 가입">
-					</a>
-					</div>
-					<div id="OauthFrame"></div>
-		
-				</li>
-		
-				<li class="biz">
-					<div class="guide">
-						<em><img src="img/people-1.png" alt="개인회원"></em>
-					</div>
-					<div class="btnAction">
-					<a href="member_join.do">
-						<img src="https://contents.albamon.kr/monimg/login/btn_gi_1_n.png" alt="기업회원 가입">
-					</a>
-					</div>
-					<p>법인 및 개인사업자는 기업회원으로 가입해주세요</p>
-		
-				</li>
-			</ul>
-	 		</article>
-	 	</section>
-	</div>
-</div>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+    <section id="pricing-section" class="pricing-section">
+        <div class="container">
+        	<div id="a">
+	            <div class="row">
+	                <div class="col-md-4">
+	                    <div class="pricing">
+	                        <div class="pricing-header">
+	                            <img src="img/peo-1.png" alt="개인">
+	                        </div>
+	                        <div class="pricing-body">
+	                            <h3 class="pricing-title">개인 회원가입</h3>
+	                            <p>병원/호텔 검색 또는 예약 서비스를 원하는 분은 개인회원으로 가입해주세요</p>
+	                            <a href="member_join.do" class="btn btn-primary">개인회원</a>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-4">
+	                    <div class="pricing">
+	                        <div class="pricing-header">
+	                            <img src="img/peo-2.png" alt="기업">
+	                        </div>
+	                        <div class="pricing-body">
+	                            <h3 class="pricing-title">기업 회원가입</h3>
+	                            <p>사이트를 이용하는 법인 및 개인사업자는 기업회원으로 가입해주세요</p>
+	                            <a href="company_join.do" class="btn btn-primary">기업회원</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        </div>
+    </section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

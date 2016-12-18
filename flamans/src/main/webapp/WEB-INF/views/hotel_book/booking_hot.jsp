@@ -1,42 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-   <%@ include file="/WEB-INF/views/header.jsp"%>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>호텔 예약하기</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <style type="text/css">
-a:link {
-   color: #666;
-   font-weight: bold;
-   text-decoration: none;
-}
-a:visited {
-   color: #666;
-   font-weight: bold;
-   text-decoration: none;
-}
-a:active, a:hover {
-   color: #bd5a35;
-   text-decoration: underline;
-}
-#bt a:link {
-   color: #666;
-   font-weight: bold;
-   text-decoration: none;
-}
-#bt a:visited {
-   color: #999999;
-   font-weight: bold;
-   text-decoration: none;
-}
 #bt a:active,#bt a:hover {
    color: #bd5a35;
    text-decoration: underline;
@@ -55,6 +26,8 @@ a:active, a:hover {
    -moz-box-shadow: 0 1px 2px #d1d1d1;
    -webkit-box-shadow: 0 1px 2px #d1d1d1;
    box-shadow: 0 1px 2px #d1d1d1;
+    border-spacing: 0px;
+    width: 800px;
 }
 #bt th {
    padding: 15px;
@@ -147,7 +120,7 @@ a:active, a:hover {
 a#booking_pop:hover {
    border-color: #eee;
 }
-.overlay {
+.overlaypop {
    background-color: rgba(0, 0, 0, 0.6);
    bottom: 0;
    cursor: default;
@@ -164,7 +137,7 @@ a#booking_pop:hover {
    -o-transition: opacity .5s;
    transition: opacity .5s;
 }
-.overlay:target {
+.overlaypop:target {
    visibility: visible;
    opacity: 1;
 }
@@ -201,7 +174,7 @@ a#booking_pop:hover {
    -o-transition: opacity .5s, top .5s;
    transition: opacity .5s, top .5s;
 }
-.overlay:target+.popup {
+.overlaypop:target+.popup {
    top: 50%;
    opacity: 1;
    visibility: visible;
@@ -239,8 +212,11 @@ a#booking_pop:hover {
    text-align: left;
    width: 120px;
 }
+#a{
+	height: 600px;
+}
 </style>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<%@ include file="/WEB-INF/views/header.jsp"%>
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script>
@@ -310,14 +286,24 @@ a#booking_pop:hover {
       }
    }
 </script>
+
 </head>
 <body>
 
-<section>
-<div class="center">
-   <h2>예약하기</h2>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Hotel</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-   <table cellspacing='0' border="0" id="bt">
+<div class="container">
+<div id="a">
+   <table id="bt">
       <tr>
          <th colspan="2">체크인</th>
          <td><input type="text" id="datepicker1" name="checkin" placeholder="체크인"></td>
@@ -372,7 +358,13 @@ a#booking_pop:hover {
       </tr>
     </c:forEach>
    </table>
-   <a href="#x" class="overlay" id="booking_form"></a>
+</div>
+</div>
+<%@ include file="/WEB-INF/views/footer.jsp"%>
+   
+   
+ <!-- 팝업 -->  
+   <a href="#x" class="overlaypop" id="booking_form"></a>
    <div class="popup">
       <div>
          <label for="checkin">체크인:</label>
@@ -435,7 +427,6 @@ a#booking_pop:hover {
    </form>
       <a class="close" href="#close"></a>   
 </div>
-</section>
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+
 </body>
 </html>
