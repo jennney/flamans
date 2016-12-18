@@ -125,7 +125,7 @@ input[type=range]:focus::-ms-fill-upper {
 	.date-picker-wrapper.date-range-picker19 .day.first-date-selected { background-color: red !important; }
 	.date-picker-wrapper.date-range-picker19 .day.last-date-selected { background-color: orange !important; }
 	
-	.grade{display: none;}
+	.grade{ display: none;}
 	</style>
 		
 	<meta charset="UTF-8">
@@ -320,7 +320,7 @@ function hotel_result_search(){
 			for(var i in data){
 				hotel_list +='<a href="hotel_get_info.do?hot_num='+data[i].hot_num+'"><h2 align="left">'+data[i].hot_name+'</h2></a><br/>';
 				hotel_list +='<table class="table table-hover"><tr>';
-				hotel_list +='<td width="200"><img alt="호텔사진영역" src="img/'+data[i].hot_img+'"width="200" height="200"></td>';
+				hotel_list +='<td width="200"><img alt="호텔사진영역" src="img/hotel/'+data[i].hot_img+'"width="200" height="200"></td>';
 				hotel_list +='<td width="400">'+data[i].hot_content+'</td>';
 				hotel_list +='<td width="100"><a href="hot_wishlist.do?hot_num='+data[i].hot_num+'&hotel_link=hotel_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 				hotel_list +='<a href="booking_hot.do?hot_num='+data[i].hot_num+'"><input type="button" class="btn btn-default" value="예약"></a></td>';
@@ -337,7 +337,7 @@ function hotel_result_search(){
 			var hotelinfo = document.getElementById('hotelinfoarea');
 			var hot_pagename = document.getElementById('hot_pagename');
 			
-			var hotel_list2 = '<div id="hotelinfoarea" style="border: 3px solid #B75F5F; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">';
+			var hotel_list2 = '<div id="hotelinfoarea" style="border: 3px solid #4C4C4C; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">';
 			hotel_list2 += hotel_list;
 			hotel_list2 += '</div>';
 								
@@ -638,7 +638,7 @@ function toggleMap(active) {
 		
 		<div style="width: 1000px;">
 		
-				<div style="border: 3px solid #B75F5F; border-radius: 3%; background: white; width: 270px; float: left; white-space:nowrap; margin:0px center;">
+				<div style="border: 3px solid #4C4C4C; border-radius: 3%; background: white; width: 270px; float: left; white-space:nowrap; margin:0px center;">
 				<form name="hot_option_select">
 	
 					<table border="0" class="hotel_grade_search" cellspacing="0" width="250">
@@ -864,7 +864,7 @@ function toggleMap(active) {
 			</p>
 			
 			<div id="hotelinfoarea">
-			<div style="border: 3px solid #B75F5F; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">
+			<div style="border: 3px solid #4C4C4C; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">
 				
 				
 				<c:if test="${empty hotel_info }">
@@ -890,18 +890,18 @@ function toggleMap(active) {
 					
 					<table class="table">
 						<tr style="border-bottom: none;">
-							<td><img alt="호텔사진영역" src="img/${hotel_info.hot_img }" width="300" height="300"></td>
-							<td width="400" rowspan="2">${hotel_info.hot_content }</td>
+							<td><img alt="호텔사진영역" src="img/hotel/${hotel_info.hot_img }" width="300" height="300"></td>
+							<td width="400" rowspan="1">${hotel_info.hot_content }</td>
 						</tr>
 						
 						<tr>
-							<td><input type="hidden" name="hot_addr" value="${hotel_info.hot_addr}" id="hot_addr">
+							<td colspan="2"><input type="hidden" name="hot_addr" value="${hotel_info.hot_addr}" id="hot_addr">
 								<div id="container" class="view_map">
-								    <div id="mapWrapper" style="width:300px;height:300px;position:relative;">
-								        <div id="map" style="width:300px;height:100%"></div>
+								    <div id="mapWrapper" style="width:680px;height:300px;position:relative;">
+								        <div id="map" style="width:680px;height:100%"></div>
 								        <input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰">
 								    </div>
-								    <div id="rvWrapper" style="width:300px;height:300px;position:absolute;top:0;left:0;">
+								    <div id="rvWrapper" style="width:680px;height:300px;position:absolute;top:0;left:0;">
 								        <div id="roadview" style="height:100%"></div>
 								        <input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도">
 								    </div>
@@ -975,7 +975,9 @@ function toggleMap(active) {
 					<br>
 					
 				</form>
+				
 				<h2>평점/후기</h2>
+				
 				<c:if test="${empty hotel_comment }">
 					<li> ---- 덧글이 없습니다. 남겨주세요! ---- </li>
 				</c:if>
@@ -989,7 +991,6 @@ function toggleMap(active) {
 									<th width="100">[평점]</th>
 									<th width="400">[내용]</th>
 									<th width="100">[작성일]</th>
-									<th><input type="button" name="" value=""></th>
 								</tr>
 							</thead>
 							
@@ -997,7 +998,7 @@ function toggleMap(active) {
 								<tr>
 									<td>${hotel_comment.c_writer }</td>
 									<td>${hotel_comment.c_grade } </td>
-									<td>${hotel_comment.c_comment }</td>
+									<td>${hotel_comment.c_coment }</td>
 									<td>${hotel_comment.c_date }</td>
 								</tr>
 							</tbody>

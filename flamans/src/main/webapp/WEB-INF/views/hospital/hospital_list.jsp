@@ -122,7 +122,7 @@
 				pagedata = data.pageStr1;
 				data = data.list;
 				
-				hospital_list += '<div style="border: 3px solid #FFA7A7; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">';
+				hospital_list += '<div style="border: 3px solid #4C4C4C; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto; padding-left: 7px;">';
 				for(var i in data){
 					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a><br>';
 					hospital_list +='<table class="table table-hover"><tr>';
@@ -300,7 +300,7 @@
 		
 		<div style="width: 1000px;">
 		
-			<div style="border: 3px solid #FFA7A7; border-radius: 5%; width: 270px; float: left; white-space:nowrap; margin:0px center; background: white;">
+			<div style="border: 3px solid #4C4C4C; border-radius: 5%; width: 270px; float: left; white-space:nowrap; margin:0px center; background: white;">
 				<form name="hos_option_select" action="hotel_sub_search.do">
 
 					<table border="0" class="hospital_sub_search" cellspacing="0" width="150">

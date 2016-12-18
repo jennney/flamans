@@ -501,7 +501,7 @@ public class HotFindController{
 		String username = (String)session.getAttribute("username");
 		int c_grade1 = Integer.parseInt(c_grade);
 		
-		commentdto.setC_comment(c_comment);
+		commentdto.setC_coment(c_comment);
 		commentdto.setC_grade(c_grade1);
 		commentdto.setC_number(c_number);
 		commentdto.setC_writer(username);
