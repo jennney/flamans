@@ -54,7 +54,7 @@ function selDoctor(hos_num, doc_num){
 <c:set var="docInfo" value="${dto}"/>
 <fieldset>
 	<div><h3 style="text-align: center;">${docInfo.doc_name }</h3><br>
-		<img src="${docInfo.doc_img}" id="docimg"><br>
+		<img src="img/hospital/doctor/${docInfo.doc_img}" id="docimg"><br>
 		<span id="level">${docInfo.doc_level }</span>
 	</div>
 </fieldset><br>

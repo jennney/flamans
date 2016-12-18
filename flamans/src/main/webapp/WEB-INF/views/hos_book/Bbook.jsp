@@ -279,12 +279,7 @@ function docInfo(doc_num){
    	width:260px;
    	height:600px;
 }
-#doc{
-	width:260px;
-	border: 1px solid black;
-	text-align: center;
-	font:15px/1.0 맑은 고딕;
-}
+
 #td{
 	text-align:center;
 	width: 80px;
@@ -297,9 +292,33 @@ textarea{
 	padding:10px;
 	border-spacing: 10px;
 }
-#do{
-	float: right;
+#doc{
+	width:260px;
+	height:50px;
+	border: 1px solid green;
+	font:15px/1.0 맑은 고딕;
 }
+#docimg{ 
+   float:left;   
+   width:60px;
+   height:50px;
+   border: 1px solid red;
+}
+#docname{
+   	width:50px;
+   	height:50px;
+   	float: left;
+   	margin-left:15px;
+   	margin-right:15px;
+   	border: 1px solid yellow;
+}
+#do{
+	 float:left;   
+  	 width:80px;
+  	 height:50px;
+  	 border: 1px solid pink;
+  	 }
+
 </style>
 
 </head>	
@@ -417,10 +436,10 @@ textarea{
 		    <fieldset>
 		    <legend></legend>
 				<c:forEach var="doctor" items="${doc}">
-					<div id="doc"><div style="width:80px; height:50px; border: 1px solid red;"><img src="img/hospital/doctor/${doctor.doc_img }" style="width:50px; height:50px;"></div>
-						<div style="width:100px; height:50px; border: 1px solid yellow;">
-							<label id="do">${doctor.doc_name }<button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></label>
-						</div>
+					<div id="doc">
+						<div id="docImg" ><img src="img/hospital/doctor/${doctor.doc_img }" style="width:50px; height:50px;"></div>
+						<div id="docname">${doctor.doc_name }</div>
+						<div id="do"><button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></div>			
 					</div>		
 				</c:forEach>
 			</fieldset>		
