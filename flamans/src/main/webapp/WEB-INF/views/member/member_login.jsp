@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -64,11 +64,13 @@ label{
    	text-decoration: underline;
    	font-size: 10px;
 }
+#ml{color: #ff9933;}
+#cl{color: #339933;}
 </style>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>	
-<section>
+<div class="container">
 <div id="b" >
 	<div id="c">
 	<div style="padding-left: 8px;">
@@ -80,7 +82,7 @@ label{
 	      <label for="pwd">Password:</label>
 	      <input type="password" class="form-control" name="m_pwd" placeholder="Enter password"><br><br>
 	      <input type="checkbox" name="saveid" value="on" ${empty saveid?'':'checked'}> Remember me
-	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
+	    <button type="submit" class="btn btn-default" style="float: right;" ><b>Submit</b></button><br><br>
 	    &nbsp;&nbsp;▶<a href="member_find_id.do" id="pp">&nbsp;아이디를 잊으셨나요?</a><br>
 	    &nbsp;&nbsp;▶<a href="member_find_pwd.do" id="pp">&nbsp;비밀번호를 잊으셨나요?</a>
 	  </form>
@@ -95,13 +97,13 @@ label{
 	      <label for="pwd">Password:</label>
 	      <input type="password" class="form-control" name="cm_pwd" placeholder="Enter password"><br><br>
 	      <input type="checkbox" name="savecoId" value="on" ${empty savecoId?'':'checked'}> Remember me
-	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
+	    <button type="submit" class="btn btn-default" style="float: right;" ><b>Submit</b></button><br><br>
 	    &nbsp;&nbsp;▶<a href="member_find_id.do" id="pp">&nbsp;아이디를 잊으셨나요?</a><br>
 	    &nbsp;&nbsp;▶<a href="member_find_pwd.do" id="pp">&nbsp;비밀번호를 잊으셨나요?</a>
 	  </form>
 	</div>
 </div>
-</section>
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>
