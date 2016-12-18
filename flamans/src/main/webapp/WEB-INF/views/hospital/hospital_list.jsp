@@ -126,7 +126,7 @@
 				for(var i in data){
 					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a><br>';
 					hospital_list +='<table class="table table-hover"><tr>';
-					hospital_list +='<td width="200"><img alt="병원사진영역" style="border-radius: 10%;" src="img/'+data[i].hos_img+'"width="200" height="200"></td>';
+					hospital_list +='<td width="200"><img alt="병원사진영역" style="border-radius: 10%;" src="img/hospital/'+data[i].hos_img+'"width="200" height="200"></td>';
 					hospital_list +='<td width="400">'+data[i].hos_content+'</td>';
 					hospital_list +='<td width="100"><a href="hos_wishlist.do?hos_num='+data[i].hos_num+'&hospital_link=hospital_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					//<a href="booking_hos.do?hos_num='+data[i].hos_num+'"><input type="button" value="예약"></a>

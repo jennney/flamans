@@ -289,9 +289,9 @@ function wishlistresult(){
 					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_name+'</a></td>';
 				}data_hos += '</tr></table>';
 				
-				data_hos+= '<table class="table" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔사진</h3></td>';
+				data_hos+= '<table class="table" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>병원사진</h3></td>';
 				for( var i=data.hos.length-1; i>=0; i-- ){
-					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+'<img src="img/'+data.hos[i].hos_img+'" class="wishlistimg" width=200 height=200></a></td>';
+					data_hos += '<td width="200" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+'<img src="img/hospital/'+data.hos[i].hos_img+'" class="wishlistimg" width=200 height=200></a></td>';
 				}data_hos += '</tr></table>';
 				
 				data_hos+= '<table class="table" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>병원정보</h3></td>';
@@ -326,7 +326,7 @@ function wishlistresult(){
 				
 				data_hot+= '<table class="table" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔사진</h3></td>';
 				for( var i=data.hot.length-1; i>=0; i-- ){
-					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+'<img src="img/'+data.hot[i].hot_img+'" class="wishlistimg" width=120 height=140></a></td>';
+					data_hot += '<td width="200" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+'<img src="img/hotel/'+data.hot[i].hot_img+'" class="wishlistimg" width=120 height=140></a></td>';
 				}data_hot += '</tr></table>';
 				
 				data_hot+= '<table class="table" border="1" height="150" cellspacing="0"><tr align="center"><td width="150"><h3>호텔정보</h3></td>';

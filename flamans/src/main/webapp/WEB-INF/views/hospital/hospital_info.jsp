@@ -222,7 +222,7 @@ $(document).ready(function(){
 					hospital_list += '';
 					hospital_list +='<a href="hospital_get_info.do?hos_num='+data[i].hos_num+'"><h2 align="left">'+data[i].hos_name+'</h2></a><br/>';
 					hospital_list +='<table class="table table-hover"><tr>';
-					hospital_list +='<td width="200"><img alt="병원사진영역" src="img/'+data[i].hos_img+'"width="200" height="200"></td>';
+					hospital_list +='<td width="200"><img alt="병원사진영역" src="img/hospital/'+data[i].hos_img+'"width="200" height="200"></td>';
 					hospital_list +='<td width="400">'+data[i].hos_content+'</td>';
 					hospital_list +='<td width="100"><a href="hos_wishlist.do?hos_num='+data[i].hos_num+'&hospital_link=hospital_list.do"><input type="button" class="btn btn-default" value="♥"></a>';
 					//<a href="booking_hos.do?hos_num='+data[i].hos_num+'"><input type="button" value="예약"></a>
@@ -539,7 +539,7 @@ $(document).ready(function(){
 
 					<table border="0" width="700" class="table">
 						<tr>
-							<td width="300"><img alt="병원사진영역" src="img/${hospital_info.hos_img }" width="300" height="300"></td>
+							<td width="300"><img alt="병원사진영역" src="img/hospital/${hospital_info.hos_img }" width="300" height="300"></td>
 							<td width="400" valign="top" rowspan="1">${hospital_info.hos_content }</td>
 						</tr>
 
