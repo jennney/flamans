@@ -281,6 +281,7 @@ function docInfo(doc_num){
 }
 #doc{
 	width:260px;
+	border: 1px solid black;
 	text-align: center;
 	font:15px/1.0 맑은 고딕;
 }
@@ -416,9 +417,10 @@ textarea{
 		    <fieldset>
 		    <legend></legend>
 				<c:forEach var="doctor" items="${doc}">
-					<div id="doc"><img src="img/hospital/doctor/${doctor.doc_img }" width="50" height="50">
-						<label style="width:100px;">${doctor.doc_name }</label>
-						<label id="do"><button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></label>
+					<div id="doc"><div style="width:80px; height:50px; border: 1px solid red;"><img src="img/hospital/doctor/${doctor.doc_img }" style="width:50px; height:50px;"></div>
+						<div style="width:100px; height:50px; border: 1px solid yellow;">
+							<label id="do">${doctor.doc_name }<button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></label>
+						</div>
 					</div>		
 				</c:forEach>
 			</fieldset>		

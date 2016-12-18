@@ -12,13 +12,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
-
-
 	   //Default Action
 	      $(".tab_content").hide(); //Hide all content
 	      $("ul.tabs li:first").addClass("active").show(); //Activate first tab
 	      $(".tab_content:first").show(); //Show first tab content
 	      wishlist();
+	      
 	   //On Click Event
 	   $("ul.tabs li").click(function() {
 	      $("ul.tabs li").removeClass("active"); //Remove any "active" class
@@ -28,7 +27,6 @@ $(document).ready(function() {
 	         $(activeTab).fadeIn(); //Fade in the active content
 	         return false;
 	   });
-	      
 	});
 $(document).ready(function kkkkk(){
 	var id='kCalendar';
@@ -216,7 +214,7 @@ function wishlistresult(){
 				// 병원 비교 추가
 				
 				for( var i=data.hos.length-1; i>=0; i-- ){
-					data_hos += '<table class="table table-hover" style="border: 3px solid teal;" border="0" height="30" cellspacing="0"><tr align="center">';
+					data_hos += '<table style="border: 3px solid #4C4C4C; border-radius: 10px;" width="300" height="110" cellspacing="0"><tr align="center">';
 					data_hos += '<td width="100" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+'<img src="img/'+data.hos[i].hos_img+'" width=100 height=90></a></td>';
 					data_hos += '<td><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_name+'<br><br><br>'+data.hos[i].hos_wishdate+'</a></td></tr>';
 					data_hos += '</table>';
@@ -224,7 +222,7 @@ function wishlistresult(){
 				
 				// 호텔 비교 추가
 				for( var i=data.hot.length-1; i>=0; i-- ){
-					data_hot += '<table class="table table-hover" style="border: 3px solid teal;" border="0" height="30" cellspacing="0"><tr align="center">';
+					data_hot += '<table style="border: 3px solid #4C4C4C; border-radius: 10px;" width="300" height="110" cellspacing="0"><tr align="center">';
 					data_hot += '<td width="100" align="center"><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+'<img src="img/'+data.hot[i].hot_img+'" width=100 height=90></a></td>';
 					data_hot += '<td><a href="hotel_get_info.do?hot_num='+data.hot[i].hot_num+'">'+data.hot[i].hot_name+'<br><br><br>'+data.hot[i].hot_wishdate+'</a></td></tr>';
 					data_hot += '</table>';

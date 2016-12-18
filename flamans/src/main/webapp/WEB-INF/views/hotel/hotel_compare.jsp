@@ -37,7 +37,7 @@ body * {
   max-width: calc(100% - 2em);
   margin: 1em auto;
   overflow: hidden;
-  width: 800px;
+  width: 1000px;
 }
 
 table {
@@ -180,7 +180,7 @@ table tr:nth-child(2n+1) {
 <style type="text/css">
 
 .container {
-	width: 900px; margin: 10px auto;
+	width: 1300px; margin: 10px auto;
 }
 
 ul.tabs {

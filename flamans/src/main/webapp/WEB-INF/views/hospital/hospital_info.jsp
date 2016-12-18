@@ -236,7 +236,7 @@ $(document).ready(function(){
 				var hos_infoarea = document.getElementById('hospitalinfoarea');
 				var hos_pagename = document.getElementById('hos_pagename');
 				
-				var hospital_list2  = '<div style="border: 3px solid #FFA7A7; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">';
+				var hospital_list2  = '<div style="border: 3px solid #4C4C4C; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">';
 					hospital_list2 += hospital_list;
 					hospital_list2 += '</div>';
 					
@@ -409,7 +409,7 @@ $(document).ready(function(){
 
 		<div style="width: 1000px;">
 
-			<div style="border: 3px solid #FFA7A7; border-radius: 5%; width: 270px; float: left; white-space: nowrap; margin: 0px center;">
+			<div style="border: 3px solid #4C4C4C; border-radius: 5%; width: 270px; float: left; white-space: nowrap; margin: 0px center;">
 				<form name="hos_option_select" action="hotel_sub_search.do">
 
 					<table border="0" class="hospital_sub_search" cellspacing="0" width="150">
@@ -506,7 +506,7 @@ $(document).ready(function(){
 			</div>
 			
 			<div id="hospitalinfoarea">
-			<div style="border: 3px solid #FFA7A7; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">
+			<div style="border: 3px solid #4C4C4C; border-radius: 1%; width: 700px; float: right; margin-left: 0px auto;">
 
 				<c:if test="${empty hospital_info }">
 					<li>---- 병원이 없습니다. ----</li>
@@ -536,21 +536,21 @@ $(document).ready(function(){
 					<table border="0" width="700" class="table">
 						<tr>
 							<td width="300"><img alt="병원사진영역" src="img/${hospital_info.hos_img }" width="300" height="300"></td>
-							<td width="400" valign="top" rowspan="2">${hospital_info.hos_content }</td>
+							<td width="400" valign="top" rowspan="1">${hospital_info.hos_content }</td>
 						</tr>
 
 						<tr>
-							<td width="300">
+							<td width="300" colspan="2">
 							<input type="hidden" name="hos_addr" value="${hospital_info.hos_addr}" id="hos_addr">
 								<div id="container" class="view_map">
 									<div id="mapWrapper"
-										style="width: 300px; height: 300px; position: relative;">
-										<div id="map" style="width: 300px; height: 100%"></div>
+										style="width: 680px; height: 300px; position: relative;">
+										<div id="map" style="width: 680px; height: 100%"></div>
 										<input type="button" id="btnRoadview"
 											onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰">
 									</div>
 									<div id="rvWrapper"
-										style="width: 300px; height: 300px; position: absolute; top: 0; left: 0;">
+										style="width: 680px; height: 300px; position: absolute; top: 0; left: 0;">
 										<div id="roadview" style="height: 100%"></div>
 										<input type="button" id="btnMap" onclick="toggleMap(true)"
 											title="지도 보기" value="지도">
@@ -570,7 +570,7 @@ $(document).ready(function(){
 
 								<tr>
 									<td width="100"><img alt="의사사진"
-										src="img/${hospital_doclist.doc_img }" width="100"
+										src="img/hospital/doctor/${hospital_doclist.doc_img }" width="100"
 										height="100"></td>
 									<td width="500">이름: ${hospital_doclist.doc_name }<br />
 										학력: ${hospital_doclist.doc_level }<br /> 경력:
@@ -626,6 +626,7 @@ $(document).ready(function(){
 				<c:forEach var="hospital_comment" items="${hospital_comment }">
 					<div class="container" style="width: 700px;">
 						<table class="table" style="float: left;">
+						
 							<thead>
 								<tr>
 									<th width="100">[작성자]</th>
@@ -634,15 +635,16 @@ $(document).ready(function(){
 									<th width="100">[작성일]</th>
 								</tr>
 							</thead>
-
+							
 							<tbody>
 								<tr>
 									<td>${hospital_comment.c_writer }</td>
 									<td>${hospital_comment.c_grade }</td>
-									<td>${hospital_comment.c_comment }</td>
+									<td>${hospital_comment.c_coment}</td>
 									<td>${hospital_comment.c_date }</td>
 								</tr>
 							</tbody>
+							
 						</table>
 					</div>
 					<br />

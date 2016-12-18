@@ -6,18 +6,18 @@ public class HotCommentGradeDTO {
 	
 	private String c_number;
 	private int c_grade;
-	private String c_comment;
+	private String c_coment;
 	private String c_writer;
 	private java.sql.Date c_date;
 	
 	public HotCommentGradeDTO() {
 		super();
 	}
-	public HotCommentGradeDTO(String c_number, int c_grade, String c_comment, String c_writer, Date c_date) {
+	public HotCommentGradeDTO(String c_number, int c_grade, String c_coment, String c_writer, Date c_date) {
 		super();
 		this.c_number = c_number;
 		this.c_grade = c_grade;
-		this.c_comment = c_comment;
+		this.c_coment = c_coment;
 		this.c_writer = c_writer;
 		this.c_date = c_date;
 	}
@@ -33,11 +33,11 @@ public class HotCommentGradeDTO {
 	public void setC_grade(int c_grade) {
 		this.c_grade = c_grade;
 	}
-	public String getC_comment() {
-		return c_comment;
+	public String getC_coment() {
+		return c_coment;
 	}
-	public void setC_comment(String c_comment) {
-		this.c_comment = c_comment;
+	public void setC_coment(String c_coment) {
+		this.c_coment = c_coment;
 	}
 	public String getC_writer() {
 		return c_writer;

@@ -3,24 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>     
 <!DOCTYPE html>
 <html>
-<style >
-table {
-   margin: 0px auto;
-   border-spacing: 10px;
-}
-h2{
-   text-align: center;
-}
-.all{
-	border-bottom: 1.5px solid black;
-	border-top : 0px;
-	border-left : 0px;
-	border-right: 0px;
-}
-.star{
-	color: #FF0000;
-}
-</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -222,6 +204,24 @@ function yearmonth(){
 }
 
 </script>
+<style >
+table {
+   margin: 0px auto;
+   border-spacing: 10px;
+}
+h2{
+   text-align: center;
+}
+.all{
+	border-bottom: 1.5px solid black;
+	border-top : 0px;
+	border-left : 0px;
+	border-right: 0px;
+}
+.star{
+	color: #FF0000;
+}
+</style>
 </head>
 <body onLoad="SetToToday('FirstSelect');">
 <%@ include file="/WEB-INF/views/header.jsp"%>
