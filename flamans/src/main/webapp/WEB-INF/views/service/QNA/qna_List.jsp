@@ -8,6 +8,14 @@
 <title>QNA</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
+#img{
+width: 10px;
+height: 12px;
+}
+#img1{
+width: 20px;
+height: 12px;
+}
 #qn_list{
    width: 700px;
    margin: 0px auto;
@@ -211,14 +219,14 @@ a:LINK {
 				<td id="qna_listtd">${qnaList.qna_item}</td>
 				<td id="qna_listtd1">
 				<c:forEach begin="1" end="${qnaList.lev}" step="1">
-					&nbsp;&nbsp;<img src="img/ico_re.gif" alt="답변" width="10px" height="12px">
+					&nbsp;&nbsp;<img src="img/ico_re.gif" alt="답변" id="img1">
 				</c:forEach>
 				<c:choose>
 					<c:when test="${qnaList.qna_secret eq 'open'}">
 						<a href="qna_Content.do?qna_idx=${qnaList.qna_idx}">${qnaList.qna_subject}</a>
 					</c:when>
 					<c:when test="${qnaList.qna_secret eq 'secret'}">
-						<img src="img/icon_lock.gif" alt="자물쇠" height="12px"> 
+						<img src="img/icon_lock.gif" alt="자물쇠" id="img"> 
 						<a href="qna_PwdContent.do?qna_idx=${qnaList.qna_idx}&qna_kind=${qnaList.qna_kind}">${qnaList.qna_subject}</a>
 					</c:when>
 				</c:choose>
