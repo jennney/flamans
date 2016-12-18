@@ -6,7 +6,7 @@
 			<div class="col-sm-2"></div>
 			<div class="col-sm-2"><a href="#">이용약관</a></div>
 			<div class="col-sm-1"></div>
-			<div class="col-sm-2"><a href="company_login.do">관계자 페이지</a></div>
+			<div class="col-sm-2"></div>
 			<div class="col-sm-1"></div>
 			<div class="col-sm-2"><div id="google_translate_element"></div>
 		<script type="text/javascript">
