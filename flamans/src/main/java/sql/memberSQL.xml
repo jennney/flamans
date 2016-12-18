@@ -105,6 +105,6 @@
 			fm_hot_book
 		where 
 			name=#{name} and (to_char(checkin,'yyyy-MM-DD')) like ''||#{date}||'%'
-             or (to_char(checkout,'yyyy-MM-DD')) like ''||#{date}||'%'
+             or name=#{name} and  (to_char(checkout,'yyyy-MM-DD')) like ''||#{date}||'%'
 	</select>
 </mapper>
