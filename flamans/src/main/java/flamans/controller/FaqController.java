@@ -141,6 +141,7 @@ public class FaqController {
 		mav.addObject("list", list);
 		mav.addObject("count",totalCnt);
 		mav.addObject("findValue",findValue);
+		mav.addObject("shap","#");
 		mav.addObject("page",faq_page);
 		mav.setViewName("service/FAQ/faq_Find_admin");
 		return mav;

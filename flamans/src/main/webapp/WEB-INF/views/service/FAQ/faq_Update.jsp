@@ -18,6 +18,7 @@
 }
 #faq_wrth1,#faq_wrth2{
 	width: 200px;
+	text-align: center;
 }
 #faq_wrtd1,#faq_wrtd2{
 	width: 500px;
@@ -66,12 +67,12 @@ h2{
 			<table id="faq_wr">
 				<tr>
 					<th id="faq_wrth1">SUBJECT</th>
-					<td id="faq_wrtd1"><input type="text" name="faq_subject" size="70" value="${fdto.faq_subject}"></td>
+					<td id="faq_wrtd1"><input type="text" name="faq_subject" size="70" value="${fdto.faq_subject}" class="form-control" placeholder="제목을 입력하세요"></td>
 				</tr>
 				<tr>
 					<th id="faq_wrth2">ITME</th>
 					<td colspan="1" id="faq_wrtd2">
-						<select name="faq_item">
+						<select name="faq_item" class="form-control" style="width: 100px;">
 							<option value="hospital"${fdto.faq_item eq 'hospital'?"selected":""}>병원</option>
 							<option value="hotel" ${fdto.faq_item eq 'hotel'?"selected":""}>호텔</option>
 							<option value="member" ${fdto.faq_item eq 'member'?"selected":""}>회원서비스</option>
@@ -80,13 +81,14 @@ h2{
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea name="faq_content" id="tx">${fdto.faq_content}</textarea></td>
+					<td colspan="2"><textarea name="faq_content" id="tx" class="form-control">${fdto.faq_content}</textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2" id="faq_wrtd3">
 						<input type="hidden" name="faq_idx" value="${fdto.faq_idx}">
 						<input type="checkbox" value="on" name = "faq_checked" ${fdto.faq_checked eq 'on'?"checked":""}>BEST 등록   
-						<input type="submit" value="작성하기">   <input type="reset" value="다시쓰기">
+						<button type="submit" class="btn btn-default">수정</button>
+					   <button type="reset" class="btn btn-default">다시쓰기</button>
 					</td>
 				</tr>
 			</table>

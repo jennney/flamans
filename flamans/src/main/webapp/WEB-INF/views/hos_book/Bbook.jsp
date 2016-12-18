@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -227,6 +227,7 @@ function docInfo(doc_num){
 }
 
 </script>
+<%@ include file="/WEB-INF/views/header.jsp"%>    
 <style>
 #cc:LINK{
 	color:black;
@@ -280,6 +281,7 @@ function docInfo(doc_num){
 }
 #doc{
 	width:260px;
+	border: 1px solid black;
 	text-align: center;
 	font:15px/1.0 맑은 고딕;
 }
@@ -299,11 +301,21 @@ textarea{
 	float: right;
 }
 </style>
-</head>
 
+</head>	
 <body>
-<%@ include file="/WEB-INF/views/header.jsp"%>	
-<h2 style="text-align: center;">병원 예약</h2>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Hospital</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 50px;">
 	<div id="b" class="well well-lg">
 	<form class="form-inline" name="bBook" action="bBook.do" method="post">
 	<div id="a">
@@ -405,9 +417,10 @@ textarea{
 		    <fieldset>
 		    <legend></legend>
 				<c:forEach var="doctor" items="${doc}">
-					<div id="doc"><img src="img/hospital/doctor/${doctor.doc_img }" width="50" height="50">
-						<label style="width:100px;">${doctor.doc_name }</label>
-						<label id="do"><button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></label>
+					<div id="doc"><div style="width:80px; height:50px; border: 1px solid red;"><img src="img/hospital/doctor/${doctor.doc_img }" style="width:50px; height:50px;"></div>
+						<div style="width:100px; height:50px; border: 1px solid yellow;">
+							<label id="do">${doctor.doc_name }<button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></label>
+						</div>
 					</div>		
 				</c:forEach>
 			</fieldset>		
@@ -416,7 +429,7 @@ textarea{
 		</form>	
     
 	</div>
-
+</div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

@@ -118,7 +118,7 @@ a:LINK {
 		<tfoot>
 			<tr>
 				<td colspan="4" align="center" id="qna_listtd7">
-				<ul class="pagination pagination-lg">
+				<ul class="pagination">
 				<li>${qna_page}</li>
 				</ul>
 				</td>

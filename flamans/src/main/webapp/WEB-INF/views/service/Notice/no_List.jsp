@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Notice</title>
+<link href="mypage/assets/css/bootstrap.css" rel="stylesheet" />
 <style>
 #no_list {
 	width: 700px;
@@ -48,7 +49,14 @@
 .a{
 	padding: 50px;
 }
-
+.b{
+	border-bottom: 1px solid #ff432f;
+	border-top : 1px solid #ff432f;
+	border-left : 1px solid #ff432f;
+	border-right: 1px solid #ff432f;
+	height: 34px;
+	width: 300px;
+}
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script>
@@ -83,7 +91,7 @@
 				<td colspan="4" align="right">
 					<form name="no_find" action="no_List.do" method="post" onsubmit="return check()" role="form">
 							<div class="form-group input-group">
-								<select name="findKey" class="form-control" style="width: 100px;">
+								<select name="findKey" style="width: 100px; height: 34px;">
 									<option value="all" ${findKey eq 'all'?"selected":""}>- 전체
 										-</option>
 									<option value="no_content" ${findKey eq 'no_content'?"selected":""}>
@@ -91,7 +99,7 @@
 									<option value="no_subject" ${findKey eq 'no_subject'?"selected":""}>
 										제목</option>
 								</select>
-								<input type="text" class="form-control" style="width: 200px; float: right;"name="findValue" value="${findValue}">
+								<input type="text" name="findValue" value="${findValue}" placeholder="검색어를 입력하세요" class="b">
 						    	<span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button></span>
 						    </div>
 					</form>

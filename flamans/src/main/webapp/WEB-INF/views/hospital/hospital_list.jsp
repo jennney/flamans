@@ -268,14 +268,12 @@
 	}
 	
 </script>
-
+<%@ include file="../header.jsp" %>
 </head>
 <body>
-<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
+<div class="container" align="center" style="margin-bottom: 50px; background-image: url('img/background5.jpg');">
 
-		<%@ include file="../header.jsp" %>
-		
-		<table style="margin: 0px auto;">
+		<table style="margin: 0px auto; margin-top: 50px;">
 			<tr>
 				<td align="center"><h2>검색된 병원 리스트</h2><br/></td>
 			</tr>

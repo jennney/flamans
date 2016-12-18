@@ -161,7 +161,7 @@ function HbookContent(bookingnum){
 	<div id="page-wrapper">
 <section>
 	<div id="header">
-		<div id="kCalendar" class="form-control">
+		<div id="kCalendar" class="form-control" style="margin: 10px auto;">
 		<div id="header"><input type="month" id="Hdate" onchange="HbookDate()"></div>
 			<table id="calen" >
 				<thead>

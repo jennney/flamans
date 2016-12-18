@@ -7,52 +7,48 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.accordion_sub {
-	display: none;
+#title1{
+	color: red;
+	font-size: 50px;
 }
-
-.accordion_title {
-	border-bottom: 1px solid;
-	width: 500px;
-}
-
-.accordion_sub {
-	width: 500px;
+#title2{
+	color: black;
+	font-size: 50px;
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$(".accordion_banner .accordion_title").click(function() {
-			if ($(this).next("div").is(":visible")) {
-				$(this).next("div").slideUp("fast");
-			} else {
-				$(".accordion_banner .accordion_sub").slideUp("fast");
-				$(this).next("div").slideToggle("fast");
-			}
-		});
-
-	});
-</script>
 </head>
 <body>
 <div id="wrapper">
 <%@ include file="/WEB-INF/views/myIndex.jsp"%>
 	<div id="page-wrapper">
-		${findValue}에 대해 총 ${count}건의 FAQ가 검색되었습니다.
-		<div class="accordion_banner">
-		<c:forEach var="list" items="${list}">
-			<div class="accordion_title">${list.faq_subject}
-				<c:if test="${sessionScope.permit eq 1}">
-					<a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img alt="삭제" src="img/trash-can.png"></a>
-					<a href="faq_Update.do?faq_idx=${list.faq_idx}"><img alt="수정" src="img/cog.png"></a>
-				</c:if>
-			</div>
-			<div class="accordion_sub">${list.faq_content}</div>
-		</c:forEach>
-		${page}
-		</div>
-	</div>
+	<span id="title1">"${findValue}"</span> <span id="title2">에 대해 총 ${count}건의 FAQ가 검색되었습니다.</span>
+		<div class="panel panel-default" id="a">
+        <div class="panel-heading">
+        	<h3>검색된 질문</h3>
+        </div>
+        <div class="panel-body">
+        	<c:if test="${empty list}">
+			등록된 글이 없습니다.
+			</c:if>
+	        <div class="panel-group" id="accordion">
+	        <c:forEach var="list" items="${list}">
+	            <div class="panel panel-default">
+	                <div class="panel-heading">
+	                    <h4 class="panel-title">
+	                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${list.faq_idx}" class="collapsed">${list.faq_subject}</a>
+	                    </h4>
+	                </div>
+	                <div id="${list.faq_idx}" class="panel-collapse collapse" style="height: 0px;">
+	                    <div class="panel-body">
+	                    	${list.faq_content}
+	                    </div>
+	                </div>
+	            </div>
+	        </c:forEach>
+	        </div>
+    	</div>
+    	</div>
+    </div>
 </div>
 </body>
 </html>

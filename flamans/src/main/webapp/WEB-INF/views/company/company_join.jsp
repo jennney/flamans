@@ -2,7 +2,99 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/httpRequest.js"></script>
 <link rel = "stylesheet" type = "text/css" href="css/mainLayout.css">
+<script>
+function id_check() {
+	var cm_id = document.company_join.cm_id.value;
+	var params = 'cm_id=' + cm_id;
+	sendRequest('company_id_check.do', params, idCheckResult, 'POST');
+}
+
+function idCheckResult() {
+	if (XHR.readyState == 4) {
+		if (XHR.status == 200) {
+			var data = XHR.responseText;
+			var spanTag = document.getElementById('companyMsg');
+			spanTag.innerHTML = data;
+		}
+	}
+}
+
+function pwdCheck() {
+	var m_pwd = document.company_join.cm_pwd.value;
+	if (m_pwd.length < 6) {
+		var spanTag2 = document.getElementById('pwdMsg');
+		spanTag2.innerHTML = '비밀번호는 6자 이상이어야 합니다.';
+		document.company_join.cm_pwd_check.value = '';
+	}
+	if (m_pwd.length > 5) {
+		var spanTag2 = document.getElementById('pwdMsg');
+		spanTag2.innerHTML = '';
+		document.company_join.cm_pwd_check.value = '인증완료';
+	}
+}
+
+function email3(userinput) {
+	var selval = userinput.selEmail.value;
+	if (selval == "") {
+		//직접선택이면 메일란을 보인다.
+		userinput.email2.style.display = 'inline';
+		userinput.email2.value = "";
+		userinput.email2.focus();
+	} else {
+		//콤보에서 선택하는 경우에는 메일주소 입력란을 안보이게 하고 메일주소란에 선택 메일주소를 넣어준다.
+		userinput.email2.style.display = 'none';
+		userinput.email2.value = selval;
+	}
+}
+
+function openEmail() {
+
+	var email = document.company_join.email1.value;
+	email += '@';
+	email += document.company_join.email2.value;
+	document.company_join.cm_email.value = email;
+
+	var params = 'email=' + email;
+	sendRequest('m_emailCheck.do', params, emailCheckResult, 'GET');
+}
+
+var data_cglobal = null;
+
+function emailCheckResult() {
+	if (XHR.readyState == 4) {
+		if (XHR.status == 200) {
+			var data = XHR.responseText;
+			data = data.trim();
+			/* document.member_join.m_email.value=data;
+			window.alert(data); */
+			data_cglobal = data;
+			window.alert('이메일을 발송하였습니다.');
+		}
+	}
+}
+
+function emailCheckOk() {
+	var number = document.getElementById("emailCheck");
+	var verification = data_cglobal;
+
+	if (number.value == '') {
+		window.alert('인증번호를 입력하세요');
+		return;
+	} else if (number.value != verification) {
+		window.alert('틀린번호입니다. 인증번호를 다시 입력하세요.');
+		number.value = '';
+	} else if (number.value == verification) {
+		window.alert('인증완료');
+		document.company_join.email_check.value = '인증완료';
+		window.self.close();
+	}
+}
+</script>
 <style >
 table {
    margin: 0px auto;
@@ -21,115 +113,21 @@ h2{
 	color: #FF0000;
 }
 </style>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="js/httpRequest.js"></script>
-<script>
-	function id_check() {
-		var cm_id = document.company_join.cm_id.value;
-		var params = 'cm_id=' + cm_id;
-		sendRequest('company_id_check.do', params, idCheckResult, 'POST');
-	}
-
-	function idCheckResult() {
-		if (XHR.readyState == 4) {
-			if (XHR.status == 200) {
-				var data = XHR.responseText;
-				var spanTag = document.getElementById('companyMsg');
-				spanTag.innerHTML = data;
-			}
-		}
-	}
-
-	function pwdCheck() {
-		var m_pwd = document.company_join.cm_pwd.value;
-		if (m_pwd.length < 6) {
-			var spanTag2 = document.getElementById('pwdMsg');
-			spanTag2.innerHTML = '비밀번호는 6자 이상이어야 합니다.';
-			document.company_join.cm_pwd_check.value = '';
-		}
-		if (m_pwd.length > 5) {
-			var spanTag2 = document.getElementById('pwdMsg');
-			spanTag2.innerHTML = '';
-			document.company_join.cm_pwd_check.value = '인증완료';
-		}
-	}
-
-	function email3(userinput) {
-		var selval = userinput.selEmail.value;
-		if (selval == "") {
-			//직접선택이면 메일란을 보인다.
-			userinput.email2.style.display = 'inline';
-			userinput.email2.value = "";
-			userinput.email2.focus();
-		} else {
-			//콤보에서 선택하는 경우에는 메일주소 입력란을 안보이게 하고 메일주소란에 선택 메일주소를 넣어준다.
-			userinput.email2.style.display = 'none';
-			userinput.email2.value = selval;
-		}
-	}
-
-	function openEmail() {
-
-		var email = document.company_join.email1.value;
-		email += '@';
-		email += document.company_join.email2.value;
-		document.company_join.cm_email.value = email;
-
-		var params = 'email=' + email;
-		sendRequest('m_emailCheck.do', params, emailCheckResult, 'GET');
-	}
-	var data_global = null;
-	function emailCheckResult() {
-		if (XHR.readyState == 4) {
-			if (XHR.status == 200) {
-				var data = XHR.responseText;
-				data = data.trim();
-				/* document.member_join.m_email.value=data;
-				window.alert(data); */
-				data_global = data;
-				window.alert('이메일을 발송하였습니다.');
-			}
-		}
-	}
-
-	function emailCheckOk() {
-		var number = document.getElementById("emailCheck");
-		var verification = data_global;
-
-		if (number.value == '') {
-			window.alert('인증번호를 입력하세요');
-			return;
-		} else if (number.value != verification) {
-			window.alert('틀린번호입니다. 인증번호를 다시 입력하세요.');
-			number.value = '';
-		} else if (number.value == verification) {
-			window.alert('인증완료');
-			document.company_join.email_check.value = '인증완료';
-			window.self.close();
-		}
-		function yearmonth() {
-
-			Month = document.getElementById("Month");
-			Year = document.getElementById("Year");
-			Day = document.getElementById("Day");
-
-			var cm_birthday = Year.value + Month.value + Day.value;
-
-			document.company_join.cm_birthday.value = cm_birthday;
-
-		}
-	}
-</script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
-<section>
-<div class="container">
-	<div class="center">
-	   <h2>회원가입</h2>
-	</div>
+<div class="page-header">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>개인회원</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 50px;">
 
 	<form name="company_join" action="company_join.do" method="post">
 		<table>
@@ -178,10 +176,9 @@ h2{
 				<button class="btn btn-default" value="인증메일 보내기" onclick="openEmail()">인증메일 보내기</button></td>
 			</tr>
 			<tr >
-				<td style="padding-left: 149px; padding-top: 20px;" colspan="4"><input id="emailCheck" type="text" name="numberCheck"
-					placeholder="인증번호 7자리입력" class="all">
-					<input type="hidden"
-					name="email_check" > 
+				<td style="padding-left: 149px; padding-top: 20px;" colspan="4">
+				<input id="emailCheck" type="text" name="numberCheck" placeholder="인증번호 7자리입력" class="all">
+					<input type="hidden" name="email_check" > 
 				<button class="btn btn-default" value="인증확인" onclick="emailCheckOk()" >인증확인</button>
 			</tr>
 			<tr>
@@ -190,11 +187,11 @@ h2{
 			</tr>
 		</table>
 		<p align="center" style="padding-top: 20px;">
-		<button class="btn btn-default" type="reset" value="다시 작성">다시 작성</button> <button class="btn btn-default" type="submit" value="회원 가입">회원 가입</button>
+		<button class="btn btn-default" type="reset" value="다시 작성">다시 작성</button>
+		<button class="btn btn-default" type="submit" value="회원 가입">회원 가입</button>
 		</p>
 	</form>
 	</div>
-</section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

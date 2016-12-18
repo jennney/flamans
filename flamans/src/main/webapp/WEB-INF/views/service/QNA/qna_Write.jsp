@@ -26,6 +26,7 @@
 #qna_wrth1 {
 	width: 200px;
 	border-right: 3px solid #BDBDBD;
+	height: 30px;
 }
 
 #qna_wrtd1 {
@@ -127,10 +128,14 @@
 	background: #F6F6F6;
 }
 
-h2 {
-	text-align: center;
+.all{
+	border-bottom: 0px;
+	border-top : 0px;
+	border-left : 0px;
+	border-right: 0px;
+	width: 500px;
+	background: #F6F6F6;
 }
-
 #star {
 	color: red;
 }
@@ -218,7 +223,7 @@ h2 {
 		<table id="qna_wr">
 			<tr>
 				<th id="qna_wrth1">SUBJECT</th>
-				<td id="qna_wrtd1"><input type="text" name="qna_subject" class="form-control"></td>
+				<td id="qna_wrtd1"><input type="text" name="qna_subject" class="all" placeholder="제목을 입력하세요"></td>
 			</tr>
 			<tr>
 				<th id="qna_wrth5">WRITER</th>
@@ -237,7 +242,7 @@ h2 {
 				<th id="qna_wrth6">ITEM</th>
 				<td id="qna_wrtd6"><c:choose>
 						<c:when test="${qna_kind eq 'site'}">
-							<select name="qna_item" onchange="qna_select()" id="qna_item" class="form-control" style="width: 150px;">
+							<select name="qna_item" onchange="qna_select()" id="qna_item" style="width: 200px;">
 								<option value="all">- 전체 -</option>
 								<option value="meminfo">회원정보</option>
 								<option value="memgroup">단체회원</option>
@@ -249,7 +254,7 @@ h2 {
 						</c:when>
 						<c:when test="${qna_kind eq 'hospital'}">
 						<div class="form-group">
-							<select name="qna_item" onchange="qna_select()" id="qna_item" class="form-control col-xs-3" style="width: 150px;">
+							<select name="qna_item" onchange="qna_select()" id="qna_item" style="width: 200px;">
 								<option value="all">- 전체 -</option>
 								<option value="cosmetic">성형문의</option>
 								<option value="hosbooking">예약문의</option>
@@ -261,7 +266,7 @@ h2 {
 						</div>
 						</c:when>
 						<c:when test="${qna_kind eq 'hotel'}">
-							<select name="qna_item" onchange="qna_select()" id="qna_item" class="form-control col-xs-3" style="width: 150px;">
+							<select name="qna_item" onchange="qna_select()" id="qna_item" style="width: 200px;">
 								<option value="all">- 전체 -</option>
 								<option value="hotbooking">예약문의</option>
 								<option value="room">룸 문의</option>
@@ -278,7 +283,7 @@ h2 {
 			</tr>
 			<tr>
 				<th id="qna_wrth61">비밀번호</th>
-				<td id="qna_wrtd61"><input type="password" name="qna_pwd" class="form-control"></td>
+				<td id="qna_wrtd61"><input type="password" name="qna_pwd" class="all" placeholder="비밀번호를 입력하세요"></td>
 			</tr>
 			<tr>
 				<th id="qna_wrth6">비밀글설정</th>
