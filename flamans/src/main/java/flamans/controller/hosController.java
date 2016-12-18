@@ -311,7 +311,7 @@ public class hosController {
 			hos_num=(String)session.getAttribute("cm_number");
 		}		
 		List<BbookDTO> cal=Bdao.calendar(hos_num, date);
-		System.out.println("컨트롤러"+cal.get(0).getDoc_num());
+		
 		ModelAndView mav=new ModelAndView("flamansJson", "cal", cal);
 		return mav;
 		
