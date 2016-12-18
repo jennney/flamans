@@ -42,7 +42,7 @@
 			<td>${dto.e_date}</td>
 		</tr>
 		<tr>
-			<td colspan="4"><a href="event_user_content.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}" width="800px" height="400px"></a></td>
+			<td colspan="4"><a href="event_user_content2.do?e_idx=${dto.e_idx}"><img src="img/${dto.e_img}" width="800px" height="400px"></a></td>
 		</tr>
 	</c:forEach>
 	<tr>
