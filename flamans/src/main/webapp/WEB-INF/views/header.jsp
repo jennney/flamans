@@ -155,8 +155,8 @@ function hoswishresult(){
 	                <li>
 	                	<a href="#">Event</a>
 	                    <ul class="dropdown">
-	                        <li><a href="event_user_list.do?e_item=1">On going Event</a></li>
-	                        <li><a href="event_user_list.do?e_item=2">Finished Event</a></li>
+	                        <li><a href="event_user_list1.do?e_item=1">On going Event</a></li>
+	                        <li><a href="event_user_list2.do?e_item=2">Finished Event</a></li>
 	                    </ul>
 	                </li>
 	                <li>
