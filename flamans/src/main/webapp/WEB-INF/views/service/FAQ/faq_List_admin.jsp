@@ -51,6 +51,17 @@
     cursor: pointer;
     color: white;
 }
+.my-faq-search_write{
+
+    background: #0073e9;
+    height: 44px;
+    border: 1px solid #0070cc;
+    border-bottom-color: #0165b8;
+    margin-left: 4px;
+    cursor: pointer;
+    color: white;
+
+}
 </style>
 </head>
 <body>
@@ -65,10 +76,10 @@
                     </label>
                 </div>
                 <input type="text" id="myFaqSearchInput" class="my-faq-search__input my-col" name="findValue">
-				<button type="submit" class="my-faq-search__submit my-col">검색
-                </button>
+				<button type="submit" class="my-faq-search__submit my-col">검색</button>
+                <button type="button" class="my-faq-search_write my-col" onclick="location.href='faq_Write.do'">작성하기</button>
 			</div>
-			</form>	
+			</form>
 	    </div>
 		<div class="panel panel-default" id="a">
         <div class="panel-heading">
@@ -117,10 +128,12 @@
 				        <c:forEach var="list" items="${list}">
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
-				                    <h4 class="panel-title">
+				                   <h4 class="panel-title co col-lg-6">
 				                    <c:set var="all" value="1"/>
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${all}${list.faq_idx}" class="collapsed">${list.faq_subject}</a>
 				                    </h4>
+				                    <a href="faq_Delete.do?faq_idx=${list.faq_idx}"><img src="img/trash-can.png" alt="삭제"></a>
+				                    <a href="faq_Update.do?faq_idx=${list.faq_idx}"><img src="img/cog.png" alt="수정"></a>
 				                </div>
 				                <div id="${all}${list.faq_idx}" class="panel-collapse collapse" style="height: 0px;">
 				                    <div class="panel-body">
@@ -141,12 +154,14 @@
 				        <c:forEach var="hosList" items="${hosList}">
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
-				                    <h4 class="panel-title">
+				                    <h4 class="panel-title co col-lg-6"">
 				                    <c:set var="hos" value="2"/>
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${hos}${hosList.faq_idx}" class="collapsed">${hosList.faq_subject}</a>
 				                    </h4>
+   				                    <a href="faq_Delete.do?faq_idx=${hosList.faq_idx}"><img src="img/trash-can.png" alt="삭제"></a>
+				                    <a href="faq_Update.do?faq_idx=${hosList.faq_idx}"><img src="img/cog.png" alt="수정"></a>
 				                </div>
-				                <div id="${hos}${list.faq_idx}" class="panel-collapse collapse" style="height: 0px;">
+				                <div id="${hos}${hosList.faq_idx}" class="panel-collapse collapse" style="height: 0px;">
 				                    <div class="panel-body">
 				                    	${hosList.faq_content}
 				                    </div>
@@ -166,11 +181,13 @@
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
 								<c:set var="hot" value="3"/>
-				                    <h4 class="panel-title">
+				                    <h4 class="panel-title co col-lg-6"">
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${hot}${hotList.faq_idx}" class="collapsed">${hotList.faq_subject}</a>
 				                    </h4>
+				                    <a href="faq_Delete.do?faq_idx=${hotList.faq_idx}"><img src="img/trash-can.png" alt="삭제"></a>
+				                    <a href="faq_Update.do?faq_idx=${hotList.faq_idx}"><img src="img/cog.png" alt="수정"></a>
 				                </div>
-				                <div id="${hot}${list.faq_idx}" class="panel-collapse collapse" style="height: 0px;">
+				                <div id="${hot}${hotList.faq_idx}" class="panel-collapse collapse" style="height: 0px;">
 				                    <div class="panel-body">
 				                    	${hotList.faq_content}
 				                    </div>
@@ -190,9 +207,11 @@
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
 				                <c:set var="mem" value="4"/>
-				                    <h4 class="panel-title">
+				                    <h4 class="panel-title co col-lg-6"">
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${mem}${memList.faq_idx}" class="collapsed">${memList.faq_subject}</a>
 				                    </h4>
+				                    <a href="faq_Delete.do?faq_idx=${memList.faq_idx}"><img src="img/trash-can.png" alt="삭제"></a>
+				                    <a href="faq_Update.do?faq_idx=${memList.faq_idx}"><img src="img/cog.png" alt="수정"></a>
 				                </div>
 				                <div id="${mem}${memList.faq_idx}" class="panel-collapse collapse" style="height: 0px;">
 				                    <div class="panel-body">
@@ -214,9 +233,11 @@
 				            <div class="panel panel-default">
 				                <div class="panel-heading">
 				                <c:set var="etc" value="5"/>
-				                    <h4 class="panel-title">
+				                    <h4 class="panel-title co col-lg-6"">
 				                    	<a data-toggle="collapse" data-parent="#accordion" href="${shap}${etc}${etcList.faq_idx}" class="collapsed">${etcList.faq_subject}</a>
 				                    </h4>
+				                    <a href="faq_Delete.do?faq_idx=${etcList.faq_idx}"><img src="img/trash-can.png" alt="삭제"></a>
+				                    <a href="faq_Update.do?faq_idx=${etcList.faq_idx}"><img src="img/cog.png" alt="수정"></a>
 				                </div>
 				                <div id="${etc}${etcList.faq_idx}" class="panel-collapse collapse" style="height: 0px;">
 				                    <div class="panel-body">

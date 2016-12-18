@@ -18,6 +18,7 @@
 }
 #faq_wrth1,#faq_wrth2{
 	width: 200px;
+	text-align: center;
 }
 #faq_wrtd1,#faq_wrtd2{
 	width: 500px;
@@ -35,6 +36,9 @@
 	resize: none;
 	height: 400px;
 	width: 700px;
+}
+h2{
+	text-align: center;
 }
 </style>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
@@ -64,12 +68,12 @@
 			<table id="faq_wr">
 				<tr>
 					<th id="faq_wrth1">SUBJECT</th>
-					<td id="faq_wrtd1"><input type="text" name="faq_subject" size="70"></td>
+					<td id="faq_wrtd1"><input type="text" name="faq_subject" size="70" class="form-control" placeholder="제목을 입력하세요"></td>
 				</tr>
 				<tr>
 					<th id="faq_wrth2">ITME</th>
 					<td colspan="1" id="faq_wrtd2">
-						<select name="faq_item">
+						<select name="faq_item" class="form-control" style="width: 100px;">
 							<option value="hospital">병원</option>
 							<option value="hotel">호텔</option>
 							<option value="member">회원서비스</option>
@@ -78,12 +82,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea name="faq_content" id="tx"></textarea></td>
+					<td colspan="2"><textarea name="faq_content" id="tx" class="form-control"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2" id="faq_wrtd3">
-						<input type="checkbox" value="on" name = "faq_checked">BEST 등록   
-						<input type="submit" value="작성하기">   <input type="reset" value="다시쓰기">
+					<td colspan="2" id="faq_wrtd3">                                            
+						 <input type="checkbox" value="on" name="faq_checked"/> BEST 등록
+						<button type="submit" class="btn btn-default">작성</button>
+					   <button type="reset" class="btn btn-default">다시쓰기</button>
 					</td>
 				</tr>
 			</table>

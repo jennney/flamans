@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <body>
 <%@ include file="/WEB-INF/views/header.jsp"%>
 <div class="page-header">
@@ -21,8 +20,7 @@
         </div>
     </div>
 </div>
- <div class="container">
-<div align="center">
+<div class="container" align="center">
 <table>
 	<c:if test="${empty list}">
 		<tr>
@@ -49,10 +47,11 @@
 	</c:forEach>
 	<tr>
 		<td colspan="4" align="center">
-		${pageStr }	   		
+		<ul class="pagination">
+			<li>${pageStr }	</li>
+		</ul>		
 		</td>
 	</tr>
-	
 </table>	
 </div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
