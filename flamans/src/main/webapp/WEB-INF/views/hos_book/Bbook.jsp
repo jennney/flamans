@@ -11,10 +11,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<script src="js/script.js"></script>
 <script>
-function Bbook2(){
-	
+
+$(document).ready(function Bbook2(){ 
+
 	var line="";
 	line=WriteYearOptions();;
 	$('#B_time').html(line);
@@ -50,7 +50,117 @@ function Bbook2(){
 	document.bBook.age.value=age;
 	document.bBook.nationality.value='${Ddto.m_nationality}';
 	
+});
+
+$(document).ready(function kkkkk(){
+	var id='kCalendar';
+	kCalendar(id);
+});
+		
+function kCalendar(id,date) {
+	
+	var kCalendar = document.getElementById(id);
+
+	if( typeof( date ) !== 'undefined' ) {
+		date = date.split('-');
+		date[1] = date[1] - 1;
+		date = new Date(date[0], date[1], date[2]);
+	} else {
+		var date = new Date();
+	}
+	var currentYear = date.getFullYear();
+	//년도를 구함
+	
+	var currentMonth = date.getMonth() + 1;
+	//연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
+	
+	var currentDate = date.getDate();
+	//오늘 일자.
+	
+	date.setDate(1);
+	var currentDay = date.getDay();
+	//이번달 1일의 요일은 출력. 0은 일요일 6은 토요일
+	
+	var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+	var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+	if( (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0 )
+		lastDate[1] = 29;
+	//각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일 임.
+	
+	var currentLastDate = lastDate[currentMonth-1];
+	var week = Math.ceil( ( currentDay + currentLastDate ) / 7 );
+	//총 몇 주인지 구함.
+	
+	if(currentMonth != 1)
+		var prevDate = currentYear + '-' + ( currentMonth - 1 ) + '-' + currentDate;
+	else
+		var prevDate = ( currentYear - 1 ) + '-' + 12 + '-' + currentDate;
+	//만약 이번달이 1월이라면 1년 전 12월로 출력.
+	
+	if(currentMonth != 12) 
+		var nextDate = currentYear + '-' + ( currentMonth + 1 ) + '-' + currentDate;
+	else
+		var nextDate = ( currentYear + 1 ) + '-' + 1 + '-' + currentDate;
+	//만약 이번달이 12월이라면 1년 후 1월로 출력.
+
+	
+	if( currentMonth < 10 )
+		var currentMonth = '0' + currentMonth;
+	//10월 이하라면 앞에 0을 붙여준다.
+	
+	var calendar = '';
+	
+	calendar += '<div id="header">';
+	calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\');cm_calendar()"> < </a></span>';
+	calendar += '			<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
+	calendar += '			<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\');cm_calendar()"> > </a></span>';
+	calendar += '		</div>';
+	calendar += '		<table border="0" cellspacing="0" cellpadding="0" id="calen">';
+	calendar += '			<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
+	calendar += '			<thead>';
+	calendar += '				<tr>';
+	calendar += '				  <th class="sun" scope="row" id="cc">Sun</th>';
+	calendar += '				  <th class="mon" scope="row" id="cc">Mon</th>';
+	calendar += '				  <th class="tue" scope="row" id="cc">Tue</th>';
+	calendar += '				  <th class="wed" scope="row" id="cc">Wed</th>';
+	calendar += '				  <th class="thu" scope="row" id="cc">Thu</th>';
+	calendar += '				  <th class="fri" scope="row" id="cc">Fri</th>';
+	calendar += '				  <th class="sat" scope="row" id="cc">Sat</th>';
+	calendar += '				</tr>';
+	calendar += '			</thead>';
+	calendar += '			<tbody>';
+	
+	var dateNum = 1 - currentDay;
+
+	for(var i = 0; i < week; i++) {
+		calendar += '			<tr>';
+		for(var j = 0; j < 7; j++, dateNum++) {
+			if( dateNum < 1 || dateNum > currentLastDate ) {
+				calendar += '				<td class="' + dateString[j] + 'id="cc"> </td>';
+				continue;
+			}
+			if(currentMonth<10){
+				currentMonth=parseInt(currentMonth);
+				currentMonth='0'+currentMonth;
+			}
+			if(dateNum<10){
+				dateNum=parseInt(dateNum);
+				dateNum='0'+dateNum;
+			}
+			calendar += '				<td class="' + dateString[j] + '" id="cc"><a href="#" onclick="bookDate('+currentYear+","+currentMonth+","+dateNum+');">' +dateNum + '</a>';
+			calendar += '<div id="'+currentYear+'-'+currentMonth+'-'+dateNum+'" style="float:right;width:20px;height:20px;"></td>';
+		}																							
+		calendar += '			</tr>';
+	}
+	
+	calendar += '			</tbody>';
+	calendar += '		</table>';
+	
+	kCalendar.innerHTML = calendar;
+	
+	//cm_calendar();
 }
+
 function bookDate(currentYear, currentMonth, dateNum){
 	
 	var bookdate=document.getElementById("bookdate");
@@ -68,6 +178,7 @@ function bookDate(currentYear, currentMonth, dateNum){
 	}
 
 }
+
 function BooktimeCheckResult(){
 	if(XHR.readyState==4){
 		if(XHR.status==200){
@@ -190,7 +301,7 @@ textarea{
 </style>
 </head>
 
-<body onload="Bbook2();kCalendar('kCalendar');">
+<body>
 <%@ include file="/WEB-INF/views/header.jsp"%>	
 <h2 style="text-align: center;">병원 예약</h2>
 	<div id="b" class="well well-lg">
@@ -204,7 +315,7 @@ textarea{
 			</td>
 			</tr>
 			<tr style="padding-left: 8px;">
-				<td><img src="${Ddto.doc_img }" width="100" height="100" ></td>
+				<td><img src="img/hospital/doctor/${Ddto.doc_img }" width="100" height="100" ></td>
 				<td><div id="doc"><label style="width:100px;">${Ddto.doc_name }</label>
 				</div><br>
 				'${Ddto.doc_career }'
@@ -294,7 +405,7 @@ textarea{
 		    <fieldset>
 		    <legend></legend>
 				<c:forEach var="doctor" items="${doc}">
-					<div id="doc"><img src="${doctor.doc_img }" width="50" height="50">
+					<div id="doc"><img src="img/hospital/doctor/${doctor.doc_img }" width="50" height="50">
 						<label style="width:100px;">${doctor.doc_name }</label>
 						<label id="do"><button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></label>
 					</div>		
