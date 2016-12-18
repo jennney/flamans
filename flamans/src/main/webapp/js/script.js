@@ -92,7 +92,9 @@ function kCalendar(id, date) {
 				dateNum=parseInt(dateNum);
 				dateNum='0'+dateNum;
 			}
-			calendar += '				<td class="' + dateString[j] + '" id="cc"><a href="#" onclick="bookDate('+currentYear+","+currentMonth+","+dateNum+');">' +dateNum + '</a><br><div id="'+currentYear+'-'+currentMonth+'-'+dateNum+'" style="float:right;width:20px;height:20px;"></div></td>';
+			calendar += '				<td class="' + dateString[j] + '" id="cc"><a href="#" onclick="bookDate('+currentYear+","+currentMonth+","+dateNum+');">' +dateNum + '</a>';
+			calendar += '<div id="'+currentYear+'-'+currentMonth+'-'+dateNum+'H'+" style="float:right;width:20px;height:20px;'"></div>';
+			calendar += '<div id="'+currentYear+'-'+currentMonth+'-'+dateNum+'B'+" style="float:right;width:20px;height:20px;'"></td>';
 		}																							
 		calendar += '			</tr>';
 	}

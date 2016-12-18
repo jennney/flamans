@@ -64,6 +64,8 @@ label{
    	text-decoration: underline;
    	font-size: 10px;
 }
+#ml{color: #ff9933;}
+#cl{color: #339933;}
 </style>
 <%@ include file="/WEB-INF/views/header.jsp"%>
 </head>
@@ -80,7 +82,7 @@ label{
 	      <label for="pwd">Password:</label>
 	      <input type="password" class="form-control" name="m_pwd" placeholder="Enter password"><br><br>
 	      <input type="checkbox" name="saveid" value="on" ${empty saveid?'':'checked'}> Remember me
-	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
+	    <button type="submit" class="btn btn-default" style="float: right;" ><b>Submit</b></button><br><br>
 	    &nbsp;&nbsp;▶<a href="member_find_id.do" id="pp">&nbsp;아이디를 잊으셨나요?</a><br>
 	    &nbsp;&nbsp;▶<a href="member_find_pwd.do" id="pp">&nbsp;비밀번호를 잊으셨나요?</a>
 	  </form>
@@ -95,7 +97,7 @@ label{
 	      <label for="pwd">Password:</label>
 	      <input type="password" class="form-control" name="cm_pwd" placeholder="Enter password"><br><br>
 	      <input type="checkbox" name="savecoId" value="on" ${empty savecoId?'':'checked'}> Remember me
-	    <button type="submit" class="btn btn-default" style="float: right;">Submit</button><br><br>
+	    <button type="submit" class="btn btn-default" style="float: right;" ><b>Submit</b></button><br><br>
 	    &nbsp;&nbsp;▶<a href="member_find_id.do" id="pp">&nbsp;아이디를 잊으셨나요?</a><br>
 	    &nbsp;&nbsp;▶<a href="member_find_pwd.do" id="pp">&nbsp;비밀번호를 잊으셨나요?</a>
 	  </form>

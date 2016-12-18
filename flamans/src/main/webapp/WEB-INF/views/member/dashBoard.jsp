@@ -53,28 +53,28 @@ function cm_calendarResult(){
 					HH=document.getElementById(calH[j]);
 					if(calH[j].checkin!=null){
 						var checkin=calH[j].checkin.split(' ');
-						var HH=document.getElementById(checkin[0]);
+						var HH=document.getElementById(checkin[0]+'H');
 						HH.innerHTML='in';
 					}
 					if(calH[j].checkout!=null){ 
 						var checkout=calH[j].checkout.split(' ');
-						var HH=document.getElementById(checkout[0]);
+						var HH=document.getElementById(checkout[0]+'H');
 						HH.innerHTML='out';
 					}
 					for(i=0; i<cal.length; i++){
 						var caltemp=cal[i].bookingdate.split('/');
-						var calId=document.getElementById(caltemp[0]);
+						var calId=document.getElementById(caltemp[0]+'B');
 						calHtemp=calId.innerHTML;
-						calHtemp+='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
+						calHtemp='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
 						calId.innerHTML=calHtemp;
 					}
 				} 
 			}else if(calH==null && cal !=null){
 				for(i=0; i<cal.length; i++){
 					var caltemp=cal[i].bookingdate.split('/');
-					var calId=document.getElementById(caltemp[0]);
+					var calId=document.getElementById(caltemp[0]+'B');
 					calHtemp=calId.innerHTML;
-					calHtemp+='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
+					calHtemp='<img src="img/bBook1.JPG" width="20px" heigth="20px">';
 					calId.innerHTML=calHtemp;
 				}
 			}
