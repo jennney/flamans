@@ -337,7 +337,7 @@ textarea{
 	<div id="b" class="well well-lg">
 	<form class="form-inline" name="bBook" action="bBook.do" method="post">
 	<div id="a">
-		<table id="bBook">    <input type="text">
+		<table id="bBook">
 			<tr>
 			<td colspan="2" id="td"><h4>${Ddto.cm_name}</h4>
 			<input type="hidden" name="hos_num" value="${Ddto.hos_num}">
