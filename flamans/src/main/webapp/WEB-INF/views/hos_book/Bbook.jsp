@@ -294,8 +294,7 @@ textarea{
 }
 #doc{
 	width:260px;
-	height:50px;
-	border: 1px solid green;
+	height:60px;
 	font:15px/1.0 맑은 고딕;
 }
 #docimg{ 
@@ -307,7 +306,7 @@ textarea{
 #docname{
    	width:50px;
    	height:50px;
-   	float: left;
+   	float: right;
    	margin-left:15px;
    	margin-right:15px;
    	border: 1px solid yellow;
@@ -392,13 +391,13 @@ textarea{
 			</tr>
 			<tr>
 				<td colspan="2" ><br>원하는 시술/수술<br>
-				<textarea class="form-control" rows="2" cols="60" id="comment" name="surgery"></textarea></td>
+				<textarea class="form-control" rows="2" cols="56" id="comment" name="surgery"></textarea></td>
 			</tr>
 	
 			<tr>
 			<tr>
 				<td colspan="2" >특이사항<br>
-				<textarea class="form-control" rows="2" cols="60" id="comment" name="etc"></textarea><br><br></td>
+				<textarea class="form-control" rows="2" cols="56" id="comment" name="etc"></textarea><br><br></td>
 			</tr>
 			<!-- <tr>
 				<td><select name="m_card" class="form-control">
@@ -436,17 +435,17 @@ textarea{
 		    <fieldset>
 		    <legend></legend>
 				<c:forEach var="doctor" items="${doc}">
+				<div>
 					<div id="doc">
-						<div id="docImg" ><img src="img/hospital/doctor/${doctor.doc_img }" style="width:50px; height:50px;"></div>
-						<div id="docname">${doctor.doc_name }</div>
-						<div id="do"><button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></div>			
-					</div>		
+						<div id="docImg" ><img src="img/hospital/doctor/${doctor.doc_img }" style="width:50px; height:50px;">&nbsp;&nbsp;&nbsp;${doctor.doc_name }
+						&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" onclick="docInfo('${doctor.doc_num}')">상세보기</button></div>
+					</div>
+				</div>
 				</c:forEach>
 			</fieldset>		
 			</div>
 		</div>	  
-		</form>	
-    
+		</form>
 	</div>
 </div>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
