@@ -334,11 +334,11 @@ textarea{
         </div>
     </div>
 </div>
-<div class="container" style="margin-bottom: 50px;">
+<div class="container" style="margin-bottom: 50px; margin: 8px auto;">
 	<div id="b" class="well well-lg">
 	<form class="form-inline" name="bBook" action="bBook.do" method="post">
 	<div id="a">
-		<table id="bBook">
+		<table id="bBook">    <input type="text">
 			<tr>
 			<td colspan="2" id="td"><h4>${Ddto.cm_name}</h4>
 			<input type="hidden" name="hos_num" value="${Ddto.hos_num}">
@@ -347,7 +347,7 @@ textarea{
 			</tr>
 			<tr style="padding-left: 8px;">
 				<td><img src="img/hospital/doctor/${Ddto.doc_img }" width="100" height="100" ></td>
-				<td><div id="doc"><label style="width:100px;">${Ddto.doc_name }</label>
+				<td><div><label style="width:100px;">${Ddto.doc_name }</label>
 				</div><br>
 				'${Ddto.doc_career }'
 				</td>
