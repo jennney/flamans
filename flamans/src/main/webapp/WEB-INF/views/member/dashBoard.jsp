@@ -107,7 +107,7 @@ function wishlistresult(){
 				// 병원 비교 추가
 				
 				for( var i=data.hos.length-1; i>=0; i-- ){
-					data_hos += '<table class="table table-hover" style="border: 3px solid teal;" border="0" height="30" cellspacing="0"><tr align="center">';
+					data_hos += '<table class="table table-hover" style="border: 3px solid teal; border-radius: 3%;" height="30" cellspacing="0"><tr align="center">';
 					data_hos += '<td width="100" align="center"><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+'<img src="img/'+data.hos[i].hos_img+'" width=100 height=90></a></td>';
 					data_hos += '<td><a href="hospital_get_info.do?hos_num='+data.hos[i].hos_num+'">'+data.hos[i].hos_name+'<br><br><br>'+data.hos[i].hos_wishdate+'</a></td></tr>';
 					data_hos += '</table>';
