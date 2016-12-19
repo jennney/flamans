@@ -183,7 +183,8 @@
 		#{qna_findname},
 			0,
 		#{ref},
-			0,0,
+			#{lev}+1,
+			#{sunbun}+1,
 		fm_qna_idx.nextval,
 			#{qna_kind})
 	</insert>
