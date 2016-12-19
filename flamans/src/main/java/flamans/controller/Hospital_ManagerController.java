@@ -259,8 +259,12 @@ public class Hospital_ManagerController {
 	@RequestMapping(value="/doctorAdd.do",method=RequestMethod.POST)
 	public ModelAndView doctorAdd(DoctorDTO dto,@RequestParam("upload") MultipartFile upload,HttpSession session){
 		String path=session.getServletContext().getRealPath("img/hospital");
-		copyinto(dto.getHos_num(), upload,2,path);
-		dto.setDoc_img(upload.getOriginalFilename());
+		if(!upload.isEmpty()){
+			copyinto(dto.getHos_num(), upload,2,path);
+			dto.setDoc_img(upload.getOriginalFilename());
+		}else{
+			dto.setDoc_img("doctorBasic.jpg");
+		}
 		int result=hosmDao.doctorAdd(dto);
 		String msg=result>0?"등록 성공":"등록 실패 ㅠ";
 		ModelAndView mav=new ModelAndView();
