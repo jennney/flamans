@@ -17,7 +17,7 @@ h4{
 	text-align: center;
 }
 #imgdiv{
-	width: 400px;
+	width: 300px;
 	height: 400px;
 	margin: 10px auto;
 }
@@ -39,6 +39,7 @@ h4{
 			<input type="button" value="저장" onclick="down();" class="btn btn-default">
 			<a href="index.do" class="btn btn-default">돌아가기</a>
 		</div>
+		<br>
 	</article>
 </section>
 <%@ include file="/WEB-INF/views/footer.jsp"%>
