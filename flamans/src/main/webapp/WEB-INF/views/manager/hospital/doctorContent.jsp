@@ -43,15 +43,6 @@ h2{
 		<fieldset>
 			<legend>메모</legend>${dto.doc_etc }
 		</fieldset>	
-		<%-- 	<fieldset>
-				<legend>의사 정보</legend>
-				<label>이름 : </label> ${dto.doc_name }<br>
-				<label>이미지 : </label> <img src="img/hospital/${sessionScope.cm_number }/doctor/${dto.doc_img }" width="150" height="150"> <br> 
-				<label>학력 :</label> ${dto.doc_level }<br>
-				<label>경력 </label> ${dto.doc_career }<br>
-				<label>기타사항 : </label> ${dto.doc_etc }<br>
-				<label>진료 과목 : </label> ${dto.doc_kind }<br>
-			</fieldset> --%>
 		<div id="button_list">
 			<c:url var="doctorUpdateUrl" value="doctorUpdate.do">
 				<c:param name="doc_num">${dto.doc_num }</c:param>

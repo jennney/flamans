@@ -74,7 +74,7 @@ h2 {
 				<c:if test="${!empty list }">
 					<c:forEach var="dto" items="${list }">
 						<tr>
-							<td id="list_td"><img alt="의사사진" src="img/hospital/${sessionScope.cm_number }/doctor/${dto.doc_img }" width="100" height="100"/></td>
+							<td id="list_td"><img alt="의사사진" src="img/hospital/doctor/${dto.doc_img }" width="100" height="100"/></td>
 							<c:url var="doctorContentUrl" value="doctorContent.do">
 								<c:param name="doc_num">${dto.doc_num }</c:param>
 							</c:url>

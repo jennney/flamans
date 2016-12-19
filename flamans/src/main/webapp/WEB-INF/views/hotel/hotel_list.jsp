@@ -487,7 +487,7 @@ input[type=range]:focus::-ms-fill-upper {
 <%@ include file="../header.jsp" %>
 </head>
 <body>
-<div class="container" align="center" style="margin-bottom: 50px; background-image: url('img/background5.jpg');">
+<div class="container" align="center" style="margin-bottom: 50px;">
 		
 		<table style="margin: 0px auto; margin-top: 50px; ">
 		
