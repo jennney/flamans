@@ -164,7 +164,7 @@
 					<li><a href="#">Hospital</a>
 						<ul class="dropdown">
 							<li><a href="hospital_list.do">Hospital</a></li>
-							<li><a href="#">Simmulation</a></li>
+							<li><a href="simulation.do">Simmulation</a></li>
 						</ul></li>
 					<li><a href="hotel_list.do">Hotel</a></li>
 					<li><a href="#">Event</a>
