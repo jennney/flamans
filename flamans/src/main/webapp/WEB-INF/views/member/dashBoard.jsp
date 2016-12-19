@@ -164,7 +164,7 @@ function cm_calendarResult(){
 						if(HH!=null){
 							HH.innerHTML='in';
 						}
-						
+						   
 					}
 					if(calH[j].checkout!=null){ 
 						var checkout=calH[j].checkout.split(' ');
