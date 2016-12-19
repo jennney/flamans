@@ -161,12 +161,18 @@ function cm_calendarResult(){
 					if(calH[j].checkin!=null){
 						var checkin=calH[j].checkin.split(' ');
 						var HH=document.getElementById(checkin[0]+'H');
-						HH.innerHTML='in';
+						if(HH!=null){
+							HH.innerHTML='in';
+						}
+						
 					}
 					if(calH[j].checkout!=null){ 
 						var checkout=calH[j].checkout.split(' ');
 						var HH=document.getElementById(checkout[0]+'H');
-						HH.innerHTML='out';
+						if(HH!=null){
+							HH.innerHTML='out';
+						}
+						
 					}
 					for(i=0; i<cal.length; i++){
 						var caltemp=cal[i].bookingdate.split('/');
