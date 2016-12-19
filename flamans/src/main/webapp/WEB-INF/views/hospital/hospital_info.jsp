@@ -377,7 +377,7 @@ $(document).ready(function(){
 <body>
 
 	<section>
-	<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
+	<div align="center" style="height: 2100px;">
 	
 	<%@ include file="../header.jsp"%>
 	

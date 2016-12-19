@@ -594,7 +594,7 @@ function toggleMap(active) {
 </head>
 <body>
 
-	<div align="center" style="height: 2100px; background-image: url('img/background5.jpg');">
+	<div align="center" style="height: 2100px;">
 		
 	<%@ include file="../header.jsp" %>
 		<table style="margin: 0px auto;">
