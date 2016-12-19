@@ -13,7 +13,7 @@
    width:730px;
    height:550px;
    margin-top: 30px;
-   	border-color: green;
+   	border-color: #ff432f;
    	margin: auto;
    	padding-top: 60px;
 }
@@ -24,10 +24,10 @@
    height:300px;
    margin:0px center;
    
-   border-top: 5px solid grey;
-   border-bottom : 2px solid grey;
-   border-left: 2px solid grey;
-   boder-right: 2px solid grey;
+   border-top: 5px solid #ff432f;
+   border-bottom : 2px solid #ff432f;
+   border-left: 2px solid #ff432f;
+   boder-right: 2px solid #ff432f;
   
 }
 
@@ -38,10 +38,10 @@
    	margin-left:15px;
    	margin-right:15px;
    
-    border-right : 2px solid grey;
-   	border-top: 5px solid grey;
-   	border-bottom : 2px solid grey;
-  	border-left: 2px solid grey;
+    border-right : 2px solid #ff432f;
+   	border-top: 5px solid #ff432f;
+   	border-bottom : 2px solid #ff432f;
+  	border-left: 2px solid #ff432f;
 }
 
 label{
@@ -60,12 +60,18 @@ label{
 	font-size: 10px;
 }
 #pp:hover{
-	color: #ffd700;
+	color:black;
    	text-decoration: underline;
    	font-size: 10px;
 }
-#ml{color: #ff9933;}
-#cl{color: #339933;}
+#ml{color: #ff432f;}
+#cl{color: #ff432f;}
+#text{
+	border-bottom: 2px solid #ff432f;
+	border-top : 0px solid #ff432f;
+	border-left : 0px solid #ff432f;
+	border-right: 0px solid #ff432f;
+}
 </style>
 <%@ include file="/WEB-INF/views/header.jsp"%>
 </head>
@@ -78,9 +84,9 @@ label{
 	  <c:set var="saveid" value="${cookie.saveid.value}"></c:set>
 	  <form class="form-inline" action="member_login.do" method="post">
 	      <label for="id">id:</label>
-	      <input type="text" class="form-control" name="m_id" placeholder="Enter ID" value="${saveid }"><br>
+	      <input type="text" class="form-control" name="m_id" placeholder="Enter ID" value="${saveid }" id="text"><br>
 	      <label for="pwd">Password:</label>
-	      <input type="password" class="form-control" name="m_pwd" placeholder="Enter password"><br><br>
+	      <input type="password" class="form-control" name="m_pwd" placeholder="Enter password" id="text"><br><br>
 	      <input type="checkbox" name="saveid" value="on" ${empty saveid?'':'checked'}> Remember me
 	    <button type="submit" class="btn btn-default" style="float: right;" ><b>Submit</b></button><br><br>
 	    &nbsp;&nbsp;▶<a href="member_find_id.do" id="pp">&nbsp;아이디를 잊으셨나요?</a><br>
@@ -93,9 +99,9 @@ label{
 	  <c:set var="saveid" value="${cookie.savecoId.value}"></c:set>
 	  <form class="form-inline" action="company_login.do" method="post">
 	      <label for="id">id:</label>
-	      <input type="text" class="form-control" name="cm_id" placeholder="Enter ID" value="${savecoId}"><br>
+	      <input type="text" class="form-control" name="cm_id" placeholder="Enter ID" value="${savecoId}" id="text"><br>
 	      <label for="pwd">Password:</label>
-	      <input type="password" class="form-control" name="cm_pwd" placeholder="Enter password"><br><br>
+	      <input type="password" class="form-control" name="cm_pwd" placeholder="Enter password" id="text"><br><br>
 	      <input type="checkbox" name="savecoId" value="on" ${empty savecoId?'':'checked'}> Remember me
 	    <button type="submit" class="btn btn-default" style="float: right;" ><b>Submit</b></button><br><br>
 	    &nbsp;&nbsp;▶<a href="member_find_id.do" id="pp">&nbsp;아이디를 잊으셨나요?</a><br>
